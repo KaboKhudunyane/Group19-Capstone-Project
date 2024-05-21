@@ -38,7 +38,7 @@ public class CarInsuranceServiceTest {
         CarInsurance created1 = carInsuranceService.save(carInsurance1);
         assertNotNull(created1);
         System.out.println("Saved CarInsurance 1: " + created1);
-        CarInsurance created2 = carInsuranceService.save(carInsurance2);
+        CarInsurance created2 = CarInsuranceService.save(carInsurance2);
         assertNotNull(created2);
         System.out.println("Saved CarInsurance 2: " + created2);
     }
