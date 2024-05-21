@@ -2,6 +2,7 @@ package za.ac.cput.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Booking;
 import za.ac.cput.domain.Payment;
 import za.ac.cput.repository.BookingRepository;
 import za.ac.cput.repository.PaymentRepository;
@@ -27,13 +28,20 @@ public class PaymentService implements IPaymentService {
 
     @Override
     public Payment read(String paymentId) {
-        return paymentRepository.findById(paymentId).orElse(null);
+
+        return this.paymentRepository.findPaymentByPaymentId(paymentId);
     }
 
     @Override
-    public void delete(String paymentId) {
-        paymentRepository.deleteById(paymentId);
+    public boolean delete(String paymentId) {
+        Payment payment = paymentRepository.findPaymentByPaymentId(paymentId);
+        if (payment != null) {
+            paymentRepository.delete(payment);
+            return true;
+        }
+        return false;
     }
+
 
 
     @Override

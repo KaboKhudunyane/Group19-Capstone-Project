@@ -24,7 +24,7 @@ class PaymentServiceTest {
 
     @Test
     @Order(1)
-    void create(){
+    void save(){
         Payment saved = paymentService.save(payment);
         assertNotNull(saved);
         System.out.println(saved);

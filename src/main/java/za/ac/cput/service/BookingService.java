@@ -11,19 +11,21 @@ import java.util.stream.Collectors;
 
 @Service
 public class BookingService implements IBookingService{
-    private BookingRepository bookingRepository;
     private CarInformationRepository carInformationRepository;
 
+    private BookingRepository bookingRepository;
+
     @Autowired
-    BookingService(BookingRepository bookingRepository, CarInformationRepository carInformationRepository) {
-        this.bookingRepository = bookingRepository;
+    BookingService(CarInformationRepository carInformationRepository, BookingRepository bookingRepository ) {
         this.carInformationRepository = carInformationRepository;
+        this.bookingRepository = bookingRepository;
+
     }
 
 
     @Override
-    public Booking create(Booking booking){
-        CarInformationRepository.save(booking.getCarInformation());
+    public Booking save(Booking booking){
+        carInformationRepository.save(booking.getCarInformation());
         return bookingRepository.save(booking);
 
     }
@@ -32,12 +34,18 @@ public class BookingService implements IBookingService{
 
     @Override
     public Booking read(String bookingId){
-        return this.bookingRepository.findById(bookingId).orElse(null);
+        return this.bookingRepository.findBookingByBookingId(bookingId);
     }
 
     @Override
-    public void delete(String bookingId){bookingRepository.deleteById(bookingId);}
-
+    public boolean delete(String bookingId) {
+         Booking booking = bookingRepository.findBookingByBookingId(bookingId);
+        if (booking != null) {
+            bookingRepository.delete(booking);
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public Set<Booking> getall(){

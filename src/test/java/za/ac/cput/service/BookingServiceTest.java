@@ -24,10 +24,10 @@ class BookingServiceTest {
 
     @Test
     @Order(1)
-    void create() {
-        Booking created = bookingService.save(booking);
-        assertNotNull(created);
-        System.out.println(created);
+    void save() {
+        Booking saved = bookingService.save(booking);
+        assertNotNull(saved);
+        System.out.println(saved);
 
     }
 
