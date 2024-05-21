@@ -1,7 +1,7 @@
 package za.ac.cput.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import za.ac.cput.domain.Contact;
+import za.ac.cput.domain.Booking;
 import za.ac.cput.domain.Car;
 import za.ac.cput.repository.CarRepository;
 
@@ -18,7 +18,7 @@ public class CarService implements IService<Car, String>{
         return carRepository.save(car);
     }
     @Override
-    public Car read(String carID) {
+    public Booking read(String carID) {
         return carRepository.findCar(carID);
     }
     @Override
