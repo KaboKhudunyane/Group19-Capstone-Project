@@ -6,6 +6,7 @@ import za.ac.cput.domain.CarInformation;
 
 @Repository
 public interface CarInformationRepository extends JpaRepository<CarInformation, String> {
+    List<CarInformation> getCarInformationAll(String carInformationId);
     CarInformation findCarInformationByCarInformationId(String CarInformationId);
 
 }
