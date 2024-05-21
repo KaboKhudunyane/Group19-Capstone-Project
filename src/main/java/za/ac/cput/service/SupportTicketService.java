@@ -2,7 +2,6 @@ package za.ac.cput.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import za.ac.cput.domain.Booking;
 import za.ac.cput.domain.SupportTicket;
 import za.ac.cput.repository.SupportTicketRepository;
 
