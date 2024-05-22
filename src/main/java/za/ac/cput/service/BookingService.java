@@ -9,7 +9,8 @@ import za.ac.cput.repository.CarInformationRepository;
 import java.util.Set;
 import java.util.stream.Collectors;
 @Service
-public class BookingService implements IBookingService{
+public class BookingService implements IService<Booking, String>{
+
     private CarInformationRepository carInformationRepository;
 
     private BookingRepository bookingRepository;
@@ -36,17 +37,11 @@ public class BookingService implements IBookingService{
         return this.bookingRepository.findBookingByBookingId(bookingId);
     }
 
-    @Override
-    public boolean delete(String bookingId) {
-        Booking booking = bookingRepository.findBookingByBookingId(bookingId);
-        if (booking != null) {
-            bookingRepository.delete(booking);
-            return true;
-        }
-        return false;
-    }
 
-    @Override
+    public void delete(String bookingId){
+        this.bookingRepository.deleteById(bookingId);}
+
+
     public Set<Booking> getall(){
         return bookingRepository.findAll().stream().collect(Collectors.toSet());
 

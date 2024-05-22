@@ -8,7 +8,7 @@ import za.ac.cput.repository.PaymentRepository;
 
 import java.util.List;
 @Service
-public class PaymentService  implements IPaymentService {
+public class PaymentService  implements IService<Payment, String> {
     private BookingRepository bookingRepository;
     private PaymentRepository paymentRepository;
 
@@ -28,22 +28,15 @@ public class PaymentService  implements IPaymentService {
     @Override
     public Payment read(String paymentId) {
 
-        return this.paymentRepository.findPaymentByPaymentId(paymentId);
-    }
-
-    @Override
-    public boolean delete(String paymentId) {
-        Payment payment = paymentRepository.findPaymentByPaymentId(paymentId);
-        if (payment != null) {
-            paymentRepository.delete(payment);
-            return true;
-        }
-        return false;
+        return this.paymentRepository.findById(paymentId).orElse(null);
     }
 
 
+    public void delete(String paymentId){
+        this.paymentRepository.deleteById(paymentId);
+    }
 
-    @Override
+
     public List<Payment> getall() {
         return paymentRepository.findAll();
     }
