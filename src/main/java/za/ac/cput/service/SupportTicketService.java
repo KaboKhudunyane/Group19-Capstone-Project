@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class SupportTicketService implements IService<SupportTicket, String>{
 
-    private final SurppotTicketRepository repository;
+    private final SupportTicketRepository repository;
 
     @Autowired
     public SupportTicketService(SupportTicketRepository repository) {
