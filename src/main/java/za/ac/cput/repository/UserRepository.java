@@ -8,10 +8,13 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
+
+    // Method to find a user by user ID
     List<User> findUser(String userID);
+
+    // Method to delete a user by user ID
     void deleteUser(String userID);
 
-    List <User> getAllUsers();
-
-
+    // Method to get all users
+    List<User> getAllUsers();
 }
