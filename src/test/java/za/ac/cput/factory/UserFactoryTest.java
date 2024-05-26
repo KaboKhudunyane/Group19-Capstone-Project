@@ -10,23 +10,30 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class UserFactoryTest {
 
+    // Create a Name object for testing
     Name name = new Name.Builder()
             .setFirstName("John")
             .setMiddleName("Fred")
             .setLastName("Doe")
             .buildName();
 
+    // Create a Contact object for testing
     Contact contact = new Contact.Builder()
+            .setContactId("1")
             .setEmail("john@example.com")
-            .setPhoneNumber("123456789")
-            .buildContact();
-
-    Address address = new Address.Builder()
-            .setStreet("123 Main St")
-            .setCity("Springfield")
-            .setZipCode("12345")
+            .setMobileNo(123456789)
             .build();
 
+    // Create an Address object for testing
+    Address address = new Address.Builder()
+            .setAddressId("1")
+            .setUserId("123")
+            .setStreetName("123 Main St")
+            .setSuburb("Springfield")
+            .setPostalCode(12345)
+            .build();
+
+    // Test case to verify successful User creation
     @Test
     public void testBuildUser(){
         User user = UserFactory.createUser("123", name,
@@ -36,19 +43,20 @@ public class UserFactoryTest {
                 "avatar.jpg",
                 true);
 
-        assertNotNull(user);
-        System.out.println(user);
+        assertNotNull(user);  // Assert that the created User object is not null
+        System.out.println(user);  // Print the created User object
     }
 
+    // Test case to verify User creation with a failing condition
     @Test
-    public void testBuildUsrWithFail(){
-        // Create a user with a null parameter so test fails
+    public void testBuildUserWithFail(){
+        // Create a user with an empty role so the factory returns null
         User user = UserFactory.createUser("125", name,
                 contact, address,
                 true, "",
                 "Avatar.jpg", true);
 
-        assertNotNull(user);
-        System.out.println(user);
+        assertNotNull(user);  // This will fail because the factory should return null
+        System.out.println(user);  // Print the created User object (should be null)
     }
 }
