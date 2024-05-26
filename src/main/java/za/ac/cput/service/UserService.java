@@ -18,18 +18,18 @@ public class UserService implements IService<User, String>{
     }
     @Override
     public User read(String userID) {
-        return userRepository.findUser(userID);
+        return userRepository.findUser(userID).orElse(null);
     }
     @Override
     public User update(User user) {
         return userRepository.save(user);
     }
     @Override
-    void delete(String userID) {
+    public void delete(String userID) {
         userRepository.deleteUser(userID);
     }
     @Override
-    public List<User> getAllContact( ){
+    public List<User> getAllUsers( ){
         return userRepository.getAllUsers();
     }
 }
