@@ -1,12 +1,21 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class User implements Serializable {
+@Entity
+public class User {
+    @Id
     private String userID;
+    @OneToOne
     private Name name;
+    @OneToOne
     private Contact contact;
+    @OneToOne
     private Address address;
     private Boolean license;
     private String role;

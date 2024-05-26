@@ -1,18 +1,27 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Car implements Serializable {
-    private String carID;
-    private String userID;
-    private String carInformation;
-    private String rate;
-    private String availability;
-    private String status;
+@Entity
+public class Car {
+    @Id
+    private String carID;  // Unique identifier for the car
+    private String userID;  // User ID associated with the car
+    @OneToOne
+    private CarInformation carInformation;  // Information about the car
+    private String rate;  // Rental rate of the car
+    private String availability;  // Availability status of the car
+    private String status;  // Current status of the car
 
+    // Protected no-arg constructor for JPA
     protected Car() {}
 
+    // Private constructor for Builder
     private Car(Builder builder) {
         this.carID = builder.carID;
         this.userID = builder.userID;
@@ -22,6 +31,7 @@ public class Car implements Serializable {
         this.status = builder.status;
     }
 
+    // Getters for all fields
     public String getCarID() {
         return carID;
     }
@@ -30,7 +40,7 @@ public class Car implements Serializable {
         return userID;
     }
 
-    public String getCarInformation() {
+    public CarInformation getCarInformation() {
         return carInformation;
     }
 
@@ -46,6 +56,7 @@ public class Car implements Serializable {
         return status;
     }
 
+    // Setters for all fields
     public void setCarID(String carID) {
         this.carID = carID;
     }
@@ -54,7 +65,7 @@ public class Car implements Serializable {
         this.userID = userID;
     }
 
-    public void setCarInformation(String carInformation) {
+    public void setCarInformation(CarInformation carInformation) {
         this.carInformation = carInformation;
     }
 
@@ -70,6 +81,7 @@ public class Car implements Serializable {
         this.status = status;
     }
 
+    // Override equals method for object comparison
     @Override
     public boolean equals(Object carObject) {
         if (this == carObject) return true;
@@ -83,31 +95,35 @@ public class Car implements Serializable {
                 Objects.equals(status, car.status);
     }
 
+    // Override hashCode method for object hashing
     @Override
     public int hashCode() {
         return Objects.hash(carID, userID, carInformation, rate, availability, status);
     }
 
+    // Override toString method for object string representation
     @Override
     public String toString() {
         return "Car{" +
                 "carID='" + carID + '\'' +
                 ", userID='" + userID + '\'' +
-                ", carInformation='" + carInformation + '\'' +
+                ", carInformation=" + carInformation +
                 ", rate='" + rate + '\'' +
                 ", availability='" + availability + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }
 
+    // Static Builder class for Car
     public static class Builder {
-        private String carID;
-        private String userID;
-        private String carInformation;
-        private String rate;
-        private String availability;
-        private String status;
+        private String carID;  // Unique identifier for the car
+        private String userID;  // User ID associated with the car
+        private CarInformation carInformation;  // Information about the car
+        private String rate;  // Rental rate of the car
+        private String availability;  // Availability status of the car
+        private String status;  // Current status of the car
 
+        // Setters for all fields with Builder pattern
         public Builder setCarID(String carID) {
             this.carID = carID;
             return this;
@@ -118,7 +134,7 @@ public class Car implements Serializable {
             return this;
         }
 
-        public Builder setCarInformation(String carInformation) {
+        public Builder setCarInformation(CarInformation carInformation) {
             this.carInformation = carInformation;
             return this;
         }
@@ -138,6 +154,7 @@ public class Car implements Serializable {
             return this;
         }
 
+        // Copy method to copy fields from another Car object
         public Builder copyCar(Car car) {
             this.carID = car.carID;
             this.userID = car.userID;
@@ -148,6 +165,7 @@ public class Car implements Serializable {
             return this;
         }
 
+        // Build method to create Car object
         public Car buildCar() {
             return new Car(this);
         }
