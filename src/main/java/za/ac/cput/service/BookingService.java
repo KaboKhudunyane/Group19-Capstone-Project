@@ -34,7 +34,7 @@ public class BookingService implements IService<Booking, String>{
 
     @Override
     public Booking read(String bookingId){
-        return this.bookingRepository.findBookingByBookingId(bookingId);
+        return this.bookingRepository.findById(bookingId).orElse(null);
     }
 
 
