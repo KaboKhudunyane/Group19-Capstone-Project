@@ -8,9 +8,9 @@ import java.util.List;
 
 @Repository
 public interface AddressRepository extends JpaRepository<Address, String> {
-    List<Address> findAddressByAddressId(String AddressId);
-    void deleteAddressByAddressId(String AddressId);
+    Address findByAddressId(String addressId);
 
-    List <Address> getAllAddress();
+    void deleteByAddressId(String addressId);
 
+    List<Address> getAllAddress();
 }

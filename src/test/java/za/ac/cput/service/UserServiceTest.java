@@ -19,17 +19,9 @@ class UserServiceTest {
     private UserService userService;
 
     private static Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
-    private static Contact contact = ContactFactory.createContact("123" ,"216273293@mycput.ac.za",01234);
+    private static Contact contact = ContactFactory.createContact("123" ,"216273293@mycput.ac.za",05665665254);
     private static Address address = AddressFactory.createAddress("1", "216273293", "123 Street", "City", 12345);
-
-    private static User user = UserFactory.createUser("216273293",
-            name,
-            contact,
-            address,
-            true,
-            "Admin",
-            "Kabo.jpeg",
-            true);
+    private static User user = UserFactory.createUser("216273293", name, contact, address, true, "Admin", "Kabo.jpeg", true);
 
     // Test case for creating a user
     @Test
@@ -48,10 +40,8 @@ class UserServiceTest {
     // Test case for updating a user
     @Test
     void update(){
-        User newUser = new User.Builder()
-                .copyUser(user)
-                .setUserID("222273293")
-                .buildUser();
+        User newUser = new User.Builder().copyUser(user).setUserID("222273293").buildUser();
+
         User updatedUser = userService.update(newUser);
         assertNotNull(updatedUser);
         System.out.println("Updated User: " + updatedUser);

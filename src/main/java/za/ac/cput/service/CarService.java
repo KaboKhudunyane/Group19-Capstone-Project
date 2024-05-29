@@ -16,23 +16,26 @@ public class CarService implements IService<Car, String> {
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
+
     @Override
     public Car create(Car car) {
         return carRepository.save(car);
     }
+
     @Override
     public Car read(String carID) {
-        return carRepository.findCar(carID).orElse(null);
+        return carRepository.findByCarID(carID) ;
     }
+
     @Override
     public Car update(Car car) {
         return carRepository.save(car);
     }
-    @Override
+
     public void delete(String carID) {
-        carRepository.deleteCar(carID);
+        carRepository.deleteByCarID(carID);
     }
-    @Override
+
     public List<Car> getAllCars() {
         return carRepository.getAllCars();
     }

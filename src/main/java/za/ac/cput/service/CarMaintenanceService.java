@@ -15,29 +15,22 @@ public class CarMaintenanceService implements IService<CarMaintenance, String> {
     CarMaintenanceService(CarMaintenanceRepository carMaintenanceRepository) {
         this.carMaintenanceRepository = carMaintenanceRepository;
     }
-
     @Override
     public CarMaintenance create(CarMaintenance maintenance) {
         return carMaintenanceRepository.save(maintenance);
     }
-
     @Override
     public CarMaintenance read(String maintenanceID) {
-        return carMaintenanceRepository.findByMaintenanceID(maintenanceID).orElse(null);
+        return carMaintenanceRepository.findByCarMaintenanceID(maintenanceID);
     }
-
     @Override
     public CarMaintenance update(CarMaintenance maintenance) {
         return carMaintenanceRepository.save(maintenance);
     }
-
-    @Override
     public void delete(String maintenanceID) {
-        carMaintenanceRepository.deleteByMaintenanceID(maintenanceID);
+        carMaintenanceRepository.deleteByCarMaintenanceID(maintenanceID);
     }
-
-    @Override
-    public List<CarMaintenance> getAll() {
-        return carMaintenanceRepository.findAll();
+     public List<CarMaintenance> getAll() {
+        return carMaintenanceRepository.getAllCarMaintainences();
     }
 }

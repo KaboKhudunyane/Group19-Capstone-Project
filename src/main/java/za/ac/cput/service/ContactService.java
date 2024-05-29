@@ -13,7 +13,6 @@ public class ContactService implements IService<Contact,String>{
     
     @Autowired
     private ContactRepository contactRepository;
-    private String contactId;
 
     ContactService(ContactRepository contactRepository){
         this.contactRepository = contactRepository;
@@ -24,22 +23,18 @@ public class ContactService implements IService<Contact,String>{
     }
 
     @Override
-    public String read(String s) {
-        return String.valueOf(contactRepository.findById(contactId));
+    public Contact read(String contactID) {
+        return  contactRepository.findByContactID(contactID);
     }
-
     @Override
     public Contact update(Contact contact) {
-        return null;
+        return contactRepository.save(contact);
     }
 
-    @Override
-    public void delete(String contactId) {
-
+    public void delete(String contactID) {
+        contactRepository.deleteByContactID(contactID);
     }
-
-    @Override
-    public List<Address> getAll() {
-        return null;
+    public List<Contact> getAll() {
+        return contactRepository.getAllContacts();
     }
 }

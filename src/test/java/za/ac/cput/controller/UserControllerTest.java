@@ -19,10 +19,8 @@ import za.ac.cput.factory.UserFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class UserControllerTest {
-
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -37,10 +35,8 @@ class UserControllerTest {
         Address address = AddressFactory.createAddress("011", "575", "123 Street","District 6", 7441);
         user = UserFactory.createUser("216273293", name, contact, address, true, "Admin", "Kabo.jpeg", true);
     }
-
-
     @Test
-    void save() {
+    void create() {
         String url = BASE_URL + "/save";
         ResponseEntity<User> postResponse = restTemplate.postForEntity(url, user, User.class);
         assertNotNull(postResponse);
@@ -86,8 +82,8 @@ class UserControllerTest {
     }
 
     @Test
-    void getAll() {
-        String url = BASE_URL + "/getall";
+    void getAllUsers() {
+        String url = BASE_URL + "/getAllUsers";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);

@@ -32,7 +32,7 @@ import java.util.List;
 
         @GetMapping("/getall")
         public List<CarInformation> getAll(){
-            return carInformationService.getCarInformationAll();
+            return carInformationService.get();
         }
     }
 

@@ -10,10 +10,10 @@ import java.util.List;
 public interface CarRepository extends JpaRepository<Car, String> {
 
     // Method to find a car by its ID
-    List<Car> findCar(String carID);
+    Car findByCarID(String carID);
 
     // Method to delete a car by its ID
-    void deleteCar(String carID);
+    void deleteByCarID(String carID);
 
     // Method to get all cars
     List<Car> getAllCars();

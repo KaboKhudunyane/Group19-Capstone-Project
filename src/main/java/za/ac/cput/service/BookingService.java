@@ -1,50 +1,36 @@
 package za.ac.cput.service;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Booking;
 import za.ac.cput.repository.BookingRepository;
-import za.ac.cput.repository.CarInformationRepository;
+import java.util.List;
 
-import java.util.Set;
-import java.util.stream.Collectors;
 @Service
 public class BookingService implements IService<Booking, String>{
-
-    private CarInformationRepository carInformationRepository;
 
     private BookingRepository bookingRepository;
 
     @Autowired
-    BookingService(CarInformationRepository carInformationRepository, BookingRepository bookingRepository ) {
-        this.carInformationRepository = carInformationRepository;
+    BookingService(BookingRepository bookingRepository ) {
         this.bookingRepository = bookingRepository;
-
     }
-
-
     @Override
-    public Booking save(Booking booking){
-        carInformationRepository.save(booking.getCarInformation());
+    public Booking create(Booking booking){
         return bookingRepository.save(booking);
-
     }
-
-
-
     @Override
     public Booking read(String bookingId){
-        return this.bookingRepository.findById(bookingId).orElse(null);
+        return bookingRepository.findByBookingID(bookingId);
     }
-
-
+    @Override
+    public Booking update(Booking booking){
+        return this.bookingRepository.save(booking);
+    }
     public void delete(String bookingId){
-        this.bookingRepository.deleteById(bookingId);}
-
-
-    public Set<Booking> getall(){
-        return bookingRepository.findAll().stream().collect(Collectors.toSet());
+        this.bookingRepository.deleteById(bookingId);
+    }
+    public List<Booking> getAllBookings(){
+        return bookingRepository.getAllBookings();
 
     }
-
 }

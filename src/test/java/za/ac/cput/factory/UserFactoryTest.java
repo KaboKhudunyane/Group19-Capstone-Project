@@ -7,6 +7,7 @@ import za.ac.cput.domain.Name;
 import za.ac.cput.domain.User;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class UserFactoryTest {
 

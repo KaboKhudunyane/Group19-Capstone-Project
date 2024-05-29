@@ -16,27 +16,23 @@ public class SupportTicketService implements IService<SupportTicket, String>{
         this.repository = repository;
     }
     @Override
-    public SupportTicket save(SupportTicket supportTicket) {
+    public SupportTicket create(SupportTicket supportTicket) {
         return repository.save(supportTicket);
     }
 
     @Override
     public SupportTicket read(String SupportTicketId) {
-        return repository.findSupportTicketBySupportTicketId(SupportTicketId);
-    }
-
-    @Override
-    public boolean delete(String supportTicketId) {
-        SupportTicket supportTicket = repository.findSupportTicketBySupportTicketId(supportTicketId);
-        if (supportTicket != null) {
-            repository.delete(supportTicket);
-            return true;
-        }
-        return false;
+        return repository.findBySupportTicketID(SupportTicketId);
     }
     @Override
-    public List<SupportTicket> getAll () {
-        return repository.findAll();
+    public SupportTicket update(SupportTicket supportTicket) {
+        return repository.save(supportTicket);
+    }
+    public void delete(String supportTicketId) {
+        repository.deleteBySupportTicketID(supportTicketId);
+    }
+    public List<SupportTicket> getAllSupportTickets() {
+        return repository.getAllSupportTickets();
     }
 
 

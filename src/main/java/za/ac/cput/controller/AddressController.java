@@ -1,45 +1,40 @@
 package za.ac.cput.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Address;
 import za.ac.cput.service.AddressService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/addresses")
+@RequestMapping("/address")
 public class AddressController {
 
     @Autowired
     private AddressService addressService;
 
-    @GetMapping
-    public List<Address> getAllAddresses() {
-        return addressService.getAll();
-    }
-
-    @GetMapping("/{id}")
-    public String getAddressById(@PathVariable String id) {
-        String address = addressService.read(id);
-        return address ;
-    }
-
-    @PostMapping
-    public Address createAddress(@RequestBody Address address) {
+    @PostMapping("/save")
+    public Address save(@RequestBody Address address){
         return addressService.create(address);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Address> updateAddress( @RequestBody Address addressDetails) {
-        Address updatedAddress = addressService.update(addressDetails);
-        return updatedAddress != null ? ResponseEntity.ok(updatedAddress) : ResponseEntity.notFound().build();
+    @GetMapping("/read/{addressId}")
+    public Address read(@PathVariable String addressID){
+        return addressService.read(addressID);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAddress(@PathVariable String id) {
-        boolean isDeleted = addressService.delete(id);
-        return isDeleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    @PutMapping("/update")
+    public Address update(@RequestBody Address address){
+        return addressService.update(address);
+    }
+
+    @DeleteMapping("/delete/{addressId}")
+    public void delete (@PathVariable String addressId){
+        addressService.delete(addressId);
+    }
+
+    @GetMapping("/getAll")
+    public List<Address> getAllAddress(){
+        return addressService.getAllAddress();
     }
 }

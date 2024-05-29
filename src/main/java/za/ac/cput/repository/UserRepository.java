@@ -10,10 +10,10 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, String> {
 
     // Method to find a user by user ID
-    List<User> findUser(String userID);
+    User findByUserID(String userID);
 
     // Method to delete a user by user ID
-    void deleteUser(String userID);
+    void deleteByUserID(String userID);
 
     // Method to get all users
     List<User> getAllUsers();

@@ -8,37 +8,31 @@ import za.ac.cput.repository.CarInsuranceRepository;
 
 import java.util.List;
 
-  @Service
+@Service
 public class CarInsuranceService implements IService<CarInsurance, String>{
 
-    private final CarInsuranceRepository repository;
+    private CarInsuranceRepository carInsuranceRepository;
 
     @Autowired
-          public CarInsuranceService(CarInsuranceRepository repository) {
-              this.repository = repository;
-          }
-          @Override
-          public CarInsurance save(CarInsurance carInsurance) {
-              return repository.save(carInsurance);
-          }
-
-          @Override
-          public CarInsurance read(String carInsuranceId) {
-              return repository.findCarInsuranceByCarInsuranceId(carInsuranceId);
-          }
-
-          @Override
-          public boolean delete(String carInsuranceId) {
-              CarInsurance carInsurance = repository.findCarInsuranceByCarInsuranceId(carInsuranceId);
-              if (carInsurance != null) {
-                  repository.delete(carInsurance);
-                  return true;
-              }
-              return false;
-          }
-          @Override
-          public List<CarInsurance> getAll () {
-              return repository.findAll();
-          }
-
+    CarInsuranceService(CarInsuranceRepository carInsuranceRepository){
+              this.carInsuranceRepository = carInsuranceRepository;
+    }
+    @Override
+    public CarInsurance create(CarInsurance carInsurance) {
+        return carInsuranceRepository.save(carInsurance);
+    }
+    @Override
+    public CarInsurance read(String carInsuranceId) {
+        return carInsuranceRepository.findByCarInsuranceID(carInsuranceId);
+    }
+    @Override
+    public CarInsurance update(CarInsurance carInsurance){
+        return carInsuranceRepository.save(carInsurance);
+    }
+    public void delete(String carInsuranceId) {
+        carInsuranceRepository.deleteByCarInsuranceID(carInsuranceId);
+    }
+    public List<CarInsurance> getAll () {
+        return carInsuranceRepository.findAll();
+    }
 }

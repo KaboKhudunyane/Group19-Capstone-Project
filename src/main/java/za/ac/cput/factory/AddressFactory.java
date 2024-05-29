@@ -6,7 +6,11 @@ import za.ac.cput.util.Helper;
 public class AddressFactory {
 
     public static Address createAddress(String addressId, String userId, String streetName, String suburb, int postalCode) {
-        if (!Helper.isNullOrEmpty(addressId)||!Helper.isNullOrEmpty(userId)||!Helper.isNullOrEmpty(streetName)||!Helper.isNullOrEmpty(suburb)||!Helper.isNullOrEmpty(postalCode)) {
+        if (Helper.isNullOrEmpty(addressId)||
+                Helper.isNullOrEmpty(userId)||
+                Helper.isNullOrEmpty(streetName)||
+                Helper.isNullOrEmpty(suburb)||
+                postalCode < 0) {
            // throw new IllegalArgumentException("Invalid address ID");
             return null;
         }

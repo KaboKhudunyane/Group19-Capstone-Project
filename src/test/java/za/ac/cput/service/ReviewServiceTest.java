@@ -58,7 +58,7 @@ class ReviewServiceTest {
     @Test
     @Order(4)
     void getAll() {
-        List<Review> allReviews = reviewService.getAll();
+        List<Review> allReviews = reviewService.getAllReviews();
         assertNotNull(allReviews);
         assertTrue(allReviews.size() > 0);
         System.out.println("All Reviews: " + allReviews);
