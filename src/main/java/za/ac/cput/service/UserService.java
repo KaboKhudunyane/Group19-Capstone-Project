@@ -4,11 +4,9 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.domain.User;
 import za.ac.cput.repository.UserRepository;
 import java.util.List;
-
 @Service
 public class UserService implements IService<User, String> {
     private final UserRepository userRepository;
-
     @Autowired
     UserService(UserRepository userRepository) {
         this.userRepository = userRepository;

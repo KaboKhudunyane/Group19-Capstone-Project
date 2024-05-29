@@ -28,5 +28,5 @@ public class CarInsuranceController {
     public void delete(@PathVariable String id){carInsuranceService.delete(id);}
 
     @GetMapping
-    public List<SupportTicket> getAll(){return carInsuranceService.getAll();}
+    public List<CarInsurance> getAllCarInsurances(){return carInsuranceService.getAllCarInsurances();}
 }

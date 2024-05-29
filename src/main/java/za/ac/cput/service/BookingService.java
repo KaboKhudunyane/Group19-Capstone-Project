@@ -4,12 +4,9 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Booking;
 import za.ac.cput.repository.BookingRepository;
 import java.util.List;
-
 @Service
 public class BookingService implements IService<Booking, String>{
-
     private BookingRepository bookingRepository;
-
     @Autowired
     BookingService(BookingRepository bookingRepository ) {
         this.bookingRepository = bookingRepository;

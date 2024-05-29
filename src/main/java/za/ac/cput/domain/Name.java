@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Name implements Serializable {
+public class Name{
     @Id
     private String firstName;
     private String middleName;

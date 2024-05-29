@@ -1,29 +1,14 @@
 package za.ac.cput.factory;
-
 import za.ac.cput.domain.CarInsurance;
 import za.ac.cput.util.Helper;
 
 public class CarInsuranceFactory {
 
-    public CarInsuranceFactory(){}
-
-    public static CarInsurance buildCarInsurance(String insuranceID,
-                                                 String insuranceName,
-                                                 String userID,
-                                                 String policyNumber)
+    public static CarInsurance buildCarInsurance(String carInsuranceID, String userID, String carInsuranceName, String policyNumber)
     {
-        if (Helper.isNullorEmpty( insuranceID)
-                || Helper.isNullorEmpty(insuranceName)
-                || Helper.isNullorEmpty(userID)
-                || Helper.isNullorEmpty(policyNumber))
+        if (Helper.isNullOrEmpty( carInsuranceID) || Helper.isNullOrEmpty(carInsuranceName) || Helper.isNullOrEmpty(userID) || Helper.isNullOrEmpty(policyNumber))
             return null;
 
-        return new CarInsurance().Builder()
-                .setInsuranceID(insuranceID)
-                .setInsuranceName(insuranceName)
-                .setUserID(userID)
-                .setPolicyNumber(policyNumber)
-                .build();
+        return new CarInsurance.Builder().setInsuranceID(carInsuranceID).setUserID(userID).setInsuranceName(carInsuranceName).setPolicyNumber(policyNumber).build();
     }
-
 }

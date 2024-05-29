@@ -1,4 +1,4 @@
-package za.ac.cput.repository.factory;
+package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.CarInsurance;
@@ -16,7 +16,7 @@ public class CarInsuranceFactoryTest {
 
     @Test
     void testBuildCarInsuranceWithFail() {
-        CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance("Mv332", "Pmv6588", "Outsurance");
+        CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance("Mv332", "Pmv6588", "Outsurance","522");
         assertNotNull(carInsurance);
         System.out.println(carInsurance);
     }
