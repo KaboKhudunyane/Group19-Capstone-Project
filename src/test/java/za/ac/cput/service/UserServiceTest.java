@@ -30,23 +30,19 @@ class UserServiceTest {
         assertNotNull(createUser);
         System.out.println("Created User: " + createUser);
     }
-    // Test case for reading a user
     @Test
     void read(){
         User readUser = userService.read(user.getUserID());
         assertNotNull(readUser);
         System.out.println("Read User: " + readUser);
     }
-    // Test case for updating a user
     @Test
     void update(){
         User newUser = new User.Builder().copyUser(user).setUserID("222273293").buildUser();
-
         User updatedUser = userService.update(newUser);
         assertNotNull(updatedUser);
         System.out.println("Updated User: " + updatedUser);
     }
-    // Test case for deleting a user
     @Test
     void delete(){
         userService.delete(user.getUserID());
