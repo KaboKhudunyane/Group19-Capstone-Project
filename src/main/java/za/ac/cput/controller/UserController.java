@@ -33,7 +33,7 @@ public class UserController {
         userService.delete(userId);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAllUsers")
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
