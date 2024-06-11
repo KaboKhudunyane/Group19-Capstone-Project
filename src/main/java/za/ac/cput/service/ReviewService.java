@@ -27,6 +27,7 @@ public class ReviewService implements IService<Review, String>{
     }
     public void delete(String reviewId) {
         reviewRepository.deleteByReviewID(reviewId);
+        return false;
     }
     public List<Review> getAllReviews() {
         return reviewRepository.getAllReviews();
