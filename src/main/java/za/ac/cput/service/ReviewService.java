@@ -13,6 +13,9 @@ public class ReviewService implements IService<Review, String>{
     ReviewService(ReviewRepository repository) {
         this.reviewRepository = repository;
     }
+    public Review save(Review review) {
+        return reviewRepository.save(review);
+    }
     @Override
     public Review create(Review review) {
         return reviewRepository.save(review);
