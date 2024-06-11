@@ -26,7 +26,7 @@ public class ReviewController {
         return reviewService.update(review);
     }
     @GetMapping("/getAllReviews")
-    public List<Review> getAll(){
+    public List<Review> getAllReviews(){
         return reviewService.getAllReviews();
     }
 }
