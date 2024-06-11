@@ -73,7 +73,7 @@ class CarControllerTest {
     }
     @Test
     void getAll() {
-        String url = BASE_URL + "/getall";
+        String url = BASE_URL + "/getAllCars";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
