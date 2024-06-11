@@ -28,6 +28,7 @@ public class CarInformationService implements IService<CarInformation, String> {
     }
     public void delete(String carInformationId) {
         carInformationRepository.deleteByCarInformationId(carInformationId);
+        return false;
     }
     public List<CarInformation> getAllCarInformation () {
         return carInformationRepository.getAllCarInformation();
