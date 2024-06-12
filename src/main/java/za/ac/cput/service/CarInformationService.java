@@ -14,6 +14,9 @@ public class CarInformationService implements IService<CarInformation, String> {
     public CarInformationService(CarInformationRepository carInformationRepository) {
         this.carInformationRepository = carInformationRepository;
     }
+     public CarInformation save(CarInformation carInformation) {
+        return carInformationRepository.save(carInformation);
+    }
     @Override
     public CarInformation create(CarInformation carInformation) {
         return carInformationRepository.save(carInformation);
@@ -28,6 +31,7 @@ public class CarInformationService implements IService<CarInformation, String> {
     }
     public void delete(String carInformationId) {
         carInformationRepository.deleteByCarInformationId(carInformationId);
+        return false;
     }
     public List<CarInformation> getAllCarInformation () {
         return carInformationRepository.getAllCarInformation();
