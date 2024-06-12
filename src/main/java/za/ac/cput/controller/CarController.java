@@ -25,7 +25,7 @@ public class CarController {
     public void delete (@PathVariable String carId){
         carService.delete(carId);
     }
-    @GetMapping("/getall")
+    @GetMapping("/getAllCars")
     public List<Car> getAllCars(){
         return carService.getAllCars();
     }
