@@ -32,38 +32,39 @@ public class SupportTicketServiceTest {
 
     @Test
     @Order(1)
-    void save() {
-        SupportTicket created1 = SupportTicketService.save(SupportTicket1);
+    void create() {
+        SupportTicket created1 = supportTicketService.create(supportTicket1);
         assertNotNull(created1);
         System.out.println("Saved SupportTicket1: " + created1);
-        SupportTicket created2 = SupportTicketService.save(SupportTicket2);
+        SupportTicket created2 = supportTicketService.create(supportTicket2);
         assertNotNull(created2);
         System.out.println("Saved SupportTicket 2: " + created2);
     }
 
-    @Test
+  @Test
     @Order(2)
     void read() {
-        CarInsurance read = SupportTicketService.read(SupportTicket2.getSupportTicketId());
+        SupportTicket read = supportTicketService.read(supportTicket2.getUserID());
         assertNotNull(read);
-        System.out.println("Read SupportTicket: " + read);
+        System.out.println("Read UserID: " + read);
     }
 
-    @Test
+  @Test
     @Order(3)
     void delete() {
-        boolean deleted = SupportTicketService.delete(SupportTicket1.getSupportTicketId());
-        assertTrue(deleted);
-        System.out.println("Deleted SupportTicket 1");
+        supportTicketService.delete(supportTicket1.getTicketID());
+        System.out.println("Deleted TicketID 1");
     }
 
     @Test
     @Order(4)
-    void getAll() {
-        List<SupportTicket> allSupportTicket = SupportTicketService.getAll();
-        assertNotNull(allSupportTicket);
-        assertTrue(allSupportTicket.size() > 0);
-        System.out.println("All CarInsurance: " + allSupportTicket);
+    void update(){
+        SupportTicket newSupportTicket = new SupportTicket.Builder().copy(supportTicket1).setUserID("T33").buildSupportTicket();
+
+        SupportTicket updatedSupportTicket = SupportTicketService.update(newSupportTicket);
+        assertNotNull(updatedSupportTicket);
+        System.out.println("Updated SupportTicket: " + updatedSupportTicket);
+
     }
 
 }
