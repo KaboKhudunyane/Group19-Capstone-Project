@@ -8,7 +8,7 @@ import za.ac.cput.domain.Payment;
 import za.ac.cput.factory.BookingFactory;
 import za.ac.cput.factory.PaymentFactory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -38,8 +38,22 @@ class PaymentServiceTest {
         System.out.println(read);
 
     }
+
     @Test
-    @Order(4)
+    @Order(3)
+    void updateMethodPayment(){
+
+        Payment editedPayment = new Payment.Builder().copy(payment).setPaymentMethod("Standard bank").
+                build();
+        assertNotNull(editedPayment);
+        Payment updated = paymentService.update(editedPayment);
+        assertNotNull(updated);
+        System.out.println(updated);
+    }
+
+
+    @Test
+    @Order(6)
     @Disabled
     void deletePayment(){
         paymentService.delete(payment.getPaymentId());

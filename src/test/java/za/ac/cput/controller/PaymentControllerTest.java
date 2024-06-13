@@ -13,7 +13,8 @@ import za.ac.cput.domain.Payment;
 import za.ac.cput.factory.BookingFactory;
 import za.ac.cput.factory.PaymentFactory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -31,8 +32,8 @@ class PaymentControllerTest {
 
         @BeforeAll
         public static void setup() {
-            booking = BookingFactory.buildBooking2("10-June-2024", "15-June-2024",
-                    "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001"
+            booking = BookingFactory.buildBooking("b101","10-June-2024", "15-June-2024",
+                    "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001","1234","Blue BMW M4(Manual)"
                     , 25000);
 
             payment = PaymentFactory.buildPayment("14521", booking, "Capitec", "20-May-2024", 18000, "Declined");
@@ -63,8 +64,8 @@ class PaymentControllerTest {
 
 
         @Test
-        void getAll() {
-            String url = BASE_URL + "/getall";
+        void getAllPayments() {
+            String url = BASE_URL + "/getAllPayments";
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> entity = new HttpEntity<>(null, headers);
             ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
@@ -74,4 +75,3 @@ class PaymentControllerTest {
         }
     }
 
-}
