@@ -43,29 +43,30 @@ public class CarInsuranceServiceTest {
         System.out.println("Saved CarInsurance 2: " + created2);
     }
 
-    @Test
+   @Test
     @Order(2)
     void read() {
-        CarInsurance read = carInsuranceService.read(CarInsurance2.getCarInsuranceId());
+        CarInsurance read = carInsuranceService.read(carInsurance1.getUserID());
         assertNotNull(read);
-        System.out.println("Read CarInsurance: " + read);
+        System.out.println("Read UserID: " + read);
     }
 
     @Test
     @Order(3)
     void delete() {
-        boolean deleted = CarInsuranceService.delete(carInformation1.getCarInsuranceId());
-        assertTrue(deleted);
-        System.out.println("Deleted CarCarInsurance 1");
+        carInsuranceService.delete(carInsurance2.getPolicyNumber());
+        System.out.println("Deleted PolicyNumber 1");
     }
 
-    @Test
+     @Test
     @Order(4)
-    void getAll() {
-        List<CarInsurance> allCarInsurance = CarInsuranceService.getAll();
-        assertNotNull(allCarInsurance);
-        assertTrue(allCarInsurance.size() > 0);
-        System.out.println("All CarInsurance: " + allCarInsurance);
+    void update(){
+        CarInsurance newCarInsurance = new CarInsurance.Builder().copy(carInsurance1).setUserID("Q88").buildCarInsurance();
+
+        CarInsurance updatedCarInsurance = CarInsuranceService.update(newCarInsurance);
+        assertNotNull(updatedCarInsurance);
+        System.out.println("Updated CarInsurance: " + updatedCarInsurance);
+
     }
 
 }
