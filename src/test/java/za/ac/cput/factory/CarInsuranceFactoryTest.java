@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CarInsuranceFactoryTest {
     @Test
     void buildCarInsurance() {
-        CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance("Mv332", "D55", "Pmv6588", "Outsurance");
+        CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance("Mv332", "D55", "Outsurance", "Pmv6588");
         assertNotNull(carInsurance);
         System.out.println(carInsurance);
     }
 
     @Test
     void testBuildCarInsuranceWithFail() {
-        CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance("Mv332", "Pmv6588", "Outsurance","522");
+        CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance("Mv332", "", "Outsurance","Pmv6588");
         assertNotNull(carInsurance);
         System.out.println(carInsurance);
     }

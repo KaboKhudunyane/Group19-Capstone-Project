@@ -43,6 +43,16 @@ public class CarInformationFactory {
                 .setFeatures(features)
                 .build();
     }
+
+    public static CarInformation buildCarInformation(String carInformationId, String description) {
+        if (Helper.isNullOrEmpty(carInformationId) || Helper.isNullOrEmpty(description))
+            return null;
+
+        return new CarInformation.Builder()
+                .setCarInformationId(carInformationId)
+                .setDescription(description)
+                .build();
+    }
 }
 
 

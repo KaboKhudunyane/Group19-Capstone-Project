@@ -59,7 +59,7 @@ class CarInsuranceControllerTest {
         String url = BASE_URL + "/update";
         CarInsurance newCarInsurance = new CarInsurance.Builder().copy(carInsurance)
                 .setInsuranceName("Auto & General").build();
-        ResponseEntity<CarInsurance> postResponse = RestTemplate.postForEntity(url, newCarInsurance,CarInsurance.class);
+        ResponseEntity<CarInsurance> postResponse = restTemplate.postForEntity(url, newCarInsurance,CarInsurance.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         CarInsurance carInsuranceUpdated = postResponse.getBody();
@@ -77,8 +77,8 @@ class CarInsuranceControllerTest {
     }
 
     @Test
-    void e_getAll() {
-        String url =BASE_URL +"/getAll";
+    void e_getAllCarInsurance() {
+        String url =BASE_URL +"/getAllCarInsurance";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null,headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET,entity, String.class);
