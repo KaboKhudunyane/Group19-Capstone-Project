@@ -8,6 +8,8 @@ import java.util.Objects;
 public class CarInformation {
     @Id
     private String carInformationId;
+    @OneToOne
+    private Car carId;
 
     private String make;
     private String model;
@@ -16,8 +18,6 @@ public class CarInformation {
     private String description;
     private String features;
 
-    @Column(name = "car_id", nullable = false)
-    private String carId;
 
     protected CarInformation() {}
 
@@ -60,7 +60,7 @@ public class CarInformation {
         return features;
     }
 
-    public String getCarId() {
+    public Car getCarId() {
         return carId;
     }
 
@@ -106,7 +106,7 @@ public class CarInformation {
         private String licensePlate;
         private String description;
         private String features;
-        private String carId;
+        private Car carId;
 
         public Builder setCarInformationId(String carInformationId) {
             this.carInformationId = carInformationId;
@@ -143,12 +143,12 @@ public class CarInformation {
             return this;
         }
 
-        public Builder setCarId(String carId) {
+        public Builder setCarId(Car carId) {
             this.carId = carId;
             return this;
         }
 
-        public Builder copy(CarInformation carInformation) {
+        public Builder copyCarInformation(CarInformation carInformation) {
             this.carInformationId = carInformation.carInformationId;
             this.make = carInformation.make;
             this.model = carInformation.model;
@@ -160,7 +160,7 @@ public class CarInformation {
             return this;
         }
 
-        public CarInformation build() {
+        public CarInformation buildCarInformation() {
             return new CarInformation(this);
         }
     }
