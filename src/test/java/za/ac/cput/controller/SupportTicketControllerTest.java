@@ -77,8 +77,8 @@ class SupportTicketControllerTest {
     }
 
     @Test
-    void e_getAll() {
-        String url =BASE_URL +"/getAll";
+    void e_getAllSupportTicket() {
+        String url =BASE_URL +"/getAllSupportTicket";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null,headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET,entity, String.class);
