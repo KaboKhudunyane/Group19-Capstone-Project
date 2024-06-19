@@ -8,7 +8,7 @@ import za.ac.cput.domain.CarInformation;
 import za.ac.cput.factory.BookingFactory;
 import za.ac.cput.factory.CarInformationFactory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -17,7 +17,7 @@ class BookingServiceTest {
     private BookingService bookingService;
     private CarInformation carInformation = CarInformationFactory.buildCarInformation("011", "BMW", "M4", "2017", "CA 123-456", "It is an M-performance", "800hps, twin turbo Injector","123");
     private Booking booking = BookingFactory.buildBooking("b111", "10-June-2024","15-June-2024",
-            "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001",carInformation,"Approved"
+            "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001",carInformation,"Available"
 
             , 25000);
 
@@ -36,6 +36,17 @@ class BookingServiceTest {
         Booking read = bookingService.read(booking.getBookingId());
         assertNotNull(read);
         System.out.println(read);
+    }
+
+    @Test
+    @Order(3)
+    void updateStatus(){
+        Booking editedBooking = new Booking.Builder().copy(booking).setStatus("Unavailable during specified start date").
+                build();
+        assertNotNull(editedBooking);
+        Booking updated = bookingService.update(editedBooking);
+        assertNotNull(updated);
+        System.out.println(updated);
     }
 
     @Test
