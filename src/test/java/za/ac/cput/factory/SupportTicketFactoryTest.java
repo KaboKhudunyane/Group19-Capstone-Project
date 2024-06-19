@@ -17,7 +17,7 @@ public class SupportTicketFactoryTest {
 
     @Test
     void testBuildSupportTicketWithFail() {
-        SupportTicket supportTicket = SupportTicketFactory.buildSupportTicket("T22","Pmv6588","Aproved","03-04-24");
+        SupportTicket supportTicket = SupportTicketFactory.buildSupportTicket("T22","Pmv6588","","03-04-24","Approved");
         assertNotNull(supportTicket);
         System.out.println(supportTicket);
     }

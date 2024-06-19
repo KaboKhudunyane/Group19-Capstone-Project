@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Booking;
 import za.ac.cput.service.BookingService;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -16,7 +17,7 @@ public class BookingController {
 
         @PostMapping("/save")
         public Booking save(@RequestBody Booking booking){
-            return bookingService.save(booking);
+            return bookingService.create(booking);
          }
 
         @GetMapping("/read/{bookingId}")
@@ -24,14 +25,19 @@ public class BookingController {
             return bookingService.read(bookingId);
         }
 
-         @DeleteMapping("/delete/{bookingId}")
+    @PostMapping("/update")
+    public Booking update(@RequestBody Booking booking){
+        return bookingService.update(booking);
+    }
+
+    @DeleteMapping("/delete/{bookingId}")
         public void delete (@PathVariable String bookingId){
             bookingService.delete(bookingId);}
 
 
-        @GetMapping("/getall")
-        public Set<Booking> getAll(){
-            return bookingService.getall();}
+        @GetMapping("/getAllBookings")
+        public List<Booking> getAllBookings(){
+            return bookingService.getAllBookings();}
     }
 
 

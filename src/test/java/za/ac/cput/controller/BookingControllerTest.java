@@ -10,12 +10,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.Booking;
 import za.ac.cput.domain.CarInformation;
-import za.ac.cput.domain.Payment;
 import za.ac.cput.factory.BookingFactory;
 import za.ac.cput.factory.CarInformationFactory;
-import za.ac.cput.factory.PaymentFactory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -33,8 +32,8 @@ class BookingControllerTest {
     @BeforeAll
     public static void setup() {
 
-        carInformation = CarInformationFactory.buildCarInformation("011", "BMW", "M4", "2017", "CA 123-456", "It is an M-performance", "800hps, twin turbo Injector");
-        booking = BookingFactory.buildBooking1("b111", "10-June-2024","15-June-2024",
+        carInformation = CarInformationFactory.buildCarInformation("011", "BMW", "M4", "2017", "CA 123-456", "It is an M-performance", "800hps, twin turbo Injector","1234");
+        booking = BookingFactory.buildBooking("b111", "10-June-2024","15-June-2024",
                 "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001",carInformation,"Approved"
                 , 25000);
     }
@@ -64,8 +63,8 @@ class BookingControllerTest {
 
 
     @Test
-    void getAll() {
-        String url = BASE_URL + "/getall";
+    void getAllBooking() {
+        String url = BASE_URL + "/getAllBooking";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
