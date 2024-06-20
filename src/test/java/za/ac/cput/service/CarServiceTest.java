@@ -24,12 +24,10 @@ public class CarServiceTest {
             .setLicensePlate("ABC123")
             .setDescription("A reliable sedan")
             .setFeatures("Air conditioning, Power windows")
-            .setCarId("123456")
-            .build();
+            .buildCarInformation();
 
     private static Car car = new Car.Builder()
             .setCarID("123")
-            .setUserID("456")
             .setCarInformation(carInformation)
             .setRate("100")
             .setAvailability("Available")

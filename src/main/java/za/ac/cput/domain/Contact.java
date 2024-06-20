@@ -74,14 +74,14 @@ public class Contact {
             return this;
         }
 
-        public Builder copy(Contact contact) {
+        public Builder copyContact(Contact contact) {
             this.contactId = contact.contactId;
             this.email = contact.email;
             this.mobileNo = contact.mobileNo;
             return this;
         }
 
-        public Contact build() {
+        public Contact buildContact() {
             return new Contact(this);
         }
     }

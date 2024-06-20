@@ -34,7 +34,7 @@ public class ContactService implements IService<Contact,String>{
     public void delete(String contactID) {
         contactRepository.deleteByContactID(contactID);
     }
-    public List<Contact> getAll() {
+    public List<Contact> getAllContacts() {
         return contactRepository.getAllContacts();
     }
 }

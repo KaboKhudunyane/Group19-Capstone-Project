@@ -52,7 +52,7 @@ class ContactControllerTest {
         // Modify Contact data for update
         Contact updatedContact = new Contact.Builder()
                 .copyContact(cntct)
-                .build();
+                .buildContact();
 
         String url = BASE_URL + "/update";
         restTemplate.put(url, updatedContact);

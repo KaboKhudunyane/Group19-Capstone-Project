@@ -8,9 +8,6 @@ import java.util.Objects;
 public class CarInformation {
     @Id
     private String carInformationId;
-    @OneToOne
-    private Car carId;
-
     private String make;
     private String model;
     private String year;
@@ -29,7 +26,7 @@ public class CarInformation {
         this.licensePlate = builder.licensePlate;
         this.description = builder.description;
         this.features = builder.features;
-        this.carId = builder.carId;
+
     }
 
     public String getCarInformationId() {
@@ -60,28 +57,21 @@ public class CarInformation {
         return features;
     }
 
-    public Car getCarId() {
-        return carId;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarInformation that = (CarInformation) o;
-        return Objects.equals(carInformationId, that.carInformationId) &&
-                Objects.equals(make, that.make) &&
-                Objects.equals(model, that.model) &&
-                Objects.equals(year, that.year) &&
-                Objects.equals(licensePlate, that.licensePlate) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(features, that.features) &&
-                Objects.equals(carId, that.carId);
+        return Objects.equals(carInformationId, that.carInformationId) && Objects.equals(make, that.make)
+                && Objects.equals(model, that.model) && Objects.equals(year, that.year) &&
+                Objects.equals(licensePlate, that.licensePlate) && Objects.equals(description, that.description)
+                && Objects.equals(features, that.features);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carInformationId, make, model, year, licensePlate, description, features, carId);
+        return Objects.hash(carInformationId, make, model, year, licensePlate, description, features);
     }
 
     @Override
@@ -94,7 +84,6 @@ public class CarInformation {
                 ", licensePlate='" + licensePlate + '\'' +
                 ", description='" + description + '\'' +
                 ", features='" + features + '\'' +
-                ", carId='" + carId + '\'' +
                 '}';
     }
 
@@ -106,7 +95,6 @@ public class CarInformation {
         private String licensePlate;
         private String description;
         private String features;
-        private Car carId;
 
         public Builder setCarInformationId(String carInformationId) {
             this.carInformationId = carInformationId;
@@ -137,17 +125,10 @@ public class CarInformation {
             this.description = description;
             return this;
         }
-
         public Builder setFeatures(String features) {
             this.features = features;
             return this;
         }
-
-        public Builder setCarId(Car carId) {
-            this.carId = carId;
-            return this;
-        }
-
         public Builder copyCarInformation(CarInformation carInformation) {
             this.carInformationId = carInformation.carInformationId;
             this.make = carInformation.make;
@@ -156,7 +137,6 @@ public class CarInformation {
             this.licensePlate = carInformation.licensePlate;
             this.description = carInformation.description;
             this.features = carInformation.features;
-            this.carId = carInformation.carId;
             return this;
         }
 

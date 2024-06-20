@@ -4,14 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 public class Car {
     @Id
     private String carID;  // Unique identifier for the car
-    private String userID;  // User ID associated with the car
+    //@OneToOne
+    //private User userID;  // User ID associated with the car
     @OneToOne
     private CarInformation carInformation;  // Information about the car
     private String rate;  // Rental rate of the car
@@ -24,7 +24,7 @@ public class Car {
     // Private constructor for Builder
     private Car(Builder builder) {
         this.carID = builder.carID;
-        this.userID = builder.userID;
+        //this.userID = builder.userID;
         this.carInformation = builder.carInformation;
         this.rate = builder.rate;
         this.availability = builder.availability;
@@ -36,9 +36,9 @@ public class Car {
         return carID;
     }
 
-    public String getUserID() {
-        return userID;
-    }
+    //public User getUserID() {
+     //   return userID;
+    //}
 
     public CarInformation getCarInformation() {
         return carInformation;
@@ -61,9 +61,9 @@ public class Car {
         this.carID = carID;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
+    //public void setUserID(User userID) {
+       // this.userID = userID;
+   // }
 
     public void setCarInformation(CarInformation carInformation) {
         this.carInformation = carInformation;
@@ -88,7 +88,6 @@ public class Car {
         if (carObject == null || getClass() != carObject.getClass()) return false;
         Car car = (Car) carObject;
         return Objects.equals(carID, car.carID) &&
-                Objects.equals(userID, car.userID) &&
                 Objects.equals(carInformation, car.carInformation) &&
                 Objects.equals(rate, car.rate) &&
                 Objects.equals(availability, car.availability) &&
@@ -98,15 +97,16 @@ public class Car {
     // Override hashCode method for object hashing
     @Override
     public int hashCode() {
-        return Objects.hash(carID, userID, carInformation, rate, availability, status);
+        return Objects.hash(carID, carInformation, rate, availability, status);
     }
 
     // Override toString method for object string representation
+
+
     @Override
     public String toString() {
         return "Car{" +
                 "carID='" + carID + '\'' +
-                ", userID='" + userID + '\'' +
                 ", carInformation=" + carInformation +
                 ", rate='" + rate + '\'' +
                 ", availability='" + availability + '\'' +
@@ -117,7 +117,7 @@ public class Car {
     // Static Builder class for Car
     public static class Builder {
         private String carID;  // Unique identifier for the car
-        private String userID;  // User ID associated with the car
+        //private User userID;  // User ID associated with the car
         private CarInformation carInformation;  // Information about the car
         private String rate;  // Rental rate of the car
         private String availability;  // Availability status of the car
@@ -129,10 +129,10 @@ public class Car {
             return this;
         }
 
-        public Builder setUserID(String userID) {
+       /* public Builder setUserID(User userID) {
             this.userID = userID;
             return this;
-        }
+        }*/
 
         public Builder setCarInformation(CarInformation carInformation) {
             this.carInformation = carInformation;
@@ -157,7 +157,7 @@ public class Car {
         // Copy method to copy fields from another Car object
         public Builder copyCar(Car car) {
             this.carID = car.carID;
-            this.userID = car.userID;
+            //this.userID = car.userID;
             this.carInformation = car.carInformation;
             this.rate = car.rate;
             this.availability = car.availability;

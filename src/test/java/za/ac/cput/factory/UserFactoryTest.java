@@ -23,7 +23,7 @@ public class UserFactoryTest {
             .setContactId("1")
             .setEmail("john@example.com")
             .setMobileNo(123456789)
-            .build();
+            .buildContact();
 
     // Create an Address object for testing
     Address address = new Address.Builder()
@@ -32,7 +32,7 @@ public class UserFactoryTest {
             .setStreetName("123 Main St")
             .setSuburb("Springfield")
             .setPostalCode(12345)
-            .build();
+            .buildAddress();
 
     // Test case to verify successful User creation
     @Test

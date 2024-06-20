@@ -13,6 +13,6 @@ public class ContactFactory {
                 .setContactId(contactId)
                 .setEmail(email)
                 .setMobileNo(mobileNo)
-                .build();
+                .buildContact();
     }
 }

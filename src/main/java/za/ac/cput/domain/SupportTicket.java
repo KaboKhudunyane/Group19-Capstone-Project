@@ -122,6 +122,6 @@ public class SupportTicket {
             this.status = supportTicket.status;
             return this;
         }
-        public SupportTicket build(){return new SupportTicket(this);}
+        public SupportTicket buildSupportTicket(){return new SupportTicket(this);}
     }
 }

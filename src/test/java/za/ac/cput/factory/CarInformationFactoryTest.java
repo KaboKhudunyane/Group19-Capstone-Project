@@ -10,20 +10,16 @@ class CarInformationFactoryTest {
 
     @Test
     void buildCarInformation() {
-        CarInformation carInformation = null;
-        Car carId = CarFactory.createCar("00", "90", carInformation, "2", "false", "not available");
-        carInformation = CarInformationFactory.buildCarInformation("11", "BMW", "M4",
-                "2018", "CA123-456", "M performance", "800hps", carId);
+        CarInformation carInformation = CarInformationFactory.buildCarInformation("11", "BMW", "M4",
+                "2018", "CA123-456", "M performance", "800hps");
         assertNotNull(carInformation);
         System.out.println(carInformation);
     }
 
     @Test
     void testBuildCarInformationWithFail() {
-        CarInformation carInformation = null;
-        Car carId = CarFactory.createCar("00", "90", carInformation, "2", "false", "not available");
-        carInformation = CarInformationFactory.buildCarInformation("11", "BMW", "M4",
-                "2018", "CA123-456", "", "", carId);
+        CarInformation carInformation = CarInformationFactory.buildCarInformation("11", "BMW", "M4",
+                "2018", "CA123-456", "", "");;
         assertNotNull(carInformation);
     }
 }

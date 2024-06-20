@@ -24,6 +24,6 @@ public class SupportTicketFactory {
                 .setDescription(description)
                 .setDateCreated(dateCreated)
                 .setStatus(Status)
-                .build();
+                .buildSupportTicket();
     }
 }

@@ -1,4 +1,4 @@
-package za.ac.cput.repository.factory;
+package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.SupportTicket;
@@ -10,14 +10,14 @@ public class SupportTicketFactoryTest {
 
     @Test
     void buildSupportTicket() {
-        SupportTicket supportTicket = SupportTicketFactory.buildSupportTicket("T22", "Pmv6588", "Hire", "Aproved", "03-04-24", "Approved");
+        SupportTicket supportTicket = SupportTicketFactory.createSupportTicket("T22", "Pmv6588", "Hire", "Aproved", "03-04-24", "Approved");
         assertNotNull(supportTicket);
         System.out.println(supportTicket);
     }
 
     @Test
     void testBuildSupportTicketWithFail() {
-        SupportTicket supportTicket = SupportTicketFactory.buildSupportTicket("T22","Pmv6588","","03-04-24","Approved");
+        SupportTicket supportTicket = SupportTicketFactory.createSupportTicket("T22", "Pmv6588", "Hire", "Aproved", "03-04-24", "Approved");
         assertNotNull(supportTicket);
         System.out.println(supportTicket);
     }

@@ -40,7 +40,7 @@ public class ContactController {
     }
     @GetMapping("/getAllContact")
     public List<Contact> getAllContact(){
-        return contactService.getAll();
+        return contactService.getAllContacts();
     }
 }
 

@@ -31,7 +31,7 @@ class CarInformationControllerTest {
     @BeforeAll
     public static void setup() {
         carInformation = CarInformationFactory.buildCarInformation("VIN123", "Toyota", "Corolla", "2021","CA 129",
-                "Corolla","Standard","12");
+                "Corolla","Standard");
     }
 
     @Test

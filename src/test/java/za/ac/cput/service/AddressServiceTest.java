@@ -32,7 +32,7 @@ class AddressServiceTest  {
                 .setStreetName("Main Street")
                 .setSuburb("Downtown")
                 .setPostalCode(12345)
-                .build();
+                .buildAddress();
 
         address2 = new Address.Builder()
                 .setAddressId("A124")
@@ -41,7 +41,7 @@ class AddressServiceTest  {
                 .setStreetName("Second Street")
                 .setSuburb("Uptown")
                 .setPostalCode(54321)
-                .build();
+                .buildAddress();
     }
 
     @Test

@@ -21,7 +21,7 @@ class UserServiceTest {
     private static Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     private static Contact contact = ContactFactory.createContact("123" ,"216273293@mycput.ac.za",05665665254);
     private static Address address = AddressFactory.createAddress("1", "216273293", "123 Street", "City", 12345);
-    private static User user = UserFactory.createUser("216273293", name, contact, address, true, "Admin", "Kabo.jpeg", true)
+    private static User user = UserFactory.createUser("216273293", name, contact, address, true, "Admin", "Kabo.jpeg", true);
     
     @Test
     void create(){

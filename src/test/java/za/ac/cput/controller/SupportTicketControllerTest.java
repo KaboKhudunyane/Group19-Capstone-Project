@@ -29,7 +29,7 @@ class SupportTicketControllerTest {
 
     @BeforeAll
     public static void setup(){
-        SupportTicket = SupportTicketFactory.buildSupportTicket("S255p", "MT55", "Rentered", "BMW", "20/05/2024", "Approved");
+        supportTicket = SupportTicketFactory.createSupportTicket("S255p", "MT55", "Rentered", "BMW", "20/05/2024", "Approved");
     }
 
     @Test
@@ -39,7 +39,7 @@ class SupportTicketControllerTest {
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         SupportTicket  supportTicketSaved = postResponse.getBody();
-        assertEquals(SupportTicket.getTicketID(), supportTicketSaved.getTicketID());
+        assertEquals(supportTicket.getTicketID(), supportTicketSaved.getTicketID());
         System.out.println("Saved data:" + supportTicketSaved);
 
     }
@@ -49,7 +49,7 @@ class SupportTicketControllerTest {
         String url = BASE_URL + "/read/" + supportTicket.getTicketID();
         System.out.println("URL:" + url);
         ResponseEntity<SupportTicket> response = restTemplate.getForEntity(url,SupportTicket.class);
-        assertEquals(SupportTicket.getTicketID(), response.getBody().getTicketID());
+        assertEquals(supportTicket.getTicketID(), response.getBody().getTicketID());
         System.out.println("read" + response.getBody());
 
     }
@@ -58,8 +58,8 @@ class SupportTicketControllerTest {
     void c_update() {
         String url = BASE_URL + "/update";
         SupportTicket newSupportTicket = new SupportTicket.Builder().copy(supportTicket)
-                .setStatus("Not Approved").build();
-        ResponseEntity<SupportTicket> postResponse = RestTemplate.postForEntity(url, newSupportTicket,SupportTicket.class);
+                .setStatus("Not Approved").buildSupportTicket();
+        ResponseEntity<SupportTicket> postResponse = restTemplate.postForEntity(url, newSupportTicket,SupportTicket.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         SupportTicket supportTicketUpdated = postResponse.getBody();

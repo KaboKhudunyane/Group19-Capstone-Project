@@ -18,11 +18,11 @@ public class ReviewService implements IService<Review, String>{
 
     @Override
     public Review read(String reviewId) {
-        return repository.findByReviewId(reviewId);
+        return repository.findByReviewID(reviewId);
     }
 
     public void delete(String reviewId) {
-        Review review = repository.findByReviewId(reviewId);
+        Review review = repository.findByReviewID(reviewId);
         if (review != null) {
             repository.delete(review);
         }
@@ -30,12 +30,12 @@ public class ReviewService implements IService<Review, String>{
 
     @Override
     public Review create(Review review) {
-        return ReviewRepository.save(review);
+        return repository.save(review);
     }
 
     @Override
     public Review update(Review review) {
-        return ReviewRepository.save(review);
+        return repository.save(review);
     }
 
     public List<Review> getAllReviews() {

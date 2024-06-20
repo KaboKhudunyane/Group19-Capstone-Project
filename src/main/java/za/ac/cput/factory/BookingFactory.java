@@ -15,14 +15,13 @@ public class BookingFactory {
                 .build();
 
     }
-    public static Booking buildBooking( String bookingId, String startDate, String returnDate, String pickUpLocation,String dropOffLocation,
-                                        String carInformationId, String description, double totalPrice){
+    /*public static Booking buildBooking( String bookingId, String startDate, String returnDate, String pickUpLocation,String dropOffLocation, String description, double totalPrice){
         if(Helper.isNullOrEmpty(bookingId) || Helper.isNullOrEmpty(startDate) || Helper.isNullOrEmpty(returnDate)
-                || Helper.isNullOrEmpty(pickUpLocation) || Helper.isNullOrEmpty(dropOffLocation)||Helper.isNullOrEmpty(carInformationId) || Helper.isNullOrEmpty(description) ||
+                || Helper.isNullOrEmpty(pickUpLocation) || Helper.isNullOrEmpty(dropOffLocation)|| Helper.isNullOrEmpty(description) ||
                 totalPrice < 0 )
             return null;
 
-        CarInformation carInformation = CarInformationFactory.buildCarInformation(carInformationId,description);
+        //CarInformation carInformation = CarInformationFactory.buildCarInformation(carInformationId,description);
 
         return new Booking.Builder().setBookingId(bookingId).setStartDate(startDate).setReturnDate(returnDate).setPickUpLocation(pickUpLocation).setDropOffLocation(dropOffLocation).setCarInformation(carInformation)
                 .setTotalPrice(totalPrice)
@@ -31,5 +30,5 @@ public class BookingFactory {
 
 
 
-    }
+    }*/
 }

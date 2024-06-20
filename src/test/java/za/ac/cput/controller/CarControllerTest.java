@@ -26,8 +26,8 @@ class CarControllerTest {
 
     @BeforeAll
     public static void setup() {
-        carInformation = CarInformationFactory.buildCarInformation("011", "BMW", "M4", "2017", "CA 123-456", "It is an M-performance", "800hps, twin turbo Injector","12");
-        car = CarFactory.createCar("123", "456", carInformation, "100", "Available", "Active");
+        carInformation = CarInformationFactory.buildCarInformation("011", "BMW", "M4", "2017", "CA 123-456", "It is an M-performance", "800hps, twin turbo Injector");
+        car = CarFactory.createCar("123",  carInformation, "100", "Available", "Active");
     }
     @Test
     void save() {

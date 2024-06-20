@@ -18,15 +18,8 @@ public class CarInformationServiceTest {
 
     @Autowired
     private CarInformationService carInformationService;
-
-    private static Car carId = new Car.Builder()
-            .setCarID("009")
-            .setRate("10 out 10")
-            .setAvailability("True")
-            .setStatus("available")
-            .buildCar();
     private static CarInformation carInformation1  = CarInformationFactory.buildCarInformation("011", "BMW", "M4",
-            "2017", "CA123-143", "M performance", "Twin turbo", carId);
+            "2017", "CA123-143", "M performance", "Twin turbo");
 
 
     @Test
