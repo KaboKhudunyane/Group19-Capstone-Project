@@ -1,6 +1,6 @@
-package za.ac.cput.repository.factory;
+package za.ac.cput.service;
 
-;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.CarInsurance;
@@ -35,10 +35,10 @@ public class CarInsuranceServiceTest {
     @Test
     @Order(1)
     void save() {
-        CarInsurance created1 = carInsuranceService.save(carInsurance1);
+        CarInsurance created1 = carInsuranceService.create(carInsurance1);
         assertNotNull(created1);
         System.out.println("Saved CarInsurance 1: " + created1);
-        CarInsurance created2 = carInsuranceService.save(carInsurance2);
+        CarInsurance created2 = carInsuranceService.create(carInsurance2);
         assertNotNull(created2);
         System.out.println("Saved CarInsurance 2: " + created2);
     }
@@ -61,9 +61,9 @@ public class CarInsuranceServiceTest {
      @Test
     @Order(4)
     void update(){
-        CarInsurance newCarInsurance = new CarInsurance.Builder().copy(carInsurance1).setUserID("Q88").buildCarInsurance();
+        CarInsurance newCarInsurance = new CarInsurance.Builder().copy(carInsurance1).setUserID("Q88").build();
 
-        CarInsurance updatedCarInsurance = CarInsuranceService.update(newCarInsurance);
+        CarInsurance updatedCarInsurance = carInsuranceService.update(newCarInsurance);
         assertNotNull(updatedCarInsurance);
         System.out.println("Updated CarInsurance: " + updatedCarInsurance);
 

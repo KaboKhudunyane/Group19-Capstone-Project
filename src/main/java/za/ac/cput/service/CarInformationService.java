@@ -19,11 +19,11 @@ public class CarInformationService implements IService<CarInformation, String> {
 
     @Override
     public CarInformation read(String carInformationId) {
-        return carInformationRepository.findCarInformationByCarInformationId(carInformationId);
+        return carInformationRepository.findByCarInformationId(carInformationId);
     }
 
     public void delete(String carInformationId) {
-        CarInformation carInformation = carInformationRepository.findCarInformationByCarInformationId(carInformationId);
+        CarInformation carInformation = carInformationRepository.findByCarInformationId(carInformationId);
         if (carInformation != null) {
             carInformationRepository.delete(carInformation);
         }
@@ -40,7 +40,7 @@ public class CarInformationService implements IService<CarInformation, String> {
     }
 
     public List<CarInformation> getAllCarInformation() {
-        return carInformationRepository.findAll();
+        return carInformationRepository.getAllCarInformation();
     }
 
 }

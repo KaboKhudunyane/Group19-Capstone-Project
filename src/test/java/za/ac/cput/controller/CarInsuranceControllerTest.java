@@ -1,4 +1,4 @@
-package za.ac.cput.Controller;
+package za.ac.cput.controller;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -41,7 +41,7 @@ class CarInsuranceControllerTest {
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         CarInsurance  carInsuranceSaved = postResponse.getBody();
-        assertEquals(CarInsurance.getInsuranceNumber(), carInsuranceSaved.getInsuranceID());
+        assertEquals(carInsurance.getInsuranceID(), carInsuranceSaved.getInsuranceID());
         System.out.println("Saved data:" + carInsuranceSaved);
     }
 
@@ -50,7 +50,7 @@ class CarInsuranceControllerTest {
         String url = BASE_URL + "/read/" + carInsurance.getInsuranceID();
         System.out.println("URL:" + url);
         ResponseEntity<CarInsurance> response = restTemplate.getForEntity(url, CarInsurance.class);
-        assertEquals(CarInsurance.getInsuranceNumber(), response.getBody().getInsuranceNumber());
+        assertEquals(carInsurance.getInsuranceID(), response.getBody().getInsuranceID());
         System.out.println("read" + response.getBody());
     }
 

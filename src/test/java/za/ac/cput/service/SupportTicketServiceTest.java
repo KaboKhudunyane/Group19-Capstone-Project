@@ -1,4 +1,4 @@
-package za.ac.cput.repository.factory;
+package za.ac.cput.service;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,23 +17,23 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SupportTicketServiceTest {
     @Autowired
-    private SupportTicketService SupportTicketService;
+    private SupportTicketService supportTicketService;
 
-    private static SupportTicket SupportTicket1;
-    private static SupportTicket SupportTicket2;
+    private static SupportTicket supportTicket;
+    private static SupportTicket supportTicket2;
 
     @BeforeEach
     void setUp() {
-        SupportTicket1 = SupportTicketFactory.buildSupportTicket("T24", "ccv6588", "Hire", "Aproved", "03-04-24", "Approved");
-        assertNotNull(SupportTicket1);
-        SupportTicket2 = SupportTicketFactory.buildSupportTicket("T24", "ccv6588", "Hire", "pending", "03-08-23", "pending");
-        assertNotNull(SupportTicket2);
+        supportTicket = SupportTicketFactory.createSupportTicket("T24", "ccv6588", "Hire", "Aproved", "03-04-24", "Approved");
+        assertNotNull(supportTicket);
+        supportTicket2 = SupportTicketFactory.createSupportTicket("T24", "ccv6588", "Hire", "pending", "03-08-23", "pending");
+        assertNotNull(supportTicket2);
     }
 
     @Test
     @Order(1)
     void create() {
-        SupportTicket created1 = supportTicketService.create(supportTicket1);
+        SupportTicket created1 = supportTicketService.create(supportTicket);
         assertNotNull(created1);
         System.out.println("Saved SupportTicket1: " + created1);
         SupportTicket created2 = supportTicketService.create(supportTicket2);
@@ -52,16 +52,15 @@ public class SupportTicketServiceTest {
   @Test
     @Order(3)
     void delete() {
-        supportTicketService.delete(supportTicket1.getTicketID());
+        supportTicketService.delete(supportTicket.getTicketID());
         System.out.println("Deleted TicketID 1");
     }
 
     @Test
     @Order(4)
     void update(){
-        SupportTicket newSupportTicket = new SupportTicket.Builder().copy(supportTicket1).setUserID("T33").buildSupportTicket();
-
-        SupportTicket updatedSupportTicket = SupportTicketService.update(newSupportTicket);
+        SupportTicket newSupportTicket = new SupportTicket.Builder().copy(supportTicket).setUserID("T33").buildSupportTicket();
+        SupportTicket updatedSupportTicket = supportTicketService.update(newSupportTicket);
         assertNotNull(updatedSupportTicket);
         System.out.println("Updated SupportTicket: " + updatedSupportTicket);
 

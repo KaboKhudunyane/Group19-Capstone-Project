@@ -20,7 +20,7 @@ public class AddressFactory {
                 .setStreetName(streetName)
                 .setSuburb(suburb)
                 .setPostalCode(postalCode)
-                .build();
+                .buildAddress();
     }
 }
 

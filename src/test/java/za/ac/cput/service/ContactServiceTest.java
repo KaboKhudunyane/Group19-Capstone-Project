@@ -20,7 +20,7 @@ class ContactServiceTest {
     private ContactRepository contactRepository;
     @Autowired
     private ContactService contactService;
-    private Contact contact1, contact2;
+    private Contact contact1;
 
     @BeforeEach
     void setUp() {
@@ -31,13 +31,9 @@ class ContactServiceTest {
                 .setContactId("C789")
                 .setEmail("example@example.com")
                 .setMobileNo(1234567890)
-                .build();
+                .buildContact();
 
-        contact2 = new Contact.Builder()
-                .setContactId("C790")
-                .setEmail("sample@sample.com")
-                .setMobileNo(987654310)
-                .build();
+
     }
 
     @Test

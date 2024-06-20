@@ -14,7 +14,7 @@ public class ReviewFactory {
                 .setReviewId(ReviewId)
                 .setBookingId(bookingId)
                 .setRating(Rating)
-                .build();
+                .buildReview();
     }
 
     public static Review buildReview( String bookingId, Double Rating, String comment, String date) {
@@ -26,7 +26,7 @@ public class ReviewFactory {
         return new Review.Builder()
                 .setBookingId(bookingId)
                 .setRating(Rating)
-                .build();
+                .buildReview();
 
     }
 }

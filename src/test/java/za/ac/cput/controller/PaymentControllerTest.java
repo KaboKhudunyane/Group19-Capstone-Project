@@ -9,8 +9,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.Booking;
+import za.ac.cput.domain.CarInformation;
 import za.ac.cput.domain.Payment;
 import za.ac.cput.factory.BookingFactory;
+import za.ac.cput.factory.CarInformationFactory;
 import za.ac.cput.factory.PaymentFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,8 +34,10 @@ class PaymentControllerTest {
 
         @BeforeAll
         public static void setup() {
+             CarInformation carInformation  = CarInformationFactory.buildCarInformation("011", "BMW", "M4",
+                    "2017", "CA123-143", "M performance", "Twin turbo");
             booking = BookingFactory.buildBooking("b101","10-June-2024", "15-June-2024",
-                    "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001","1234","Blue BMW M4(Manual)"
+                    "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001",carInformation,"Blue BMW M4(Manual)"
                     , 25000);
 
             payment = PaymentFactory.buildPayment("14521", booking, "Capitec", "20-May-2024", 18000, "Declined");

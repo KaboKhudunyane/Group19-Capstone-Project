@@ -103,7 +103,7 @@ public class Review {
             return this;
         }
 
-        public Builder copy(Review review) {
+        public Builder copyReview(Review review) {
             this.reviewId = review.reviewId;
             this.bookingId = review.bookingId;
             this.rating = review.rating;
@@ -112,7 +112,7 @@ public class Review {
             return this;
         }
 
-        public Review build() {
+        public Review buildReview() {
             return new Review(this);
         }
     }

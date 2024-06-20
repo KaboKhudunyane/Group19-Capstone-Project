@@ -55,7 +55,7 @@ class AddressControllerTest {
         // Set updated address data
         Address updatedAddress = new Address.Builder()
                 .copyAddress(adr)
-                .build();
+                .buildAddress();
 
         String url = BASE_URL + "/update";
         restTemplate.put(url, updatedAddress);

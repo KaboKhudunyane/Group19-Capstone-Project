@@ -94,7 +94,7 @@ public class Address {
             this.postalCode = postalCode;
             return this;
         }
-        public Builder copy(Address address) {
+        public Builder copyAddress(Address address) {
             this.addressId = address.addressId;
             this.userId = address.userId;
             this.streetName = address.streetName;
@@ -102,7 +102,7 @@ public class Address {
             this.postalCode = address.postalCode;
             return this;
         }
-        public Address build() {
+        public Address buildAddress() {
             return new Address(this);
         }
     }

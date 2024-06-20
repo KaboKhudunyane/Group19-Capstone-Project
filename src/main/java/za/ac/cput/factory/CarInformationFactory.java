@@ -7,8 +7,7 @@ import za.ac.cput.util.Helper;
 public class CarInformationFactory {
 
     public static CarInformation buildCarInformation(String carInformationId, String make, String model,
-                                                     String year, String licensePlate, String description, String features,
-                                                     Car carId) {
+                                                     String year, String licensePlate, String description, String features) {
         if (Helper.isNullOrEmpty(carInformationId) ||
                 Helper.isNullOrEmpty(make) || Helper.isNullOrEmpty(model) || Helper.isNullOrEmpty(year) ||
                 Helper.isNullOrEmpty(licensePlate) || Helper.isNullOrEmpty(description) || Helper.isNullOrEmpty(features))
@@ -24,26 +23,9 @@ public class CarInformationFactory {
                 .setLicensePlate(licensePlate)
                 .setDescription(description)
                 .setFeatures(features)
-                .setCarId(carId)
                 .buildCarInformation();
     }
 
-    public static CarInformation buildCarInformationWithoutCar(String make, String model, String year,
-                                                               String licensePlate, String description, String features) {
-        if (Helper.isNullOrEmpty(make) || Helper.isNullOrEmpty(model) || Helper.isNullOrEmpty(year)
-                || Helper.isNullOrEmpty(licensePlate) || Helper.isNullOrEmpty(description) || Helper.isNullOrEmpty(features)) {
-            return null;
-        }
-
-        return new CarInformation.Builder()
-                .setMake(make)
-                .setModel(model)
-                .setYear(year)
-                .setLicensePlate(licensePlate)
-                .setDescription(description)
-                .setFeatures(features)
-                .buildCarInformation();
-    }
 }
 
 
