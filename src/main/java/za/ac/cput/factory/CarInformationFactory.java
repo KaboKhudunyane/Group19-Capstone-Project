@@ -1,5 +1,6 @@
 package za.ac.cput.factory;
 
+import za.ac.cput.domain.Car;
 import za.ac.cput.domain.CarInformation;
 import za.ac.cput.util.Helper;
 
@@ -7,11 +8,11 @@ public class CarInformationFactory {
 
     public static CarInformation buildCarInformation(String carInformationId, String make, String model,
                                                      String year, String licensePlate, String description, String features,
-                                                     String carId) {
+                                                     Car carId) {
         if (Helper.isNullOrEmpty(carInformationId) ||
                 Helper.isNullOrEmpty(make) || Helper.isNullOrEmpty(model) || Helper.isNullOrEmpty(year) ||
-                Helper.isNullOrEmpty(licensePlate) || Helper.isNullOrEmpty(description) || Helper.isNullOrEmpty(features) ||
-                Helper.isNullOrEmpty(carId)) {
+                Helper.isNullOrEmpty(licensePlate) || Helper.isNullOrEmpty(description) || Helper.isNullOrEmpty(features))
+                 {
             return null;
         }
 
@@ -24,7 +25,7 @@ public class CarInformationFactory {
                 .setDescription(description)
                 .setFeatures(features)
                 .setCarId(carId)
-                .build();
+                .buildCarInformation();
     }
 
     public static CarInformation buildCarInformationWithoutCar(String make, String model, String year,
@@ -41,17 +42,7 @@ public class CarInformationFactory {
                 .setLicensePlate(licensePlate)
                 .setDescription(description)
                 .setFeatures(features)
-                .build();
-    }
-
-    public static CarInformation buildCarInformation(String carInformationId, String description) {
-        if (Helper.isNullOrEmpty(carInformationId) || Helper.isNullOrEmpty(description))
-            return null;
-
-        return new CarInformation.Builder()
-                .setCarInformationId(carInformationId)
-                .setDescription(description)
-                .build();
+                .buildCarInformation();
     }
 }
 
