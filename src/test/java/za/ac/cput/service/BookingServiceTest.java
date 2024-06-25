@@ -58,11 +58,11 @@ class BookingServiceTest {
     }
 
 
-    @Test
+    /*@Test
     @Order(4)
     void getAllBookings() {
         System.out.println(bookingService.getAllBookings());
-    }
+    }*/
 
 }
 

@@ -24,8 +24,7 @@ public class PaymentService  implements IService<Payment, String> {
     }
     @Override
     public Payment read(String paymentId) {
-
-        return paymentRepository.findById(paymentId).orElse(null);
+        return paymentRepository.findByPaymentId(paymentId);
     }
     @Override
     public Payment update(Payment payment) {
@@ -35,11 +34,11 @@ public class PaymentService  implements IService<Payment, String> {
 
     public void delete(String paymentId){
 
-        this.paymentRepository.deleteById(paymentId);
+        this.paymentRepository.deleteByPaymentId(paymentId);
     }
 
-    public List<Payment> getAllPayments() {
+    /*public List<Payment> getAllPayments() {
 
         return paymentRepository.getAllPayments();
-    }
+    }*/
 }

@@ -40,8 +40,8 @@ public class BookingService implements IService<Booking, String>{
         this.bookingRepository.deleteById(bookingId);
     }
 
-    public List<Booking> getAllBookings(){
+    /*public List<Booking> getAllBookings(){
         return bookingRepository.getAllBookings();
 
-    }
+    }*/
 }

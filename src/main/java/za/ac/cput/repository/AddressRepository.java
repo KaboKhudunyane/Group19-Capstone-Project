@@ -12,5 +12,5 @@ public interface AddressRepository extends JpaRepository<Address, String> {
 
     void deleteByAddressId(String addressId);
 
-    List<Address> getAllAddress();
+    //List<Address> getAllAddress();
 }

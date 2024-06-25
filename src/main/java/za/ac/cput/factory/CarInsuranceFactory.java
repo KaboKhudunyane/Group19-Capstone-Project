@@ -9,6 +9,6 @@ public class CarInsuranceFactory {
         if (Helper.isNullOrEmpty( carInsuranceID) || Helper.isNullOrEmpty(carInsuranceName) || Helper.isNullOrEmpty(userID) || Helper.isNullOrEmpty(policyNumber))
             return null;
 
-        return new CarInsurance.Builder().setInsuranceID(carInsuranceID).setUserID(userID).setInsuranceName(carInsuranceName).setPolicyNumber(policyNumber).build();
+        return new CarInsurance.Builder().setCarInsuranceID(carInsuranceID).setUserID(userID).setInsuranceName(carInsuranceName).setPolicyNumber(policyNumber).build();
     }
 }

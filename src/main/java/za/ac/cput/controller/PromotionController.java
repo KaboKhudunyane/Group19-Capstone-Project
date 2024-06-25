@@ -16,7 +16,7 @@ public class PromotionController {
     public Promotion save(@RequestBody Promotion promotion) {
         return promotionService.create(promotion);
     }
-    @GetMapping("/read/{promotionId}")
+    @GetMapping("/read/{promotionID}")
     public Promotion read(@PathVariable String promotionID) {
         return promotionService.read(promotionID);
     }
@@ -24,12 +24,12 @@ public class PromotionController {
     public Promotion update(@RequestBody Promotion promotion) {
         return promotionService.update(promotion);
     }
-    @DeleteMapping("/delete/{promotionId}")
+    @DeleteMapping("/delete/{promotionID}")
     public void delete(@PathVariable String promotionID) {
         promotionService.delete(promotionID);
     }
-    @GetMapping("/getAllPromotions")
+    /*@GetMapping("/getAllPromotions")
     public List<Promotion> getAllPromotions() {
         return promotionService.getAll();
-    }
+    }*/
 }

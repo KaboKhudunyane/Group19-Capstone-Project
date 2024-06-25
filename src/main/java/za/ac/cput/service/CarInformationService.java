@@ -39,8 +39,8 @@ public class CarInformationService implements IService<CarInformation, String> {
         return carInformationRepository.save(carInformation);
     }
 
-    public List<CarInformation> getAllCarInformation() {
+    /*public List<CarInformation> getAllCarInformation() {
         return carInformationRepository.getAllCarInformation();
-    }
+    }*/
 
 }

@@ -26,7 +26,7 @@ public class AddressService implements IService<Address, String> {
     public void delete(String addressID) {
         addressRepository.deleteByAddressId(addressID);
     }
-    public List<Address> getAllAddress() {
+   /* public List<Address> getAllAddress() {
         return addressRepository.getAllAddress();
-    }
+    }*/
 }

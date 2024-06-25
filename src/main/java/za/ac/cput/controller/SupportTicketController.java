@@ -5,18 +5,18 @@ import za.ac.cput.domain.SupportTicket;
 import za.ac.cput.service.SupportTicketService;
 import java.util.List;
 @RestController
-@RequestMapping
+@RequestMapping("/supportTicket")
 public class SupportTicketController {
     @Autowired
     private SupportTicketService supportTicketService;
-    @PostMapping
+    @PostMapping("/create")
     public SupportTicket create(@RequestBody SupportTicket supportTicket){return supportTicketService.create(supportTicket);}
-    @GetMapping
-    public SupportTicket read(@PathVariable String supportTicketID){return supportTicketService.read(supportTicketID);}
-    @PostMapping
+    @GetMapping("/read/{ticketID}")
+    public SupportTicket read(@PathVariable String ticketID){return supportTicketService.read(ticketID);}
+    @PutMapping("/update")
     public SupportTicket update(@RequestBody SupportTicket supportTicket){return supportTicketService.update(supportTicket);}
-    @DeleteMapping
-    public void delete(@PathVariable String id){supportTicketService.delete(id);}
-    @GetMapping
-    public List<SupportTicket> getAll(){return supportTicketService.getAllSupportTickets();}
+    @DeleteMapping("/delete/{ticketID}")
+    public void delete(@PathVariable String ticketID){supportTicketService.delete(ticketID);}
+    /*@GetMapping
+    public List<SupportTicket> getAll(){return supportTicketService.getAllSupportTickets();}*/
 }

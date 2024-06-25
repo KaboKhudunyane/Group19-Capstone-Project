@@ -13,6 +13,6 @@ public interface CarInsuranceRepository extends JpaRepository<CarInsurance, Stri
 
     void deleteByCarInsuranceID(String carInsuranceID);
 
-    List<CarInsurance> getAllCarInsurances();
+    //List<CarInsurance> getAllCarInsurances();
 }
 

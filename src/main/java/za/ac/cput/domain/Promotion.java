@@ -1,9 +1,13 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.io.Serializable;
 import java.util.*;
-
+@Entity
 public class Promotion implements Serializable, List<Car> {
+    @Id
     private String promotionID;
     private String description;
     private String startDate;

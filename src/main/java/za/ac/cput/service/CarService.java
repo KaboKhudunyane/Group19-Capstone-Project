@@ -36,7 +36,7 @@ public class CarService implements IService<Car, String> {
         carRepository.deleteByCarID(carID);
     }
 
-    public List<Car> getAllCars() {
+    /*public List<Car> getAllCars() {
         return carRepository.getAllCars();
-    }
+    }*/
 }

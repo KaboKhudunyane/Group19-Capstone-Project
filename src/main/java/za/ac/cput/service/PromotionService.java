@@ -29,7 +29,7 @@ public class PromotionService implements IService<Promotion, String> {
     public void delete(String promotionID) {
         promotionRepository.deleteByPromotionID(promotionID);
     }
-    public List<Promotion> getAll() {
+    /*public List<Promotion> getAll() {
         return promotionRepository.getAllPromotions();
-    }
+    }*/
 }

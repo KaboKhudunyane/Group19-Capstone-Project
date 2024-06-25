@@ -9,9 +9,9 @@ import java.util.List;
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, String> {
 
-    Payment findByPaymentID(String paymentID);
+    Payment findByPaymentId(String paymentID);
 
-    void deleteByPaymentID(String paymentID);
+    void deleteByPaymentId(String paymentID);
 
-    List<Payment> getAllPayments();
+    //List<Payment> getAllPayments();
 }

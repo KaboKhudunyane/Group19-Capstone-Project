@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/contacts")
+@RequestMapping("/contact")
 public class ContactController {
 
     @Autowired
@@ -35,12 +35,12 @@ public class ContactController {
     }
 
     @DeleteMapping("/delete/{contactId}")
-    public void deleteContact(@PathVariable String id) {
-        contactService.delete(id);
+    public void deleteContact(@PathVariable String contactId) {
+        contactService.delete(contactId);
     }
-    @GetMapping("/getAllContact")
+    /*@GetMapping("/getAllContact")
     public List<Contact> getAllContact(){
         return contactService.getAllContacts();
-    }
+    }*/
 }
 

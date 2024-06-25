@@ -13,20 +13,20 @@ public class ReviewController {
     public Review save(@RequestBody Review review){
         return reviewService.create(review);
     }
-    @GetMapping("/read/{ReviewId}")
-    public Review read(@PathVariable String reviewID){
-        return reviewService.read(reviewID);
+    @GetMapping("/read/{reviewId}")
+    public Review read(@PathVariable String reviewId){
+        return reviewService.read(reviewId);
     }
-    @DeleteMapping("/delete/{ReviewId}")
-    public void delete (@PathVariable String reviewID){
-        reviewService.delete(reviewID);
+    @DeleteMapping("/delete/{reviewId}")
+    public void delete (@PathVariable String reviewId){
+        reviewService.delete(reviewId);
     }
     @PutMapping("/update")
     public Review update(@RequestBody Review review) {
         return reviewService.update(review);
     }
-    @GetMapping("/getAllReviews")
+   /* @GetMapping("/getAllReviews")
     public List<Review> getAllReviews(){
         return reviewService.getAllReviews();
-    }
+    }*/
 }

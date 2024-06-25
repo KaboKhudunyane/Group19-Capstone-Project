@@ -29,9 +29,9 @@ public class PaymentController {
 
         paymentService.delete(paymentId);
     }
-    @GetMapping("/getAllPayments")
+    /*@GetMapping("/getAllPayments")
     public List<Payment> getAllPayments() {
 
         return paymentService.getAllPayments();
-    }
+    }*/
 }
