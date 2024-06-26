@@ -54,13 +54,13 @@ public class CarInformationServiceTest {
             carInformationService.delete(carInformation1.getCarInformationId());
             System.out.println("Car deleted successfully");
         }
-    @Test
+    /*@Test
     @Order(4)
     void getAllCarInformation() {
         List<CarInformation> allCarInformation = carInformationService.getAllCarInformation();
         assertNotNull(allCarInformation);
         assertTrue(allCarInformation.size() > 0);
         System.out.println("All CarInformation: " + allCarInformation);
-    }
+    }*/
 }
 

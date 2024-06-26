@@ -35,9 +35,9 @@ public class BookingController {
             bookingService.delete(bookingId);}
 
 
-        @GetMapping("/getAllBookings")
+       /* @GetMapping("/getAllBookings")
         public List<Booking> getAllBookings(){
-            return bookingService.getAllBookings();}
+            return bookingService.getAllBookings();}*/
     }
 
 

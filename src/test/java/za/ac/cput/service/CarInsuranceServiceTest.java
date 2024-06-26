@@ -46,9 +46,9 @@ public class CarInsuranceServiceTest {
    @Test
     @Order(2)
     void read() {
-        CarInsurance read = carInsuranceService.read(carInsurance1.getUserID());
-        assertNotNull(read);
-        System.out.println("Read UserID: " + read);
+        CarInsurance found = carInsuranceService.read(carInsurance1.getInsuranceID());
+        assertNotNull(found);
+        System.out.println("Read UserID: " + found);
     }
 
     @Test

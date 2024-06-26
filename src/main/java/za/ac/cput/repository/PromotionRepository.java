@@ -12,6 +12,6 @@ public interface PromotionRepository extends JpaRepository<Promotion, String> {
 
     void deleteByPromotionID(String promotionID);
 
-    List<Promotion> getAllPromotions();
+    //List<Promotion> getAllPromotions();
 }
 

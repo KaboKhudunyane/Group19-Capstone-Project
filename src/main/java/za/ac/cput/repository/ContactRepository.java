@@ -8,9 +8,9 @@ import java.util.List;
 
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, String> {
-    Contact findByContactID(String contactId);
+    Contact findByContactId(String contactId);
 
-    void deleteByContactID(String contactId);
+    void deleteByContactId(String contactId);
 
-    List<Contact> getAllContacts();
+    //List<Contact> getAllContacts();
 }

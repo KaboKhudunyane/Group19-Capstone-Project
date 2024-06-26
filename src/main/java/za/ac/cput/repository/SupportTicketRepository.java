@@ -9,9 +9,9 @@ import java.util.List;
 @Repository
 public interface SupportTicketRepository extends JpaRepository<SupportTicket, String> {
 
-    SupportTicket findBySupportTicketID(String supportTicketID);
+    SupportTicket findByTicketID(String supportTicketID);
 
-    void deleteBySupportTicketID(String supportTicketID);
+    void deleteByTicketID(String supportTicketID);
 
-    List<SupportTicket> getAllSupportTickets();
+    //List<SupportTicket> getAllSupportTickets();
 }

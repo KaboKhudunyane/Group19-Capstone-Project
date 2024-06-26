@@ -16,5 +16,5 @@ public interface CarRepository extends JpaRepository<Car, String> {
     void deleteByCarID(String carID);
 
     // Method to get all cars
-    List<Car> getAllCars();
+    //List<Car> getAllCars();
 }

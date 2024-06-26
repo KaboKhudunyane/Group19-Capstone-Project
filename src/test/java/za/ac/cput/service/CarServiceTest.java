@@ -35,19 +35,19 @@ public class CarServiceTest {
             .buildCar();
 
     @Test
-    void testCreate() {
+    void create() {
         Car createdCar = carService.create(car);
         assertNotNull(createdCar);
         System.out.println("Created Car: " + createdCar);
     }
     @Test
-    void testRead() {
+    void read() {
         Car readCar = carService.read(car.getCarID());
         assertNotNull(readCar);
         System.out.println("Read Car: " + readCar);
     }
     @Test
-    void testUpdate() {
+    void update() {
         Car newCar = new Car.Builder()
                 .copyCar(car)
                 .setCarID("789")
@@ -58,7 +58,7 @@ public class CarServiceTest {
         System.out.println("Updated Car: " + updatedCar);
     }
     @Test
-    void testDelete() {
+    void delete() {
         carService.delete(car.getCarID());
         System.out.println("Car deleted successfully");
     }

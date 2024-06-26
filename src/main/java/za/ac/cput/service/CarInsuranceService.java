@@ -32,7 +32,7 @@ public class CarInsuranceService implements IService<CarInsurance, String>{
     public void delete(String carInsuranceId) {
         carInsuranceRepository.deleteByCarInsuranceID(carInsuranceId);
     }
-    public List<CarInsurance> getAllCarInsurances () {
+    /*public List<CarInsurance> getAllCarInsurances () {
         return carInsuranceRepository.getAllCarInsurances();
-    }
+    }*/
 }

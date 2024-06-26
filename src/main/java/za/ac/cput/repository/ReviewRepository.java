@@ -9,9 +9,9 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, String> {
 
-    Review findByReviewID(String reviewID);
+    Review findByReviewId(String reviewID);
 
-    void deleteByReviewID(String reviewID);
+    void deleteByReviewId(String reviewID);
 
-    List<Review> getAllReviews();
+    //List<Review> getAllReviews();
 }

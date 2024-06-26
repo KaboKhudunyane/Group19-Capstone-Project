@@ -22,18 +22,18 @@ public class SupportTicketService implements IService<SupportTicket, String>{
 
     @Override
     public SupportTicket read(String SupportTicketId) {
-        return repository.findBySupportTicketID(SupportTicketId);
+        return repository.findByTicketID(SupportTicketId);
     }
     @Override
     public SupportTicket update(SupportTicket supportTicket) {
         return repository.save(supportTicket);
     }
     public void delete(String supportTicketId) {
-        repository.deleteBySupportTicketID(supportTicketId);
+        repository.deleteByTicketID(supportTicketId);
     }
-    public List<SupportTicket> getAllSupportTickets() {
+    /*public List<SupportTicket> getAllSupportTickets() {
         return repository.getAllSupportTickets();
-    }
+    }*/
 
 
 

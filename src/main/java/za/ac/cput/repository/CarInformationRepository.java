@@ -13,6 +13,6 @@ public interface CarInformationRepository extends JpaRepository<CarInformation, 
 
     void deleteByCarInformationId(String carInformationId);
 
-    List<CarInformation> getAllCarInformation();
+    //List<CarInformation> getAllCarInformation();
 
 }

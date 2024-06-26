@@ -1,4 +1,4 @@
-package za.ac.cput.Controller;
+package za.ac.cput.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,24 +9,24 @@ import za.ac.cput.service.CarInsuranceService;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/carInsurance")
 public class CarInsuranceController {
 
     @Autowired
     private CarInsuranceService carInsuranceService;
 
-    @PostMapping
+    @PostMapping("/create")
     public CarInsurance create(@RequestBody CarInsurance carInsurance){return carInsuranceService.create(carInsurance);}
 
-    @GetMapping
-    public CarInsurance read(@PathVariable String id){return carInsuranceService.read(id);}
+    @GetMapping("/read/{carInsuranceID}")
+    public CarInsurance read(@PathVariable String carInsuranceID){return carInsuranceService.read(carInsuranceID);}
 
-    @PostMapping
+    @PutMapping("/update")
     public CarInsurance update(@RequestBody CarInsurance carInsurance){return carInsuranceService.update(carInsurance);}
 
-    @DeleteMapping
-    public void delete(@PathVariable String id){carInsuranceService.delete(id);}
+    @DeleteMapping("/delete/{carInsuranceID}")
+    public void delete(@PathVariable String carInsuranceID){carInsuranceService.delete(carInsuranceID);}
 
-    @GetMapping
-    public List<CarInsurance> getAllCarInsurances(){return carInsuranceService.getAllCarInsurances();}
+   /* @GetMapping
+    public List<CarInsurance> getAllCarInsurances(){return carInsuranceService.getAllCarInsurances();}*/
 }

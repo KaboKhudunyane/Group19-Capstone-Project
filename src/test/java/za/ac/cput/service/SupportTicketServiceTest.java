@@ -44,7 +44,7 @@ public class SupportTicketServiceTest {
   @Test
     @Order(2)
     void read() {
-        SupportTicket read = supportTicketService.read(supportTicket2.getUserID());
+        SupportTicket read = supportTicketService.read(supportTicket2.getTicketID());
         assertNotNull(read);
         System.out.println("Read UserID: " + read);
     }

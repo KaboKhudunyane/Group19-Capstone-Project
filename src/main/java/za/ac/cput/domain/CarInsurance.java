@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 public class CarInsurance {
     @Id
-    private String insuranceID;
+    private String carInsuranceID;
     private String insuranceName;
     private String userID;
     private String policyNumber;
@@ -16,14 +16,14 @@ public class CarInsurance {
     public CarInsurance() {}
 
     private  CarInsurance(Builder builder) {
-        this.insuranceID = builder.insuranceID;
+        this.carInsuranceID = builder.carInsuranceID;
         this.insuranceName = builder.insuranceName;
         this.userID = builder.userID;
         this.policyNumber = builder.policyNumber;
     }
 
     public String getInsuranceID() {
-        return insuranceID;
+        return carInsuranceID;
     }
 
     public String getInsuranceName() {
@@ -43,18 +43,18 @@ public class CarInsurance {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarInsurance that = (CarInsurance) o;
-        return Objects.equals(insuranceID, that.insuranceID) && Objects.equals(insuranceName, that.insuranceName) && Objects.equals(userID, that.userID) && Objects.equals(policyNumber, that.policyNumber);
+        return Objects.equals(carInsuranceID, that.carInsuranceID) && Objects.equals(insuranceName, that.insuranceName) && Objects.equals(userID, that.userID) && Objects.equals(policyNumber, that.policyNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(insuranceID, insuranceName, userID, policyNumber);
+        return Objects.hash(carInsuranceID, insuranceName, userID, policyNumber);
     }
 
     @Override
     public String toString() {
         return "CarInsurance{" +
-                "insuranceID='" + insuranceID + '\'' +
+                "carInsuranceID='" + carInsuranceID + '\'' +
                 ", insuranceName='" + insuranceName + '\'' +
                 ", userID='" + userID + '\'' +
                 ", policyNumber='" + policyNumber + '\'' +
@@ -62,14 +62,14 @@ public class CarInsurance {
     }
 
     public static class Builder{
-        private String insuranceID;
+        private String carInsuranceID;
         private String insuranceName;
         private String userID;
         private String policyNumber;
 
 
-    public Builder setInsuranceID(String insuranceID) {
-        this.insuranceID = insuranceID;
+    public Builder setCarInsuranceID(String carInsuranceID) {
+        this.carInsuranceID = carInsuranceID;
         return this;
     }
 
@@ -89,7 +89,7 @@ public class CarInsurance {
     }
 
     public Builder copy (CarInsurance carInsurance){
-        this.insuranceID = carInsurance.insuranceID;
+        this.carInsuranceID = carInsurance.carInsuranceID;
         this.insuranceName = carInsurance.insuranceName;
         this.userID = carInsurance.userID;
         this.policyNumber = carInsurance.policyNumber;

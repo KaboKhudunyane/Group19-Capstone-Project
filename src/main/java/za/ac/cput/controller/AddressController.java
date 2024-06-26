@@ -20,9 +20,9 @@ public class AddressController {
     }
 
     @GetMapping("/read/{addressId}")
-    public Address read(@PathVariable String addressID){
+    public Address read(@PathVariable String addressId){
 
-        return addressService.read(addressID);
+        return addressService.read(addressId);
     }
 
     @PutMapping("/update")
@@ -37,9 +37,9 @@ public class AddressController {
         addressService.delete(addressId);
     }
 
-    @GetMapping("/getAll")
+    /*@GetMapping("/getAll")
     public List<Address> getAllAddress(){
 
         return addressService.getAllAddress();
-    }
+    }*/
 }

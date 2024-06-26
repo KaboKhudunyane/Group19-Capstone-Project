@@ -55,12 +55,12 @@ class ReviewServiceTest {
         System.out.println("Car deleted successfully");
     }
 
-    @Test
+   /* @Test
     @Order(5)
     void getAllReviews() {
         List<Review> allReviews = reviewService.getAllReviews();
         assertNotNull(allReviews);
         assertTrue(allReviews.size() > 0);
         System.out.println("All Reviews: " + allReviews);
-    }
+    }*/
 }

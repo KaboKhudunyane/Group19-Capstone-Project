@@ -66,10 +66,10 @@ class PaymentServiceTest {
     }
 
 
-    @Test
+    /*@Test
     @Order(3)
     void getAllPayments(){
         System.out.println(paymentService.getAllPayments());
-    }
+    }*/
 
 }

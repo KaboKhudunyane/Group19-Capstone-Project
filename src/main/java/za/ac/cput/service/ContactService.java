@@ -24,7 +24,7 @@ public class ContactService implements IService<Contact,String>{
 
     @Override
     public Contact read(String contactID) {
-        return  contactRepository.findByContactID(contactID);
+        return  contactRepository.findByContactId(contactID);
     }
     @Override
     public Contact update(Contact contact) {
@@ -32,9 +32,9 @@ public class ContactService implements IService<Contact,String>{
     }
 
     public void delete(String contactID) {
-        contactRepository.deleteByContactID(contactID);
+        contactRepository.deleteByContactId(contactID);
     }
-    public List<Contact> getAllContacts() {
+    /*public List<Contact> getAllContacts() {
         return contactRepository.getAllContacts();
-    }
+    }*/
 }

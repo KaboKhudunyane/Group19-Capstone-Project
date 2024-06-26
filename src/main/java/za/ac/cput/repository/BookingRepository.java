@@ -9,10 +9,10 @@ import java.util.List;
 
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, String> {
-    Booking findByBookingID(String bookingID);
+    Booking findByBookingId(String bookingId);
 
-    void deleteByBookingID(String bookingID);
+    void deleteByBookingId(String bookingId);
 
-    List<Booking> getAllBookings();
+   // List<Booking> getAllBookings();
 }
 

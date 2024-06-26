@@ -16,5 +16,5 @@ public interface UserRepository extends JpaRepository<User, String> {
     void deleteByUserID(String userID);
 
     // Method to get all users
-    List<User> getAllUsers();
+   // List<User> getAllUsers();
 }
