@@ -11,11 +11,11 @@ import java.util.Objects;
 public class User {
     @Id
     private String userID;
-    @OneToOne
+    @Embedded
     private Name name;
-    @OneToOne
+    @Embedded
     private Contact contact;
-    @OneToOne
+    @Embedded
     private Address address;
     private Boolean license;
     private String picture;
