@@ -1,83 +1,62 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Objects;
-@Entity
-public class Contact {
-    @Id
-    private String contactId;
+
+@Embeddable
+public class Contact implements Serializable {
     private String email;
-    private int mobileNo;
+    private String mobileNumber;
 
     protected Contact() {}
 
     private Contact(Builder builder) {
-        this.contactId = builder.contactId;
         this.email = builder.email;
-        this.mobileNo = builder.mobileNo;
-    }
-
-    public String getContactId() {
-        return contactId;
+        this.mobileNumber = builder.mobileNumber;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public int getMobileNo() {
-        return mobileNo;
+    public String getMobileNumber() {
+        return mobileNumber;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Contact contact = (Contact) obj;
-        return mobileNo == contact.mobileNo &&
-                Objects.equals(contactId, contact.contactId) &&
-                Objects.equals(email, contact.email);
+    public boolean equals(Object contactObject) {
+        if (this == contactObject) return true;
+        if (contactObject == null || getClass() != contactObject.getClass()) return false;
+        Contact contact = (Contact) contactObject;
+        return Objects.equals(email, contact.email) &&
+                Objects.equals(mobileNumber, contact.mobileNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactId, email, mobileNo);
+        return Objects.hash(email, mobileNumber);
     }
 
     @Override
     public String toString() {
         return "Contact{" +
-                "contactId='" + contactId + '\'' +
-                ", email='" + email + '\'' +
-                ", mobileNo=" + mobileNo +
+                "email='" + email + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
                 '}';
     }
 
     public static class Builder {
-        private String contactId;
         private String email;
-        private int mobileNo;
-
-        public Builder setContactId(String contactId) {
-            this.contactId = contactId;
-            return this;
-        }
+        private String mobileNumber;
 
         public Builder setEmail(String email) {
             this.email = email;
             return this;
         }
 
-        public Builder setMobileNo(int mobileNo) {
-            this.mobileNo = mobileNo;
-            return this;
-        }
-
-        public Builder copyContact(Contact contact) {
-            this.contactId = contact.contactId;
-            this.email = contact.email;
-            this.mobileNo = contact.mobileNo;
+        public Builder setMobileNumber(String mobileNumber) {
+            this.mobileNumber = mobileNumber;
             return this;
         }
 
