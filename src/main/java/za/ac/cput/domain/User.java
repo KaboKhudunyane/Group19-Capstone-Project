@@ -18,9 +18,7 @@ public class User {
     @OneToOne
     private Address address;
     private Boolean license;
-    private String role;
     private String picture;
-    private Boolean verified;
 
     protected User() {}
 
@@ -30,9 +28,7 @@ public class User {
         this.contact = builder.contact;
         this.address = builder.address;
         this.license = builder.license;
-        this.role = builder.role;
         this.picture = builder.picture;
-        this.verified = builder.verified;
     }
 
     public String getUserID() {
@@ -55,16 +51,8 @@ public class User {
         return license;
     }
 
-    public String getRole() {
-        return role;
-    }
-
     public String getPicture() {
         return picture;
-    }
-
-    public Boolean getVerified() {
-        return verified;
     }
 
     @Override
@@ -77,14 +65,12 @@ public class User {
                 Objects.equals(contact, user.contact) &&
                 Objects.equals(address, user.address) &&
                 Objects.equals(license, user.license) &&
-                Objects.equals(role, user.role) &&
-                Objects.equals(picture, user.picture) &&
-                Objects.equals(verified, user.verified);
+                Objects.equals(picture, user.picture);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userID, name, contact, address, license, role, picture, verified);
+        return Objects.hash(userID, name, contact, address, license, picture);
     }
 
     @Override
@@ -95,9 +81,7 @@ public class User {
                 ", contact=" + contact +
                 ", address=" + address +
                 ", license=" + license +
-                ", role='" + role + '\'' +
                 ", picture='" + picture + '\'' +
-                ", verified=" + verified +
                 '}';
     }
 
@@ -107,9 +91,7 @@ public class User {
         private Contact contact;
         private Address address;
         private Boolean license;
-        private String role;
         private String picture;
-        private Boolean verified;
 
         public Builder setUserID(String userID) {
             this.userID = userID;
@@ -136,29 +118,18 @@ public class User {
             return this;
         }
 
-        public Builder setRole(String role) {
-            this.role = role;
-            return this;
-        }
-
         public Builder setPicture(String picture) {
             this.picture = picture;
             return this;
         }
 
-        public Builder setVerified(Boolean verified) {
-            this.verified = verified;
-            return this;
-        }
         public Builder copyUser(User user) {
             this.userID = user.userID;
             this.name = user.name;
             this.contact = user.contact;
             this.address = user.address;
             this.license = user.license;
-            this.role = user.role;
             this.picture = user.picture;
-            this.verified = user.verified;
             return this;
         }
 
