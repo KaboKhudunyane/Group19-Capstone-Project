@@ -11,8 +11,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
-import za.ac.cput.domain.Car;
 import za.ac.cput.domain.CarInsurance;
 import za.ac.cput.factory.CarInsuranceFactory;
 
@@ -25,65 +23,67 @@ class CarInsuranceControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private final String BASE_URL ="mysql://${MYSQL_HOST:localhost}:3306/CarShare";
+    private static final String BASE_URL = "http://localhost:3306/carinsurance";
 
     private static CarInsurance carInsurance;
 
     @BeforeAll
-    public static void setup(){
-        carInsurance = CarInsuranceFactory.buildCarInsurance("PM305", "Outsurance", "MT55", "PN354");
+    public static void setup() {
+        carInsurance = CarInsuranceFactory.buildCarInsurance("Outsurance", "POL12345", "Comprehensive", "100000");
     }
 
     @Test
     void a_create() {
         String url = BASE_URL + "/create";
-        ResponseEntity <CarInsurance> postResponse = restTemplate.postForEntity(url,carInsurance, CarInsurance.class);
+        ResponseEntity<CarInsurance> postResponse = restTemplate.postForEntity(url, carInsurance, CarInsurance.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        CarInsurance  carInsuranceSaved = postResponse.getBody();
-        assertEquals(carInsurance.getInsuranceID(), carInsuranceSaved.getInsuranceID());
-        System.out.println("Saved data:" + carInsuranceSaved);
+        CarInsurance carInsuranceSaved = postResponse.getBody();
+        assertEquals(carInsurance.getPolicyNumber(), carInsuranceSaved.getPolicyNumber());
+        System.out.println("Saved data: " + carInsuranceSaved);
     }
 
     @Test
     void b_read() {
-        String url = BASE_URL + "/read/" + carInsurance.getInsuranceID();
-        System.out.println("URL:" + url);
+        String url = BASE_URL + "/read/" + carInsurance.getPolicyNumber();
+        System.out.println("URL: " + url);
         ResponseEntity<CarInsurance> response = restTemplate.getForEntity(url, CarInsurance.class);
-        assertEquals(carInsurance.getInsuranceID(), response.getBody().getInsuranceID());
-        System.out.println("read" + response.getBody());
+        assertNotNull(response.getBody());
+        assertEquals(carInsurance.getPolicyNumber(), response.getBody().getPolicyNumber());
+        System.out.println("Read: " + response.getBody());
     }
 
     @Test
     void c_update() {
         String url = BASE_URL + "/update";
-        CarInsurance newCarInsurance = new CarInsurance.Builder().copy(carInsurance)
-                .setInsuranceName("Auto & General").build();
-        ResponseEntity<CarInsurance> postResponse = restTemplate.postForEntity(url, newCarInsurance,CarInsurance.class);
+        CarInsurance updatedCarInsurance = new CarInsurance.Builder()
+                .copyCarInsurance(carInsurance)
+                .setCoverageAmount("150000")
+                .buildCarInsurance();
+        ResponseEntity<CarInsurance> postResponse = restTemplate.postForEntity(url, updatedCarInsurance, CarInsurance.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         CarInsurance carInsuranceUpdated = postResponse.getBody();
-        assertEquals(newCarInsurance.getInsuranceID(), carInsuranceUpdated.getInsuranceID());
-        System.out.println("data Updated:" + carInsuranceUpdated);
+        assertEquals(updatedCarInsurance.getPolicyNumber(), carInsuranceUpdated.getPolicyNumber());
+        System.out.println("Data Updated: " + carInsuranceUpdated);
     }
 
     @Test
     void d_delete() {
-        String url = BASE_URL + "/delete/" + carInsurance.getInsuranceID();
-        System.out.println("URL:" + url);
+        String url = BASE_URL + "/delete/" + carInsurance.getPolicyNumber();
+        System.out.println("URL: " + url);
         restTemplate.delete(url);
         System.out.println("CarInsurance Deleted");
-
     }
 
     @Test
     void e_getAllCarInsurance() {
-        String url =BASE_URL +"/getAllCarInsurance";
+        String url = BASE_URL + "/getAllCarInsurance";
         HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> entity = new HttpEntity<>(null,headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET,entity, String.class);
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        assertNotNull(response.getBody());
         System.out.println("Show All:");
-        System.out.println(response);
         System.out.println(response.getBody());
     }
 }

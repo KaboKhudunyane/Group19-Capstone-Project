@@ -18,8 +18,8 @@ public class CarInformationServiceTest {
 
     @Autowired
     private CarInformationService carInformationService;
-    private static CarInformation carInformation1  = CarInformationFactory.buildCarInformation("011", "BMW", "M4",
-            "2017", "CA123-143", "M performance", "Twin turbo");
+    private static CarInformation carInformation1  = CarInformationFactory.buildCarInformation("vw","golf 8","2024", "343 434 GP", "M4",
+            "Akrapovic Exhaust");
 
 
     @Test
@@ -33,7 +33,7 @@ public class CarInformationServiceTest {
     void Update() {
         CarInformation newCarInformation = new CarInformation.Builder()
                 .copyCarInformation(carInformation1)
-                .setCarInformationId("22")
+                .setYear("2002")
                 .setMake("VW")
                 .buildCarInformation();
         CarInformation updatedCarInformation = carInformationService.update(newCarInformation);
@@ -43,7 +43,7 @@ public class CarInformationServiceTest {
     @Test
     @Order(2)
     void read() {
-        CarInformation read = carInformationService.read(carInformation1.getCarInformationId());
+        CarInformation read = carInformationService.read(carInformation1.getCarInformationId().toString());
         assertNotNull(read);
         System.out.println("Read CarInformation: " + read);
     }
@@ -51,16 +51,15 @@ public class CarInformationServiceTest {
     @Test
     @Order(3)
     void delete() {
-            carInformationService.delete(carInformation1.getCarInformationId());
+            carInformationService.delete(carInformation1.getCarInformationId().toString());
             System.out.println("Car deleted successfully");
         }
-    /*@Test
+    @Test
     @Order(4)
     void getAllCarInformation() {
-        List<CarInformation> allCarInformation = carInformationService.getAllCarInformation();
+        List<CarInformation> allCarInformation = carInformationService.findAllCarInformation();
         assertNotNull(allCarInformation);
         assertTrue(allCarInformation.size() > 0);
         System.out.println("All CarInformation: " + allCarInformation);
-    }*/
+    }
 }
-

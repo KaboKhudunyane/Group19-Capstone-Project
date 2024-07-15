@@ -1,171 +1,133 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-
+import jakarta.persistence.*;
+import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
 public class Car {
     @Id
-    private String carID;  // Unique identifier for the car
-    //@OneToOne
-    //private User userID;  // User ID associated with the car
-    @OneToOne
-    private CarInformation carInformation;  // Information about the car
-    private String rate;  // Rental rate of the car
-    private String availability;  // Availability status of the car
-    private String status;  // Current status of the car
-
-    // Protected no-arg constructor for JPA
-    protected Car() {}
-
-    // Private constructor for Builder
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long carId;
+    @Embedded
+    private CarInformation carInformation;
+    @Embedded
+    private CarInsurance carInsurance;
+    private String rentalRate;
+    private String availabilityStatus;
+    @Lob
+    private byte[] carPicture;
+    protected Car() {
+    }
     private Car(Builder builder) {
-        this.carID = builder.carID;
-        //this.userID = builder.userID;
+        this.carId = builder.carId;
         this.carInformation = builder.carInformation;
-        this.rate = builder.rate;
-        this.availability = builder.availability;
-        this.status = builder.status;
+        this.carInsurance = builder.carInsurance;
+        this.rentalRate = builder.rentalRate;
+        this.availabilityStatus = builder.availabilityStatus;
+        this.carPicture = builder.carPicture;
     }
-
-    // Getters for all fields
-    public String getCarID() {
-        return carID;
+    // Getters
+    public Long getCarId() {
+        return carId;
     }
-
-    //public User getUserID() {
-     //   return userID;
-    //}
 
     public CarInformation getCarInformation() {
         return carInformation;
     }
-
-    public String getRate() {
-        return rate;
+    public CarInsurance getCarInsurance() {
+        return carInsurance;
     }
 
-    public String getAvailability() {
-        return availability;
+    public byte[] getCarPicture() {
+        return carPicture;
     }
 
-    public String getStatus() {
-        return status;
+    public String getRentalRate() {
+        return rentalRate;
     }
 
-    // Setters for all fields
-    public void setCarID(String carID) {
-        this.carID = carID;
+    public String getAvailabilityStatus() {
+        return availabilityStatus;
     }
 
-    //public void setUserID(User userID) {
-       // this.userID = userID;
-   // }
-
-    public void setCarInformation(CarInformation carInformation) {
-        this.carInformation = carInformation;
-    }
-
-    public void setRate(String rate) {
-        this.rate = rate;
-    }
-
-    public void setAvailability(String availability) {
-        this.availability = availability;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    // Override equals method for object comparison
     @Override
-    public boolean equals(Object carObject) {
-        if (this == carObject) return true;
-        if (carObject == null || getClass() != carObject.getClass()) return false;
-        Car car = (Car) carObject;
-        return Objects.equals(carID, car.carID) &&
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return Objects.equals(carId, car.carId) &&
                 Objects.equals(carInformation, car.carInformation) &&
-                Objects.equals(rate, car.rate) &&
-                Objects.equals(availability, car.availability) &&
-                Objects.equals(status, car.status);
+                Objects.equals(carInsurance, car.carInsurance) &&
+                Objects.equals(rentalRate, car.rentalRate) &&
+                Objects.equals(availabilityStatus, car.availabilityStatus) &&
+                Arrays.equals(carPicture, car.carPicture);
     }
 
-    // Override hashCode method for object hashing
     @Override
     public int hashCode() {
-        return Objects.hash(carID, carInformation, rate, availability, status);
+        int result = Objects.hash(carId, carInformation, rentalRate, availabilityStatus);
+        result = 31 * result + Arrays.hashCode(carPicture);
+        return result;
     }
-
-    // Override toString method for object string representation
-
 
     @Override
     public String toString() {
         return "Car{" +
-                "carID='" + carID + '\'' +
+                "carId=" + carId +
                 ", carInformation=" + carInformation +
-                ", rate='" + rate + '\'' +
-                ", availability='" + availability + '\'' +
-                ", status='" + status + '\'' +
+                ", carInsurance=" + carInsurance +
+                ", rentalRate='" + rentalRate + '\'' +
+                ", availabilityStatus='" + availabilityStatus + '\'' +
                 '}';
     }
-
-    // Static Builder class for Car
     public static class Builder {
-        private String carID;  // Unique identifier for the car
-        //private User userID;  // User ID associated with the car
-        private CarInformation carInformation;  // Information about the car
-        private String rate;  // Rental rate of the car
-        private String availability;  // Availability status of the car
-        private String status;  // Current status of the car
-
-        // Setters for all fields with Builder pattern
-        public Builder setCarID(String carID) {
-            this.carID = carID;
+        private Long carId;
+        private CarInformation carInformation;
+        private CarInsurance carInsurance;
+        private String rentalRate;
+        private String availabilityStatus;
+        private byte[] carPicture;
+        public Builder setCarId(Long carId) {
+            this.carId = carId;
             return this;
         }
-
-       /* public Builder setUserID(User userID) {
-            this.userID = userID;
-            return this;
-        }*/
 
         public Builder setCarInformation(CarInformation carInformation) {
             this.carInformation = carInformation;
             return this;
         }
 
-        public Builder setRate(String rate) {
-            this.rate = rate;
+        public Builder setCarInsurance(CarInsurance carInsurance) {
+            this.carInsurance = carInsurance;
             return this;
         }
 
-        public Builder setAvailability(String availability) {
-            this.availability = availability;
+        public Builder setRentalRate(String rentalRate) {
+            this.rentalRate = rentalRate;
             return this;
         }
 
-        public Builder setStatus(String status) {
-            this.status = status;
+        public Builder setAvailabilityStatus(String availabilityStatus) {
+            this.availabilityStatus = availabilityStatus;
             return this;
         }
 
-        // Copy method to copy fields from another Car object
+        public Builder setCarPicture(byte[] carPicture) {
+            this.carPicture = carPicture;
+            return this;
+        }
+
         public Builder copyCar(Car car) {
-            this.carID = car.carID;
-            //this.userID = car.userID;
+            this.carId = car.carId;
             this.carInformation = car.carInformation;
-            this.rate = car.rate;
-            this.availability = car.availability;
-            this.status = car.status;
+            this.carInsurance = car.carInsurance;
+            this.rentalRate = car.rentalRate;
+            this.availabilityStatus = car.availabilityStatus;
+            this.carPicture = car.carPicture;
             return this;
         }
 
-        // Build method to create Car object
         public Car buildCar() {
             return new Car(this);
         }

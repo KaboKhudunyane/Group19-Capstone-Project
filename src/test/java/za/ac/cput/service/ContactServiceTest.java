@@ -1,80 +1,51 @@
 package za.ac.cput.service;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Contact;
-import za.ac.cput.repository.ContactRepository;
-
-import java.util.Optional;
+import za.ac.cput.factory.ContactFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+
 @SpringBootTest
 class ContactServiceTest {
-    @Autowired
-    private ContactRepository contactRepository;
+
     @Autowired
     private ContactService contactService;
-    private Contact contact1;
 
-    @BeforeEach
-    void setUp() {
-        contactRepository = Mockito.mock(ContactRepository.class);
-        contactService = new ContactService(contactRepository);
-
-        contact1 = new Contact.Builder()
-                .setContactId("C789")
-                .setEmail("example@example.com")
-                .setMobileNo(1234567890)
-                .buildContact();
-
-
-    }
+    private static Contact contact = ContactFactory.createContact("123456789", "test@example.com");
 
     @Test
-        //passing test
     void create() {
-
-        Contact created = contactService.create(contact1);
-        assertNotNull(created);
-        assertEquals(contact1, created);
-
+        Contact createdContact = contactService.create(contact);
+        assertNotNull(createdContact);
+        System.out.println("Created Contact: " + createdContact);
     }
 
     @Test
-        //failing test
     void read() {
-
-        String found = String.valueOf(contactService.read("C789"));
-        assertNotNull(found);
-        assertTrue(found.contains("C789"));
+        Contact readContact = contactService.read(contact.getEmail());
+        assertNotNull(readContact);
+        System.out.println("Read Contact: " + readContact);
     }
 
     @Test
-        //passing test
     void update() {
-
-        Contact updated = contactService.update(contact1);
-        assertNull(updated, "Update method is not implemented yet");
+        Contact newContact = new Contact.Builder()
+                .copyContact(contact)
+                .setMobileNumber("987654321")
+                .buildContact();
+        Contact updatedContact = contactService.update(newContact);
+        assertNotNull(updatedContact);
+        System.out.println("Updated Contact: " + updatedContact);
     }
 
     @Test
-        //failing test
     void delete() {
-        contactService.delete(contact1.getContactId());
-        Contact deletedContact = contactService.read(contact1.getContactId());
+        contactService.delete(contact.getEmail());
+        Contact deletedContact = contactService.read(contact.getEmail());
         assertNull(deletedContact);
-
+        System.out.println("Contact deleted successfully.");
     }
-
-   /* @Test
-        //passing test
-    void getAll() {
-        assertNull(contactService.getAllContacts(), "GetAll method is not implemented yet");
-    }*/
 }

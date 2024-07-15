@@ -1,101 +1,90 @@
 package za.ac.cput.domain;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Objects;
-
-@Entity
-public class CarInsurance {
-    @Id
-    private String carInsuranceID;
-    private String insuranceName;
-    private String userID;
+@Embeddable
+public class CarInsurance implements Serializable {
+    // Name of the insurance company providing coverage
+    private String insuranceCompany;
+    // Policy number associated with the car insurance
     private String policyNumber;
-
-    public CarInsurance() {}
-
-    private  CarInsurance(Builder builder) {
-        this.carInsuranceID = builder.carInsuranceID;
-        this.insuranceName = builder.insuranceName;
-        this.userID = builder.userID;
+    // Type of coverage (e.g., comprehensive, liability)
+    private String coverageType;
+    // Amount of coverage provided by the insurance policy
+    private String coverageAmount;
+    protected CarInsurance() {
+    }
+    private CarInsurance(Builder builder) {
+        this.insuranceCompany = builder.insuranceCompany;
         this.policyNumber = builder.policyNumber;
+        this.coverageType = builder.coverageType;
+        this.coverageAmount = builder.coverageAmount;
     }
-
-    public String getInsuranceID() {
-        return carInsuranceID;
+    public String getInsuranceCompany() {
+        return insuranceCompany;
     }
-
-    public String getInsuranceName() {
-        return insuranceName;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
     public String getPolicyNumber() {
         return policyNumber;
     }
-
+    public String getCoverageType() {
+        return coverageType;
+    }
+    public String getCoverageAmount() {
+        return coverageAmount;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarInsurance that = (CarInsurance) o;
-        return Objects.equals(carInsuranceID, that.carInsuranceID) && Objects.equals(insuranceName, that.insuranceName) && Objects.equals(userID, that.userID) && Objects.equals(policyNumber, that.policyNumber);
+        return Objects.equals(insuranceCompany, that.insuranceCompany) &&
+                Objects.equals(policyNumber, that.policyNumber) &&
+                Objects.equals(coverageType, that.coverageType) &&
+                Objects.equals(coverageAmount, that.coverageAmount);
     }
-
     @Override
     public int hashCode() {
-        return Objects.hash(carInsuranceID, insuranceName, userID, policyNumber);
+        return Objects.hash(insuranceCompany, policyNumber, coverageType, coverageAmount);
     }
-
     @Override
     public String toString() {
         return "CarInsurance{" +
-                "carInsuranceID='" + carInsuranceID + '\'' +
-                ", insuranceName='" + insuranceName + '\'' +
-                ", userID='" + userID + '\'' +
+                "insuranceCompany='" + insuranceCompany + '\'' +
                 ", policyNumber='" + policyNumber + '\'' +
+                ", coverageType='" + coverageType + '\'' +
+                ", coverageAmount='" + coverageAmount + '\'' +
                 '}';
     }
-
-    public static class Builder{
-        private String carInsuranceID;
-        private String insuranceName;
-        private String userID;
+    public static class Builder {
+        private String insuranceCompany;
         private String policyNumber;
-
-
-    public Builder setCarInsuranceID(String carInsuranceID) {
-        this.carInsuranceID = carInsuranceID;
-        return this;
+        private String coverageType;
+        private String coverageAmount;
+        public Builder setInsuranceCompany(String insuranceCompany) {
+            this.insuranceCompany = insuranceCompany;
+            return this;
+        }
+        public Builder setPolicyNumber(String policyNumber) {
+            this.policyNumber = policyNumber;
+            return this;
+        }
+        public Builder setCoverageType(String coverageType) {
+            this.coverageType = coverageType;
+            return this;
+        }
+        public Builder setCoverageAmount(String coverageAmount) {
+            this.coverageAmount = coverageAmount;
+            return this;
+        }
+        public Builder copyCarInsurance(CarInsurance carInsurance) {
+            this.insuranceCompany = carInsurance.insuranceCompany;
+            this.policyNumber = carInsurance.policyNumber;
+            this.coverageType = carInsurance.coverageType;
+            this.coverageAmount = carInsurance.coverageAmount;
+            return this;
+        }
+        public CarInsurance buildCarInsurance() {
+            return new CarInsurance(this);
+        }
     }
-
-    public Builder setInsuranceName(String insuranceName) {
-        this.insuranceName = insuranceName;
-        return this;
-    }
-
-    public Builder setUserID(String userID) {
-        this.userID = userID;
-        return this;
-    }
-
-    public Builder setPolicyNumber(String policyNumber) {
-        this.policyNumber = policyNumber;
-        return this;
-    }
-
-    public Builder copy (CarInsurance carInsurance){
-        this.carInsuranceID = carInsurance.carInsuranceID;
-        this.insuranceName = carInsurance.insuranceName;
-        this.userID = carInsurance.userID;
-        this.policyNumber = carInsurance.policyNumber;
-        return this;
-    }
-    public CarInsurance build(){return new CarInsurance(this);}
- }
-
 }

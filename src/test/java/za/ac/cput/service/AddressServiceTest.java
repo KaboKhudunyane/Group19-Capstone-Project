@@ -1,81 +1,51 @@
 package za.ac.cput.service;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Configuration;
 import za.ac.cput.domain.Address;
-import za.ac.cput.repository.AddressRepository;
-
+import za.ac.cput.factory.AddressFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 
 @SpringBootTest
-@Configuration
-class AddressServiceTest  {
-    @Autowired
-    private AddressRepository addressRepository;
+class AddressServiceTest {
+
     @Autowired
     private AddressService addressService;
-    private Address address1, address2;
 
-    @BeforeEach
-    void setUp() {
-        address1 = new Address.Builder()
-                .setAddressId("A123")
-                .setUserId("U456")
-                .setStreetNumber(123)
-                .setStreetName("Main Street")
-                .setSuburb("Downtown")
-                .setPostalCode(12345)
-                .buildAddress();
-
-        address2 = new Address.Builder()
-                .setAddressId("A124")
-                .setUserId("U457")
-                .setStreetNumber(124)
-                .setStreetName("Second Street")
-                .setSuburb("Uptown")
-                .setPostalCode(54321)
-                .buildAddress();
-    }
+    private static Address address = AddressFactory.createAddress("123 Main St", "Suburbia", "Cityville", "State", "12345");
 
     @Test
     void create() {
-        Address created = addressService.create(address1);
-        assertNotNull(created);
-        assertEquals(address1, created);
+        Address createdAddress = addressService.create(address);
+        assertNotNull(createdAddress);
+        System.out.println("Created Address: " + createdAddress);
     }
 
     @Test
     void read() {
-        Address found = addressService.read(address1.getAddressId());
-        assertNotNull(found);
-        assertTrue(found.getAddressId().equals(address1.getAddressId()));
+        Address readAddress = addressService.read(address.getStreetName());
+        assertNotNull(readAddress);
+        System.out.println("Read Address: " + readAddress);
     }
 
     @Test
     void update() {
-        Address updated = addressService.update(address1);
-        assertNotNull(updated);
-        assertEquals(address1, updated);
+        Address newAddress = new Address.Builder()
+                .copyAddress(address)
+                .setCity("UpdatedCity")
+                .buildAddress();
+        Address updatedAddress = addressService.update(newAddress);
+        assertNotNull(updatedAddress);
+        System.out.println("Updated Address: " + updatedAddress);
     }
 
     @Test
     void delete() {
-        addressService.delete("A123");
+        addressService.delete(address.getStreetName());
+        Address deletedAddress = addressService.read(address.getStreetName());
+        assertNull(deletedAddress);
+        System.out.println("Address deleted successfully.");
     }
-
-   /*@Test
-    void getAllAddress() {
-        addressService.create(address1);
-        addressService.create(address2);
-        List<Address> addresses = addressService.getAllAddress();
-        assertNotNull(addresses);
-        assertEquals(2, addresses.size());
-    }*/
 }

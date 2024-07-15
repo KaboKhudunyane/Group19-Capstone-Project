@@ -7,10 +7,14 @@ import za.ac.cput.domain.Address;
 import java.util.List;
 
 @Repository
-public interface AddressRepository extends JpaRepository<Address, String> {
-    Address findByAddressId(String addressId);
+public interface AddressRepository extends JpaRepository<Address, Long> {
 
-    void deleteByAddressId(String addressId);
+    // Method to find an Address by street name
+    Address findByStreetName(String streetName);
 
-    //List<Address> getAllAddress();
+    // Method to delete an Address by street name
+    void deleteByStreetName(String streetName);
+
+    // Method to retrieve all addresses
+    List<Address> findAll();
 }

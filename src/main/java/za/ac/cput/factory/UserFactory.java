@@ -11,12 +11,10 @@ public class UserFactory {
     // Method to create a new User object with validation checks
     public static User createUser(String userID, Name name,
                                   Contact contact, Address address,
-                                  Boolean license, String role,
-                                  String picture, Boolean verified) {
+                                  Boolean license, String picture) {
 
         // Validate mandatory fields
         if(Helper.isNullOrEmpty(userID) ||
-                Helper.isNullOrEmpty(role) ||
                 Helper.isNullOrEmpty(picture)) {
             return null;  // Return null if any mandatory field is missing
         }
@@ -28,9 +26,7 @@ public class UserFactory {
                 .setContact(contact)
                 .setAddress(address)
                 .setLicense(license)
-                .setRole(role)
                 .setPicture(picture)
-                .setVerified(verified)
                 .buildUser();
     }
 }

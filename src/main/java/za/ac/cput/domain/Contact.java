@@ -1,11 +1,14 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Id;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class Contact implements Serializable {
+    @Id
     private String email;
     private String mobileNumber;
 
@@ -59,7 +62,11 @@ public class Contact implements Serializable {
             this.mobileNumber = mobileNumber;
             return this;
         }
-
+        public Contact.Builder copyContact(Contact contact) {
+            this.email = contact.email;
+            this.mobileNumber = contact.mobileNumber;
+            return this;
+        }
         public Contact buildContact() {
             return new Contact(this);
         }

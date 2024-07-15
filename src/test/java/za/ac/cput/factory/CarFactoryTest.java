@@ -4,37 +4,12 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.*;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class CarFactoryTest {
-    // Create a Name object for testing
-    Name name = new Name.Builder()
-            .setFirstName("John")
-            .setMiddleName("Fred")
-            .setLastName("Doe")
-            .buildName();
-
-    // Create a Contact object for testing
-    Contact contact = new Contact.Builder()
-            .setContactId("1")
-            .setEmail("john@example.com")
-            .setMobileNo(123456789)
-            .buildContact();
-
-    // Create an Address object for testing
-    Address address = new Address.Builder()
-            .setAddressId("1")
-            .setUserId("123")
-            .setStreetName("123 Main St")
-            .setSuburb("Springfield")
-            .setPostalCode(12345)
-            .buildAddress();
-
-    User user= new User.Builder().setUserID("fhf").setName(name).setContact(contact).setAddress(address)
-            .setLicense(true).setRole("admin").setPicture("pict").setVerified(true).buildUser();
 
     // Create a CarInformation object for testing
     CarInformation carInformation = new CarInformation.Builder()
-            .setCarInformationId("1")
             .setMake("Toyota")
             .setModel("Corolla")
             .setYear("2023")
@@ -43,22 +18,42 @@ public class CarFactoryTest {
             .setFeatures("Bluetooth, Backup Camera, Navigation System")
             .buildCarInformation();
 
-    // Create a car with valid parameters
-    Car car = CarFactory.createCar("123",
-            carInformation, "150",
-            "Available", "New");
-    @Test
-    public void testBuildCar(){
+    // Create a CarInsurance object for testing
+    CarInsurance carInsurance = new CarInsurance.Builder()
+            .setInsuranceCompany("Insurance Co.")
+            .setPolicyNumber("12345")
+            .setCoverageType("Comprehensive")
+            .setCoverageAmount("100000")
+            .buildCarInsurance();
 
+    @Test
+    public void testBuildCar() {
+        Car car = CarFactory.buildCar(carInformation, carInsurance, "150", "Available", "New");
         assertNotNull(car);  // Assert that the created Car object is not null
-        System.out.println(car);  // Print the created Car object
+        assertNotNull(car.getCarId());  // Assert that the carId is assigned (assuming it's auto-generated)
+        assertNotNull(car.getCarInsurance());  // Assert that the car has carInsurance set
+        System.out.println("Created car: " + car);  // Print the created Car object
     }
 
     @Test
-    public void testBuildCarWithFail(){
-        // Create a car with all null parameters so the factory returns null
-        Car car = CarFactory.createCar( null, null, null, null, null);
-        assertNotNull(car);  // This will fail because the factory should return null
-        System.out.println(car);  // Print the created Car object (should be null)
+    public void testBuildCarWithNullCarInformation() {
+        Car car = CarFactory.buildCar(null, carInsurance, "150", "Available", "New");
+        assertNull(car);  // Assert that the factory returns null when CarInformation is null
+        System.out.println("Created car with null CarInformation: " + car);  // Print the created Car object (should be null)
+    }
+
+    @Test
+    public void testBuildCarWithNullCarInsurance() {
+        Car car = CarFactory.buildCar(carInformation, null, "150", "Available", "New");
+        assertNotNull(car);  // Assert that the created Car object is not null
+        assertNull(car.getCarInsurance());  // Assert that the carInsurance is null when not provided
+        System.out.println("Created car with null CarInsurance: " + car);  // Print the created Car object
+    }
+
+    @Test
+    public void testBuildCarWithNullCarInformationAndCarInsurance() {
+        Car car = CarFactory.buildCar(null, null, "150", "Available", "New");
+        assertNull(car);  // Assert that the factory returns null when both CarInformation and CarInsurance are null
+        System.out.println("Created car with null CarInformation and CarInsurance: " + car);  // Print the created Car object (should be null)
     }
 }

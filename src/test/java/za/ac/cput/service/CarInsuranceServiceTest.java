@@ -1,22 +1,15 @@
 package za.ac.cput.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.CarInsurance;
-import java.util.List;
 import org.junit.jupiter.api.*;
 import za.ac.cput.factory.CarInsuranceFactory;
-import za.ac.cput.service.CarInsuranceService;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CarInsuranceServiceTest {
-
 
     @Autowired
     private CarInsuranceService carInsuranceService;
@@ -26,9 +19,9 @@ public class CarInsuranceServiceTest {
 
     @BeforeEach
     void setUp() {
-        carInsurance1 = CarInsuranceFactory.buildCarInsurance("Mv332", "D55", "Pmv6588", "Outsurance");
+        carInsurance1 = CarInsuranceFactory.buildCarInsurance("Outsurance", "POL12345", "Comprehensive", "100000");
         assertNotNull(carInsurance1);
-        carInsurance2 = CarInsuranceFactory.buildCarInsurance("zv332", "g55", "MMv6588", "Outsurance");
+        carInsurance2 = CarInsuranceFactory.buildCarInsurance("Outsurance", "POL67890", "Liability", "50000");
         assertNotNull(carInsurance2);
     }
 
@@ -38,35 +31,37 @@ public class CarInsuranceServiceTest {
         CarInsurance created1 = carInsuranceService.create(carInsurance1);
         assertNotNull(created1);
         System.out.println("Saved CarInsurance 1: " + created1);
+
         CarInsurance created2 = carInsuranceService.create(carInsurance2);
         assertNotNull(created2);
         System.out.println("Saved CarInsurance 2: " + created2);
     }
 
-   @Test
+    @Test
     @Order(2)
     void read() {
-        CarInsurance found = carInsuranceService.read(carInsurance1.getInsuranceID());
+        CarInsurance found = carInsuranceService.read(carInsurance1.getPolicyNumber());
         assertNotNull(found);
-        System.out.println("Read UserID: " + found);
+        System.out.println("Read CarInsurance: " + found);
     }
 
     @Test
     @Order(3)
     void delete() {
         carInsuranceService.delete(carInsurance2.getPolicyNumber());
-        System.out.println("Deleted PolicyNumber 1");
+        System.out.println("Deleted CarInsurance with PolicyNumber: " + carInsurance2.getPolicyNumber());
     }
 
-     @Test
+    @Test
     @Order(4)
-    void update(){
-        CarInsurance newCarInsurance = new CarInsurance.Builder().copy(carInsurance1).setUserID("Q88").build();
+    void update() {
+        CarInsurance newCarInsurance = new CarInsurance.Builder()
+                .copyCarInsurance(carInsurance1)
+                .setCoverageAmount("150000")
+                .buildCarInsurance();
 
         CarInsurance updatedCarInsurance = carInsuranceService.update(newCarInsurance);
         assertNotNull(updatedCarInsurance);
         System.out.println("Updated CarInsurance: " + updatedCarInsurance);
-
     }
-
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Address;
 import za.ac.cput.service.AddressService;
+
 import java.util.List;
 
 @RestController
@@ -14,32 +15,27 @@ public class AddressController {
     private AddressService addressService;
 
     @PostMapping("/save")
-    public Address save(@RequestBody Address address){
-
+    public Address save(@RequestBody Address address) {
         return addressService.create(address);
     }
 
-    @GetMapping("/read/{addressId}")
-    public Address read(@PathVariable String addressId){
-
-        return addressService.read(addressId);
+    @GetMapping("/read/{streetName}")
+    public Address read(@PathVariable String streetName) {
+        return addressService.read(streetName);
     }
 
     @PutMapping("/update")
-    public Address update(@RequestBody Address address){
-
+    public Address update(@RequestBody Address address) {
         return addressService.update(address);
     }
 
-    @DeleteMapping("/delete/{addressId}")
-    public void delete (@PathVariable String addressId){
-
-        addressService.delete(addressId);
+    @DeleteMapping("/delete/{streetName}")
+    public void delete(@PathVariable String streetName) {
+        addressService.delete(streetName);
     }
 
-    /*@GetMapping("/getAll")
-    public List<Address> getAllAddress(){
-
-        return addressService.getAllAddress();
-    }*/
+    @GetMapping("/getAllAddresses")
+    public List<Address> getAllAddresses() {
+        return addressService.getAllAddresses();
+    }
 }

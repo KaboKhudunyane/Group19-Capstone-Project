@@ -5,22 +5,26 @@ import za.ac.cput.util.Helper;
 
 public class AddressFactory {
 
-    public static Address createAddress(String addressId, String userId, String streetName, String suburb, int postalCode) {
-        if (Helper.isNullOrEmpty(addressId)||
-                Helper.isNullOrEmpty(userId)||
-                Helper.isNullOrEmpty(streetName)||
-                Helper.isNullOrEmpty(suburb)||
-                postalCode < 0) {
-           // throw new IllegalArgumentException("Invalid address ID");
-            return null;
+    // Method to create a new Address object with validation checks
+    public static Address createAddress(String streetName, String suburb,
+                                        String city, String state, String zipCode) {
+
+        // Validate mandatory fields
+        if(Helper.isNullOrEmpty(streetName) ||
+                Helper.isNullOrEmpty(suburb) ||
+                Helper.isNullOrEmpty(city) ||
+                Helper.isNullOrEmpty(state) ||
+                Helper.isNullOrEmpty(zipCode)) {
+            return null;  // Return null if any mandatory field is missing
         }
+
+        // Create and return a new Address object using the Builder pattern
         return new Address.Builder()
-                .setAddressId(addressId)
-                .setUserId(userId)
                 .setStreetName(streetName)
                 .setSuburb(suburb)
-                .setPostalCode(postalCode)
+                .setCity(city)
+                .setState(state)
+                .setZipCode(zipCode)
                 .buildAddress();
     }
 }
-

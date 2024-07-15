@@ -31,7 +31,7 @@ public class UserService implements IService<User, String> {
         userRepository.deleteByUserID(userID);
     }
     // Method to get all users
-    /*public List<User> getAllUsers() {
-        return userRepository.getAllUsers();
-    }*/
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 }

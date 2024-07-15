@@ -1,4 +1,4 @@
-package za.ac.cput.Controller;
+package za.ac.cput.controller;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;

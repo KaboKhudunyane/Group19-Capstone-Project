@@ -1,18 +1,22 @@
 package za.ac.cput.factory;
+
 import za.ac.cput.domain.Contact;
 import za.ac.cput.util.Helper;
+
 public class ContactFactory {
 
-    public static Contact createContact(String contactId, String email, int mobileNo) {
-        if (Helper.isNullOrEmpty(contactId)||
-                Helper.isNullOrEmpty(email)||
-                mobileNo < 0) {
-          return null;
+    // Method to create a new Contact object with validation checks
+    public static Contact createContact(String email, String mobileNumber) {
+
+        // Validate mandatory fields
+        if(Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(mobileNumber)) {
+            return null;  // Return null if any mandatory field is missing
         }
+
+        // Create and return a new Contact object using the Builder pattern
         return new Contact.Builder()
-                .setContactId(contactId)
                 .setEmail(email)
-                .setMobileNo(mobileNo)
+                .setMobileNumber(mobileNumber)
                 .buildContact();
     }
 }

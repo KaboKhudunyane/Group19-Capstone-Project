@@ -2,26 +2,26 @@ package za.ac.cput.factory;
 
 import za.ac.cput.domain.Car;
 import za.ac.cput.domain.CarInformation;
-import za.ac.cput.domain.User;
+import za.ac.cput.domain.CarInsurance;
 import za.ac.cput.util.Helper;
 
 public class CarFactory {
-    public static Car createCar(String carID,CarInformation carInformation,
-                                String rate, String availability, String status) {
 
-        if (Helper.isNullOrEmpty(carID) ||
-                Helper.isNullOrEmpty(rate) ||
-                Helper.isNullOrEmpty(availability) ||
-                Helper.isNullOrEmpty(status)) {
-            return null;
+    public static Car buildCar(CarInformation carInformation, CarInsurance carInsurance,
+                               String rentalRate, String availabilityStatus, byte[] carPicture) {
+        // Validate inputs
+        if (carInformation == null || carInsurance == null ||
+                Helper.isNullOrEmpty(rentalRate) || Helper.isNullOrEmpty(availabilityStatus)) {
+            return null; // If any required field is null or empty, return null
         }
 
+        // If inputs are valid, use the Builder pattern to create a Car object
         return new Car.Builder()
-                .setCarID(carID)
                 .setCarInformation(carInformation)
-                .setRate(rate)
-                .setAvailability(availability)
-                .setStatus(status)
+                .setCarInsurance(carInsurance)
+                .setRentalRate(rentalRate)
+                .setAvailabilityStatus(availabilityStatus)
+                .setCarPicture(carPicture)
                 .buildCar();
     }
 }

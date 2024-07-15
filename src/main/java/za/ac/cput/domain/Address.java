@@ -1,11 +1,14 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Id;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class Address implements Serializable {
+    @Id
     private String streetName;
     private String suburb;
     private String city;
