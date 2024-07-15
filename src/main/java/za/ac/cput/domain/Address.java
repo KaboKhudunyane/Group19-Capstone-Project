@@ -1,110 +1,118 @@
 package za.ac.cput.domain;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
+import jakarta.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Objects;
-@Entity
-public class Address {
-    @Id
-    private String addressId;
-    private String userId;
+
+@Embeddable
+public class Address implements Serializable {
     private String streetName;
     private String suburb;
-    private int postalCode;
+    private String city;
+    private String state;
+    private String zipCode;
+
     protected Address() {}
+
     private Address(Builder builder) {
-        this.addressId = builder.addressId;
-        this.userId = builder.userId;
-        //this.streetNumber = builder.streetNumber;
         this.streetName = builder.streetName;
         this.suburb = builder.suburb;
-        this.postalCode = builder.postalCode;
+        this.city = builder.city;
+        this.state = builder.state;
+        this.zipCode = builder.zipCode;
     }
-    public String getAddressId() {
-        return addressId;
-    }
-    public String getUserId() {
-        return userId;
-    }
+
     public String getStreetName() {
         return streetName;
     }
+
     public String getSuburb() {
         return suburb;
     }
-    public int getPostalCode() {
-        return postalCode;
+
+    public String getCity() {
+        return city;
     }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Address address = (Address) obj;
-        return
-                postalCode == address.postalCode &&
-                Objects.equals(addressId, address.addressId) &&
-                Objects.equals(userId, address.userId) &&
-                Objects.equals(streetName, address.streetName) &&
-                Objects.equals(suburb, address.suburb);
+        return Objects.equals(streetName, address.streetName) &&
+                Objects.equals(suburb, address.suburb) &&
+                Objects.equals(city, address.city) &&
+                Objects.equals(state, address.state) &&
+                Objects.equals(zipCode, address.zipCode);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(addressId, userId, streetName, suburb, postalCode);
+        return Objects.hash(streetName, suburb, city, state, zipCode);
     }
+
     @Override
     public String toString() {
         return "Address{" +
-                "addressId='" + addressId + '\'' +
-                ", userId='" + userId + '\'' +
-                ", streetName='" + streetName + '\'' +
+                "streetName='" + streetName + '\'' +
                 ", suburb='" + suburb + '\'' +
-                ", postalCode=" + postalCode +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode='" + zipCode + '\'' +
                 '}';
     }
 
     public static class Builder {
-        private String addressId;
-        private String userId;
-        private int streetNumber;
         private String streetName;
         private String suburb;
-        private int postalCode;
+        private String city;
+        private String state;
+        private String zipCode;
 
-        public Builder setAddressId(String addressId) {
-            this.addressId = addressId;
-            return this;
-        }
-        public Builder setUserId(String userId) {
-            this.userId = userId;
-            return this;
-        }
-        public Builder setStreetNumber(int streetNumber) {
-            this.streetNumber = streetNumber;
-            return this;
-        }
         public Builder setStreetName(String streetName) {
             this.streetName = streetName;
             return this;
         }
+
         public Builder setSuburb(String suburb) {
             this.suburb = suburb;
             return this;
         }
-        public Builder setPostalCode(int postalCode) {
-            this.postalCode = postalCode;
+
+        public Builder setCity(String city) {
+            this.city = city;
             return this;
         }
+
+        public Builder setState(String state) {
+            this.state = state;
+            return this;
+        }
+
+        public Builder setZipCode(String zipCode) {
+            this.zipCode = zipCode;
+            return this;
+        }
+
         public Builder copyAddress(Address address) {
-            this.addressId = address.addressId;
-            this.userId = address.userId;
             this.streetName = address.streetName;
             this.suburb = address.suburb;
-            this.postalCode = address.postalCode;
+            this.city = address.city;
+            this.state = address.state;
+            this.zipCode = address.zipCode;
             return this;
         }
+
         public Address buildAddress() {
             return new Address(this);
         }
     }
 }
-
