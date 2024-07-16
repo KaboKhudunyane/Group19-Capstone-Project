@@ -22,15 +22,15 @@ public class CarInsuranceService implements IService<CarInsurance, String>{
         return carInsuranceRepository.save(carInsurance);
     }
     @Override
-    public CarInsurance read(String carInsuranceId) {
-        return carInsuranceRepository.findByCarInsuranceID(carInsuranceId);
+    public CarInsurance read(String insuranceCompany) {
+        return carInsuranceRepository.findByInsuranceCompany(insuranceCompany);
     }
     @Override
     public CarInsurance update(CarInsurance carInsurance){
         return carInsuranceRepository.save(carInsurance);
     }
-    public void delete(String carInsuranceId) {
-        carInsuranceRepository.deleteByCarInsuranceID(carInsuranceId);
+    public void delete(String insuranceCompany) {
+        carInsuranceRepository.deleteByInsuranceCompany(insuranceCompany);
     }
     /*public List<CarInsurance> getAllCarInsurances () {
         return carInsuranceRepository.getAllCarInsurances();
