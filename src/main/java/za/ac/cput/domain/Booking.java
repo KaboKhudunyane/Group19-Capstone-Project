@@ -1,20 +1,19 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 @Entity
 public class Booking {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String bookingId;
+    @OneToOne
+    private Car car;
     private String startDate;
     private String returnDate;
     private String pickUpLocation;
     private String dropOffLocation;
-    @ManyToOne
-    private CarInformation carInformation;
 
     private String status;
 
@@ -26,11 +25,11 @@ public class Booking {
 
     private Booking(Builder builder){
         this.bookingId = builder.bookingId;
+        this.car = builder.car;
         this.startDate = builder.startDate;
         this.returnDate = builder.returnDate;
         this.pickUpLocation= builder.pickUpLocation;
         this.dropOffLocation = builder.dropOffLocation;
-        this.carInformation = builder.carInformation;
         this.status = builder.status;
         this.totalPrice = builder.totalPrice;
 
@@ -56,8 +55,8 @@ public class Booking {
         return dropOffLocation;
     }
 
-    public CarInformation getCarInformation() {
-        return carInformation;
+    public Car getCar() {
+        return car;
     }
 
     public String getStatus() {
@@ -73,12 +72,12 @@ public class Booking {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return Double.compare(totalPrice, booking.totalPrice) == 0 && Objects.equals(bookingId, booking.bookingId) && Objects.equals(startDate, booking.startDate) && Objects.equals(returnDate, booking.returnDate) && Objects.equals(pickUpLocation, booking.pickUpLocation) && Objects.equals(dropOffLocation, booking.dropOffLocation) && Objects.equals(carInformation, booking.carInformation) && Objects.equals(status, booking.status);
+        return Double.compare(totalPrice, booking.totalPrice) == 0 && Objects.equals(bookingId, booking.bookingId) && Objects.equals(car, booking.car) && Objects.equals(startDate, booking.startDate) && Objects.equals(returnDate, booking.returnDate) && Objects.equals(pickUpLocation, booking.pickUpLocation) && Objects.equals(dropOffLocation, booking.dropOffLocation) && Objects.equals(status, booking.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookingId, startDate, returnDate, pickUpLocation, dropOffLocation, carInformation, status, totalPrice);
+        return Objects.hash(bookingId, car, startDate, returnDate, pickUpLocation, dropOffLocation, status, totalPrice);
     }
 
     @Override
@@ -89,7 +88,7 @@ public class Booking {
                 ", returnDate='" + returnDate + '\'' +
                 ", pickUpLocation='" + pickUpLocation + '\'' +
                 ", dropOffLocation='" + dropOffLocation + '\'' +
-                ", carInformation=" + carInformation +
+                ", carInformation=" + car +
                 ", status='" + status + '\'' +
                 ", totalPrice=" + totalPrice +
                 '}';
@@ -97,13 +96,14 @@ public class Booking {
 
     public static class Builder {
         private String bookingId;
+        private Car car;
         private String startDate;
         private String returnDate;
 
         private String pickUpLocation;
 
         private String dropOffLocation;
-        private CarInformation carInformation;
+
         private String status;
         private double totalPrice;
 
@@ -133,8 +133,8 @@ public class Booking {
 
         }
 
-        public Builder setCarInformation(CarInformation carInformation) {
-            this.carInformation = carInformation;
+        public Builder setCar(Car car) {
+            this.car = car;
             return this;
         }
 
@@ -150,11 +150,11 @@ public class Booking {
 
         public Builder copy(Booking booking){
             this.bookingId = booking.bookingId;
+            this.car = booking.car;
             this.startDate = booking.startDate;
             this.returnDate = booking.returnDate;
             this.pickUpLocation= booking.pickUpLocation;
             this.dropOffLocation = booking.dropOffLocation;
-            this.carInformation = booking.carInformation;
             this.status = booking.status;
             this.totalPrice = booking.totalPrice;
 
