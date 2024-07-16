@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public interface CarInsuranceRepository extends JpaRepository<CarInsurance, String> {
-    CarInsurance findByCarInsuranceID(String carInsuranceID);
+    CarInsurance findByInsuranceCompany(String insuranceCompany);
 
-    void deleteByCarInsuranceID(String carInsuranceID);
+    void deleteByInsuranceCompany(String insuranceCompany);
 
     //List<CarInsurance> getAllCarInsurances();
 }
