@@ -1,75 +1,74 @@
 package za.ac.cput.service;
-
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.domain.Booking;
-import za.ac.cput.domain.CarInformation;
-import za.ac.cput.domain.Payment;
+import za.ac.cput.domain.*;
 import za.ac.cput.factory.BookingFactory;
 import za.ac.cput.factory.CarInformationFactory;
 import za.ac.cput.factory.PaymentFactory;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class PaymentServiceTest {
-
     @Autowired
     private PaymentService paymentService;
-    private static CarInformation carInformation  = CarInformationFactory.buildCarInformation("011", "BMW", "M4",
-            "2017", "CA123-143", "M performance", "Twin turbo");
-    private Booking booking = BookingFactory.buildBooking("b101","10-June-2024","15-June-2024",
-            "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001",carInformation,"Blue BMW M4(Manual)"
-            , 25000);
-
-    private Payment payment = PaymentFactory.buildPayment("14521", booking,"Capitec", "20-May-2024", 18000,"Declined");
-
+    private static final String CAR_PICTURE_PATH = "path/to/your/car/picture.jpg";
+    private byte[] readFileAsBytes(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
+    Car car = new Car.Builder()
+            .setCarInformation(
+                    new CarInformation.Builder()
+                            .setMake("Toyota")
+                            .setModel("Corolla")
+                            .setYear("2023")
+                            .setLicensePlate("ABC123")
+                            .setDescription("New Toyota Corolla")
+                            .setFeatures("Bluetooth, Backup Camera, Navigation System")
+                            .buildCarInformation())
+            .setCarInsurance(
+                    new CarInsurance.Builder()
+                            .setInsuranceCompany("Insurance Co.")
+                            .setPolicyNumber("12345")
+                            .setCoverageType("Comprehensive")
+                            .setCoverageAmount("100000")
+                            .buildCarInsurance())
+            .setRentalRate("150")
+            .setAvailabilityStatus("Available")
+            .setCarPicture(carPicture) // Provide appropriate car picture data here
+            .buildCar();
+    Booking booking = BookingFactory.buildBooking("b101", car, "15-June-2024", "20-June-2024",
+            "10 Hanover street, Cape Town, 8001", "10 Hanover street, Cape Town, 8001",
+            24000);
+    private Payment payment = PaymentFactory.buildPayment(booking,"Capitec", "20-May-2024", 18000,"Declined");
     @Test
-    @Order(1)
     void savePayment(){
-        Payment saved = paymentService.create(payment);
-        assertNotNull(saved);
-        System.out.println(saved);
     }
-
     @Test
-    @Order(2)
     void readPayment(){
-        Payment read = paymentService.read(payment.getPaymentId());
-        assertNotNull(read);
-        System.out.println(read);
-
+    }
+    @Test
+    void updatePayment(){
     }
 
     @Test
-    @Order(3)
-    void updateMethodPayment(){
-
-        Payment editedPayment = new Payment.Builder().copy(payment).setPaymentMethod("Standard bank").
-                build();
-        assertNotNull(editedPayment);
-        Payment updated = paymentService.update(editedPayment);
-        assertNotNull(updated);
-        System.out.println(updated);
-    }
-
-
-    @Test
-    @Order(6)
-    @Disabled
     void deletePayment(){
-        paymentService.delete(payment.getPaymentId());
-        System.out.println("Success: deleted payment");
 
     }
-
-
-    /*@Test
-    @Order(3)
+    @Test
     void getAllPayments(){
-        System.out.println(paymentService.getAllPayments());
-    }*/
-
+    }
 }

@@ -14,10 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class UserServiceTest {
-
     @Autowired
     private UserService userService;
-
     private static Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     private static Contact contact = ContactFactory.createContact("123" ,"216273293@mycput.ac.za");
     private static Address address = AddressFactory.createAddress("1", "216273293", "123 Street", "City", "7441");
@@ -37,7 +35,7 @@ class UserServiceTest {
     }
     @Test
     void update(){
-        User newUser = new User.Builder().copyUser(user).setUserID("222273293").buildUser();
+        User newUser = new User.Builder().copyUser(user).setLicense(false).buildUser();
         User updatedUser = userService.update(newUser);
         assertNotNull(updatedUser);
         System.out.println("Updated User: " + updatedUser);

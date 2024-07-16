@@ -1,41 +1,37 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.util.Objects;
+
 @Entity
 public class Payment {
     @Id
-    private String paymentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long paymentID; // Changed to Long for auto-generated ID
     @ManyToOne
-    private Booking bookingInfo;
+    private Booking booking;
     private String paymentMethod;
     private String paymentDate;
     private double amountCharged;
     private String paymentStatus;
 
+    protected Payment() {}
 
-    protected Payment(){
-
-    }
-
-    private Payment(Builder builder){
-        this.paymentId = builder.paymentId;
-        this.bookingInfo = builder.bookingInfo;
+    private Payment(Builder builder) {
+        this.booking = builder.booking;
         this.paymentMethod = builder.paymentMethod;
         this.paymentDate = builder.paymentDate;
         this.amountCharged = builder.amountCharged;
         this.paymentStatus = builder.paymentStatus;
     }
 
-    public String getPaymentId() {
-        return paymentId;
+    public Long getPaymentID() {
+        return paymentID;
     }
 
-    public Booking getBookingInfo() {
-        return bookingInfo;
+    public Booking getBooking() {
+        return booking;
     }
 
     public String getPaymentMethod() {
@@ -59,19 +55,24 @@ public class Payment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Payment payment = (Payment) o;
-        return Double.compare(amountCharged, payment.amountCharged) == 0 && Objects.equals(paymentId, payment.paymentId) && Objects.equals(bookingInfo, payment.bookingInfo) && Objects.equals(paymentMethod, payment.paymentMethod) && Objects.equals(paymentDate, payment.paymentDate) && Objects.equals(paymentStatus, payment.paymentStatus);
+        return Double.compare(payment.amountCharged, amountCharged) == 0 &&
+                Objects.equals(paymentID, payment.paymentID) &&
+                Objects.equals(booking, payment.booking) &&
+                Objects.equals(paymentMethod, payment.paymentMethod) &&
+                Objects.equals(paymentDate, payment.paymentDate) &&
+                Objects.equals(paymentStatus, payment.paymentStatus);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(paymentId, bookingInfo, paymentMethod, paymentDate, amountCharged, paymentStatus);
+        return Objects.hash(paymentID, booking, paymentMethod, paymentDate, amountCharged, paymentStatus);
     }
 
     @Override
     public String toString() {
         return "Payment{" +
-                "paymentId='" + paymentId + '\'' +
-                ", bookingInfo=" + bookingInfo +
+                "paymentID=" + paymentID +
+                ", booking=" + booking +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", paymentDate='" + paymentDate + '\'' +
                 ", amountCharged=" + amountCharged +
@@ -79,51 +80,40 @@ public class Payment {
                 '}';
     }
 
-    public static class Builder{
-        private String paymentId;
+    public static class Builder {
+        private Booking booking;
         private String paymentMethod;
-        private Booking bookingInfo;
         private String paymentDate;
         private double amountCharged;
         private String paymentStatus;
 
-        public Builder setPaymentId(String paymentId) {
-            this.paymentId = paymentId;
-            return this;
-        }
-
-        public Builder setBookingInfo(Booking bookingInfo) {
-            this.bookingInfo = bookingInfo;
+        public Builder setBooking(Booking booking) {
+            this.booking = booking;
             return this;
         }
 
         public Builder setPaymentMethod(String paymentMethod) {
             this.paymentMethod = paymentMethod;
             return this;
-
         }
 
         public Builder setPaymentDate(String paymentDate) {
             this.paymentDate = paymentDate;
             return this;
-
         }
-
 
         public Builder setAmountCharged(double amountCharged) {
             this.amountCharged = amountCharged;
             return this;
-
         }
 
         public Builder setPaymentStatus(String paymentStatus) {
             this.paymentStatus = paymentStatus;
             return this;
-
         }
-        public Builder copy(Payment payment){
-            this.paymentId = payment.paymentId;
-            this.bookingInfo = payment.bookingInfo;
+
+        public Builder copyPayment(Payment payment) {
+            this.booking = payment.booking;
             this.paymentMethod = payment.paymentMethod;
             this.paymentDate = payment.paymentDate;
             this.amountCharged = payment.amountCharged;
@@ -131,9 +121,8 @@ public class Payment {
             return this;
         }
 
-        public Payment build(){
+        public Payment buildPayment() {
             return new Payment(this);
         }
     }
-
 }

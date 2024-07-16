@@ -19,23 +19,19 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BookingControllerTest {
+
     @Autowired
     private TestRestTemplate restTemplate;
 
     private final String BASE_URL = "http://localhost:8080/Group19-Capstone-Project/booking";
     private static CarInformation carInformation;
-
     private static Booking booking;
-
-
 
     @BeforeAll
     public static void setup() {
-
         carInformation = CarInformationFactory.buildCarInformation("011", "BMW", "M4", "2017", "CA 123-456", "It is an M-performance", "800hps, twin turbo Injector");
-        booking = BookingFactory.buildBooking("b111", "10-June-2024","15-June-2024",
-                "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001",carInformation,"Approved"
-                , 25000);
+        booking = BookingFactory.buildBooking("b111", carInformation, "10-June-2024", "15-June-2024",
+                "11 Lowry Street, Cape Town, 8001", "10 Dorset Street, Cape Town, 8001", 25000);
     }
 
     @Test
@@ -55,26 +51,17 @@ class BookingControllerTest {
     @Order(2)
     void read() {
         String url = BASE_URL + "/read/" + booking.getBookingId();
-        System.out.println("URL" + url);
+        System.out.println("URL: " + url);
         ResponseEntity<Booking> response = restTemplate.getForEntity(url, Booking.class);
         assertEquals(booking.getBookingId(), response.getBody().getBookingId());
         System.out.println("Read: " + response.getBody());
     }
 
-
     @Test
     void getAllBooking() {
         String url = BASE_URL + "/getAllBooking";
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
         System.out.println("Show ALL: ");
-        System.out.println(response);
         System.out.println(response.getBody());
     }
 }
-
-
-
-
-

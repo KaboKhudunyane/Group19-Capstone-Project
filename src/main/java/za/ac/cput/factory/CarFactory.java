@@ -21,7 +21,7 @@ public class CarFactory {
                 .setCarInsurance(carInsurance)
                 .setRentalRate(rentalRate)
                 .setAvailabilityStatus(availabilityStatus)
-                .setCarPicture(carPicture)
+                .setCarPicture(carPicture) // Set the byte array representing the picture
                 .buildCar();
     }
 }

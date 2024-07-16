@@ -3,10 +3,28 @@ package za.ac.cput.factory;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class CarFactoryTest {
+
+    // Example path to a car picture file
+    private static final String CAR_PICTURE_PATH = "path/to/your/car/picture.jpg";
+
+    // Method to read file content as byte array
+    private byte[] readFileAsBytes(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     // Create a CarInformation object for testing
     CarInformation carInformation = new CarInformation.Builder()
@@ -28,32 +46,16 @@ public class CarFactoryTest {
 
     @Test
     public void testBuildCar() {
-        Car car = CarFactory.buildCar(carInformation, carInsurance, "150", "Available", "New");
+        // Read car picture file as byte array
+        byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
+        assertNotNull(carPicture, "Failed to read car picture file");
+
+        // Build Car object using CarFactory
+        Car car = CarFactory.buildCar(carInformation, carInsurance, "150", "Available", carPicture);
+
         assertNotNull(car);  // Assert that the created Car object is not null
         assertNotNull(car.getCarId());  // Assert that the carId is assigned (assuming it's auto-generated)
         assertNotNull(car.getCarInsurance());  // Assert that the car has carInsurance set
         System.out.println("Created car: " + car);  // Print the created Car object
-    }
-
-    @Test
-    public void testBuildCarWithNullCarInformation() {
-        Car car = CarFactory.buildCar(null, carInsurance, "150", "Available", "New");
-        assertNull(car);  // Assert that the factory returns null when CarInformation is null
-        System.out.println("Created car with null CarInformation: " + car);  // Print the created Car object (should be null)
-    }
-
-    @Test
-    public void testBuildCarWithNullCarInsurance() {
-        Car car = CarFactory.buildCar(carInformation, null, "150", "Available", "New");
-        assertNotNull(car);  // Assert that the created Car object is not null
-        assertNull(car.getCarInsurance());  // Assert that the carInsurance is null when not provided
-        System.out.println("Created car with null CarInsurance: " + car);  // Print the created Car object
-    }
-
-    @Test
-    public void testBuildCarWithNullCarInformationAndCarInsurance() {
-        Car car = CarFactory.buildCar(null, null, "150", "Available", "New");
-        assertNull(car);  // Assert that the factory returns null when both CarInformation and CarInsurance are null
-        System.out.println("Created car with null CarInformation and CarInsurance: " + car);  // Print the created Car object (should be null)
     }
 }

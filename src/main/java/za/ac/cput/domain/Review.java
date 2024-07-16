@@ -1,37 +1,41 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
+@Table(name = "Reviews")
 public class Review {
     @Id
-    private String reviewId;
-    private String bookingId;
-    private double rating;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long reviewID; // Renamed from 'id' to 'reviewID'
+
+    @ManyToOne
+    private Booking booking;
+    private int rating;
     private String comment;
-    private String date;
+    private LocalDate reviewDate;
 
     protected Review() {}
 
     private Review(Builder builder) {
-        this.reviewId = builder.reviewId;
-        this.bookingId = builder.bookingId;
+        this.booking = builder.booking;
         this.rating = builder.rating;
         this.comment = builder.comment;
-        this.date = builder.date;
+        this.reviewDate = builder.reviewDate;
     }
 
-    public String getReviewId() {
-        return reviewId;
+    public Long getReviewID() {
+        return reviewID;
+    } // Getter for 'reviewID'
+
+    public Booking getBooking() {
+        return booking;
     }
 
-    public String getBookingId() {
-        return bookingId;
-    }
-
-    public double getRating() {
+    public int getRating() {
         return rating;
     }
 
@@ -39,8 +43,8 @@ public class Review {
         return comment;
     }
 
-    public String getDate() {
-        return date;
+    public LocalDate getReviewDate() {
+        return reviewDate;
     }
 
     @Override
@@ -48,47 +52,41 @@ public class Review {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Review review = (Review) o;
-        return Double.compare(review.rating, rating) == 0 &&
-                Objects.equals(reviewId, review.reviewId) &&
-                Objects.equals(bookingId, review.bookingId) &&
+        return rating == review.rating &&
+                Objects.equals(reviewID, review.reviewID) &&
+                Objects.equals(booking, review.booking) &&
                 Objects.equals(comment, review.comment) &&
-                Objects.equals(date, review.date);
+                Objects.equals(reviewDate, review.reviewDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reviewId, bookingId, rating, comment, date);
+        return Objects.hash(reviewID, booking, rating, comment, reviewDate);
     }
 
     @Override
     public String toString() {
         return "Review{" +
-                "reviewId='" + reviewId + '\'' +
-                ", bookingId='" + bookingId + '\'' +
+                "reviewID=" + reviewID +
+                ", booking=" + booking +
                 ", rating=" + rating +
                 ", comment='" + comment + '\'' +
-                ", date='" + date + '\'' +
+                ", reviewDate=" + reviewDate +
                 '}';
     }
 
     public static class Builder {
-        private String reviewId;
-        private String bookingId;
-        private double rating;
+        private Booking booking;
+        private int rating;
         private String comment;
-        private String date;
+        private LocalDate reviewDate;
 
-        public Builder setReviewId(String reviewId) {
-            this.reviewId = reviewId;
+        public Builder setBooking(Booking booking) {
+            this.booking = booking;
             return this;
         }
 
-        public Builder setBookingId(String bookingId) {
-            this.bookingId = bookingId;
-            return this;
-        }
-
-        public Builder setRating(double rating) {
+        public Builder setRating(int rating) {
             this.rating = rating;
             return this;
         }
@@ -98,17 +96,16 @@ public class Review {
             return this;
         }
 
-        public Builder setDate(String date) {
-            this.date = date;
+        public Builder setReviewDate(LocalDate reviewDate) {
+            this.reviewDate = reviewDate;
             return this;
         }
 
         public Builder copyReview(Review review) {
-            this.reviewId = review.reviewId;
-            this.bookingId = review.bookingId;
+            this.booking = review.booking;
             this.rating = review.rating;
             this.comment = review.comment;
-            this.date = review.date;
+            this.reviewDate = review.reviewDate;
             return this;
         }
 
@@ -117,4 +114,3 @@ public class Review {
         }
     }
 }
-

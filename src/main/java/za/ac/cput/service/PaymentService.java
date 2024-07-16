@@ -1,44 +1,38 @@
 package za.ac.cput.service;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Payment;
+import za.ac.cput.domain.Review;
 import za.ac.cput.repository.BookingRepository;
 import za.ac.cput.repository.PaymentRepository;
+import za.ac.cput.repository.ReviewRepository;
 
 import java.util.List;
 @Service
-public class PaymentService  implements IService<Payment, String> {
-    private BookingRepository bookingRepository;
-    private PaymentRepository paymentRepository;
-
+public class PaymentService  implements IService<Payment, Long> {
+    private final PaymentRepository repository;
     @Autowired
-    PaymentService(BookingRepository bookingRepository, PaymentRepository paymentRepository){
-        this.bookingRepository = bookingRepository;
-        this.paymentRepository = paymentRepository;
+    public PaymentService(PaymentRepository repository) {
+        this.repository = repository;
     }
     @Override
     public Payment create(Payment payment) {
-        bookingRepository.save(payment.getBookingInfo());
-        return paymentRepository.save(payment);
+        return repository.save(payment);
     }
     @Override
-    public Payment read(String paymentId) {
-        return paymentRepository.findByPaymentId(paymentId);
+    public Payment read(Long paymentID) {
+        return repository.findByPaymentID(paymentID);
     }
     @Override
     public Payment update(Payment payment) {
-
-        return paymentRepository.save(payment);
+        return repository.save(payment);
     }
-
-    public void delete(String paymentId){
-
-        this.paymentRepository.deleteByPaymentId(paymentId);
+    @Override
+    public void delete(Long paymentID) {
+        repository.deleteByPaymentID(paymentID);
     }
-
-    /*public List<Payment> getAllPayments() {
-
-        return paymentRepository.getAllPayments();
-    }*/
+    @Override
+    public List<Payment> getAll() {
+        return repository.findAll();
+    }
 }
