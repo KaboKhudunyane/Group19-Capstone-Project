@@ -28,7 +28,7 @@ public class CarFactoryTest {
 
     @Test
     public void testBuildCar() {
-        Car car = CarFactory.buildCar(carInformation, carInsurance, "150", "Available", "New");
+        Car car = CarFactory.buildCar(carInformation, carInsurance, "150", "Available", "New".getBytes());
         assertNotNull(car);  // Assert that the created Car object is not null
         assertNotNull(car.getCarId());  // Assert that the carId is assigned (assuming it's auto-generated)
         assertNotNull(car.getCarInsurance());  // Assert that the car has carInsurance set
@@ -37,14 +37,14 @@ public class CarFactoryTest {
 
     @Test
     public void testBuildCarWithNullCarInformation() {
-        Car car = CarFactory.buildCar(null, carInsurance, "150", "Available", "New");
+        Car car = CarFactory.buildCar(null, carInsurance, "150", "Available", "New".getBytes());
         assertNull(car);  // Assert that the factory returns null when CarInformation is null
         System.out.println("Created car with null CarInformation: " + car);  // Print the created Car object (should be null)
     }
 
     @Test
     public void testBuildCarWithNullCarInsurance() {
-        Car car = CarFactory.buildCar(carInformation, null, "150", "Available", "New");
+        Car car = CarFactory.buildCar(carInformation, null, "150", "Available", "New".getBytes());
         assertNotNull(car);  // Assert that the created Car object is not null
         assertNull(car.getCarInsurance());  // Assert that the carInsurance is null when not provided
         System.out.println("Created car with null CarInsurance: " + car);  // Print the created Car object
@@ -52,7 +52,7 @@ public class CarFactoryTest {
 
     @Test
     public void testBuildCarWithNullCarInformationAndCarInsurance() {
-        Car car = CarFactory.buildCar(null, null, "150", "Available", "New");
+        Car car = CarFactory.buildCar(null, null, "150", "Available", "New".getBytes());
         assertNull(car);  // Assert that the factory returns null when both CarInformation and CarInsurance are null
         System.out.println("Created car with null CarInformation and CarInsurance: " + car);  // Print the created Car object (should be null)
     }
