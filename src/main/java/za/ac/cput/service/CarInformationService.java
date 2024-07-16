@@ -18,12 +18,12 @@ public class CarInformationService implements IService<CarInformation, String> {
     }
 
     @Override
-    public CarInformation read(String carInformationId) {
-        return carInformationRepository.findByCarInformationId(carInformationId);
+    public CarInformation read(String make) {
+        return carInformationRepository.findByMake(make);
     }
 
-    public void delete(String carInformationId) {
-        CarInformation carInformation = carInformationRepository.findByCarInformationId(carInformationId);
+    public void delete(String make) {
+        CarInformation carInformation = carInformationRepository.findByMake(make);
         if (carInformation != null) {
             carInformationRepository.delete(carInformation);
         }
