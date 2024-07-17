@@ -56,7 +56,7 @@ class CarControllerTest {
         // Assuming read() test has run successfully and retrievedCar is populated with correct data
         Car updatedCar = restTemplate.getForObject(BASE_URL + "/read/" + car.getCarId(), Car.class);
         assertNotNull(updatedCar);
-        updatedCar.setRentalRate("150");
+        updatedCar.set("150");
 
         String url = BASE_URL + "/update";
         restTemplate.put(url, updatedCar);

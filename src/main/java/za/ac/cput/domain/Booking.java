@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String bookingId;
+    private Long bookingID;
     @ManyToOne
     private Car car; // Reference to Car
     private String startDate;
@@ -17,7 +17,6 @@ public class Booking {
     protected Booking() {
     }
     private Booking(Builder builder) {
-        this.bookingId = builder.bookingId;
         this.car = builder.car; // Set Car instance
         this.startDate = builder.startDate;
         this.returnDate = builder.returnDate;
@@ -25,8 +24,8 @@ public class Booking {
         this.dropOffLocation = builder.dropOffLocation;
         this.totalPrice = builder.totalPrice;
     }
-    public String getBookingId() {
-        return bookingId;
+    public Long getBookingID() {
+        return bookingID;
     }
     public Car getCar() {
         return car;
@@ -52,7 +51,7 @@ public class Booking {
         if (!(o instanceof Booking)) return false;
         Booking booking = (Booking) o;
         return Double.compare(booking.totalPrice, totalPrice) == 0 &&
-                Objects.equals(bookingId, booking.bookingId) &&
+                Objects.equals(bookingID, booking.bookingID) &&
                 Objects.equals(startDate, booking.startDate) &&
                 Objects.equals(returnDate, booking.returnDate) &&
                 Objects.equals(pickUpLocation, booking.pickUpLocation) &&
@@ -61,12 +60,12 @@ public class Booking {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(bookingId, car, startDate, returnDate, pickUpLocation, dropOffLocation, totalPrice);
+        return Objects.hash(bookingID, car, startDate, returnDate, pickUpLocation, dropOffLocation, totalPrice);
     }
     @Override
     public String toString() {
         return "Booking{" +
-                "bookingId='" + bookingId + '\'' +
+                "bookingId='" + bookingID + '\'' +
                 ", car=" + car +
                 ", startDate='" + startDate + '\'' +
                 ", returnDate='" + returnDate + '\'' +
@@ -76,17 +75,13 @@ public class Booking {
                 '}';
     }
     public static class Builder {
-        private String bookingId;
+
         private Car car; // Reference to Car
         private String startDate;
         private String returnDate;
         private String pickUpLocation;
         private String dropOffLocation;
         private double totalPrice;
-        public Builder setBookingId(String bookingId) {
-            this.bookingId = bookingId;
-            return this;
-        }
         public Builder setCar(Car car) {
             this.car = car; // Set Car instance
             return this;
@@ -112,7 +107,6 @@ public class Booking {
             return this;
         }
         public Builder copy(Booking booking){
-            this.bookingId = booking.bookingId;
             this.car = booking.car;
             this.startDate = booking.startDate;
             this.returnDate = booking.returnDate;

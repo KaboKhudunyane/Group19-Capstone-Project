@@ -7,6 +7,6 @@ import za.ac.cput.domain.Promotion;
 import java.util.List;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
-    Booking findByBookingID(Long bookingId);
-    void deleteByBookingID(Long bookingId);
+    Booking findByBookingID(Long bookingID);
+    void deleteByBookingID(Long bookingID);
 }

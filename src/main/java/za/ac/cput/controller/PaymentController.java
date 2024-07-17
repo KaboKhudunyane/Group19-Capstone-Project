@@ -9,29 +9,29 @@ import java.util.List;
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
-    @PostMapping("/save")
+    @PostMapping("/create")
     public Payment save(@RequestBody Payment payment) {
 
         return paymentService.create(payment);
     }
-    @GetMapping("/read/{paymentId}")
-    public Payment read(@PathVariable String paymentId) {
+    @GetMapping("/read/{paymentID}")
+    public Payment read(@PathVariable Long paymentID) {
 
-        return paymentService.read(paymentId);
+        return paymentService.read(paymentID);
     }
     @PutMapping("/update")
     public Payment update(@RequestBody Payment payment) {
 
         return paymentService.update(payment);
     }
-    @DeleteMapping("/delete/{paymentId}")
-    public void delete(@PathVariable String paymentId) {
+    @DeleteMapping("/delete/{paymentID}")
+    public void delete(@PathVariable Long paymentID) {
 
-        paymentService.delete(paymentId);
+        paymentService.delete(paymentID);
     }
-    /*@GetMapping("/getAllPayments")
+    @GetMapping("/getAll")
     public List<Payment> getAllPayments() {
 
-        return paymentService.getAllPayments();
-    }*/
+        return paymentService.getAll();
+    }
 }

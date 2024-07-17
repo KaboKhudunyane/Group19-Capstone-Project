@@ -1,10 +1,9 @@
 package za.ac.cput.domain;
-
 import jakarta.persistence.*;
-
 import java.util.Objects;
-
 @Entity
+
+@Table(name = "Payments")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +14,7 @@ public class Payment {
     private String paymentDate;
     private double amountCharged;
     private String paymentStatus;
-
     protected Payment() {}
-
     private Payment(Builder builder) {
         this.booking = builder.booking;
         this.paymentMethod = builder.paymentMethod;
@@ -25,31 +22,24 @@ public class Payment {
         this.amountCharged = builder.amountCharged;
         this.paymentStatus = builder.paymentStatus;
     }
-
     public Long getPaymentID() {
         return paymentID;
     }
-
     public Booking getBooking() {
         return booking;
     }
-
     public String getPaymentMethod() {
         return paymentMethod;
     }
-
     public String getPaymentDate() {
         return paymentDate;
     }
-
     public double getAmountCharged() {
         return amountCharged;
     }
-
     public String getPaymentStatus() {
         return paymentStatus;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

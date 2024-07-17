@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
+@Table(name = "Cars")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

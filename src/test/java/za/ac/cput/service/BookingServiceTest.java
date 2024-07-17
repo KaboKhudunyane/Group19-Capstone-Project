@@ -7,8 +7,6 @@ import za.ac.cput.domain.Car;
 import za.ac.cput.domain.CarInformation;
 import za.ac.cput.domain.CarInsurance;
 import za.ac.cput.factory.BookingFactory;
-import za.ac.cput.factory.CarInformationFactory;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,26 +49,23 @@ class BookingServiceTest {
             .setAvailabilityStatus("Available")
             .setCarPicture(carPicture) // Provide appropriate car picture data here
             .buildCar();
-    Booking booking = BookingFactory.buildBooking("b101", car, "15-June-2024", "20-June-2024",
+    Booking booking = BookingFactory.buildBooking(car, "15-June-2024", "20-June-2024",
             "10 Hanover street, Cape Town, 8001", "10 Hanover street, Cape Town, 8001",
             24000);
-
     @Test
-    void createBooking() {
+    void create() {
         Booking saved = bookingService.create(booking);
         assertNotNull(saved);
         System.out.println(saved);
-
     }
     @Test
-    void readBooking() {
+    void read (){
         Booking read = bookingService.read(booking.getBookingID());
         assertNotNull(read);
         System.out.println(read);
     }
     @Test
-    @Order(3)
-    void updateStatus(){
+    void update(){
         Booking editedBooking = new Booking.Builder().copy(booking).setReturnDate("11 July 2024").
                 buildBooking();
         assertNotNull(editedBooking);
@@ -79,17 +74,12 @@ class BookingServiceTest {
         System.out.println(updated);
     }
     @Test
-    @Disabled
-    void deleteBooking(){
-        bookingService.delete(booking.getBookingId());
+    void delete(){
+        bookingService.delete(booking.getBookingID());
         System.out.println("Success: deleted booking");
     }
-
-
     @Test
-    @Order(4)
-    void getAllBookings() {
-        System.out.println(bookingService.getAllBookings());
+    void getAll() {
+        System.out.println(bookingService.getAll());
     }
 }
-

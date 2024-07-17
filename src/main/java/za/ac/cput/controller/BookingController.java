@@ -12,32 +12,32 @@ import java.util.Set;
 @RequestMapping("/Booking")
 public class BookingController {
 
-        @Autowired
-        private BookingService bookingService;
+    @Autowired
+    private BookingService bookingService;
 
-        @PostMapping("/save")
-        public Booking save(@RequestBody Booking booking){
-            return bookingService.create(booking);
-         }
+    @PostMapping("/save")
+    public Booking save(@RequestBody Booking booking) {
+        return bookingService.create(booking);
+    }
 
-        @GetMapping("/read/{bookingId}")
-        public Booking read(@PathVariable String bookingId){
-            return bookingService.read(bookingId);
-        }
+    @GetMapping("/read/{bookingID}")
+    public Booking read(@PathVariable Long bookingID) {
+        return bookingService.read(bookingID);
+    }
 
     @PostMapping("/update")
-    public Booking update(@RequestBody Booking booking){
+    public Booking update(@RequestBody Booking booking) {
         return bookingService.update(booking);
     }
 
-    @DeleteMapping("/delete/{bookingId}")
-        public void delete (@PathVariable String bookingId){
-            bookingService.delete(bookingId);}
-
-
-       /* @GetMapping("/getAllBookings")
-        public List<Booking> getAllBookings(){
-            return bookingService.getAllBookings();}*/
+    @DeleteMapping("/delete/{bookingID}")
+    public void delete(@PathVariable Long bookingID) {
+        bookingService.delete(bookingID);
     }
 
 
+    @GetMapping("/getAll")
+    public List<Booking> getAll() {
+        return bookingService.getAll();
+    }
+}

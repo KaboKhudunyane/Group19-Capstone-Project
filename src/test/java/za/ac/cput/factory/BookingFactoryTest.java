@@ -49,7 +49,7 @@ public class BookingFactoryTest {
     @Test
     public void testBuildBooking() {
         // Create a Booking using BookingFactory
-        Booking booking = BookingFactory.buildBooking("b101", car, "15-June-2024", "20-June-2024",
+        Booking booking = BookingFactory.buildBooking(car, "15-June-2024", "20-June-2024",
                 "10 Hanover street, Cape Town, 8001", "10 Hanover street, Cape Town, 8001",
                 24000);
 

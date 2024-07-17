@@ -26,13 +26,8 @@ class CarInformationControllerTest {
 
     private final String BASE_URL = "http://localhost:8080/Group19-Capstone-Project/carInformation";
 
-    private static CarInformation carInformation;
-
-    @BeforeAll
-    public static void setup() {
-        carInformation = CarInformationFactory.buildCarInformation("VIN123", "Toyota", "Corolla", "2021","CA 129",
+    CarInformation carInformation = CarInformationFactory.buildCarInformation("Toyota", "Corolla", "2021","CA 129",
                 "Corolla","Standard");
-    }
 
     @Test
     @Order(1)

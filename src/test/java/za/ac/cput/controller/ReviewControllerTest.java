@@ -1,5 +1,4 @@
 package za.ac.cput.controller;
-
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,12 +21,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test") // Use a test profile if needed
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ReviewControllerTest {
-
     @Autowired
     private TestRestTemplate restTemplate;
-
     private final String BASE_URL = "http://localhost:8080/Group19-Capstone-Project/review";
-
     private static final String CAR_PICTURE_PATH = "path/to/your/car/picture.jpg";
 
     private byte[] readFileAsBytes(String filePath) {
@@ -39,9 +35,7 @@ class ReviewControllerTest {
             return null;
         }
     }
-
         byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
-
         Car car = new Car.Builder()
                 .setCarInformation(
                         new CarInformation.Builder()
@@ -64,15 +58,11 @@ class ReviewControllerTest {
                 .setCarPicture(carPicture)
                 .buildCar();
         Booking booking = BookingFactory.buildBooking(
-                "b101", car, "15-June-2024", "20-June-2024",
+                car, "15-June-2024", "20-June-2024",
                 "10 Hanover Street, Cape Town, 8001", "10 Hanover Street, Cape Town, 8001",
                 24000);
-
         Review review = ReviewFactory.buildReview(booking, 4, "Good condition", LocalDate.of(2024, 5, 12));
-
-
     @Test
-    @Order(1)
     void save() {
         String url = BASE_URL + "/save";
         ResponseEntity<Review> postResponse = restTemplate.postForEntity(url, review, Review.class);
@@ -86,18 +76,14 @@ class ReviewControllerTest {
         assertEquals(review.getReviewDate(), savedReview.getReviewDate());
         System.out.println("Saved Review: " + savedReview);
     }
-
     @Test
-    @Order(2)
     void read() {
         String url = BASE_URL + "/read/" + review.getReviewID();
         ResponseEntity<Review> response = restTemplate.getForEntity(url, Review.class);
         assertEquals(review.getReviewID(), response.getBody().getReviewID());
         System.out.println("Read Review: " + response.getBody());
     }
-
     @Test
-    @Order(3)
     void update() {
         // Modify review data for update
         Review updatedReview = new Review.Builder()
@@ -116,9 +102,7 @@ class ReviewControllerTest {
         assertEquals("Updated comment", response.getBody().getComment());
         System.out.println("Updated Review: " + response.getBody());
     }
-
     @Test
-    @Order(4)
     void delete() {
         String url = BASE_URL + "/delete/" + review.getReviewID();
         restTemplate.delete(url);
@@ -128,11 +112,9 @@ class ReviewControllerTest {
         assertNull(response.getBody());
         System.out.println("Review deleted successfully.");
     }
-
     @Test
-    @Order(5)
     void getAll() {
-        String url = BASE_URL + "/getAllReviews";
+        String url = BASE_URL + "/getAll";
         ResponseEntity<Review[]> response = restTemplate.getForEntity(url, Review[].class);
         Review[] reviews = response.getBody();
         assertNotNull(reviews);

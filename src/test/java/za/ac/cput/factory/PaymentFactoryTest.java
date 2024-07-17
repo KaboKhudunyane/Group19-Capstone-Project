@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.*;
 class PaymentFactoryTest {
     private static final String CAR_PICTURE_PATH = "path/to/your/car/picture.jpg";
-
     private byte[] readFileAsBytes(String filePath) {
         try {
             Path path = Paths.get(filePath);
