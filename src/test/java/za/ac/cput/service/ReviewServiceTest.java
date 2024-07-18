@@ -47,7 +47,7 @@ class ReviewServiceTest {
                             .buildCarInsurance())
             .setRentalRate("150")
             .setAvailabilityStatus("Available")
-            .setCarPicture(carPicture) // Provide appropriate car picture data here
+            .setCarPicture("C:/Users/bokam/OneDrive/Desktop/Example.jpeg") // Provide appropriate car picture data here
             .buildCar();
     Booking booking = BookingFactory.buildBooking(car, "15-June-2024", "20-June-2024",
             "10 Hanover street, Cape Town, 8001", "10 Hanover street, Cape Town, 8001",

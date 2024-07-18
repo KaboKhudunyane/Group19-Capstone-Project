@@ -7,6 +7,10 @@ import za.ac.cput.domain.*;
 import za.ac.cput.factory.SupportTicketFactory;
 import za.ac.cput.factory.UserFactory;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,10 +21,23 @@ class SupportTicketServiceTest {
     @Autowired
     private SupportTicketService supportTicketService;
 
+    private static final String USER_PICTURE_PATH = "C:/Users/bokam/OneDrive/Desktop/Example.jpeg";
+
+    private byte[] readFileAsBytes(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
+
     private final Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
     private final Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
     private final Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setState("StateName").setZipCode("12345").buildAddress();
-    private final User user = UserFactory.createUser(name, contact, address, true, "avatar.jpg");
+    private final User user = UserFactory.createUser(name, contact, address, true, userPicture);
     private final LocalDate dateCreated = LocalDate.of(2024, 4, 3);
     private final SupportTicket supportTicket = SupportTicketFactory.buildSupportTicket(user, "Technical Support", "I am facing login issues.", dateCreated);
     @Test

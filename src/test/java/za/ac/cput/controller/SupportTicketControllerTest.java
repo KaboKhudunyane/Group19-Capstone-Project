@@ -11,6 +11,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.*;
 import za.ac.cput.factory.*;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
@@ -19,10 +24,23 @@ class SupportTicketControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
     private final String BASE_URL ="mysql://${MYSQL_HOST:localhost}:3306/CarShare";
+
+    private static final String USER_PICTURE_PATH = "C:/Users/bokam/OneDrive/Desktop/Example.jpeg";
+
+    private byte[] readFileAsBytes(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
     Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     Contact contact = ContactFactory.createContact("123", "kabo@example.com");
     Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
-    User user = UserFactory.createUser(name, contact, address, true, "profile.jpg");
+    User user = UserFactory.createUser(name, contact, address, true, userPicture);
     LocalDate dateCreated = LocalDate.of(2024, 4, 3);
     SupportTicket supportTicket = SupportTicketFactory.buildSupportTicket(user, "Technical Support", "I am facing login issues.", dateCreated);
     @Test

@@ -43,7 +43,7 @@ public class BookingFactoryTest {
                             .buildCarInsurance())
             .setRentalRate("150")
             .setAvailabilityStatus("Available")
-            .setCarPicture(carPicture) // Provide appropriate car picture data here
+            .setCarPicture("C:/Users/bokam/OneDrive/Desktop/Example.jpeg") // Provide appropriate car picture data here
             .buildCar();
 
     @Test

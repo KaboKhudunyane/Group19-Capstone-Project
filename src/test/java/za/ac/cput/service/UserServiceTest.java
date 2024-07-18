@@ -10,16 +10,35 @@ import za.ac.cput.factory.AddressFactory;
 import za.ac.cput.factory.ContactFactory;
 import za.ac.cput.factory.NameFactory;
 import za.ac.cput.factory.UserFactory;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class UserServiceTest {
     @Autowired
     private UserService userService;
+
+    private static final String USER_PICTURE_PATH = "C:/Users/bokam/OneDrive/Desktop/Example.jpeg";
+
+    private byte[] readFileAsBytes(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
     private Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     private Contact contact = ContactFactory.createContact("123" ,"216273293@mycput.ac.za");
     private Address address = AddressFactory.createAddress("1", "216273293", "123 Street", "City", "7441");
-    private User user = UserFactory.createUser(name, contact, address, true,  "Kabo.jpeg");
+    private User user = UserFactory.createUser(name, contact, address, true,  userPicture);
     
     @Test
     void create(){
