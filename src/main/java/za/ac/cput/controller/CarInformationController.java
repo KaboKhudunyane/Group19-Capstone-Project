@@ -4,30 +4,30 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.CarInformation;
 import za.ac.cput.service.CarInformationService;
 
+import java.util.List;
 @RestController
     @RequestMapping("/CarInformation")
     public class CarInformationController {
         @Autowired
         private CarInformationService carInformationService;
-        @PostMapping("/save")
-        public CarInformation save(@RequestBody CarInformation carInformation){
+        @PostMapping("/create")
+        public CarInformation create(@RequestBody CarInformation carInformation){
             return carInformationService.create(carInformation);
         }
-        @GetMapping("/read/{carInformationId}")
-        public CarInformation read(@PathVariable String carInformationId){
-            return carInformationService.read(carInformationId);
+        @GetMapping("/read/{make}")
+        public CarInformation read(@PathVariable String make){
+            return carInformationService.read(make);
         }
         @PutMapping("/update")
         public CarInformation update(@RequestBody CarInformation carInformation) {
             return carInformationService.update(carInformation);
         }
-        @DeleteMapping("/delete/{carInformationId}")
-        public void delete (@PathVariable String carInformationId){
-            carInformationService.delete(carInformationId);
+        @DeleteMapping("/delete/{make}")
+        public void delete (@PathVariable String make){
+            carInformationService.delete(make);
         }
-       /* @GetMapping("/getAllCarInformation")
-        public List<CarInformation> getAllCarInformation(){
-            return carInformationService.getAllCarInformation();
-        }*/
+        @GetMapping("/getAll")
+        public List<CarInformation> getAll(){
+            return carInformationService.getAll();
+        }
 }
-

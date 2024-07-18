@@ -9,24 +9,24 @@ import java.util.List;
 public class CarController {
     @Autowired
     private CarService carService;
-    @PostMapping("/save")
-    public Car save(@RequestBody Car car){
+    @PostMapping("/create")
+    public Car create(@RequestBody Car car){
         return carService.create(car);
     }
-    @GetMapping("/read/{carId}")
-    public Car read(@PathVariable String carId){
-        return carService.read(carId);
+    @GetMapping("/read/{carID}")
+    public Car read(@PathVariable Long carID){
+        return carService.read(carID);
     }
     @PutMapping("/update")
     public Car update(@RequestBody Car car){
         return carService.update(car);
     }
-    @DeleteMapping("/delete/{carId}")
-    public void delete (@PathVariable String carId){
-        carService.delete(carId);
+    @DeleteMapping("/delete/{carID}")
+    public void delete (@PathVariable Long carID){
+        carService.delete(carID);
     }
-   /* @GetMapping("/getAllCars")
-    public List<Car> getAllCars(){
-        return carService.getAllCars();
-    }*/
+   @GetMapping("/getAll")
+    public List<Car> getAll(){
+        return carService.getAll();
+    }
 }

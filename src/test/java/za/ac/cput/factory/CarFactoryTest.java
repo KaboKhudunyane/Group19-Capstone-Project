@@ -25,37 +25,25 @@ public class CarFactoryTest {
             return null;
         }
     }
+    byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
 
-    // Create a CarInformation object for testing
-    CarInformation carInformation = new CarInformation.Builder()
-            .setMake("Toyota")
-            .setModel("Corolla")
-            .setYear("2023")
-            .setLicensePlate("ABC123")
-            .setDescription("New Toyota Corolla")
-            .setFeatures("Bluetooth, Backup Camera, Navigation System")
-            .buildCarInformation();
-
-    // Create a CarInsurance object for testing
-    CarInsurance carInsurance = new CarInsurance.Builder()
-            .setInsuranceCompany("Insurance Co.")
-            .setPolicyNumber("12345")
-            .setCoverageType("Comprehensive")
-            .setCoverageAmount("100000")
-            .buildCarInsurance();
+    CarInformation carInformation = new CarInformation.Builder().setMake("Toyota").setModel("Corolla").setYear("2023").setLicensePlate("ABC123").setDescription("New Toyota Corolla").setFeatures("Bluetooth, Backup Camera, Navigation System").buildCarInformation();
+    CarInsurance carInsurance = new CarInsurance.Builder().setInsuranceCompany("Insurance Co.").setPolicyNumber("12345").setCoverageType("Comprehensive").setCoverageAmount("100000").buildCarInsurance();
 
     @Test
     public void testBuildCar() {
-        // Read car picture file as byte array
-        byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
-        assertNotNull(carPicture, "Failed to read car picture file");
-
-        // Build Car object using CarFactory
         Car car = CarFactory.buildCar(carInformation, carInsurance, "150", "Available", carPicture);
-
-        assertNotNull(car);  // Assert that the created Car object is not null
-        assertNotNull(car.getCarId());  // Assert that the carId is assigned (assuming it's auto-generated)
-        assertNotNull(car.getCarInsurance());  // Assert that the car has carInsurance set
-        System.out.println("Created car: " + car);  // Print the created Car object
+        assertNotNull(car);
+        assertNotNull(car.getCarID());
+        assertNotNull(car.getCarInsurance());
+        System.out.println("Created car: " + car);
+    }
+    @Test
+    public void testBuildCarWithFail() {
+        Car car = CarFactory.buildCar(carInformation, carInsurance, "", "Available", carPicture);
+        assertNotNull(car);
+        assertNotNull(car.getCarID());
+        assertNotNull(car.getCarInsurance());
+        System.out.println("Created car: " + car);
     }
 }

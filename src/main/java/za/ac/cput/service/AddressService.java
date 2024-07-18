@@ -33,12 +33,11 @@ public class AddressService implements IService<Address, String> {
         return addressRepository.save(address);
     }
 
-    public void delete(String id) {
+    public void delete(String streetName) {
         // Since streetName is the primary key, delete by streetName
-        addressRepository.deleteByStreetName(id);
+        addressRepository.deleteByStreetName(streetName);
     }
-
-    public List<Address> getAllAddresses() {
+    public List<Address> getAll() {
         return addressRepository.findAll();
     }
 }

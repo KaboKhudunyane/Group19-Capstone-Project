@@ -48,7 +48,7 @@ class ReviewFactoryTest {
             .setCarPicture(carPicture) // Provide appropriate car picture data here
             .buildCar();
 
-    Booking booking = BookingFactory.buildBooking("b101", car, "15-June-2024", "20-June-2024",
+    Booking booking = BookingFactory.buildBooking(car, "15-June-2024", "20-June-2024",
             "10 Hanover Street, Cape Town, 8001", "10 Hanover Street, Cape Town, 8001",
             24000);
 

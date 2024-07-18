@@ -8,7 +8,7 @@ import java.util.Objects;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String userID;
+    private Long userID;
     @Embedded
     private Name name;
     @Embedded
@@ -25,7 +25,7 @@ public class User {
         this.license = builder.license;
         this.picture = builder.picture;
     }
-    public String getUserID() {
+    public Long getUserID() {
         return userID;
     }
     public Name getName() {

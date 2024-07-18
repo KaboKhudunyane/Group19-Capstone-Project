@@ -9,36 +9,29 @@ import java.util.List;
 
 @Service
 public class NameService implements IService<Name, String> {
-
     private final NameRepository nameRepository;
-
     @Autowired
     public NameService(NameRepository nameRepository) {
         this.nameRepository = nameRepository;
     }
-
     @Override
     public Name create(Name name) {
         return nameRepository.save(name);
     }
 
     @Override
-    public Name read(String id) {
-        // Since firstName is the primary key, find by firstName
-        return nameRepository.findByFirstName(id);
+    public Name read(String firstName) {
+        return nameRepository.findByFirstName(firstName);
     }
-
     @Override
     public Name update(Name name) {
         return nameRepository.save(name);
     }
-
-    public void delete(String id) {
-        // Since firstName is the primary key, delete by firstName
-        nameRepository.deleteByFirstName(id);
+    public void delete(String firstName) {
+        nameRepository.deleteByFirstName(firstName);
     }
 
-    public List<Name> getAllNames() {
+    public List<Name> getAll() {
         return nameRepository.findAll();
     }
 }

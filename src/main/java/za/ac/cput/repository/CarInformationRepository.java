@@ -9,10 +9,10 @@ import java.util.List;
 @Repository
 public interface CarInformationRepository extends JpaRepository<CarInformation, String> {
 
-    CarInformation findByCarInformationId(String carInformationId);
+    CarInformation findByMake(String make);
 
-    void deleteByCarInformationId(String carInformationId);
+    void deleteByMake(String make);
 
-    //List<CarInformation> getAllCarInformation();
+    List<CarInformation> getAll();
 
 }

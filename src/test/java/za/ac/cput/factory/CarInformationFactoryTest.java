@@ -10,7 +10,7 @@ class CarInformationFactoryTest {
 
     @Test
     void buildCarInformation() {
-        CarInformation carInformation = CarInformationFactory.buildCarInformation("11", "BMW", "M4",
+        CarInformation carInformation = CarInformationFactory.buildCarInformation("BMW", "M4",
                 "2018", "CA123-456", "M performance", "800hps");
         assertNotNull(carInformation);
         System.out.println(carInformation);
@@ -18,7 +18,7 @@ class CarInformationFactoryTest {
 
     @Test
     void testBuildCarInformationWithFail() {
-        CarInformation carInformation = CarInformationFactory.buildCarInformation("11", "BMW", "M4",
+        CarInformation carInformation = CarInformationFactory.buildCarInformation( "BMW", "M4",
                 "2018", "CA123-456", "", "");;
         assertNotNull(carInformation);
     }

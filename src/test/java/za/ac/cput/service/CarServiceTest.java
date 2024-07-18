@@ -9,12 +9,29 @@ import za.ac.cput.factory.CarFactory;
 import za.ac.cput.factory.CarInformationFactory;
 import za.ac.cput.factory.CarInsuranceFactory;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class CarServiceTest {
     @Autowired
     private CarService carService;
-    private static CarInformation carInformation = new CarInformation.Builder()
+    private static final String CAR_PICTURE_PATH = "path/to/your/car/picture.jpg";
+
+    private byte[] readFileAsBytes(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
+     static CarInformation carInformation = new CarInformation.Builder()
             .setMake("Toyota")
             .setModel("Corolla")
             .setYear("2020")
@@ -22,12 +39,11 @@ class CarServiceTest {
             .setDescription("A reliable sedan")
             .setFeatures("Air conditioning, Power windows")
             .buildCarInformation();
-    private static CarInsurance carInsurance = new CarInsurance.Builder()
+     static CarInsurance carInsurance = new CarInsurance.Builder()
             .setPolicyNumber("12345")
             .setInsuranceCompany("ABC Insurance")
             .buildCarInsurance();
-    private static Car car = CarFactory.buildCar("123",
-            carInformation, carInsurance, "100","carpicture.jpeg");
+     Car car = CarFactory.buildCar(carInformation, carInsurance, "100","available",carPicture);
 
     @Test
     void create() {
@@ -38,14 +54,14 @@ class CarServiceTest {
 
     @Test
     void read() {
-        Car readCar = carService.read(car.getCarId().toString());
+        Car readCar = carService.read(car.getCarID() );
         assertNotNull(readCar);
         System.out.println("Read Car: " + readCar);
     }
 
     @Test
     void update() {
-        Car carToUpdate = carService.read(car.getCarId().toString());
+        Car carToUpdate = carService.read(car.getCarID());
         assertNotNull(carToUpdate);
 
         // Update using the builder pattern
@@ -62,8 +78,8 @@ class CarServiceTest {
 
     @Test
     void delete() {
-        carService.delete(car.getCarId().toString());
-        Car deletedCar = carService.read(car.getCarId().toString());
+        carService.delete(car.getCarID());
+        Car deletedCar = carService.read(car.getCarID());
         assertNull(deletedCar);
         System.out.println("Car deleted successfully");
     }

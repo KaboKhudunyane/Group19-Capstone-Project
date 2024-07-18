@@ -22,17 +22,14 @@ class UserControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:3306/group19-capstone-project/user";
-    private static User user;
-    @BeforeAll
-    public static void setup() {
-        Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
-        Contact contact = ContactFactory.createContact("123", "kabo@example.com");
-        Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
-        user = UserFactory.createUser("12345", name, contact, address, true, "profile.jpg");
-    }
+    Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
+    Contact contact = ContactFactory.createContact("123", "kabo@example.com");
+    Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
+    User user = UserFactory.createUser(name, contact, address, true, "profile.jpg");
+
     @Test
     void create() {
-        String url = BASE_URL + "/save";
+        String url = BASE_URL + "/create";
         ResponseEntity<User> postResponse = restTemplate.postForEntity(url, user, User.class);
         assertNotNull(postResponse);
         assertEquals(HttpStatus.CREATED, postResponse.getStatusCode());
@@ -78,8 +75,8 @@ class UserControllerTest {
         System.out.println("User deleted successfully.");
     }
     @Test
-    void getAllUsers() {
-        String url = BASE_URL + "/getAllUsers";
+    void getAll() {
+        String url = BASE_URL + "/getAll";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<User[]> response = restTemplate.exchange(url, HttpMethod.GET, entity, User[].class);

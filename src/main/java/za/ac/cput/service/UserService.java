@@ -5,33 +5,33 @@ import za.ac.cput.domain.User;
 import za.ac.cput.repository.UserRepository;
 import java.util.List;
 @Service
-public class UserService implements IService<User, String> {
+public class UserService implements IService<User, Long> {
     private final UserRepository userRepository;
     @Autowired
     UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    // Method to create a new user
     @Override
     public User create(User user) {
         return userRepository.save(user);
     }
-    // Method to read a user by their userID
+
     @Override
-    public User read(String userID) {
+    public User read(Long userID) {
         return userRepository.findByUserID(userID);
     }
-    // Method to update an existing user
+
     @Override
     public User update(User user) {
         return userRepository.save(user);
     }
-    // Method to delete a user by their userID
-    public void delete(String userID) {
+    @Override
+
+    public void delete(Long userID) {
         userRepository.deleteByUserID(userID);
     }
-    // Method to get all users
-    public List<User> getAllUsers() {
+    @Override
+    public List<User> getAll() {
         return userRepository.findAll();
     }
 }

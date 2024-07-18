@@ -9,24 +9,24 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-    @PostMapping("/save")
-    public User save(@RequestBody User user){
+    @PostMapping("/create")
+    public User create(@RequestBody User user){
         return userService.create(user);
     }
-    @GetMapping("/read/{userId}")
-    public User read(@PathVariable String userId){
-        return userService.read(userId);
+    @GetMapping("/read/{UserID}")
+    public User read(@PathVariable Long UserID){
+        return userService.read(UserID);
     }
     @PutMapping("/update")
     public User update(@RequestBody User user){
         return userService.update(user);
     }
-    @DeleteMapping("/delete/{userId}")
-    public void delete (@PathVariable String userId){
-        userService.delete(userId);
+    @DeleteMapping("/delete/{UserID}")
+    public void delete (@PathVariable Long UserID){
+        userService.delete(UserID);
     }
-    @GetMapping("/getAllUsers")
-    public List<User> getAllUsers(){
-        return userService.getAllUsers();
+    @GetMapping("/getAll")
+    public List<User> getAll(){
+        return userService.getAll();
     }
 }

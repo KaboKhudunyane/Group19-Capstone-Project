@@ -34,8 +34,8 @@ public class NameController {
         nameService.delete(firstName);
     }
 
-    @GetMapping("/getAllNames")
-    public List<Name> getAllNames() {
-        return nameService.getAllNames();
+    @GetMapping("/getAll")
+    public List<Name> getAll() {
+        return nameService.getAll();
     }
 }

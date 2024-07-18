@@ -7,7 +7,11 @@ import za.ac.cput.util.Helper;
 import java.time.LocalDate;
 
 public class ReviewFactory {
-    public static Review buildReview(Booking booking, int rating, String comment, LocalDate reviewDate) {
+    public static Review buildReview(Booking booking,
+                                     int rating,
+                                     String comment,
+                                     LocalDate reviewDate) {
+
         if (booking == null || rating <= 0 || Helper.isNullOrEmpty(comment) || reviewDate == null) {
             return null;
         }

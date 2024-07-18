@@ -4,17 +4,11 @@ import java.io.Serializable;
 import java.util.Objects;
 @Embeddable
 public class CarInformation implements Serializable {
-    // The make of the car (e.g., Volkswagen, Audi)
     private String make;
-    // The model of the car (e.g., Golf, A4)
     private String model;
-    // The manufacturing year of the car (e.g., 2023)
     private String year;
-    // The license plate number of the car
     private String licensePlate;
-    // A brief description of the car
     private String description;
-    // Additional features of the car
     private String features;
     protected CarInformation() {}
     private CarInformation(Builder builder) {

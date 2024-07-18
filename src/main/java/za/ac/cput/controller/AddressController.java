@@ -34,8 +34,8 @@ public class AddressController {
         addressService.delete(streetName);
     }
 
-    @GetMapping("/getAllAddresses")
-    public List<Address> getAllAddresses() {
-        return addressService.getAllAddresses();
+    @GetMapping("/getAll")
+    public List<Address> getAll() {
+        return addressService.getAll();
     }
 }

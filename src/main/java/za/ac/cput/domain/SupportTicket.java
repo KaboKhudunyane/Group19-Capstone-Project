@@ -1,127 +1,95 @@
 package za.ac.cput.domain;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
-
 @Entity
+@Table(name = "SupportTickets")
 public class SupportTicket {
     @Id
-    private String ticketID;
-    private String userID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ticketID;
+    @ManyToOne
+    private User user;
     private String subject;
-    private String description;
-    private String dateCreated;
-    private String status;
-
-    protected SupportTicket(){}
-
+    private String message;
+    private LocalDate dateCreated;
+    protected SupportTicket() {}
     private SupportTicket(Builder builder) {
-        this.ticketID = builder.ticketID;
-        this.userID = builder.userID;
+        this.user = builder.user;
         this.subject = builder.subject;
-        this.description =builder. description;
+        this.message = builder.message;
         this.dateCreated = builder.dateCreated;
-        this.status = builder.status;
     }
-
-    public String getTicketID() {
+    public Long getTicketID() {
         return ticketID;
     }
-
-    public String getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
-
     public String getSubject() {
         return subject;
     }
-
-    public String getDescription() {
-        return description;
+    public String getMessage() {
+        return message;
     }
-
-    public String getDateCreated() {
+    public LocalDate getDateCreated() {
         return dateCreated;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SupportTicket that = (SupportTicket) o;
-        return Objects.equals(ticketID, that.ticketID) && Objects.equals(userID, that.userID) && Objects.equals(subject, that.subject) && Objects.equals(description, that.description) && Objects.equals(dateCreated, that.dateCreated) && Objects.equals(status, that.status);
+        return Objects.equals(ticketID, that.ticketID) &&
+                Objects.equals(user, that.user) &&
+                Objects.equals(subject, that.subject) &&
+                Objects.equals(message, that.message) &&
+                Objects.equals(dateCreated, that.dateCreated);
     }
-
     @Override
     public int hashCode() {
-        return Objects.hash(ticketID, userID, subject, description, dateCreated, status);
+        return Objects.hash(ticketID, user, subject, message, dateCreated);
     }
-
     @Override
     public String toString() {
         return "SupportTicket{" +
-                "ticketID='" + ticketID + '\'' +
-                ", userID='" + userID + '\'' +
+                "ticketID=" + ticketID +
+                ", user=" + user +
                 ", subject='" + subject + '\'' +
-                ", description='" + description + '\'' +
-                ", dateCreated='" + dateCreated + '\'' +
-                ", status='" + status + '\'' +
+                ", message='" + message + '\'' +
+                ", dateCreated=" + dateCreated +
                 '}';
     }
-
-    public static class Builder{
-        private String ticketID;
-        private String userID;
+    public static class Builder {
+        private User user;
         private String subject;
-        private String description;
-        private String dateCreated;
-        private String status;
-
-        public Builder setTicketID(String ticketID) {
-            this.ticketID = ticketID;
+        private String message;
+        private LocalDate dateCreated;
+        public Builder setUser(User user) {
+            this.user = user;
             return this;
         }
-
-        public Builder setUserID(String userID) {
-            this.userID = userID;
-            return this;
-        }
-
         public Builder setSubject(String subject) {
             this.subject = subject;
             return this;
         }
-
-        public Builder setDescription(String description) {
-            this.description = description;
+        public Builder setMessage(String message) {
+            this.message = message;
             return this;
         }
-
-        public Builder setDateCreated(String dateCreated) {
+        public Builder setDateCreated(LocalDate dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
-
-        public Builder setStatus(String status) {
-            this.status = status;
-            return this;
-        }
-
-        public Builder copy (SupportTicket supportTicket){
-            this.ticketID = supportTicket.ticketID;
-            this.userID = supportTicket.userID;
+        public Builder copy(SupportTicket supportTicket) {
+            this.user = supportTicket.user;
             this.subject = supportTicket.subject;
-            this.description =supportTicket. description;
+            this.message = supportTicket.message;
             this.dateCreated = supportTicket.dateCreated;
-            this.status = supportTicket.status;
             return this;
         }
-        public SupportTicket buildSupportTicket(){return new SupportTicket(this);}
+        public SupportTicket build() {
+            return new SupportTicket(this);
+        }
     }
 }

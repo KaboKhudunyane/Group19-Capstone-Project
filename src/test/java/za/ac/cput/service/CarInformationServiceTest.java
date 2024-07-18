@@ -43,7 +43,7 @@ public class CarInformationServiceTest {
     @Test
     @Order(2)
     void read() {
-        CarInformation read = carInformationService.read(carInformation1.getCarInformationId().toString());
+        CarInformation read = carInformationService.read(carInformation1.getMake());
         assertNotNull(read);
         System.out.println("Read CarInformation: " + read);
     }
@@ -51,13 +51,13 @@ public class CarInformationServiceTest {
     @Test
     @Order(3)
     void delete() {
-            carInformationService.delete(carInformation1.getCarInformationId().toString());
+            carInformationService.delete(carInformation1.getMake());
             System.out.println("Car deleted successfully");
         }
     @Test
     @Order(4)
-    void getAllCarInformation() {
-        List<CarInformation> allCarInformation = carInformationService.findAllCarInformation();
+    void getAll() {
+        List<CarInformation> allCarInformation = carInformationService.getAll();
         assertNotNull(allCarInformation);
         assertTrue(allCarInformation.size() > 0);
         System.out.println("All CarInformation: " + allCarInformation);

@@ -34,8 +34,8 @@ public class ContactController {
         contactService.delete(email);
     }
 
-    @GetMapping("/getAllContacts")
+    @GetMapping("/getAll")
     public List<Contact> getAllContacts() {
-        return contactService.getAllContacts();
+        return contactService.getAll();
     }
 }
