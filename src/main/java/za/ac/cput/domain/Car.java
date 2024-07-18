@@ -37,15 +37,17 @@ public class Car {
     public CarInsurance getCarInsurance() {
         return carInsurance;
     }
-    public byte[] getCarPicture() {
-        return carPicture;
-    }
+
     public String getRentalRate() {
         return rentalRate;
     }
     public String getAvailabilityStatus() {
         return availabilityStatus;
     }
+    public byte[] getCarPicture() {
+        return carPicture;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

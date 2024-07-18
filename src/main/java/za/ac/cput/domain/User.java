@@ -2,6 +2,7 @@ package za.ac.cput.domain;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 @Entity
 @Table(name = "Users")
@@ -16,7 +17,8 @@ public class User {
     @Embedded
     private Address address;
     private Boolean license;
-    private String picture;
+    @Lob
+    private byte[] picture;
     protected User() {}
     private User(Builder builder) {
         this.name = builder.name;
@@ -43,7 +45,7 @@ public class User {
         return license;
     }
 
-    public String getPicture() {
+    public byte[] getPicture() {
         return picture;
     }
 
@@ -61,18 +63,9 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, contact, address, license, picture);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userID='" + userID + '\'' +
-                ", contact=" + contact +
-                ", address=" + address +
-                ", license=" + license +
-                ", picture='" + picture + '\'' +
-                '}';
+        int result = Objects.hash(userID, name, contact, address, license);
+        result = 31 * result + Arrays.hashCode(picture);
+        return result;
     }
 
     public static class Builder {
@@ -80,7 +73,7 @@ public class User {
         private Contact contact;
         private Address address;
         private Boolean license;
-        private String picture;
+        private byte[] picture;
 
         public Builder setName(Name name) {
             this.name = name;
@@ -98,7 +91,7 @@ public class User {
             this.license = license;
             return this;
         }
-        public Builder setPicture(String picture) {
+        public Builder setPicture(byte[] picture) {
             this.picture = picture;
             return this;
         }

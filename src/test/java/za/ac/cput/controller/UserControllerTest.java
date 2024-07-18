@@ -1,5 +1,4 @@
 package za.ac.cput.controller;
-
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,14 +25,12 @@ class UserControllerTest {
     Contact contact = ContactFactory.createContact("123", "kabo@example.com");
     Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
     User user = UserFactory.createUser(name, contact, address, true, "profile.jpg");
-
     @Test
     void create() {
         String url = BASE_URL + "/create";
         ResponseEntity<User> postResponse = restTemplate.postForEntity(url, user, User.class);
         assertNotNull(postResponse);
         assertEquals(HttpStatus.CREATED, postResponse.getStatusCode());
-
         User savedUser = postResponse.getBody();
         assertNotNull(savedUser);
         assertEquals(user.getUserID(), savedUser.getUserID());
@@ -57,8 +54,6 @@ class UserControllerTest {
 
         String url = BASE_URL + "/update";
         restTemplate.put(url, updatedUser);
-
-        // Retrieve updated user and assert changes
         ResponseEntity<User> response = restTemplate.getForEntity(BASE_URL + "/read/" + user.getUserID(), User.class);
         assertNotNull(response.getBody());
         assertEquals("new_profile.jpg", response.getBody().getPicture());
@@ -68,8 +63,6 @@ class UserControllerTest {
     void delete() {
         String url = BASE_URL + "/delete/" + user.getUserID();
         restTemplate.delete(url);
-
-        // Ensure user is deleted
         ResponseEntity<User> response = restTemplate.getForEntity(BASE_URL + "/read/" + user.getUserID(), User.class);
         assertNull(response.getBody());
         System.out.println("User deleted successfully.");

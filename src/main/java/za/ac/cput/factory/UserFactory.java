@@ -10,7 +10,7 @@ public class UserFactory {
 
     public static User createUser(Name name,
                                   Contact contact, Address address,
-                                  Boolean license, String picture) {
+                                  Boolean license, byte[] picture) {
 
 
         return new User.Builder()

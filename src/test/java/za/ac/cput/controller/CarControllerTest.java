@@ -10,6 +10,11 @@ import za.ac.cput.domain.CarInsurance;
 import za.ac.cput.factory.CarFactory;
 import za.ac.cput.factory.CarInformationFactory;
 import za.ac.cput.factory.CarInsuranceFactory;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -18,6 +23,20 @@ class CarControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:8080/Group19-Capstone-Project/car";
+    // Example path to a car picture file
+    private static final String CAR_PICTURE_PATH = "path/to/your/car/picture.jpg";
+
+    // Method to read file content as byte array
+    private byte[] readFileAsBytes(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
     CarInformation carInformation = CarInformationFactory.buildCarInformation("BMW", "M4", "2017", "CA 123-456", "It is an M-performance", "800hps, twin turbo Injector");
     CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance("Insurance Co.", "12345", "Comprehensive", "100000");
     Car car = CarFactory.buildCar(carInformation, carInsurance, "100", "Available", null); // Assuming carPicture is not required for creation
