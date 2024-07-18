@@ -38,7 +38,7 @@ class PaymentFactoryTest {
                             .buildCarInsurance())
             .setRentalRate("150")
             .setAvailabilityStatus("Available")
-            .setCarPicture(carPicture)
+            .setCarPicture("C:/Users/bokam/OneDrive/Desktop/Example.jpeg")
             .buildCar();
     Booking booking = BookingFactory.buildBooking(car, "15-June-2024", "20-June-2024",
             "10 Hanover street, Cape Town, 8001", "10 Hanover street, Cape Town, 8001",
@@ -69,7 +69,7 @@ class PaymentFactoryTest {
                 .setPaymentMethod("Credit Card")
                 .setPaymentDate("2024-06-15")
                 .setAmountCharged(1500.0)
-                .setPaymentStatus("Pending")
+                .setPaymentStatus(null)
                 .buildPayment();
         assertNull(payment);
         System.out.println("Failed Payment: " + payment);

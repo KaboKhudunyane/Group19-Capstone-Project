@@ -17,7 +17,7 @@ public class CarInsuranceFactoryTest {
     @Test
     void testBuildCarInsuranceWithFail() {
         CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance("Mv332", "", "Outsurance","Pmv6588");
-        assertNotNull(carInsurance);
+        assertNull(carInsurance);
         System.out.println(carInsurance);
     }
 }

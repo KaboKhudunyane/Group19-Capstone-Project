@@ -62,7 +62,7 @@ class BookingControllerTest {
                             .buildCarInsurance())
             .setRentalRate("150")
             .setAvailabilityStatus("Available")
-            .setCarPicture(carPicture)
+            .setCarPicture("C:/Users/bokam/OneDrive/Desktop/Example.jpeg")
             .buildCar();
 
     Booking booking = BookingFactory.buildBooking(car, "15-June-2024", "20-June-2024",

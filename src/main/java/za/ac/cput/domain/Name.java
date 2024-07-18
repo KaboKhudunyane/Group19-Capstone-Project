@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Embeddable
 public class Name implements Serializable{
-    @Id
+
     private String firstName;
     private String middleName;
     private String lastName;

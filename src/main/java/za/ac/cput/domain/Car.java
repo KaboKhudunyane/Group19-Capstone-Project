@@ -17,7 +17,7 @@ public class Car {
     private String rentalRate;
     private String availabilityStatus;
     @Lob
-    private byte[] carPicture;
+    private String carPicture;
     protected Car() {
     }
     private Car(Builder builder) {
@@ -44,28 +44,23 @@ public class Car {
     public String getAvailabilityStatus() {
         return availabilityStatus;
     }
-    public byte[] getCarPicture() {
+    public String getCarPicture() {
         return carPicture;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Car)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(carID, car.carID) &&
-                Objects.equals(carInformation, car.carInformation) &&
-                Objects.equals(carInsurance, car.carInsurance) &&
-                Objects.equals(rentalRate, car.rentalRate) &&
-                Objects.equals(availabilityStatus, car.availabilityStatus) &&
-                Arrays.equals(carPicture, car.carPicture);
+        return Objects.equals(carID, car.carID) && Objects.equals(carInformation, car.carInformation) && Objects.equals(carInsurance, car.carInsurance) && Objects.equals(rentalRate, car.rentalRate) && Objects.equals(availabilityStatus, car.availabilityStatus) && Objects.equals(carPicture, car.carPicture);
     }
+
     @Override
     public int hashCode() {
-        int result = Objects.hash(carID, carInformation, rentalRate, availabilityStatus);
-        result = 31 * result + Arrays.hashCode(carPicture);
-        return result;
+        return Objects.hash(carID, carInformation, carInsurance, rentalRate, availabilityStatus, carPicture);
     }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -81,7 +76,7 @@ public class Car {
         private CarInsurance carInsurance;
         private String rentalRate;
         private String availabilityStatus;
-        private byte[] carPicture;
+        private String carPicture;
         public Builder setCarInformation(CarInformation carInformation) {
             this.carInformation = carInformation;
             return this;
@@ -98,7 +93,7 @@ public class Car {
             this.availabilityStatus = availabilityStatus;
             return this;
         }
-        public Builder setCarPicture(byte[] carPicture) {
+        public Builder setCarPicture(String carPicture) {
             this.carPicture = carPicture;
             return this;
         }

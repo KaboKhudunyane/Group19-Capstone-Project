@@ -8,7 +8,7 @@ import za.ac.cput.util.Helper;
 public class CarFactory {
 
     public static Car buildCar(CarInformation carInformation, CarInsurance carInsurance,
-                               String rentalRate, String availabilityStatus, byte[] carPicture) {
+                               String rentalRate, String availabilityStatus, String carPicture) {
         // Validate inputs
         if (carInformation == null || carInsurance == null ||
                 Helper.isNullOrEmpty(rentalRate) || Helper.isNullOrEmpty(availabilityStatus)) {

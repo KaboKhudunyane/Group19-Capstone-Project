@@ -14,6 +14,11 @@ import za.ac.cput.factory.ContactFactory;
 import za.ac.cput.factory.NameFactory;
 import za.ac.cput.factory.UserFactory;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test") // Use a test profile if needed
@@ -21,10 +26,23 @@ class UserControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:3306/group19-capstone-project/user";
+
+    private static final String USER_PICTURE_PATH = "C:/Users/bokam/OneDrive/Desktop/Example.jpeg";
+
+    private byte[] readFileAsBytes(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
     Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     Contact contact = ContactFactory.createContact("123", "kabo@example.com");
     Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
-    User user = UserFactory.createUser(name, contact, address, true, "profile.jpg");
+    User user = UserFactory.createUser(name, contact, address, true, userPicture);
     @Test
     void create() {
         String url = BASE_URL + "/create";
@@ -49,7 +67,7 @@ class UserControllerTest {
         // Modify user data for update
         User updatedUser = new User.Builder()
                 .copyUser(user)
-                .setPicture("new_profile.jpg")
+                .setPicture(userPicture)
                 .buildUser();
 
         String url = BASE_URL + "/update";
