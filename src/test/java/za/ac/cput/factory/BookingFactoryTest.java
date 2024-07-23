@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class BookingFactoryTest {
-    private static final String CAR_PICTURE_PATH = "path/to/your/car/picture.jpg";
+    private static final String CAR_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
 
     private byte[] readFileAsBytes(String filePath) {
         try {
@@ -43,7 +43,7 @@ public class BookingFactoryTest {
                             .buildCarInsurance())
             .setRentalRate("150")
             .setAvailabilityStatus("Available")
-            .setCarPicture("C:/Users/bokam/OneDrive/Desktop/Example.jpeg") // Provide appropriate car picture data here
+            .setCarPicture(carPicture) // Provide appropriate car picture data here
             .buildCar();
 
     @Test
