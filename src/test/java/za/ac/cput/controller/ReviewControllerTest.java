@@ -24,7 +24,7 @@ class ReviewControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:8080/Group19-Capstone-Project/review";
-    private static final String CAR_PICTURE_PATH = "path/to/your/car/picture.jpg";
+    private static final String CAR_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
 
     private byte[] readFileAsBytes(String filePath) {
         try {
@@ -55,7 +55,7 @@ class ReviewControllerTest {
                                 .buildCarInsurance())
                 .setRentalRate("150")
                 .setAvailabilityStatus("Available")
-                .setCarPicture("C:/Users/bokam/OneDrive/Desktop/Example.jpeg")
+                .setCarPicture(carPicture)
                 .buildCar();
         Booking booking = BookingFactory.buildBooking(
                 car, "15-June-2024", "20-June-2024",

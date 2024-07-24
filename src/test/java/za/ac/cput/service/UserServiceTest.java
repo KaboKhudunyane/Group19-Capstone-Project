@@ -23,7 +23,7 @@ class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    private static final String USER_PICTURE_PATH = "C:/Users/bokam/OneDrive/Desktop/Example.jpeg";
+    private static final String USER_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
 
     private byte[] readFileAsBytes(String filePath) {
         try {

@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CarServiceTest {
     @Autowired
     private CarService carService;
-    private static final String CAR_PICTURE_PATH = "C:/Users/bokam/OneDrive/Desktop/Example.jpeg";
+    private static final String CAR_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
 
     private byte[] readFileAsBytes(String filePath) {
         try {
@@ -43,7 +43,7 @@ class CarServiceTest {
             .setPolicyNumber("12345")
             .setInsuranceCompany("ABC Insurance")
             .buildCarInsurance();
-     Car car = CarFactory.buildCar(carInformation, carInsurance, "100","available","");
+     Car car = CarFactory.buildCar(carInformation, carInsurance, "100","available",carPicture);
 
     @Test
     void create() {

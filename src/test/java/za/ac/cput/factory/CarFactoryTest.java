@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class CarFactoryTest {
 
     // Example path to a car picture file
-    private static final String CAR_PICTURE_PATH = "C:/Users/bokam/OneDrive/Desktop/Example.jpeg";
+    private static final String CAR_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
 
     // Method to read file content as byte array
     private byte[] readFileAsBytes(String filePath) {
@@ -56,7 +56,7 @@ public class CarFactoryTest {
 
     @Test
     public void testBuildCarWithFail() {
-        Car car = CarFactory.buildCar(carInformation, carInsurance, "", "Available", "C:/Users/bokam/OneDrive/Desktop/Example.jpeg");
+        Car car = CarFactory.buildCar(carInformation, carInsurance, "", "Available", carPicture);
         assertNull(car); // Adjust this as needed if you want to test for failure
         System.out.println("Created car: " + car);
     }

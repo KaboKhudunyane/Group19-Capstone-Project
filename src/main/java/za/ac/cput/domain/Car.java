@@ -17,7 +17,7 @@ public class Car {
     private String rentalRate;
     private String availabilityStatus;
     @Lob
-    private String carPicture;
+    private byte[] carPicture;
     protected Car() {
     }
     private Car(Builder builder) {
@@ -44,7 +44,7 @@ public class Car {
     public String getAvailabilityStatus() {
         return availabilityStatus;
     }
-    public String getCarPicture() {
+    public byte[] getCarPicture() {
         return carPicture;
     }
 
@@ -76,7 +76,7 @@ public class Car {
         private CarInsurance carInsurance;
         private String rentalRate;
         private String availabilityStatus;
-        private String carPicture;
+        private byte[] carPicture;
         public Builder setCarInformation(CarInformation carInformation) {
             this.carInformation = carInformation;
             return this;
@@ -93,7 +93,7 @@ public class Car {
             this.availabilityStatus = availabilityStatus;
             return this;
         }
-        public Builder setCarPicture(String carPicture) {
+        public Builder setCarPicture(byte[] carPicture) {
             this.carPicture = carPicture;
             return this;
         }

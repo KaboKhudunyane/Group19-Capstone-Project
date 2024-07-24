@@ -30,9 +30,7 @@ public class User {
     public Long getUserID() {
         return userID;
     }
-    public Name getName() {
-        return name;
-    }
+    public Name getName() {return name;}
     public Contact getContact() {
         return contact;
     }
