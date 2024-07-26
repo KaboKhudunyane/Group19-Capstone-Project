@@ -18,7 +18,7 @@ class PaymentControllerTest {
     private TestRestTemplate restTemplate;
 
     private final String BASE_URL = "http://localhost:8080/payment";
-    private static final String CAR_PICTURE_PATH = "path/to/your/car/picture.jpg";
+    private static final String CAR_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Desktop\\Example.jpeg";
 
     private byte[] readFileAsBytes(String filePath) {
         try {

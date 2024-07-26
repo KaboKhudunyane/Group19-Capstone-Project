@@ -2,42 +2,38 @@ package za.ac.cput.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import za.ac.cput.domain.Payment;
 import za.ac.cput.repository.PaymentRepository;
 
 import java.util.List;
 
 @Service
-public class PaymentService implements IService<Payment, Long> {
-    private final PaymentRepository repository;
+public class PaymentService {
 
     @Autowired
-    public PaymentService(PaymentRepository repository) {
-        this.repository = repository;
-    }
+    private PaymentRepository paymentRepository;
 
-    @Override
+    @Transactional
     public Payment create(Payment payment) {
-        return repository.save(payment);
+        return paymentRepository.save(payment);
     }
 
-    @Override
     public Payment read(Long paymentID) {
-        return repository.findByPaymentID(paymentID);
+        return paymentRepository.findById(paymentID).orElse(null);
     }
 
-    @Override
+    @Transactional
     public Payment update(Payment payment) {
-        return repository.save(payment);
+        return paymentRepository.save(payment);
     }
 
-    @Override
+    @Transactional
     public void delete(Long paymentID) {
-        repository.deleteByPaymentID(paymentID);
+        paymentRepository.deleteById(paymentID);
     }
 
-    @Override
     public List<Payment> getAll() {
-        return repository.findAll();
+        return paymentRepository.findAll();
     }
 }

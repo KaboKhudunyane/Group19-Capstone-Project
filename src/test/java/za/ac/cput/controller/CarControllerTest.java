@@ -24,7 +24,7 @@ class CarControllerTest {
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:8080/Group19-Capstone-Project/car";
     // Example path to a car picture file
-    private static final String CAR_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
+    private static final String CAR_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Desktop\\Example.jpeg";
 
     // Method to read file content as byte array
     private byte[] readFileAsBytes(String filePath) {
