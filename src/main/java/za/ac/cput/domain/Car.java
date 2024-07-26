@@ -1,5 +1,4 @@
 package za.ac.cput.domain;
-
 import jakarta.persistence.*;
 import java.util.Arrays;
 import java.util.Objects;
@@ -21,6 +20,7 @@ public class Car {
     protected Car() {
     }
     private Car(Builder builder) {
+        this.carID = builder.carID;
         this.carInformation = builder.carInformation;
         this.carInsurance = builder.carInsurance;
         this.rentalRate = builder.rentalRate;
@@ -72,11 +72,16 @@ public class Car {
                 '}';
     }
     public static class Builder {
+        private Long carID;
         private CarInformation carInformation;
         private CarInsurance carInsurance;
         private String rentalRate;
         private String availabilityStatus;
         private byte[] carPicture;
+        public Builder setCarID(Long carID) {
+            this.carID = carID;
+            return this;
+        }
         public Builder setCarInformation(CarInformation carInformation) {
             this.carInformation = carInformation;
             return this;
@@ -98,6 +103,7 @@ public class Car {
             return this;
         }
         public Builder copyCar(Car car) {
+            this.carID = car.carID;
             this.carInformation = car.carInformation;
             this.carInsurance = car.carInsurance;
             this.rentalRate = car.rentalRate;

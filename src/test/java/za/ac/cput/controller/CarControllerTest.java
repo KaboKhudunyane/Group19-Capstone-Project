@@ -39,7 +39,7 @@ class CarControllerTest {
     byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
     CarInformation carInformation = CarInformationFactory.buildCarInformation("BMW", "M4", "2017", "CA 123-456", "It is an M-performance", "800hps, twin turbo Injector");
     CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance("Insurance Co.", "12345", "Comprehensive", "100000");
-    Car car = CarFactory.buildCar(carInformation, carInsurance, "100", "Available", null); // Assuming carPicture is not required for creation
+    Car car = CarFactory.buildCar(98348L, carInformation, carInsurance, "100", "Available", null); // Assuming carPicture is not required for creation
     @Test
     @Order(1)
     void create() {

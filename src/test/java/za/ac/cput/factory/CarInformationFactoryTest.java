@@ -15,12 +15,11 @@ class CarInformationFactoryTest {
         assertNotNull(carInformation);
         System.out.println(carInformation);
     }
-
     @Test
     void testBuildCarInformationWithFail() {
         CarInformation carInformation = CarInformationFactory.buildCarInformation( "BMW", "M4",
                 "2018", "CA123-456", "", "");;
-        assertNotNull(carInformation);
+        assertNull(carInformation);
         System.out.println(carInformation);
     }
 }

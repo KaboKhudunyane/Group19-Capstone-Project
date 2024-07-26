@@ -7,7 +7,7 @@ import za.ac.cput.util.Helper;
 
 public class CarFactory {
 
-    public static Car buildCar(CarInformation carInformation, CarInsurance carInsurance,
+    public static Car buildCar(Long carID, CarInformation carInformation, CarInsurance carInsurance,
                                String rentalRate, String availabilityStatus, byte[] carPicture) {
         // Validate inputs
         if (carInformation == null || carInsurance == null ||
@@ -17,6 +17,7 @@ public class CarFactory {
 
         // If inputs are valid, use the Builder pattern to create a Car object
         return new Car.Builder()
+                .setCarID(carID)
                 .setCarInformation(carInformation)
                 .setCarInsurance(carInsurance)
                 .setRentalRate(rentalRate)
