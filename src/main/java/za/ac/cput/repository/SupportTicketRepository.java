@@ -7,5 +7,4 @@ import java.util.List;
 public interface SupportTicketRepository extends JpaRepository<SupportTicket, Long> {
     SupportTicket findByTicketID(Long supportTicketID);
     void deleteByTicketID(Long supportTicketID);
-    List<SupportTicket> getAll();
 }

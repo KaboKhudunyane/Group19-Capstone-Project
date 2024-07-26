@@ -1,4 +1,6 @@
 package za.ac.cput.service;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,23 +17,33 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class CarServiceTest {
+
     @Autowired
     private CarService carService;
+
     private static final String CAR_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
+    private byte[] carPicture;
+
+    @BeforeEach
+    void setUp() {
+        carPicture = readFileAsBytes(CAR_PICTURE_PATH);
+        assertNotNull(carPicture, "Failed to read car picture bytes");
+    }
 
     private byte[] readFileAsBytes(String filePath) {
         try {
             Path path = Paths.get(filePath);
             return Files.readAllBytes(path);
         } catch (IOException e) {
+            System.err.println("Error reading file: " + filePath);
             e.printStackTrace();
             return null;
         }
     }
-    byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
-     static CarInformation carInformation = new CarInformation.Builder()
+    private static CarInformation carInformation = new CarInformation.Builder()
             .setMake("Toyota")
             .setModel("Corolla")
             .setYear("2020")
@@ -39,11 +51,18 @@ class CarServiceTest {
             .setDescription("A reliable sedan")
             .setFeatures("Air conditioning, Power windows")
             .buildCarInformation();
-     static CarInsurance carInsurance = new CarInsurance.Builder()
+
+    private static CarInsurance carInsurance = new CarInsurance.Builder()
             .setPolicyNumber("12345")
             .setInsuranceCompany("ABC Insurance")
             .buildCarInsurance();
-     Car car = CarFactory.buildCar(carInformation, carInsurance, "100","available",carPicture);
+
+    private Car car;
+
+    @BeforeEach
+    void initCar() {
+        car = CarFactory.buildCar(2879292L, carInformation, carInsurance, "100", "available", carPicture);
+    }
 
     @Test
     void create() {
@@ -54,7 +73,7 @@ class CarServiceTest {
 
     @Test
     void read() {
-        Car readCar = carService.read(car.getCarID() );
+        Car readCar = carService.read(car.getCarID());
         assertNotNull(readCar);
         System.out.println("Read Car: " + readCar);
     }

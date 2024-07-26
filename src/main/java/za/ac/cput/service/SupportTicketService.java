@@ -29,6 +29,6 @@ public class SupportTicketService implements IService<SupportTicket, Long> {
     }
     @Override
     public List<SupportTicket> getAll() {
-        return repository.getAll();
+        return repository.findAll();
     }
 }

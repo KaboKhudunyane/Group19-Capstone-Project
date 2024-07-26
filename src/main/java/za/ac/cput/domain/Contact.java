@@ -8,10 +8,8 @@ import java.util.Objects;
 
 @Embeddable
 public class Contact implements Serializable {
-    @Id
     private String email;
     private String mobileNumber;
-
     protected Contact() {}
 
     private Contact(Builder builder) {

@@ -8,7 +8,6 @@ import java.util.Objects;
 
 @Embeddable
 public class Address implements Serializable {
-    @Id
     private String streetName;
     private String suburb;
     private String city;

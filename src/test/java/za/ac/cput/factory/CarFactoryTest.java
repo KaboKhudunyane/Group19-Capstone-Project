@@ -49,14 +49,14 @@ public class CarFactoryTest {
 
     @Test
     public void testBuildCar() {
-        Car car = CarFactory.buildCar(carInformation, carInsurance, "145", "Available", null);
+        Car car = CarFactory.buildCar(23323L ,carInformation, carInsurance, "145", "Available", null);
         assertNotNull(car);
         System.out.println("Created car: " + car);
     }
 
     @Test
     public void testBuildCarWithFail() {
-        Car car = CarFactory.buildCar(carInformation, carInsurance, "", "Available", carPicture);
+        Car car = CarFactory.buildCar(28442L, carInformation, carInsurance, "", "Available", carPicture);
         assertNull(car); // Adjust this as needed if you want to test for failure
         System.out.println("Created car: " + car);
     }

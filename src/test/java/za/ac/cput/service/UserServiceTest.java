@@ -23,7 +23,7 @@ class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    private static final String USER_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
+    private static final String USER_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image\\avatar.jpg";
 
     private byte[] readFileAsBytes(String filePath) {
         try {
@@ -39,7 +39,7 @@ class UserServiceTest {
     private Contact contact = ContactFactory.createContact("123" ,"216273293@mycput.ac.za");
     private Address address = AddressFactory.createAddress("1", "216273293", "123 Street", "City", "7441");
     private User user = UserFactory.createUser(name, contact, address, true,  userPicture);
-    
+
     @Test
     void create(){
         User createUser = userService.create(user);
