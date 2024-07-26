@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class BookingServiceTest {
     @Autowired
     private BookingService bookingService;
-    private static final String CAR_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
+    private static final String CAR_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Desktop\\Example.jpeg";
     private byte[] readFileAsBytes(String filePath) {
         try {
             Path path = Paths.get(filePath);

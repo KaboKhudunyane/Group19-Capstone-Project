@@ -24,13 +24,19 @@ class CarServiceTest {
     @Autowired
     private CarService carService;
 
-    private static final String CAR_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
+    private static final String CAR_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Desktop\\Example.jpeg";
     private byte[] carPicture;
 
     @BeforeEach
     void setUp() {
         carPicture = readFileAsBytes(CAR_PICTURE_PATH);
         assertNotNull(carPicture, "Failed to read car picture bytes");
+
+        // Save the car entity to the database
+        initCar();
+        Car createdCar = carService.create(car);
+        assertNotNull(createdCar);
+        car = createdCar; // Use the saved car for further tests
     }
 
     private byte[] readFileAsBytes(String filePath) {
@@ -43,6 +49,7 @@ class CarServiceTest {
             return null;
         }
     }
+
     private static CarInformation carInformation = new CarInformation.Builder()
             .setMake("Toyota")
             .setModel("Corolla")
@@ -51,15 +58,15 @@ class CarServiceTest {
             .setDescription("A reliable sedan")
             .setFeatures("Air conditioning, Power windows")
             .buildCarInformation();
-
     private static CarInsurance carInsurance = new CarInsurance.Builder()
             .setPolicyNumber("12345")
             .setInsuranceCompany("ABC Insurance")
+            .setCoverageType("Comprehensive")
+            .setCoverageAmount("R16500")
             .buildCarInsurance();
 
     private Car car;
 
-    @BeforeEach
     void initCar() {
         car = CarFactory.buildCar(2879292L, carInformation, carInsurance, "100", "available", carPicture);
     }
@@ -83,10 +90,9 @@ class CarServiceTest {
         Car carToUpdate = carService.read(car.getCarID());
         assertNotNull(carToUpdate);
 
-        // Update using the builder pattern
         Car updatedCar = new Car.Builder()
                 .copyCar(carToUpdate)
-                .setRentalRate("150") // Update rental rate
+                .setRentalRate("150")
                 .buildCar();
 
         Car savedUpdatedCar = carService.update(updatedCar);

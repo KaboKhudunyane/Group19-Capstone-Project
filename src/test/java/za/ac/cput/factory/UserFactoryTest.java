@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class UserFactoryTest {
 
-    private static final String USER_PICTURE_PATH = "C:\\Users\\user\\Downloads\\V P I\\Group19-Capstone-Project\\image";
+    private static final String USER_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Desktop\\Example.jpeg";
 
     private byte[] readFileAsBytes(String filePath) {
         try {

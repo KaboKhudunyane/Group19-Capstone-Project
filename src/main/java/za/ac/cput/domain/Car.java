@@ -16,6 +16,7 @@ public class Car {
     private String rentalRate;
     private String availabilityStatus;
     @Lob
+    @Column(length = 1024)
     private byte[] carPicture;
     protected Car() {
     }

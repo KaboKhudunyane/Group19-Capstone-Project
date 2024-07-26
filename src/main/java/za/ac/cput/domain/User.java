@@ -18,6 +18,7 @@ public class User {
     private Address address;
     private Boolean license;
     @Lob
+    @Column(length = 1024)
     private byte[] picture;
     protected User() {}
     private User(Builder builder) {
