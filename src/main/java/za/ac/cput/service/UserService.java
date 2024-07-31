@@ -15,7 +15,6 @@ public class UserService implements IService<User, Long> {
     public User create(User user) {
         return userRepository.save(user);
     }
-
     @Override
     public User read(Long userID) {
         return userRepository.findByUserID(userID);
@@ -25,11 +24,12 @@ public class UserService implements IService<User, Long> {
     public User update(User user) {
         return userRepository.save(user);
     }
-    @Override
 
+    @Override
     public void delete(Long userID) {
         userRepository.deleteByUserID(userID);
     }
+
     @Override
     public List<User> getAll() {
         return userRepository.findAll();

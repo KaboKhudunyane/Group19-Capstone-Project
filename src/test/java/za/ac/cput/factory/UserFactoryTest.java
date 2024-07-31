@@ -1,5 +1,4 @@
 package za.ac.cput.factory;
-
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Contact;
@@ -13,12 +12,10 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-
 public class UserFactoryTest {
-
-    private static final String USER_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Desktop\\Example.jpeg";
-
-    private byte[] readFileAsBytes(String filePath) {
+    //licence picture
+    private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
+    private byte[] readFileAsBytes1(String filePath) {
         try {
             Path path = Paths.get(filePath);
             return Files.readAllBytes(path);
@@ -27,24 +24,33 @@ public class UserFactoryTest {
             return null;
         }
     }
-
-    byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
-
+    byte[] licensePicture = readFileAsBytes1(LICENSE_PICTURE_PATH);
+    //user id picture
+    private static final String ID_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG2.PNG";
+    private byte[] readFileAsBytes2(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    byte[] idPicture = readFileAsBytes2(ID_PICTURE_PATH);
+    //building embeddables
     Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
     Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
-    Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
-
+    Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("Cape Town").setProvince("Western Cape").setZipCode("12345").buildAddress();
     @Test
     public void testBuildUser() {
-        User user = UserFactory.createUser(name, contact, address, true, userPicture);
+        User user = UserFactory.createUser(name, contact, address, licensePicture, idPicture);
         assertNotNull(user);
         System.out.println(user);
     }
-
     @Test
     public void testBuildUserWithFail() {
-        User user = UserFactory.createUser(null, contact, address, true, userPicture); // Passing null for name
-        assertNull(user); // Expecting user creation to fail and return null
+        User user = UserFactory.createUser(null, contact, address, licensePicture, idPicture);
+        assertNull(user);
         System.out.println(user);
     }
 }

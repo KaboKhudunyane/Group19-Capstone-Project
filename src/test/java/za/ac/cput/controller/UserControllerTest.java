@@ -29,7 +29,9 @@ class UserControllerTest {
     private String getBaseUrl() {
         return "http://localhost:" + port + "/user";
     }
-    private static final String USER_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
+    private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
+    private static final String USER_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG2.PNG";
+
     private byte[] readFileAsBytes(String filePath) {
         try {
             Path path = Paths.get(filePath);
@@ -39,11 +41,14 @@ class UserControllerTest {
             return null;
         }
     }
+    byte[] licensePicture = readFileAsBytes(USER_PICTURE_PATH);
     byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
+
     Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     Contact contact = ContactFactory.createContact("216273293@mycput.ac.za", "0658595712");
     Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
-    User user = UserFactory.createUser(name, contact, address, true, userPicture);
+    User user = UserFactory.createUser(name, contact, address, licensePicture, userPicture);
+
     @Test
     void create() {
         String url = getBaseUrl() + "/create";
@@ -65,16 +70,18 @@ class UserControllerTest {
     }
     @Test
     void update() {
+        // Set a new license picture (or modify other details as needed)
+        byte[] newLicensePicture = readFileAsBytes("C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG"); // Update the image path as needed
         // Modify user data for update
         User updatedUser = new User.Builder()
                 .copyUser(user)
-                .setPicture(userPicture)
+                .setLicense(newLicensePicture)
                 .buildUser();
         String url = getBaseUrl() + "/update";
         restTemplate.put(url, updatedUser);
         ResponseEntity<User> response = restTemplate.getForEntity(getBaseUrl() + "/read/" + user.getUserID(), User.class);
         assertNotNull(response.getBody());
-        assertArrayEquals(userPicture, response.getBody().getPicture()); // Adjusted this check for picture
+        assertArrayEquals(userPicture, response.getBody().getIdentityDocument());
         System.out.println("Updated user: " + response.getBody());
     }
     @Test

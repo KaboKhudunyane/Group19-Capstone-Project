@@ -12,6 +12,10 @@ import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.*;
 import za.ac.cput.factory.*;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,22 +29,27 @@ class SupportTicketControllerTest {
     private TestRestTemplate restTemplate;
     private final String BASE_URL ="mysql://${MYSQL_HOST:localhost}:3306/CarShare";
 
-    private static final String USER_PICTURE_PATH = "C:/Users/bokam/OneDrive/Desktop/Example.jpeg";
+    //license picture
+    private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
+    private static final String ID_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
 
-    private byte[] readFileAsBytes(String filePath) {
+    private byte[] compressImage(String filePath) {
         try {
-            Path path = Paths.get(filePath);
-            return Files.readAllBytes(path);
+            BufferedImage image = ImageIO.read(new File(filePath));
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(image, "jpg", baos);
+            return baos.toByteArray();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
-    byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
+    byte[] licensePicture = compressImage(LICENSE_PICTURE_PATH);
+    byte[] idPicture = compressImage(ID_PICTURE_PATH);
     Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     Contact contact = ContactFactory.createContact("123", "kabo@example.com");
     Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
-    User user = UserFactory.createUser(name, contact, address, true, userPicture);
+    User user = UserFactory.createUser(name, contact, address, licensePicture, idPicture);
     LocalDate dateCreated = LocalDate.of(2024, 4, 3);
     SupportTicket supportTicket = SupportTicketFactory.buildSupportTicket(user, "Technical Support", "I am facing login issues.", dateCreated);
     @Test

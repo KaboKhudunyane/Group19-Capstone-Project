@@ -14,17 +14,19 @@ public class User {
     private Contact contact;
     @Embedded
     private Address address;
-    private Boolean license;
     @Lob
     @Column(length = 65535)
-    private byte[] picture;
+    private byte[] license;
+    @Lob
+    @Column(length = 65535)
+    private byte[] identityDocument;
     protected User() {}
     private User(Builder builder) {
         this.name = builder.name;
         this.contact = builder.contact;
         this.address = builder.address;
         this.license = builder.license;
-        this.picture = builder.picture;
+        this.identityDocument = builder.identityDocument;
     }
     public Long getUserID() {
         return userID;
@@ -38,39 +40,33 @@ public class User {
         return address;
     }
 
-    public Boolean getLicense() {
+    public byte[] getLicense() {
         return license;
     }
 
-    public byte[] getPicture() {
-        return picture;
+    public byte[] getIdentityDocument() {
+        return identityDocument;
     }
 
     @Override
-    public boolean equals(Object userObject) {
-        if (this == userObject) return true;
-        if (userObject == null || getClass() != userObject.getClass()) return false;
-        User user = (User) userObject;
-        return Objects.equals(name, user.name) &&
-                Objects.equals(contact, user.contact) &&
-                Objects.equals(address, user.address) &&
-                Objects.equals(license, user.license) &&
-                Objects.equals(picture, user.picture);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userID, user.userID) && Objects.equals(name, user.name) && Objects.equals(contact, user.contact) && Objects.equals(address, user.address) && Objects.deepEquals(license, user.license) && Objects.deepEquals(identityDocument, user.identityDocument);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(userID, name, contact, address, license);
-        result = 31 * result + Arrays.hashCode(picture);
-        return result;
+        return Objects.hash(userID, name, contact, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));
     }
 
     public static class Builder {
         private Name name;
         private Contact contact;
         private Address address;
-        private Boolean license;
-        private byte[] picture;
+        private byte[] license;
+        private byte[] identityDocument;
 
         public Builder setName(Name name) {
             this.name = name;
@@ -84,12 +80,12 @@ public class User {
             this.address = address;
             return this;
         }
-        public Builder setLicense(Boolean license) {
+        public Builder setLicense(byte[] license) {
             this.license = license;
             return this;
         }
-        public Builder setPicture(byte[] picture) {
-            this.picture = picture;
+        public Builder setIdentityDocument(byte[] identityDocument) {
+            this.identityDocument = identityDocument;
             return this;
         }
         public Builder copyUser(User user) {
@@ -97,7 +93,7 @@ public class User {
             this.contact = user.contact;
             this.address = user.address;
             this.license = user.license;
-            this.picture = user.picture;
+            this.identityDocument = user.identityDocument;
             return this;
         }
         public User buildUser() {

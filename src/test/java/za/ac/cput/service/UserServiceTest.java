@@ -28,7 +28,9 @@ class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    private static final String USER_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
+    //license picture
+    private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
+    private static final String ID_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
 
     private byte[] compressImage(String filePath) {
         try {
@@ -41,12 +43,13 @@ class UserServiceTest {
             return null;
         }
     }
+    byte[] licensePicture = compressImage(LICENSE_PICTURE_PATH);
+    byte[] idPicture = compressImage(ID_PICTURE_PATH);
 
-    byte[] userPicture = compressImage(USER_PICTURE_PATH);
     private Name name = NameFactory.createName("Thato", "Emeka", "Nwamadi");
     private Contact contact = ContactFactory.createContact("295732963@mycput.ac.za", "0654545212");
     private Address address = AddressFactory.createAddress("89 St Marks", "District 10", "Cape Town", "Western Cape", "8000");
-    private User user = UserFactory.createUser(name, contact, address, true, userPicture);
+    private User user = UserFactory.createUser(name, contact, address, licensePicture, idPicture);
 
     @Test
     void create() {
@@ -54,22 +57,22 @@ class UserServiceTest {
         assertNotNull(createUser);
         System.out.println("Created User: " + createUser);
     }
-
     @Test
     void read() {
         User readUser = userService.read(user.getUserID());
         assertNotNull(readUser);
         System.out.println("Read User: " + readUser);
     }
-
     @Test
     void update() {
-        User newUser = new User.Builder().copyUser(user).setLicense(false).buildUser();
+        // Set a new license picture (or modify other details as needed)
+        byte[] newLicensePicture = compressImage("C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG"); // Update the image path as needed
+
+        User newUser = new User.Builder().copyUser(user).setLicense(newLicensePicture).buildUser();
         User updatedUser = userService.update(newUser);
         assertNotNull(updatedUser);
         System.out.println("Updated User: " + updatedUser);
     }
-
     @Test
     void delete() {
         userService.delete(user.getUserID());

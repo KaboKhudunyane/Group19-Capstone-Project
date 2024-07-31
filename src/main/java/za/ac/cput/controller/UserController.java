@@ -4,7 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import za.ac.cput.domain.*; 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import za.ac.cput.domain.*;
 import za.ac.cput.service.UserService;
 import java.io.IOException;
 import java.util.List;
@@ -32,26 +33,13 @@ public class UserController {
                                        @RequestParam("city") String city,
                                        @RequestParam("province") String province,
                                        @RequestParam("zipCode") String zipCode,
-                                       @RequestParam("license") Boolean license,
-                                       @RequestParam(value = "picture", required = false) MultipartFile picture) throws IOException {
-        // Log received parameters
-        System.out.println("Received parameters:");
-        System.out.println("First Name: " + firstName);
-        System.out.println("Middle Name: " + middleName);
-        System.out.println("Last Name: " + lastName);
-        System.out.println("Email: " + email);
-        System.out.println("Mobile Number: " + mobileNumber);
-        System.out.println("Street Name: " + streetName);
-        System.out.println("Suburb: " + suburb);
-        System.out.println("City: " + city);
-        System.out.println("Province: " + province);
-        System.out.println("Zip Code: " + zipCode);
-        System.out.println("License: " + license);
-        if (picture != null) {
-            System.out.println("Picture size: " + picture.getBytes().length);
-        }
-        // Process file and create User
-        byte[] pictureBytes = picture != null ? picture.getBytes() : null;
+                                       @RequestParam(value = "license", required = false) MultipartFile licenseFile,
+                                       @RequestParam(value = "identityDocument", required = false) MultipartFile identityDocumentFile)
+            throws IOException {
+        // Process the files into byte arrays
+        byte[] licenseBytes = licenseFile != null ? licenseFile.getBytes() : null;
+        byte[] identityDocumentBytes = identityDocumentFile != null ? identityDocumentFile.getBytes() : null;
+        // Create the Name, Contact, and Address objects
         Name name = new Name.Builder()
                 .setFirstName(firstName)
                 .setMiddleName(middleName)
@@ -68,13 +56,15 @@ public class UserController {
                 .setProvince(province)
                 .setZipCode(zipCode)
                 .buildAddress();
+        // Create the User object with the processed images
         User user = new User.Builder()
                 .setName(name)
                 .setContact(contact)
                 .setAddress(address)
-                .setLicense(license)
-                .setPicture(pictureBytes)
+                .setLicense(licenseBytes)
+                .setIdentityDocument(identityDocumentBytes)
                 .buildUser();
+        // Create the user using the service
         User createdUser = userService.create(user);
         return ResponseEntity.ok(createdUser);
     }
