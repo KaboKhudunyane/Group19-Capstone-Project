@@ -32,7 +32,7 @@ public class UserFactoryTest {
 
     Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
     Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
-    Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setState("StateName").setZipCode("12345").buildAddress();
+    Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
 
     @Test
     public void testBuildUser() {

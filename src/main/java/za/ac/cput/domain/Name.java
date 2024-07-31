@@ -1,5 +1,4 @@
 package za.ac.cput.domain;
-
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -8,7 +7,6 @@ import java.util.Objects;
 
 @Embeddable
 public class Name implements Serializable{
-
     private String firstName;
     private String middleName;
     private String lastName;

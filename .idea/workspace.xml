@@ -6,31 +6,49 @@
   <component name="ChangeListManager">
     <list default="true" id="8758b9c8-22d5-4679-afc4-b057abaf4201" name="Changes" comment="debug sess 23/07">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Name.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/BookingControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/BookingControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/CarControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/CarControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/PaymentControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/PaymentControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/ReviewControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/ReviewControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/BookingFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/BookingFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/CarFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/CarFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/ReviewFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/ReviewFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AddressFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AddressFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/AddressFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/AddressFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/SupportTicketFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/SupportTicketFactoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/UserFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/UserFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/BookingServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/BookingServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/PaymentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/PaymentServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/ReviewServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/ReviewServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/SupportTicketServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/SupportTicketServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Address$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Address$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Address.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Car$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Car$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Car.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Name$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Name$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Name.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Name.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/AddressFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/AddressFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/service/PaymentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/service/PaymentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/BookingControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/BookingControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/CarControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/CarControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/PaymentControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/PaymentControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/ReviewControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/ReviewControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/UserControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/UserControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/AddressFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/AddressFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/BookingFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/BookingFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/ReviewFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/ReviewFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/UserFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/UserFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/BookingServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/BookingServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/CarServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/CarServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/PaymentServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/PaymentServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/ReviewServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/ReviewServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/SupportTicketServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/SupportTicketServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/UserServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/UserServiceTest.class" afterDir="false" />
     </list>
-    <list id="1bde3307-32f7-46e0-a75c-3079fd0566d5" name="Changes by Kabo Khudunyane" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/SupportTicketServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/SupportTicketServiceTest.java" afterDir="false" />
-    </list>
+    <list id="1bde3307-32f7-46e0-a75c-3079fd0566d5" name="Changes by Kabo Khudunyane" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,39 +57,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarServiceTest.java">
-      <ranges>
-        <range start1="26" end1="27" start2="26" end2="27" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="33" end1="33" start2="33" end2="39" changelist="1bde3307-32f7-46e0-a75c-3079fd0566d5" />
-        <range start1="45" end1="45" start2="51" end2="52" changelist="1bde3307-32f7-46e0-a75c-3079fd0566d5" />
-        <range start1="53" end1="54" start2="60" end2="60" changelist="1bde3307-32f7-46e0-a75c-3079fd0566d5" />
-        <range start1="57" end1="57" start2="63" end2="65" changelist="1bde3307-32f7-46e0-a75c-3079fd0566d5" />
-        <range start1="61" end1="62" start2="69" end2="69" changelist="1bde3307-32f7-46e0-a75c-3079fd0566d5" />
-        <range start1="85" end1="86" start2="92" end2="92" changelist="1bde3307-32f7-46e0-a75c-3079fd0566d5" />
-        <range start1="88" end1="89" start2="94" end2="95" changelist="1bde3307-32f7-46e0-a75c-3079fd0566d5" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/test/java/za/ac/cput/service/SupportTicketServiceTest.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="14" end1="14" start2="15" end2="16" changelist="1bde3307-32f7-46e0-a75c-3079fd0566d5" />
-        <range start1="23" end1="23" start2="25" end2="28" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="34" end1="34" start2="39" end2="40" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="36" end1="42" start2="42" end2="58" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="52" end1="52" start2="68" end2="69" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="54" end1="55" start2="71" end2="75" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="58" end1="58" start2="78" end2="79" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="60" end1="62" start2="81" end2="86" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="64" end1="65" start2="88" end2="88" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="66" end1="71" start2="89" end2="95" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="72" end1="72" start2="96" end2="97" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="74" end1="76" start2="99" end2="104" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="79" end1="79" start2="107" end2="108" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="81" end1="83" start2="110" end2="122" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-        <range start1="85" end1="85" start2="124" end2="125" changelist="8758b9c8-22d5-4679-afc4-b057abaf4201" />
-      </ranges>
-    </file>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;KaboKhudunyane&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KaboKhudunyane/Group19-Capstone-Project.git&quot;,
+    &quot;accountId&quot;: &quot;1dd1ea51-95af-44cf-9eed-5bd5f138fe8c&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -82,84 +81,78 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.AddressFactoryTest.executor": "Run",
-    "JUnit.AddressServiceTest.executor": "Run",
-    "JUnit.BookingFactoryTest.executor": "Run",
-    "JUnit.BookingServiceTest.create.executor": "Run",
-    "JUnit.BookingServiceTest.executor": "Run",
-    "JUnit.CarFactoryTest.executor": "Run",
-    "JUnit.CarInformationFactoryTest.executor": "Run",
-    "JUnit.CarInsuranceFactoryTest.executor": "Run",
-    "JUnit.CarServiceTest.create.executor": "Run",
-    "JUnit.CarServiceTest.delete.executor": "Run",
-    "JUnit.CarServiceTest.executor": "Run",
-    "JUnit.CarServiceTest.read.executor": "Run",
-    "JUnit.CarServiceTest.update.executor": "Run",
-    "JUnit.ContactFactoryTest.executor": "Run",
-    "JUnit.NameFactoryTest.executor": "Run",
-    "JUnit.PaymentFactoryTest.executor": "Run",
-    "JUnit.PaymentServiceTest.create.executor": "Run",
-    "JUnit.PaymentServiceTest.delete.executor": "Run",
-    "JUnit.PaymentServiceTest.executor": "Run",
-    "JUnit.PaymentServiceTest.read.executor": "Run",
-    "JUnit.PaymentServiceTest.update.executor": "Run",
-    "JUnit.ReviewServiceTest.createReview.executor": "Run",
-    "JUnit.ReviewServiceTest.executor": "Run",
-    "JUnit.SupportTicketServiceTest.create.executor": "Run",
-    "JUnit.SupportTicketServiceTest.delete.executor": "Run",
-    "JUnit.SupportTicketServiceTest.executor": "Run",
-    "JUnit.UserFactoryTest.executor": "Run",
-    "JUnit.UserServiceTest.create.executor": "Run",
-    "JUnit.UserServiceTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/bokam/OneDrive/Documents/GitHub/Group19-Capstone-Project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AddressFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AddressServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInsuranceFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContactFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NameFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReviewServiceTest.createReview.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReviewServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupportTicketServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupportTicketServiceTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupportTicketServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/bokam/OneDrive/Documents/GitHub/Group19-Capstone-Project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.PaymentServiceTest.delete">
-    <configuration name="PaymentServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager" selected="Spring Boot.Main">
+    <configuration name="UserControllerTest.create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="za.ac.cput.service.*" />
+          <option name="PATTERN" value="za.ac.cput.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.PaymentServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PaymentServiceTest.create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CapstoneProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="za.ac.cput.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.PaymentServiceTest" />
+      <option name="PACKAGE_NAME" value="za.ac.cput.controller" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.controller.UserControllerTest" />
       <option name="METHOD_NAME" value="create" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PaymentServiceTest.delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
         <pattern>
@@ -168,14 +161,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.PaymentServiceTest" />
-      <option name="METHOD_NAME" value="delete" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.UserServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CapstoneProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.service" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="create" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PaymentServiceTest.read" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
         <pattern>
@@ -184,43 +192,41 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.PaymentServiceTest" />
-      <option name="METHOD_NAME" value="read" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PaymentServiceTest.update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CapstoneProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="za.ac.cput.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.PaymentServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.UserServiceTest" />
       <option name="METHOD_NAME" value="update" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="CapstoneProject" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="za.ac.cput.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PaymentServiceTest.delete" />
-        <item itemvalue="JUnit.PaymentServiceTest.update" />
-        <item itemvalue="JUnit.PaymentServiceTest.read" />
-        <item itemvalue="JUnit.PaymentServiceTest.create" />
-        <item itemvalue="JUnit.PaymentServiceTest" />
+        <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="JUnit.UserServiceTest.create" />
+        <item itemvalue="JUnit.UserControllerTest.create" />
+        <item itemvalue="JUnit.UserServiceTest.update" />
+        <item itemvalue="JUnit.UserServiceTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -240,6 +246,15 @@
       <workItem from="1721982400524" duration="9708000" />
       <workItem from="1721995060893" duration="5002000" />
       <workItem from="1722005761569" duration="7892000" />
+      <workItem from="1722070813444" duration="3423000" />
+      <workItem from="1722198900667" duration="50000" />
+      <workItem from="1722243033176" duration="9343000" />
+      <workItem from="1722258425188" duration="1240000" />
+      <workItem from="1722271805914" duration="5246000" />
+      <workItem from="1722277314090" duration="6426000" />
+      <workItem from="1722348473912" duration="7438000" />
+      <workItem from="1722369110706" duration="5068000" />
+      <workItem from="1722410028792" duration="2064000" />
     </task>
     <task id="LOCAL-00001" summary="debug sess 23/07">
       <option name="closed" value="true" />
@@ -267,6 +282,11 @@
           <line>101</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/za/ac/cput/service/UserServiceTest.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarServiceTest.java</url>
           <line>74</line>
@@ -275,6 +295,24 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/za/ac/cput/service/UserServiceTest.java</url>
+          <line>51</line>
+          <properties class="za.ac.cput.service.UserServiceTest" method="create">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/za/ac/cput/controller/UserControllerTest.java</url>
+          <line>58</line>
+          <properties class="za.ac.cput.controller.UserControllerTest" method="read">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

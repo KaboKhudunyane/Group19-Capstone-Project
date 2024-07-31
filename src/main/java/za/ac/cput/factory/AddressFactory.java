@@ -7,13 +7,13 @@ public class AddressFactory {
 
     // Method to create a new Address object with validation checks
     public static Address createAddress(String streetName, String suburb,
-                                        String city, String state, String zipCode) {
+                                        String city, String province, String zipCode) {
 
         // Validate mandatory fields
         if(Helper.isNullOrEmpty(streetName) ||
                 Helper.isNullOrEmpty(suburb) ||
                 Helper.isNullOrEmpty(city) ||
-                Helper.isNullOrEmpty(state) ||
+                Helper.isNullOrEmpty(province) ||
                 Helper.isNullOrEmpty(zipCode)) {
             return null;  // Return null if any mandatory field is missing
         }
@@ -23,7 +23,7 @@ public class AddressFactory {
                 .setStreetName(streetName)
                 .setSuburb(suburb)
                 .setCity(city)
-                .setState(state)
+                .setProvince(province)
                 .setZipCode(zipCode)
                 .buildAddress();
     }

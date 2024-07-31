@@ -11,7 +11,7 @@ public class Address implements Serializable {
     private String streetName;
     private String suburb;
     private String city;
-    private String state;
+    private String province;
     private String zipCode;
 
     protected Address() {}
@@ -20,7 +20,7 @@ public class Address implements Serializable {
         this.streetName = builder.streetName;
         this.suburb = builder.suburb;
         this.city = builder.city;
-        this.state = builder.state;
+        this.province = builder.province;
         this.zipCode = builder.zipCode;
     }
 
@@ -36,8 +36,8 @@ public class Address implements Serializable {
         return city;
     }
 
-    public String getState() {
-        return state;
+    public String getProvince() {
+        return province;
     }
 
     public String getZipCode() {
@@ -52,13 +52,13 @@ public class Address implements Serializable {
         return Objects.equals(streetName, address.streetName) &&
                 Objects.equals(suburb, address.suburb) &&
                 Objects.equals(city, address.city) &&
-                Objects.equals(state, address.state) &&
+                Objects.equals(province, address.province) &&
                 Objects.equals(zipCode, address.zipCode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(streetName, suburb, city, state, zipCode);
+        return Objects.hash(streetName, suburb, city, province, zipCode);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class Address implements Serializable {
                 "streetName='" + streetName + '\'' +
                 ", suburb='" + suburb + '\'' +
                 ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
+                ", province='" + province + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 '}';
     }
@@ -76,7 +76,7 @@ public class Address implements Serializable {
         private String streetName;
         private String suburb;
         private String city;
-        private String state;
+        private String province;
         private String zipCode;
 
         public Builder setStreetName(String streetName) {
@@ -94,8 +94,8 @@ public class Address implements Serializable {
             return this;
         }
 
-        public Builder setState(String state) {
-            this.state = state;
+        public Builder setProvince(String province) {
+            this.province = province;
             return this;
         }
 
@@ -108,7 +108,7 @@ public class Address implements Serializable {
             this.streetName = address.streetName;
             this.suburb = address.suburb;
             this.city = address.city;
-            this.state = address.state;
+            this.province = address.province;
             this.zipCode = address.zipCode;
             return this;
         }

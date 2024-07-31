@@ -23,7 +23,7 @@ public class SupportTicketFactoryTest {
     byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
     private Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
     private Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
-    private Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setState("StateName").setZipCode("12345").buildAddress();
+    private Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
     private User user = UserFactory.createUser(name, contact, address, true,userPicture );
     @Test
     void buildSupportTicket() {

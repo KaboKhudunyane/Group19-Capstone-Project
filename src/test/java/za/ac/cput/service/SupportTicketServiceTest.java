@@ -47,7 +47,7 @@ class SupportTicketServiceTest {
     void setUp() {
         Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
         Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
-        Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setState("StateName").setZipCode("12345").buildAddress();
+        Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
         user = UserFactory.createUser(name, contact, address, true, userPicture);
         user = userService.create(user); // Save the user first
         assertNotNull(user, "User should be saved and not null");

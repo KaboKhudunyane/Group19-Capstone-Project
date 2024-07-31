@@ -1,11 +1,9 @@
 package za.ac.cput.domain;
 import jakarta.persistence.*;
-
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 @Entity
-@Table(name = "Users")
+@Table(name = "User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +16,7 @@ public class User {
     private Address address;
     private Boolean license;
     @Lob
-    @Column(length = 1024)
+    @Column(length = 65535)
     private byte[] picture;
     protected User() {}
     private User(Builder builder) {

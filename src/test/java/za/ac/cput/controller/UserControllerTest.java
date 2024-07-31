@@ -3,6 +3,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
 import za.ac.cput.domain.Address;
@@ -13,22 +14,22 @@ import za.ac.cput.factory.AddressFactory;
 import za.ac.cput.factory.ContactFactory;
 import za.ac.cput.factory.NameFactory;
 import za.ac.cput.factory.UserFactory;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test") // Use a test profile if needed
 class UserControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
-    private final String BASE_URL = "http://localhost:3306/group19-capstone-project/user";
-
-    private static final String USER_PICTURE_PATH = "C:/Users/bokam/OneDrive/Desktop/Example.jpeg";
-
+    @LocalServerPort
+    private int port;
+    private String getBaseUrl() {
+        return "http://localhost:" + port + "/user";
+    }
+    private static final String USER_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
     private byte[] readFileAsBytes(String filePath) {
         try {
             Path path = Paths.get(filePath);
@@ -40,12 +41,12 @@ class UserControllerTest {
     }
     byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
     Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
-    Contact contact = ContactFactory.createContact("123", "kabo@example.com");
+    Contact contact = ContactFactory.createContact("216273293@mycput.ac.za", "0658595712");
     Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
     User user = UserFactory.createUser(name, contact, address, true, userPicture);
     @Test
     void create() {
-        String url = BASE_URL + "/create";
+        String url = getBaseUrl() + "/create";
         ResponseEntity<User> postResponse = restTemplate.postForEntity(url, user, User.class);
         assertNotNull(postResponse);
         assertEquals(HttpStatus.CREATED, postResponse.getStatusCode());
@@ -56,7 +57,7 @@ class UserControllerTest {
     }
     @Test
     void read() {
-        String url = BASE_URL + "/read/" + user.getUserID();
+        String url = getBaseUrl() + "/read/" + user.getUserID();
         ResponseEntity<User> response = restTemplate.getForEntity(url, User.class);
         assertNotNull(response.getBody());
         assertEquals(user.getUserID(), response.getBody().getUserID());
@@ -69,25 +70,24 @@ class UserControllerTest {
                 .copyUser(user)
                 .setPicture(userPicture)
                 .buildUser();
-
-        String url = BASE_URL + "/update";
+        String url = getBaseUrl() + "/update";
         restTemplate.put(url, updatedUser);
-        ResponseEntity<User> response = restTemplate.getForEntity(BASE_URL + "/read/" + user.getUserID(), User.class);
+        ResponseEntity<User> response = restTemplate.getForEntity(getBaseUrl() + "/read/" + user.getUserID(), User.class);
         assertNotNull(response.getBody());
-        assertEquals("new_profile.jpg", response.getBody().getPicture());
+        assertArrayEquals(userPicture, response.getBody().getPicture()); // Adjusted this check for picture
         System.out.println("Updated user: " + response.getBody());
     }
     @Test
     void delete() {
-        String url = BASE_URL + "/delete/" + user.getUserID();
+        String url = getBaseUrl() + "/delete/" + user.getUserID();
         restTemplate.delete(url);
-        ResponseEntity<User> response = restTemplate.getForEntity(BASE_URL + "/read/" + user.getUserID(), User.class);
+        ResponseEntity<User> response = restTemplate.getForEntity(getBaseUrl() + "/read/" + user.getUserID(), User.class);
         assertNull(response.getBody());
         System.out.println("User deleted successfully.");
     }
     @Test
     void getAll() {
-        String url = BASE_URL + "/getAll";
+        String url = getBaseUrl() + "/getAll";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<User[]> response = restTemplate.exchange(url, HttpMethod.GET, entity, User[].class);
