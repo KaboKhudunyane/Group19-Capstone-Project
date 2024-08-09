@@ -15,10 +15,10 @@ public class User {
     @Embedded
     private Address address;
     @Lob
-    @Column(length = 65535)
+    @Column(name = "License",length = 65535)
     private byte[] license;
     @Lob
-    @Column(length = 65535)
+    @Column(name = "Identity Document",length = 65535)
     private byte[] identityDocument;
     protected User() {}
     private User(Builder builder) {
@@ -35,19 +35,15 @@ public class User {
     public Contact getContact() {
         return contact;
     }
-
     public Address getAddress() {
         return address;
     }
-
     public byte[] getLicense() {
         return license;
     }
-
     public byte[] getIdentityDocument() {
         return identityDocument;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,12 +51,10 @@ public class User {
         User user = (User) o;
         return Objects.equals(userID, user.userID) && Objects.equals(name, user.name) && Objects.equals(contact, user.contact) && Objects.equals(address, user.address) && Objects.deepEquals(license, user.license) && Objects.deepEquals(identityDocument, user.identityDocument);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(userID, name, contact, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));
     }
-
     public static class Builder {
         private Name name;
         private Contact contact;

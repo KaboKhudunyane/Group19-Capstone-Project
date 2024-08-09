@@ -19,17 +19,14 @@ public class UserService implements IService<User, Long> {
     public User read(Long userID) {
         return userRepository.findByUserID(userID);
     }
-
     @Override
     public User update(User user) {
         return userRepository.save(user);
     }
-
     @Override
     public void delete(Long userID) {
         userRepository.deleteByUserID(userID);
     }
-
     @Override
     public List<User> getAll() {
         return userRepository.findAll();

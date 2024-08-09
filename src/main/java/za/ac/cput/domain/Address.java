@@ -1,21 +1,23 @@
 package za.ac.cput.domain;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Id;
 
 import java.io.Serializable;
 import java.util.Objects;
-
 @Embeddable
 public class Address implements Serializable {
+    @Column(name = "Street Name")
     private String streetName;
+    @Column(name = "Suburb")
     private String suburb;
+    @Column(name = "City")
     private String city;
+    @Column(name = "Province")
     private String province;
+    @Column(name = "Zip Code")
     private String zipCode;
-
     protected Address() {}
-
     private Address(Builder builder) {
         this.streetName = builder.streetName;
         this.suburb = builder.suburb;
@@ -23,27 +25,21 @@ public class Address implements Serializable {
         this.province = builder.province;
         this.zipCode = builder.zipCode;
     }
-
     public String getStreetName() {
         return streetName;
     }
-
     public String getSuburb() {
         return suburb;
     }
-
     public String getCity() {
         return city;
     }
-
     public String getProvince() {
         return province;
     }
-
     public String getZipCode() {
         return zipCode;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -55,12 +51,10 @@ public class Address implements Serializable {
                 Objects.equals(province, address.province) &&
                 Objects.equals(zipCode, address.zipCode);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(streetName, suburb, city, province, zipCode);
     }
-
     @Override
     public String toString() {
         return "Address{" +
@@ -71,24 +65,20 @@ public class Address implements Serializable {
                 ", zipCode='" + zipCode + '\'' +
                 '}';
     }
-
     public static class Builder {
         private String streetName;
         private String suburb;
         private String city;
         private String province;
         private String zipCode;
-
         public Builder setStreetName(String streetName) {
             this.streetName = streetName;
             return this;
         }
-
         public Builder setSuburb(String suburb) {
             this.suburb = suburb;
             return this;
         }
-
         public Builder setCity(String city) {
             this.city = city;
             return this;

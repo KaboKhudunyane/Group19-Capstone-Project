@@ -39,6 +39,7 @@ class UserServiceTest {
             ImageIO.write(image, "jpg", baos);
             return baos.toByteArray();
         } catch (IOException e) {
+            System.err.println("Error reading file: " + filePath);
             e.printStackTrace();
             return null;
         }

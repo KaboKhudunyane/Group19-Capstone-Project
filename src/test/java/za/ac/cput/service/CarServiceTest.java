@@ -1,5 +1,4 @@
 package za.ac.cput.service;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +16,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class CarServiceTest {
-
     @Autowired
     private CarService carService;
-
-    private static final String CAR_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Desktop\\Example.jpeg";
-    private byte[] carPicture;
-
-    @BeforeEach
-    void setUp() {
-        carPicture = readFileAsBytes(CAR_PICTURE_PATH);
-        assertNotNull(carPicture, "Failed to read car picture bytes");
-
-        // Save the car entity to the database
-        initCar();
-        Car createdCar = carService.create(car);
-        assertNotNull(createdCar);
-        car = createdCar; // Use the saved car for further tests
-    }
-
+    private static final String CAR_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
     private byte[] readFileAsBytes(String filePath) {
         try {
             Path path = Paths.get(filePath);
@@ -49,7 +31,7 @@ class CarServiceTest {
             return null;
         }
     }
-
+    private byte[]carPicture = readFileAsBytes(CAR_PICTURE_PATH);
     private static CarInformation carInformation = new CarInformation.Builder()
             .setMake("Toyota")
             .setModel("Corolla")
@@ -64,43 +46,32 @@ class CarServiceTest {
             .setCoverageType("Comprehensive")
             .setCoverageAmount("R16500")
             .buildCarInsurance();
-
-    private Car car;
-
-    void initCar() {
-        car = CarFactory.buildCar(2879292L, carInformation, carInsurance, "100", "available", carPicture);
-    }
-
+    Car car = CarFactory.buildCar(2879292L, carInformation, carInsurance, "100", "available", carPicture);
     @Test
     void create() {
         Car createdCar = carService.create(car);
         assertNotNull(createdCar);
         System.out.println("Created Car: " + createdCar);
     }
-
     @Test
     void read() {
         Car readCar = carService.read(car.getCarID());
         assertNotNull(readCar);
         System.out.println("Read Car: " + readCar);
     }
-
     @Test
     void update() {
         Car carToUpdate = carService.read(car.getCarID());
         assertNotNull(carToUpdate);
-
         Car updatedCar = new Car.Builder()
                 .copyCar(carToUpdate)
                 .setRentalRate("150")
                 .buildCar();
-
         Car savedUpdatedCar = carService.update(updatedCar);
         assertNotNull(savedUpdatedCar);
         assertEquals("150", savedUpdatedCar.getRentalRate());
         System.out.println("Updated Car: " + savedUpdatedCar);
     }
-
     @Test
     void delete() {
         carService.delete(car.getCarID());
