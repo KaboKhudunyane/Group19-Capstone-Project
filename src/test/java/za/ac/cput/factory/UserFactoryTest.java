@@ -1,9 +1,6 @@
 package za.ac.cput.factory;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.Address;
-import za.ac.cput.domain.Contact;
-import za.ac.cput.domain.Name;
-import za.ac.cput.domain.User;
+import za.ac.cput.domain.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -38,18 +35,19 @@ public class UserFactoryTest {
     }
     byte[] idPicture = readFileAsBytes2(ID_PICTURE_PATH);
     //building embeddables
+    Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
     Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
     Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
     Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("Cape Town").setProvince("Western Cape").setZipCode("12345").buildAddress();
     @Test
     public void testBuildUser() {
-        User user = UserFactory.createUser(name, contact, address, licensePicture, idPicture);
+        User user = UserFactory.createUser(account, name, contact, address, licensePicture, idPicture);
         assertNotNull(user);
         System.out.println(user);
     }
     @Test
     public void testBuildUserWithFail() {
-        User user = UserFactory.createUser(null, contact, address, licensePicture, idPicture);
+        User user = UserFactory.createUser(null ,name, contact, address, licensePicture, idPicture);
         assertNull(user);
         System.out.println(user);
     }

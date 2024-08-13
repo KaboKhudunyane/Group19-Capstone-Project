@@ -1,5 +1,4 @@
 package za.ac.cput.service;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +19,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class SupportTicketServiceTest {
-
     @Autowired
     private SupportTicketService supportTicketService;
-
     @Autowired
     private UserService userService;
-
     //license picture
     private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
     private static final String ID_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
@@ -46,23 +41,21 @@ class SupportTicketServiceTest {
     }
     byte[] licensePicture = compressImage(LICENSE_PICTURE_PATH);
     byte[] idPicture = compressImage(ID_PICTURE_PATH);
-
     private User user;
     private SupportTicket supportTicket;
-
     @BeforeEach
     void setUp() {
+        Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
         Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
         Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
         Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
-        user = UserFactory.createUser(name, contact, address, licensePicture, idPicture);
+        user = UserFactory.createUser(account, name, contact, address, licensePicture, idPicture);
         user = userService.create(user); // Save the user first
         assertNotNull(user, "User should be saved and not null");
 
         LocalDate dateCreated = LocalDate.of(2024, 4, 3);
         supportTicket = SupportTicketFactory.buildSupportTicket(user, "Technical Support", "I am facing login issues.", dateCreated);
     }
-
     @Test
     void create() {
         SupportTicket createdSupportTicket = supportTicketService.create(supportTicket);
@@ -73,28 +66,23 @@ class SupportTicketServiceTest {
         assertEquals(supportTicket.getDateCreated(), createdSupportTicket.getDateCreated());
         System.out.println("Created SupportTicket: " + createdSupportTicket);
     }
-
     @Test
     void read() {
         SupportTicket createdSupportTicket = supportTicketService.create(supportTicket);
         assertNotNull(createdSupportTicket);
-
         SupportTicket readSupportTicket = supportTicketService.read(createdSupportTicket.getTicketID());
         assertNotNull(readSupportTicket);
         System.out.println("Read SupportTicket: " + readSupportTicket);
     }
-
     @Test
     void update() {
         SupportTicket createdSupportTicket = supportTicketService.create(supportTicket);
         assertNotNull(createdSupportTicket);
-
         SupportTicket updatedSupportTicket = new SupportTicket.Builder()
                 .copy(createdSupportTicket)
                 .setSubject("Updated Subject")
                 .setMessage("Updated Message")
                 .build();
-
         SupportTicket savedSupportTicket = supportTicketService.update(updatedSupportTicket);
         assertNotNull(savedSupportTicket);
         assertEquals("Updated Subject", savedSupportTicket.getSubject());

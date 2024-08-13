@@ -46,10 +46,11 @@ class SupportTicketControllerTest {
     }
     byte[] licensePicture = compressImage(LICENSE_PICTURE_PATH);
     byte[] idPicture = compressImage(ID_PICTURE_PATH);
+    Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
     Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     Contact contact = ContactFactory.createContact("123", "kabo@example.com");
     Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
-    User user = UserFactory.createUser(name, contact, address, licensePicture, idPicture);
+    User user = UserFactory.createUser(account, name, contact, address, licensePicture, idPicture);
     LocalDate dateCreated = LocalDate.of(2024, 4, 3);
     SupportTicket supportTicket = SupportTicketFactory.buildSupportTicket(user, "Technical Support", "I am facing login issues.", dateCreated);
     @Test

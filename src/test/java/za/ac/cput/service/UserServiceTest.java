@@ -3,10 +3,7 @@ package za.ac.cput.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.domain.Address;
-import za.ac.cput.domain.Contact;
-import za.ac.cput.domain.Name;
-import za.ac.cput.domain.User;
+import za.ac.cput.domain.*;
 import za.ac.cput.factory.AddressFactory;
 import za.ac.cput.factory.ContactFactory;
 import za.ac.cput.factory.NameFactory;
@@ -47,10 +44,11 @@ class UserServiceTest {
     byte[] licensePicture = compressImage(LICENSE_PICTURE_PATH);
     byte[] idPicture = compressImage(ID_PICTURE_PATH);
 
+    private Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
     private Name name = NameFactory.createName("Thato", "Emeka", "Nwamadi");
     private Contact contact = ContactFactory.createContact("295732963@mycput.ac.za", "0654545212");
     private Address address = AddressFactory.createAddress("89 St Marks", "District 10", "Cape Town", "Western Cape", "8000");
-    private User user = UserFactory.createUser(name, contact, address, licensePicture, idPicture);
+    private User user = UserFactory.createUser(account, name, contact, address, licensePicture, idPicture);
 
     @Test
     void create() {

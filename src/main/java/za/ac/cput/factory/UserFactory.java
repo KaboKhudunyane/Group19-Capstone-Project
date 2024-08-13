@@ -1,14 +1,11 @@
 package za.ac.cput.factory;
-import za.ac.cput.domain.User;
-import za.ac.cput.domain.Name;
-import za.ac.cput.domain.Contact;
-import za.ac.cput.domain.Address;
+import za.ac.cput.domain.*;
 import za.ac.cput.util.Helper;
 public class UserFactory {
-    public static User createUser(Name name,
+    public static User createUser(Account account, Name name,
                                   Contact contact, Address address,
                                   byte[] license, byte[] identityDocument) {
-        return new User.Builder()
+        return new User.Builder().setAccount(account)
                 .setName(name)
                 .setContact(contact)
                 .setAddress(address)

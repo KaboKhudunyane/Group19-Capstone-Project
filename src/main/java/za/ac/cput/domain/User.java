@@ -9,6 +9,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userID;
     @Embedded
+    private Account account;
+    @Embedded
     private Name name;
     @Embedded
     private Contact contact;
@@ -31,6 +33,7 @@ public class User {
     public Long getUserID() {
         return userID;
     }
+    public Account getAccount(){return account;}
     public Name getName() {return name;}
     public Contact getContact() {
         return contact;
@@ -49,19 +52,21 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(userID, user.userID) && Objects.equals(name, user.name) && Objects.equals(contact, user.contact) && Objects.equals(address, user.address) && Objects.deepEquals(license, user.license) && Objects.deepEquals(identityDocument, user.identityDocument);
+        return Objects.equals(userID, user.userID) && Objects.equals(account, user.account) && Objects.equals(name, user.name) && Objects.equals(contact, user.contact) && Objects.equals(address, user.address) && Objects.deepEquals(license, user.license) && Objects.deepEquals(identityDocument, user.identityDocument);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(userID, name, contact, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));
+        return Objects.hash(userID, account, name, contact, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));
     }
     public static class Builder {
+        private Account account;
         private Name name;
         private Contact contact;
         private Address address;
         private byte[] license;
         private byte[] identityDocument;
-
+        public Builder setAccount(Account account){this.account = account;
+        return this;}
         public Builder setName(Name name) {
             this.name = name;
             return this;

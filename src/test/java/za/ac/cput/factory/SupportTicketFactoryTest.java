@@ -30,10 +30,11 @@ public class SupportTicketFactoryTest {
     }
     byte[] licensePicture = compressImage(LICENSE_PICTURE_PATH);
     byte[] idPicture = compressImage(ID_PICTURE_PATH);
+    private Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
     private Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
     private Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
     private Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
-    private User user = UserFactory.createUser(name, contact, address, licensePicture,idPicture );
+    private User user = UserFactory.createUser(account, name, contact, address, licensePicture,idPicture );
     @Test
     void buildSupportTicket() {
         LocalDate dateCreated = LocalDate.of(2024, 4, 3);

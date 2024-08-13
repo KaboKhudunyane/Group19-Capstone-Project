@@ -6,10 +6,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
-import za.ac.cput.domain.Address;
-import za.ac.cput.domain.Contact;
-import za.ac.cput.domain.Name;
-import za.ac.cput.domain.User;
+import za.ac.cput.domain.*;
 import za.ac.cput.factory.AddressFactory;
 import za.ac.cput.factory.ContactFactory;
 import za.ac.cput.factory.NameFactory;
@@ -44,10 +41,11 @@ class UserControllerTest {
     byte[] licensePicture = readFileAsBytes(USER_PICTURE_PATH);
     byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
 
+    Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
     Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     Contact contact = ContactFactory.createContact("216273293@mycput.ac.za", "0658595712");
     Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
-    User user = UserFactory.createUser(name, contact, address, licensePicture, userPicture);
+    User user = UserFactory.createUser(account, name, contact, address, licensePicture, userPicture);
 
     @Test
     void create() {
