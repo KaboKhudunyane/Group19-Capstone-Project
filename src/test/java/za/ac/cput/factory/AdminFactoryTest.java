@@ -14,7 +14,8 @@ public class AdminFactoryTest {
 
     @Test
     void buildAdmin() {
-        Admin a = AdminFactory.bluidAdmin(name,contact,"J1234565") ;
+        Admin a = AdminFactory.bluidAdmin(name, contact, "J1234565");
         assertNotNull(a);
         System.out.println(a.toString());
     }
+}
