@@ -5,28 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bde3307-32f7-46e0-a75c-3079fd0566d5" name="Changes by Kabo Khudunyane" comment="Changes by Kabo Khudunyane">
-      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/UserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/UserFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/SupportTicketControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/SupportTicketControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/UserControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/SupportTicketFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/SupportTicketFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/UserFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/UserFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/SupportTicketServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/SupportTicketServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController$GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController$GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid14324.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/avatar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/replay_pid14324.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resource/image.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/UserFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/UserFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/SupportTicketControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/SupportTicketControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/UserControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/UserControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/UserFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/UserFactoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/SupportTicketServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/SupportTicketServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/UserServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/UserServiceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +117,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="JUnit.UserServiceTest.create">
+  <component name="RunManager" selected="Spring Boot.Main">
     <configuration name="CarServiceTest.create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
@@ -210,9 +197,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Main" />
         <item itemvalue="JUnit.UserServiceTest.create" />
         <item itemvalue="JUnit.UserFactoryTest.testBuildUser" />
-        <item itemvalue="Spring Boot.Main" />
         <item itemvalue="JUnit.CarServiceTest.create" />
         <item itemvalue="JUnit.UserControllerTest.create" />
       </list>
@@ -262,6 +249,7 @@
       <workItem from="1723182279930" duration="5276000" />
       <workItem from="1723214462708" duration="1082000" />
       <workItem from="1723499381603" duration="2777000" />
+      <workItem from="1724177773939" duration="9942000" />
     </task>
     <task id="LOCAL-00001" summary="debug sess 23/07">
       <option name="closed" value="true" />
