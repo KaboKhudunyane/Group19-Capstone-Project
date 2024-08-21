@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.domain.User;
 import za.ac.cput.repository.UserRepository;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserService implements IService<User, Long> {
     private final UserRepository userRepository;
@@ -18,6 +20,16 @@ public class UserService implements IService<User, Long> {
     @Override
     public User read(Long userID) {
         return userRepository.findByUserID(userID);
+    }
+    public User authenticate(String username, String password) {
+        Optional<User> optionalUser = userRepository.findByAccountUsername(username);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            if (user.getAccount().getPassword().equals(password)) {
+                return user;
+            }
+        }
+        return null;
     }
     @Override
     public User update(User user) {

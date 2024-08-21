@@ -1,4 +1,5 @@
 package za.ac.cput.controller;
+
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,11 +12,14 @@ import za.ac.cput.factory.AddressFactory;
 import za.ac.cput.factory.ContactFactory;
 import za.ac.cput.factory.NameFactory;
 import za.ac.cput.factory.UserFactory;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test") // Use a test profile if needed
 class UserControllerTest {
@@ -23,9 +27,11 @@ class UserControllerTest {
     private TestRestTemplate restTemplate;
     @LocalServerPort
     private int port;
+
     private String getBaseUrl() {
         return "http://localhost:" + port + "/user";
     }
+
     private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
     private static final String USER_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG2.PNG";
 
@@ -38,6 +44,7 @@ class UserControllerTest {
             return null;
         }
     }
+
     byte[] licensePicture = readFileAsBytes(USER_PICTURE_PATH);
     byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
 
@@ -58,6 +65,7 @@ class UserControllerTest {
         assertEquals(user.getUserID(), savedUser.getUserID());
         System.out.println("Saved user: " + savedUser);
     }
+
     @Test
     void read() {
         String url = getBaseUrl() + "/read/" + user.getUserID();
@@ -66,6 +74,7 @@ class UserControllerTest {
         assertEquals(user.getUserID(), response.getBody().getUserID());
         System.out.println("Read user: " + response.getBody());
     }
+
     @Test
     void update() {
         // Set a new license picture (or modify other details as needed)
@@ -79,9 +88,10 @@ class UserControllerTest {
         restTemplate.put(url, updatedUser);
         ResponseEntity<User> response = restTemplate.getForEntity(getBaseUrl() + "/read/" + user.getUserID(), User.class);
         assertNotNull(response.getBody());
-        assertArrayEquals(userPicture, response.getBody().getIdentityDocument());
+        assertArrayEquals(newLicensePicture, response.getBody().getLicense());
         System.out.println("Updated user: " + response.getBody());
     }
+
     @Test
     void delete() {
         String url = getBaseUrl() + "/delete/" + user.getUserID();
@@ -90,6 +100,7 @@ class UserControllerTest {
         assertNull(response.getBody());
         System.out.println("User deleted successfully.");
     }
+
     @Test
     void getAll() {
         String url = getBaseUrl() + "/getAll";
@@ -101,5 +112,15 @@ class UserControllerTest {
         for (User u : response.getBody()) {
             System.out.println(u);
         }
+    }
+
+    @Test
+    void login() {
+        String url = getBaseUrl() + "/login";
+        ResponseEntity<String> response = restTemplate.postForEntity(url, account, String.class);
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Login successful!", response.getBody());
+        System.out.println("Login test response: " + response.getBody());
     }
 }

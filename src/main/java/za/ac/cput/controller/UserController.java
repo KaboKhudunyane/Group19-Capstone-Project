@@ -25,7 +25,19 @@ public class UserController {
     public User read(@PathVariable Long userID) {
         return userService.read(userID);
     }
-    @PutMapping("/update")
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody Account account) {
+        try {
+            User user = userService.authenticate(account.getUsername(), account.getPassword());
+            if (user != null) {
+                return ResponseEntity.ok("Login successful!");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred during login");
+        }
+    }@PutMapping("/update")
     public  User update(@RequestBody User user) {
         return userService.update(user);
     }
