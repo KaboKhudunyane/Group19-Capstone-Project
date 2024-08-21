@@ -1,6 +1,6 @@
 package za.ac.cput.service;
 
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +12,7 @@ import za.ac.cput.factory.ContactFactory;
 import za.ac.cput.factory.NameFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class AdminServiceTest {
 
@@ -29,23 +30,23 @@ class AdminServiceTest {
 
     @Test
     void testCreate() {
-        a = AdminFactory.bluidAdmin(name,contact);
+        a = AdminFactory.bluidAdmin(name,contact,"J1234565");
         Admin created = adminService.create(a);
         assertNotNull(created);
     }
 
     @Test
     void testRead() {
-        b = AdminFactory.bluidAdmin(name,contact);
+        b = AdminFactory.bluidAdmin(name,contact,"J1234565");
         adminService.create(b);
         Admin read = adminService.read(b.getAdminId());
-        assertNotEquals(a, read);
-        System.out.println(a.toString()+ " \n " + b.toString());
+        assertEquals(b, read);
+        System.out.println(b.toString()+ " \n " + b.toString());
     }
 
     @Test
     void testUpdate() {
-        a = AdminFactory.bluidAdmin(name,contact);
+        a = AdminFactory.bluidAdmin(name,contact,"J1234565");
         adminService.create(a);
         Name name = NameFactory.createName("Josh", "Malick", "Orrian");
         Admin updated = new Admin.Builder().copyAdmin(a).setName(name).buildAdmin();
@@ -55,7 +56,7 @@ class AdminServiceTest {
 
     @Test
     void testDelete() {
-        c = AdminFactory.bluidAdmin(name,contact);
+        c = AdminFactory.bluidAdmin(name,contact,"J1234565");
         adminService.create(c);
         adminService.delete(c.getAdminId());
         assertNull(adminService.read(c.getAdminId()));
