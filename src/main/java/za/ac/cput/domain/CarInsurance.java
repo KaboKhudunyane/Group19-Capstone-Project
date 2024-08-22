@@ -1,70 +1,105 @@
 package za.ac.cput.domain;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
-@Embeddable
-public class CarInsurance implements Serializable {
-    // Name of the insurance company providing coverage
+@Entity
+public class CarInsurance{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long carInsuranceID;
     private String insuranceCompany;
-    // Policy number associated with the car insurance
-    private String policyNumber;
-    // Type of coverage (e.g., comprehensive, liability)
+    private int policyNumber;
     private String coverageType;
-    // Amount of coverage provided by the insurance policy
-    private String coverageAmount;
+    private double coverageAmount;
+
+
     protected CarInsurance() {
+
     }
+
+
     private CarInsurance(Builder builder) {
+        this.carInsuranceID = builder.carInsuranceID;
         this.insuranceCompany = builder.insuranceCompany;
         this.policyNumber = builder.policyNumber;
         this.coverageType = builder.coverageType;
         this.coverageAmount = builder.coverageAmount;
     }
+
+
+    public Long getCarInsuranceID() {
+        return carInsuranceID;
+    }
+
     public String getInsuranceCompany() {
         return insuranceCompany;
     }
-    public String getPolicyNumber() {
+    public int getPolicyNumber() {
         return policyNumber;
     }
     public String getCoverageType() {
         return coverageType;
     }
-    public String getCoverageAmount() {
+    public double getCoverageAmount() {
         return coverageAmount;
     }
+
+
+    public void setCarInsuranceID(Long carInsuranceID) {
+        this.carInsuranceID = carInsuranceID;
+    }
+
+    public void setInsuranceCompany(String insuranceCompany) {
+        this.insuranceCompany = insuranceCompany;
+    }
+
+    public void setPolicyNumber(int policyNumber) {
+        this.policyNumber = policyNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarInsurance that = (CarInsurance) o;
-        return Objects.equals(insuranceCompany, that.insuranceCompany) &&
-                Objects.equals(policyNumber, that.policyNumber) &&
-                Objects.equals(coverageType, that.coverageType) &&
-                Objects.equals(coverageAmount, that.coverageAmount);
+        return policyNumber == that.policyNumber && Double.compare(coverageAmount, that.coverageAmount) == 0 && Objects.equals(carInsuranceID, that.carInsuranceID) && Objects.equals(insuranceCompany, that.insuranceCompany) && Objects.equals(coverageType, that.coverageType);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(insuranceCompany, policyNumber, coverageType, coverageAmount);
+        return Objects.hash(carInsuranceID, insuranceCompany, policyNumber, coverageType, coverageAmount);
     }
+
     @Override
     public String toString() {
         return "CarInsurance{" +
-                "insuranceCompany='" + insuranceCompany + '\'' +
-                ", policyNumber='" + policyNumber + '\'' +
+                "carInsuranceID=" + carInsuranceID +
+                ", insuranceCompany='" + insuranceCompany + '\'' +
+                ", policyNumber=" + policyNumber +
                 ", coverageType='" + coverageType + '\'' +
-                ", coverageAmount='" + coverageAmount + '\'' +
+                ", coverageAmount=" + coverageAmount +
                 '}';
     }
+
     public static class Builder {
+        private Long carInsuranceID;
         private String insuranceCompany;
-        private String policyNumber;
+        private int policyNumber;
         private String coverageType;
-        private String coverageAmount;
+        private double coverageAmount;
+
+        public Builder setCarInsuranceID(Long carInsuranceID) {
+            this.carInsuranceID = carInsuranceID;
+            return this;
+        }
+
         public Builder setInsuranceCompany(String insuranceCompany) {
             this.insuranceCompany = insuranceCompany;
             return this;
         }
-        public Builder setPolicyNumber(String policyNumber) {
+        public Builder setPolicyNumber(int policyNumber) {
             this.policyNumber = policyNumber;
             return this;
         }
@@ -72,11 +107,12 @@ public class CarInsurance implements Serializable {
             this.coverageType = coverageType;
             return this;
         }
-        public Builder setCoverageAmount(String coverageAmount) {
+        public Builder setCoverageAmount(double coverageAmount) {
             this.coverageAmount = coverageAmount;
             return this;
         }
         public Builder copyCarInsurance(CarInsurance carInsurance) {
+            this.carInsuranceID = carInsurance.carInsuranceID;
             this.insuranceCompany = carInsurance.insuranceCompany;
             this.policyNumber = carInsurance.policyNumber;
             this.coverageType = carInsurance.coverageType;

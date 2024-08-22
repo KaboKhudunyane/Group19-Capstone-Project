@@ -1,43 +1,30 @@
 package za.ac.cput.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Booking;
 import za.ac.cput.service.BookingService;
+import za.ac.cput.service.CarInformationService;
 
-import java.util.List;
-import java.util.Set;
 
 @RestController
-@RequestMapping("/Booking")
+@RequestMapping("/api/booking")
+@CrossOrigin
 public class BookingController {
 
-    @Autowired
     private BookingService bookingService;
+    private CarInformationService carInformationService;
 
-    @PostMapping("/save")
-    public Booking save(@RequestBody Booking booking) {
+    @Autowired
+    public BookingController(BookingService bookingService, CarInformationService carInformationService) {
+        this.carInformationService = carInformationService;
+        this.bookingService = bookingService;
+    }
+
+    @PostMapping("/create")
+    public Booking create(@RequestBody Booking booking){
+        carInformationService.read(booking.getCar().getCarInformationID());
         return bookingService.create(booking);
-    }
-
-    @GetMapping("/read/{bookingID}")
-    public Booking read(@PathVariable Long bookingID) {
-        return bookingService.read(bookingID);
-    }
-
-    @PostMapping("/update")
-    public Booking update(@RequestBody Booking booking) {
-        return bookingService.update(booking);
-    }
-
-    @DeleteMapping("/delete/{bookingID}")
-    public void delete(@PathVariable Long bookingID) {
-        bookingService.delete(bookingID);
-    }
-
-
-    @GetMapping("/getAll")
-    public List<Booking> getAll() {
-        return bookingService.getAll();
     }
 }

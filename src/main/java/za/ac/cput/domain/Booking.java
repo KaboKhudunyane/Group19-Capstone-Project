@@ -1,120 +1,146 @@
 package za.ac.cput.domain;
 import jakarta.persistence.*;
+import za.ac.cput.util.Helper;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
+
 @Entity
 public class Booking {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookingID;
+    private String bookingID = Helper.generateID();
     @ManyToOne
-    private Car car; // Reference to Car
-    private String startDate;
-    private String returnDate;
-    private String pickUpLocation;
-    private String dropOffLocation;
+    private CarInformation car;
+    private LocalDate startDate;
+    private LocalTime pickUpTime;
+    private LocalDate returnDate;
+    private LocalTime dropOffTime;
     private double totalPrice;
-    protected Booking() {
-    }
+
+    protected Booking() {}
+
     private Booking(Builder builder) {
-        this.car = builder.car; // Set Car instance
+        this.bookingID = builder.bookingID;
+        this.car = builder.car;
         this.startDate = builder.startDate;
         this.returnDate = builder.returnDate;
-        this.pickUpLocation = builder.pickUpLocation;
-        this.dropOffLocation = builder.dropOffLocation;
+        this.pickUpTime = builder.pickUpTime;
+        this.dropOffTime = builder.dropOffTime;
         this.totalPrice = builder.totalPrice;
     }
-    public Long getBookingID() {
+
+    public String getBookingID() {
         return bookingID;
     }
-    public Car getCar() {
+
+    public CarInformation getCar() {
         return car;
     }
-    public String getStartDate() {
+
+    public LocalDate getStartDate() {
         return startDate;
     }
-    public String getReturnDate() {
+
+    public LocalDate getReturnDate() {
         return returnDate;
     }
-    public String getPickUpLocation() {
-        return pickUpLocation;
+
+    public LocalTime getPickUpTime() {
+        return pickUpTime;
     }
-    public String getDropOffLocation() {
-        return dropOffLocation;
+
+    public LocalTime getDropOffTime() {
+        return dropOffTime;
     }
+
     public double getTotalPrice() {
         return totalPrice;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Booking)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return Double.compare(booking.totalPrice, totalPrice) == 0 &&
-                Objects.equals(bookingID, booking.bookingID) &&
-                Objects.equals(startDate, booking.startDate) &&
-                Objects.equals(returnDate, booking.returnDate) &&
-                Objects.equals(pickUpLocation, booking.pickUpLocation) &&
-                Objects.equals(dropOffLocation, booking.dropOffLocation) &&
-                Objects.equals(car, booking.car);
+        return Double.compare(totalPrice, booking.totalPrice) == 0 && Objects.equals(bookingID, booking.bookingID) && Objects.equals(car, booking.car) && Objects.equals(startDate, booking.startDate) && Objects.equals(pickUpTime, booking.pickUpTime) && Objects.equals(returnDate, booking.returnDate) && Objects.equals(dropOffTime, booking.dropOffTime);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(bookingID, car, startDate, returnDate, pickUpLocation, dropOffLocation, totalPrice);
+        return Objects.hash(bookingID, car, startDate, pickUpTime, returnDate, dropOffTime, totalPrice);
     }
+
     @Override
     public String toString() {
         return "Booking{" +
-                "bookingId='" + bookingID + '\'' +
+                "bookingID='" + bookingID + '\'' +
                 ", car=" + car +
-                ", startDate='" + startDate + '\'' +
-                ", returnDate='" + returnDate + '\'' +
-                ", pickUpLocation='" + pickUpLocation + '\'' +
-                ", dropOffLocation='" + dropOffLocation + '\'' +
+                ", startDate=" + startDate +
+                ", pickUpTime=" + pickUpTime +
+                ", returnDate=" + returnDate +
+                ", dropOffTime=" + dropOffTime +
                 ", totalPrice=" + totalPrice +
                 '}';
     }
-    public static class Builder {
 
-        private Car car; // Reference to Car
-        private String startDate;
-        private String returnDate;
-        private String pickUpLocation;
-        private String dropOffLocation;
+    public static class Builder {
+        private String bookingID;
+        private CarInformation car;
+        private LocalDate startDate;
+        private LocalTime pickUpTime;
+        private LocalDate returnDate;
+        private LocalTime dropOffTime;
         private double totalPrice;
-        public Builder setCar(Car car) {
-            this.car = car; // Set Car instance
+
+        public Builder setBookingID(String bookingID) {
+            this.bookingID = bookingID;
             return this;
         }
-        public Builder setStartDate(String startDate) {
+
+        public Builder setCar(CarInformation car) {
+            this.car = car;
+            return this;
+        }
+
+        public Builder setStartDate(LocalDate startDate) {
             this.startDate = startDate;
             return this;
         }
-        public Builder setReturnDate(String returnDate) {
+
+        public Builder setReturnDate(LocalDate returnDate) {
             this.returnDate = returnDate;
             return this;
         }
-        public Builder setPickUpLocation(String pickUpLocation) {
-            this.pickUpLocation = pickUpLocation;
+
+        public Builder setPickUpTime(LocalTime pickUpTime) {
+            this.pickUpTime = pickUpTime;
             return this;
+
         }
-        public Builder setDropOffLocation(String dropOffLocation) {
-            this.dropOffLocation = dropOffLocation;
+
+        public Builder setDropOffTime(LocalTime dropOffTime) {
+            this.dropOffTime = dropOffTime;
             return this;
+
         }
+
         public Builder setTotalPrice(double totalPrice) {
             this.totalPrice = totalPrice;
             return this;
         }
-        public Builder copy(Booking booking){
+
+        public Builder copy(Booking booking) {
+            this.bookingID = booking.bookingID;
             this.car = booking.car;
             this.startDate = booking.startDate;
             this.returnDate = booking.returnDate;
-            this.pickUpLocation = booking.pickUpLocation;
-            this.dropOffLocation = booking.dropOffLocation;
+            this.pickUpTime = booking.pickUpTime;
+            this.dropOffTime = booking.dropOffTime;
             this.totalPrice = booking.totalPrice;
             return this;
         }
+
         public Booking buildBooking() {
             return new Booking(this);
         }

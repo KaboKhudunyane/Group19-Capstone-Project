@@ -1,27 +1,29 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.CarInformation;
-import za.ac.cput.util.Helper;
+import za.ac.cput.domain.CarInsurance;
 
 public class CarInformationFactory {
 
-    public static CarInformation buildCarInformation(String make, String model,
-                                                     String year, String licensePlate,
-                                                     String description, String features) {
-        // Validate inputs using Helper utility class
-        if (Helper.isNullOrEmpty(make) || Helper.isNullOrEmpty(model) ||
-                Helper.isNullOrEmpty(year) || Helper.isNullOrEmpty(licensePlate)) {
-            return null; // If any required field is null or empty, return null
-        }
+    public static CarInformation buildCarInformation(
+            String make, String model, String year, String type,
+            String licensePlate, String description, String features, CarInsurance carInsurance,
+            double rentalRate, String availabilityStatus, byte[] picture1, byte[] picture2, byte[] picture3) {
 
-        // If inputs are valid, use the Builder pattern to create a CarInformation object
         return new CarInformation.Builder()
                 .setMake(make)
                 .setModel(model)
                 .setYear(year)
+                .setType(type)
                 .setLicensePlate(licensePlate)
                 .setDescription(description)
                 .setFeatures(features)
-                .buildCarInformation();
+                .setCarInsurance(carInsurance)
+                .setRentalRate(rentalRate)
+                .setAvailabilityStatus(availabilityStatus)
+                .setPicture1(picture1)
+                .setPicture2(picture2)
+                .setPicture3(picture3)
+                .buildCar();
     }
 }
