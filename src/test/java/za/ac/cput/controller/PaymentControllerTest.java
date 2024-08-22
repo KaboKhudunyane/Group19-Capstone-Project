@@ -8,6 +8,9 @@ import za.ac.cput.domain.*;
 import za.ac.cput.factory.*;
 import java.io.IOException;
 import java.nio.file.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -18,43 +21,37 @@ class PaymentControllerTest {
     private TestRestTemplate restTemplate;
 
     private final String BASE_URL = "http://localhost:8080/payment";
-    private static final String CAR_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Desktop\\Example.jpeg";
 
-    private byte[] readFileAsBytes(String filePath) {
+
+    private byte[] loadPicture(String filePath) {
         try {
             Path path = Paths.get(filePath);
             return Files.readAllBytes(path);
         } catch (IOException e) {
-            e.printStackTrace();
+            fail("Failed to load picture: " + e.getMessage());
             return null;
         }
     }
-    byte[] carPicture = readFileAsBytes(CAR_PICTURE_PATH);
-    Car car = new Car.Builder()
-            .setCarInformation(
-                    new CarInformation.Builder()
-                            .setMake("Toyota")
-                            .setModel("Corolla")
-                            .setYear("2023")
-                            .setLicensePlate("ABC123")
-                            .setDescription("New Toyota Corolla")
-                            .setFeatures("Bluetooth, Backup Camera, Navigation System")
-                            .buildCarInformation())
-            .setCarInsurance(
-                    new CarInsurance.Builder()
-                            .setInsuranceCompany("Insurance Co.")
-                            .setPolicyNumber("12345")
-                            .setCoverageType("Comprehensive")
-                            .setCoverageAmount("100000")
-                            .buildCarInsurance())
-            .setRentalRate("150")
-            .setAvailabilityStatus("Available")
-            .setCarPicture(carPicture)
-            .buildCar();
+    CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance(
+            "MiWay", 15447841, "Insurance", 1200
+    );
+    CarInformation carInformation = CarInformationFactory.buildCarInformation(
+            "Toyota", "Scarlet", "2020", "Manual", "Plate-123",
+            "A stylish and comfortable SUV.", "Leather seats, Navigation system, Bluetooth", carInsurance,
+            200, "Available",
+            loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet1.jpg"), // Load the first picture
+            loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet2.jpg"), // Load the second picture
+            loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet3.jpg")  // Load the third picture
+    );
+    Booking booking = BookingFactory.buildBooking(
+            carInformation,
+            LocalDate.of(2024, 6, 15),
+            LocalDate.of(2024, 6, 20),
+            LocalTime.of(10, 0),
+            LocalTime.of(10, 0),
+            12000
+    );
 
-    Booking booking = BookingFactory.buildBooking(car, "15-June-2024", "20-June-2024",
-            "10 Hanover street, Cape Town, 8001", "10 Hanover street, Cape Town, 8001",
-            24000);
     Payment payment = PaymentFactory.buildPayment(booking, "Capitec", "20-May-2024", 18000, "Declined");
     @Test
     @Order(1)

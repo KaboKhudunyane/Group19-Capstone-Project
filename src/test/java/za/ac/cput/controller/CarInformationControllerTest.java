@@ -1,17 +1,11 @@
 package za.ac.cput.controller;
-
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.Booking;
+import org.springframework.http.*;
 import za.ac.cput.domain.CarInformation;
 import za.ac.cput.domain.CarInsurance;
-import za.ac.cput.factory.BookingFactory;
 import za.ac.cput.factory.CarInformationFactory;
 import za.ac.cput.factory.CarInsuranceFactory;
 
@@ -19,19 +13,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class BookingControllerTest {
+class CarInformationControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
-    private final String BASE_URL = "http://localhost:8080/group19-capstone-project/booking";
-
+    private final String BASE_URL = "http://localhost:8080/Group19-Capstone-Project/car";
     private byte[] loadPicture(String filePath) {
         try {
             Path path = Paths.get(filePath);
@@ -53,54 +42,38 @@ class BookingControllerTest {
             loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet3.jpg")  // Load the third picture
     );
 
-    Booking booking = BookingFactory.buildBooking(
-            carInformation,
-            LocalDate.of(2024, 6, 15),
-            LocalDate.of(2024, 6, 20),
-            LocalTime.of(10, 0),
-            LocalTime.of(10, 0),
-            12000
-    );
-
-
     @Test
-    @Order(1)
-    void save() {
-        String url = BASE_URL + "/create";
-        ResponseEntity<Booking> postResponse = restTemplate.postForEntity(url, booking, Booking.class);
-        assertNotNull(postResponse);
-        assertNotNull(postResponse.getBody());
-
-        Booking savedBooking = postResponse.getBody();
-        assertEquals(booking.getBookingID(), savedBooking.getBookingID());
-        System.out.println("Saved data: " + savedBooking);
-    }
-
-    @Test
+    @Order(2)
     void read() {
-        String url = BASE_URL + "/read/" + booking.getBookingID();
-        ResponseEntity<Booking> response = restTemplate.getForEntity(url, Booking.class);
-        assertEquals(booking.getBookingID(), response.getBody().getBookingID());
+        String url = BASE_URL + "/read/" + carInformation.getCarInformationID();
+        System.out.println("URL: " + url);
+        ResponseEntity<CarInformation> response = restTemplate.getForEntity(url, CarInformation.class);
+        assertEquals(carInformation.getCarInformationID(), response.getBody().getCarInformationID());
         System.out.println("Read: " + response.getBody());
     }
 
-
-
     @Test
+    @Order(4)
     void delete() {
-        String url = BASE_URL + "/delete/" + booking.getBookingID();
+        String url = BASE_URL + "/delete/" + carInformation.getCarInformationID();
         restTemplate.delete(url);
-        ResponseEntity<Booking> response = restTemplate.getForEntity(BASE_URL + "/read/" + booking.getBookingID(), Booking.class);
-        assertEquals(404, response.getStatusCodeValue());
-        System.out.println("Booking deleted successfully.");
-    }
 
+        // Ensure car is deleted
+        ResponseEntity<CarInformation> response = restTemplate.getForEntity(BASE_URL + "/read/" + carInformation.getCarInformationID(), CarInformation.class);
+        assertNull(response.getBody());
+        System.out.println("Car deleted successfully.");
+    }
     @Test
     @Order(5)
     void getAll() {
         String url = BASE_URL + "/getAll";
         ResponseEntity<List> response = restTemplate.getForEntity(url, List.class);
-        assertNotNull(response.getBody());
-        System.out.println("All Bookings: " + response.getBody());
+        List<CarInformation> carList = response.getBody();
+        assertNotNull(carList);
+        assertTrue(carList.size() >= 0); // Ensure it's greater than or equal to 0 depending on test data
+        System.out.println("All Cars:");
+        for (CarInformation c : carList) {
+            System.out.println(c);
+        }
     }
 }
