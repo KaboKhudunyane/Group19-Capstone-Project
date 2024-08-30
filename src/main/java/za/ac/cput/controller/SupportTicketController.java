@@ -5,7 +5,8 @@ import za.ac.cput.domain.SupportTicket;
 import za.ac.cput.service.SupportTicketService;
 import java.util.List;
 @RestController
-@RequestMapping("/supportTicket")
+@RequestMapping("api/supportTicket")
+@CrossOrigin
 public class SupportTicketController {
     @Autowired
     private SupportTicketService supportTicketService;
@@ -29,4 +30,6 @@ public class SupportTicketController {
     public List<SupportTicket> getAll() {
         return supportTicketService.getAll();
     }
+
+
 }
