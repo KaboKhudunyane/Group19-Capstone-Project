@@ -29,6 +29,7 @@ class BookingServiceTest {
     private CarInformationService carInformationService;
 
     private static String bookingID;
+
     private Booking booking;
 
     @BeforeEach

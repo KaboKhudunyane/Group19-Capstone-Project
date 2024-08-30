@@ -10,6 +10,8 @@ import java.util.Objects;
 public class Booking {
     @Id
     private String bookingID = Helper.generateID();
+    private LocalDate createdDate = LocalDate.now();
+
     @ManyToOne
     private CarInformation car;
     private LocalDate startDate;
@@ -28,10 +30,15 @@ public class Booking {
         this.pickUpTime = builder.pickUpTime;
         this.dropOffTime = builder.dropOffTime;
         this.totalPrice = builder.totalPrice;
+        this.createdDate = builder.createdDate;
     }
 
     public String getBookingID() {
         return bookingID;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 
     public CarInformation getCar() {
@@ -58,23 +65,25 @@ public class Booking {
         return totalPrice;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return Double.compare(totalPrice, booking.totalPrice) == 0 && Objects.equals(bookingID, booking.bookingID) && Objects.equals(car, booking.car) && Objects.equals(startDate, booking.startDate) && Objects.equals(pickUpTime, booking.pickUpTime) && Objects.equals(returnDate, booking.returnDate) && Objects.equals(dropOffTime, booking.dropOffTime);
+        return Double.compare(totalPrice, booking.totalPrice) == 0 && Objects.equals(bookingID, booking.bookingID) && Objects.equals(createdDate, booking.createdDate) && Objects.equals(car, booking.car) && Objects.equals(startDate, booking.startDate) && Objects.equals(pickUpTime, booking.pickUpTime) && Objects.equals(returnDate, booking.returnDate) && Objects.equals(dropOffTime, booking.dropOffTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookingID, car, startDate, pickUpTime, returnDate, dropOffTime, totalPrice);
+        return Objects.hash(bookingID, createdDate, car, startDate, pickUpTime, returnDate, dropOffTime, totalPrice);
     }
 
     @Override
     public String toString() {
         return "Booking{" +
                 "bookingID='" + bookingID + '\'' +
+                ", createdDate=" + createdDate +
                 ", car=" + car +
                 ", startDate=" + startDate +
                 ", pickUpTime=" + pickUpTime +
@@ -92,6 +101,7 @@ public class Booking {
         private LocalDate returnDate;
         private LocalTime dropOffTime;
         private double totalPrice;
+        private LocalDate createdDate;
 
         public Builder setBookingID(String bookingID) {
             this.bookingID = bookingID;
@@ -130,6 +140,11 @@ public class Booking {
             return this;
         }
 
+        public Builder setCreatedDate(LocalDate createdDate) {
+            this.createdDate = createdDate;
+            return this;
+        }
+
         public Builder copy(Booking booking) {
             this.bookingID = booking.bookingID;
             this.car = booking.car;
@@ -138,6 +153,7 @@ public class Booking {
             this.pickUpTime = booking.pickUpTime;
             this.dropOffTime = booking.dropOffTime;
             this.totalPrice = booking.totalPrice;
+            this.createdDate = booking.createdDate;
             return this;
         }
 

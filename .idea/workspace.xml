@@ -6,15 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="8758b9c8-22d5-4679-afc4-b057abaf4201" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/BookingFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/BookingFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/BookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/BookingServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/BookingServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarInformationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarInformationServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/CarController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Car$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Car.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/CarFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/CarRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/service/CarService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarFactoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/BookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/BookingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Booking$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Booking$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Booking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/BookingFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/BookingFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/service/BookingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/service/BookingService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/BookingServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/BookingServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/CarInformationServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/CarInformationServiceTest.class" afterDir="false" />
     </list>
     <list id="1bde3307-32f7-46e0-a75c-3079fd0566d5" name="Changes by Kabo Khudunyane" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +53,9 @@
     &quot;accountId&quot;: &quot;1dd1ea51-95af-44cf-9eed-5bd5f138fe8c&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/3.2.0/spring-boot-3.2.0.jar!/org/springframework/boot/web/embedded/tomcat/TomcatWebServer.class" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -70,6 +80,7 @@
     "JUnit.CarInformationControllerTest.executor": "Run",
     "JUnit.CarInformationFactoryTest.executor": "Run",
     "JUnit.CarInformationFactoryTest.testBuildCarInformationWithFail.executor": "Run",
+    "JUnit.CarInformationServiceTest.create.executor": "Debug",
     "JUnit.CarInformationServiceTest.executor": "Run",
     "JUnit.CarInsuranceFactoryTest.executor": "Run",
     "JUnit.CarInsuranceServiceTest.executor": "Run",
@@ -212,9 +223,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.Main" />
-        <item itemvalue="JUnit.BookingServiceTest" />
         <item itemvalue="JUnit.CarInformationServiceTest" />
         <item itemvalue="JUnit.CarInsuranceServiceTest" />
+        <item itemvalue="JUnit.BookingServiceTest" />
         <item itemvalue="JUnit.CarInsuranceFactoryTest" />
       </list>
     </recent_temporary>
@@ -275,7 +286,14 @@
       <workItem from="1724240709768" duration="14686000" />
       <workItem from="1724284169322" duration="4248000" />
       <workItem from="1724536202227" duration="5956000" />
-      <workItem from="1724542623410" duration="2910000" />
+      <workItem from="1724542623410" duration="3682000" />
+      <workItem from="1724624201565" duration="7922000" />
+      <workItem from="1724751495570" duration="6169000" />
+      <workItem from="1724795717901" duration="4177000" />
+      <workItem from="1724803619504" duration="1870000" />
+      <workItem from="1724842206980" duration="3668000" />
+      <workItem from="1724868537940" duration="19041000" />
+      <workItem from="1725014304244" duration="5717000" />
     </task>
     <task id="LOCAL-00001" summary="debug sess 23/07">
       <option name="closed" value="true" />
@@ -325,7 +343,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724288122126</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update">
+      <option name="closed" value="true" />
+      <created>1724547861755</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1724547861755</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update">
+      <option name="closed" value="true" />
+      <created>1724548003404</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1724548003404</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,5 +381,16 @@
     <MESSAGE value="Kabo Latest Updates 31 July 2024&#10;&#10;User Service Test Working&#10;&#10;Struggling to connect to front end.&#10;Should test controllers" />
     <MESSAGE value="Update" />
     <option name="LAST_COMMIT_MESSAGE" value="Update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/za/ac/cput/service/CarInformationService.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
