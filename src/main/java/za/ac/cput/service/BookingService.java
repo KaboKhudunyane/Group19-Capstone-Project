@@ -11,21 +11,18 @@ import java.util.List;
 @Service
 public class BookingService implements IService<Booking, String>{
 
-    private CarInformationRepository carInformationRepository;
     private BookingRepository bookingRepository;
 
 
     @Autowired
 
-    public BookingService(BookingRepository bookingRepository, CarInformationRepository carInformationRepository) {
-        this.carInformationRepository = carInformationRepository;
+    public BookingService(BookingRepository bookingRepository) {
         this.bookingRepository = bookingRepository;
     }
 
 
     @Override
     public Booking create(Booking booking) {
-        carInformationRepository.save(booking.getCar());
         return bookingRepository.save(booking);
 
     }
@@ -38,7 +35,6 @@ public class BookingService implements IService<Booking, String>{
     }
     @Override
     public Booking update(Booking booking) {
-        carInformationRepository.save(booking.getCar());
         return bookingRepository.save(booking);
 
     }
