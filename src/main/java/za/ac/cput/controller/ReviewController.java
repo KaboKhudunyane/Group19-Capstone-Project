@@ -6,6 +6,7 @@ import za.ac.cput.service.ReviewService;
 import java.util.List;
 @RestController
 @RequestMapping("/Review")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ReviewController {
     @Autowired
     private ReviewService reviewService;
