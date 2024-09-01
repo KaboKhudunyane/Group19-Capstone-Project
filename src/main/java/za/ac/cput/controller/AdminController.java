@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AdminController {
 
     @Autowired
@@ -18,6 +19,7 @@ public class AdminController {
     public Admin create(@RequestBody Admin admin) {
         return adminService.create(admin);
     }
+
 
     @GetMapping("/read/{adminId}")
     public Admin read(@PathVariable String adminId) {
