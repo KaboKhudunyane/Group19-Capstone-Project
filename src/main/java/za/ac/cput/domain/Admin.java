@@ -1,12 +1,11 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
-//import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
 @Entity
-@Table(name = "Administrators")
+@Table(name= "Administrators")
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,18 +16,19 @@ public class Admin {
 
     @Embedded
     private Contact contact;
-
-    @Column(nullable = false)  // Ensures that 'password' cannot be null in the database
+    @Column(unique = true)
+    private String username;
     private String password;
 
     public Admin() {
     }
 
-    private Admin(Builder builder) {
-        this.adminId = builder.adminId;
-        this.name = builder.name;
-        this.contact = builder.contact;
-        this.password = builder.password;
+    public Admin(Builder buildAdmin) {
+        this.adminId = buildAdmin.adminId;
+        this.name = buildAdmin.name;
+        this.contact = buildAdmin.contact;
+        this.username = buildAdmin.username;
+        this.password = buildAdmin.password;
     }
 
     @Override
@@ -39,22 +39,24 @@ public class Admin {
         return Objects.equals(adminId, admin.adminId) &&
                 Objects.equals(name, admin.name) &&
                 Objects.equals(contact, admin.contact) &&
+                Objects.equals(username, admin.username) &&
                 Objects.equals(password, admin.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(adminId, name, contact, password);
+        return Objects.hash(adminId, name, contact, username, password);
     }
 
     @Override
     public String toString() {
-        return ".........Administrator......." + "\n" +
+        return ".........Administrator.......\n" +
                 "adminId=" + adminId + "\n" +
-                "Name: " + name.getFirstName() + " " + name.getMiddleName() + " " + name.getLastName() + "\n" +
-                "Contact:" + "\n" +
+                "Name:" + name.getFirstName() + " " + name.getMiddleName() + " " + name.getLastName() + "\n" +
+                "Contact:\n" +
                 "Email- " + contact.getEmail() + "\n" +
                 "Tel- " + contact.getMobileNumber() + "\n" +
+                "Username: " + username + "\n" +  // Include username in toString
                 "Password: " + password + "\n" +
                 ".......................";
     }
@@ -71,14 +73,20 @@ public class Admin {
         return contact;
     }
 
+    public String getUsername() {  // New getter for username
+        return username;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public static class Builder {
+
         private Long adminId;
         private Name name;
         private Contact contact;
+        private String username;  // New field for username
         private String password;
 
         public Builder setAdminId(Long adminId) {
@@ -96,25 +104,27 @@ public class Admin {
             return this;
         }
 
+        public Builder setUsername(String username) {  // New setter for username
+            this.username = username;
+            return this;
+        }
+
         public Builder setPassword(String password) {
             this.password = password;
             return this;
         }
 
-        public Builder copyAdmin(Admin admin) {
-            this.adminId = admin.adminId;
-            this.name = admin.name;
-            this.contact = admin.contact;
-            this.password = admin.password;
+        public Builder copyAdmin(Admin a) {
+            this.adminId = a.adminId;
+            this.name = a.name;
+            this.contact = a.contact;
+            this.username = a.username;  // Copy username
+            this.password = a.password;
             return this;
         }
 
         public Admin buildAdmin() {
-            if (this.password == null) {
-                throw new IllegalArgumentException("Password cannot be null");
-            }
             return new Admin(this);
         }
     }
 }
-

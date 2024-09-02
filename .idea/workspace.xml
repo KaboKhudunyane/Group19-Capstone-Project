@@ -4,18 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8758b9c8-22d5-4679-afc4-b057abaf4201" name="Changes" comment="Update">
+    <list default="true" id="8758b9c8-22d5-4679-afc4-b057abaf4201" name="Changes" comment="Update admin">
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/SupportTicketControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/SupportTicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AdminFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AdminFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/AdminRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/AdminRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/AdminFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/AdminFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/AdminServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/AdminServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/config/SecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/ReviewController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Admin$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Admin$Builder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/SupportTicketControllerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/SupportTicketServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/SupportTicketServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/AdminFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/AdminFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/AdminRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/AdminRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/service/AdminService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/AdminFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/AdminFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/AdminServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/AdminServiceTest.class" afterDir="false" />
     </list>
     <list id="1bde3307-32f7-46e0-a75c-3079fd0566d5" name="Changes by Kabo Khudunyane" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,71 +73,79 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.AddressFactoryTest.executor": "Run",
-    "JUnit.AddressServiceTest.executor": "Run",
-    "JUnit.AdminFactoryTest.executor": "Run",
-    "JUnit.BookingFactoryTest.executor": "Run",
-    "JUnit.BookingServiceTest.create.executor": "Run",
-    "JUnit.BookingServiceTest.executor": "Run",
-    "JUnit.CarFactoryTest.executor": "Run",
-    "JUnit.CarInformationControllerTest.executor": "Run",
-    "JUnit.CarInformationFactoryTest.executor": "Run",
-    "JUnit.CarInformationFactoryTest.testBuildCarInformationWithFail.executor": "Run",
-    "JUnit.CarInformationServiceTest.create.executor": "Debug",
-    "JUnit.CarInformationServiceTest.executor": "Run",
-    "JUnit.CarInsuranceFactoryTest.executor": "Run",
-    "JUnit.CarInsuranceServiceTest.executor": "Run",
-    "JUnit.CarServiceTest.create.executor": "Run",
-    "JUnit.CarServiceTest.delete.executor": "Run",
-    "JUnit.CarServiceTest.executor": "Run",
-    "JUnit.CarServiceTest.read.executor": "Run",
-    "JUnit.CarServiceTest.update.executor": "Run",
-    "JUnit.ContactFactoryTest.executor": "Run",
-    "JUnit.NameFactoryTest.executor": "Run",
-    "JUnit.PaymentFactoryTest.executor": "Run",
-    "JUnit.PaymentServiceTest.create.executor": "Run",
-    "JUnit.PaymentServiceTest.delete.executor": "Run",
-    "JUnit.PaymentServiceTest.executor": "Run",
-    "JUnit.PaymentServiceTest.read.executor": "Run",
-    "JUnit.PaymentServiceTest.update.executor": "Run",
-    "JUnit.ReviewFactoryTest.executor": "Run",
-    "JUnit.ReviewServiceTest.createReview.executor": "Run",
-    "JUnit.ReviewServiceTest.executor": "Run",
-    "JUnit.SupportTicketServiceTest.create.executor": "Run",
-    "JUnit.SupportTicketServiceTest.delete.executor": "Run",
-    "JUnit.SupportTicketServiceTest.executor": "Run",
-    "JUnit.UserControllerTest.create.executor": "Run",
-    "JUnit.UserFactoryTest.executor": "Run",
-    "JUnit.UserServiceTest.create.executor": "Run",
-    "JUnit.UserServiceTest.executor": "Run",
-    "JUnit.UserServiceTest.read.executor": "Run",
-    "JUnit.UserServiceTest.update.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.Main.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/bokam/OneDrive/Documents/GitHub/Group19-Capstone-Project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AddressFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AddressServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminServiceTest.testAuthenticateAdmin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminServiceTest.testCreate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminServiceTest.testDelete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminServiceTest.testUpdate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationFactoryTest.testBuildCarInformationWithFail.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationServiceTest.create.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.CarInformationServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInsuranceFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInsuranceServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContactFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NameFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReviewFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReviewServiceTest.createReview.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReviewServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupportTicketServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupportTicketServiceTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupportTicketServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Downloads/V P I/Group19-Capstone-Project/src/test/java/za/ac/cput/factory&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Downloads\V P I\Group19-Capstone-Project\src\test\java\za\ac\cput\factory" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -143,22 +161,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Main">
-    <configuration name="AdminFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CapstoneProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="za.ac.cput.factory.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="za.ac.cput.factory" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.factory.AdminFactoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BookingServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
         <pattern>
@@ -167,13 +170,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.BookingServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.AdminServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CarInformationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminServiceTest.testCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
         <pattern>
@@ -182,13 +185,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.CarInformationServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.AdminServiceTest" />
+      <option name="METHOD_NAME" value="testCreate" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CarInsuranceServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminServiceTest.testDelete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
         <pattern>
@@ -197,8 +201,25 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.CarInsuranceServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.AdminServiceTest" />
+      <option name="METHOD_NAME" value="testDelete" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminServiceTest.testUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CapstoneProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.service" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.AdminServiceTest" />
+      <option name="METHOD_NAME" value="testUpdate" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -219,17 +240,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.Main" />
-        <item itemvalue="JUnit.AdminFactoryTest" />
-        <item itemvalue="JUnit.CarInformationServiceTest" />
-        <item itemvalue="JUnit.CarInsuranceServiceTest" />
-        <item itemvalue="JUnit.BookingServiceTest" />
+        <item itemvalue="JUnit.AdminServiceTest.testDelete" />
+        <item itemvalue="JUnit.AdminServiceTest.testCreate" />
+        <item itemvalue="JUnit.AdminServiceTest.testUpdate" />
+        <item itemvalue="JUnit.AdminServiceTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
@@ -290,6 +311,13 @@
       <workItem from="1724868537940" duration="19041000" />
       <workItem from="1725014304244" duration="5717000" />
       <workItem from="1725183338473" duration="8306000" />
+      <workItem from="1725242653606" duration="724000" />
+      <workItem from="1725244294578" duration="1809000" />
+      <workItem from="1725246513171" duration="3651000" />
+      <workItem from="1725250920580" duration="2902000" />
+      <workItem from="1725268163120" duration="794000" />
+      <workItem from="1725273091096" duration="1801000" />
+      <workItem from="1725276027119" duration="286000" />
     </task>
     <task id="LOCAL-00001" summary="debug sess 23/07">
       <option name="closed" value="true" />
@@ -384,7 +412,8 @@
     <MESSAGE value="debug sess 23/07" />
     <MESSAGE value="Kabo Latest Updates 31 July 2024&#10;&#10;User Service Test Working&#10;&#10;Struggling to connect to front end.&#10;Should test controllers" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Update admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update admin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

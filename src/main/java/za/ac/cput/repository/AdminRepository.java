@@ -8,4 +8,6 @@ import za.ac.cput.domain.Admin;
 public interface AdminRepository extends JpaRepository<Admin,Long> {
     Admin findAdminByAdminId(Long adminId);
     void deleteAdminByAdminId(Long adminId);
+
+    Admin findAdminByUsername(String username);
 }
