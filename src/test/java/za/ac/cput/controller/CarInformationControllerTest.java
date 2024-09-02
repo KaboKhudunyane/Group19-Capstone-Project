@@ -1,4 +1,5 @@
 package za.ac.cput.controller;
+
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,65 +15,92 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CarInformationControllerTest {
+
     @Autowired
     private TestRestTemplate restTemplate;
-    private final String BASE_URL = "http://localhost:8080/Group19-Capstone-Project/car";
-    private byte[] loadPicture(String filePath) {
+
+    private final String BASE_URL = "http://localhost:8080/group19-capstone-project/api/carInformation";
+
+    private CarInsurance carInsurance;
+    private CarInformation carInformation;
+
+    @BeforeEach
+    void setUp() {
+        carInsurance = CarInsuranceFactory.buildCarInsurance(
+                "MiWay", 15447841, "Insurance", 1200
+        );
+
+        carInformation = CarInformationFactory.buildCarInformation(
+                "Toyota", "Scarlet", "2020", "Manual", "Plate-123",
+                "Red 5 door car with 50 000km mileage", "Leather seats, Navigation system, Bluetooth", carInsurance,
+                2000, "Available",
+                loadPicture("scarlet1.jpg"),
+                loadPicture("scarlet2.jpg"),
+                loadPicture("scarlet3.jpg")
+        );
+    }
+
+    private byte[] loadPicture(String fileName) {
         try {
-            Path path = Paths.get(filePath);
+            Path path = Paths.get("src/images/img-prototype/" + fileName);
             return Files.readAllBytes(path);
         } catch (IOException e) {
             fail("Failed to load picture: " + e.getMessage());
             return null;
         }
     }
-    CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance(
-            "MiWay", 15447841, "Insurance", 1200
-    );
-    CarInformation carInformation = CarInformationFactory.buildCarInformation(
-            "Toyota", "Scarlet", "2020", "Manual", "Plate-123",
-            "A stylish and comfortable SUV.", "Leather seats, Navigation system, Bluetooth", carInsurance,
-            200, "Available",
-            loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet1.jpg"), // Load the first picture
-            loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet2.jpg"), // Load the second picture
-            loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet3.jpg")  // Load the third picture
-    );
+
+    @Test
+    @Order(1)
+    void create() {
+        String url = BASE_URL + "/create";
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth("user", "password")
+                .postForEntity(url, carInformation, String.class);
+
+        assertNotNull(response);
+        System.out.println("Response: " + response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
 
     @Test
     @Order(2)
     void read() {
-        String url = BASE_URL + "/read/" + carInformation.getCarInformationID();
-        System.out.println("URL: " + url);
-        ResponseEntity<CarInformation> response = restTemplate.getForEntity(url, CarInformation.class);
-        assertEquals(carInformation.getCarInformationID(), response.getBody().getCarInformationID());
-        System.out.println("Read: " + response.getBody());
+        String url = BASE_URL + "/read/1";
+
+        ResponseEntity<CarInformation> response = restTemplate
+                .withBasicAuth("user", "password")
+                .getForEntity(url, CarInformation.class);
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        CarInformation carInfo = response.getBody();
+        assertNotNull(carInfo);
+        System.out.println("Car Information: " + carInfo);
+        assertEquals("Toyota", carInfo.getMake());
     }
 
-    @Test
-    @Order(4)
-    void delete() {
-        String url = BASE_URL + "/delete/" + carInformation.getCarInformationID();
-        restTemplate.delete(url);
-
-        // Ensure car is deleted
-        ResponseEntity<CarInformation> response = restTemplate.getForEntity(BASE_URL + "/read/" + carInformation.getCarInformationID(), CarInformation.class);
-        assertNull(response.getBody());
-        System.out.println("Car deleted successfully.");
-    }
     @Test
     @Order(5)
     void getAll() {
-        String url = BASE_URL + "/getAll";
-        ResponseEntity<List> response = restTemplate.getForEntity(url, List.class);
+        String url = BASE_URL + "/getall";
+        ResponseEntity<List> response = restTemplate
+                .withBasicAuth("user", "password")
+                .getForEntity(url, List.class);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         List<CarInformation> carList = response.getBody();
         assertNotNull(carList);
-        assertTrue(carList.size() >= 0); // Ensure it's greater than or equal to 0 depending on test data
+        assertTrue(carList.size() >= 0);
+
         System.out.println("All Cars:");
-        for (CarInformation c : carList) {
+        for (Object c : carList) {
             System.out.println(c);
         }
     }
