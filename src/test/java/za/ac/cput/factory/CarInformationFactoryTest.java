@@ -13,26 +13,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarInformationFactoryTest {
 
-    private byte[] loadPicture(String filePath) {
+        CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance(
+                "MiWay", 15447841, "Insurance", 1200
+        );
+
+        CarInformation carInformation = CarInformationFactory.buildCarInformation(
+                "Toyota", "Scarlet", "2020", "Manual", "Plate-123",
+                "Red 5 door car with 50 000km mileage", "Leather seats, Navigation system, Bluetooth", carInsurance,
+                2000, "Available",
+                loadPicture("scarlet1.jpg"),
+                loadPicture("scarlet2.jpg"),
+                loadPicture("scarlet3.jpg")
+        );
+
+
+    private byte[] loadPicture(String fileName) {
         try {
-            Path path = Paths.get(filePath);
+            Path path = Paths.get("src/images/img-prototype/" + fileName);
             return Files.readAllBytes(path);
         } catch (IOException e) {
             fail("Failed to load picture: " + e.getMessage());
             return null;
         }
     }
-    CarInsurance carInsurance = CarInsuranceFactory.buildCarInsurance(
-            "MiWay", 15447841, "Insurance", 1200
-    );
-    CarInformation carInformation = CarInformationFactory.buildCarInformation(
-            "Toyota", "Scarlet", "2020", "Manual", "Plate-123",
-            "A stylish and comfortable SUV.", "Leather seats, Navigation system, Bluetooth", carInsurance,
-            200, "Available",
-    loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet1.jpg"), // Load the first picture
-    loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet2.jpg"), // Load the second picture
-    loadPicture("C:\\Users\\Lehlogonolo Mahlangu\\Downloads\\scarlet3.jpg")  // Load the third picture
-        );
+
 
     @Test
     public void testBuildCar() {
