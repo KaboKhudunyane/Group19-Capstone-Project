@@ -6,6 +6,7 @@ import za.ac.cput.domain.Admin;
 import za.ac.cput.repository.AdminRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService implements IService<Admin,Long>{
@@ -40,5 +41,19 @@ public class AdminService implements IService<Admin,Long>{
     @Override
     public List<Admin> getAll() {
         return adminRepository.findAll();
+    }
+
+   /* public Optional<Admin> findAdminByUsername(String username) {
+        return adminRepository.findByUsername(username);
+    }*/
+   public Admin authenticateAdmin(String username, String password) {
+       Admin admin = adminRepository.findAdminByUsername(username);
+       if (admin != null && admin.getPassword().equals(password)) {
+           return admin;
+       }
+       return null;
+   }
+    public long countAdmins() {
+        return adminRepository.countAdmins();
     }
 }
