@@ -31,4 +31,8 @@ public class SupportTicketService implements IService<SupportTicket, Long> {
     public List<SupportTicket> getAll() {
         return repository.findAll();
     }
+
+    public long countSupportTickets() {
+        return repository.countSupportTickets();
+    }
 }
