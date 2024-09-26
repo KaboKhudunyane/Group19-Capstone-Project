@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -48,5 +48,9 @@ public class UserController {
     @GetMapping("/getAll")
     public List<User> getAll() {
         return userService.getAll();
+    }
+    @GetMapping("/count")
+    public long getUserCount() {
+        return userService.countUser();
     }
 }
