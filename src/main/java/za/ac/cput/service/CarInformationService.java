@@ -46,6 +46,8 @@ public class CarInformationService implements IService<CarInformation, Long> {
 
     return carInformationRepository.findAll();
     }
-
+    public long countCars() {
+        return carInformationRepository.countCars();
+    }
 
 }

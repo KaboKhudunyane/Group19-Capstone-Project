@@ -231,4 +231,9 @@ class CarInformationServiceTest {
     void getAll() {
         System.out.println(carInformationService.getAll());
     }
+
+    @Test
+    void testCount(){
+        System.out.println("Numbers of Cars: "+carInformationService.countCars());
+    }
 }

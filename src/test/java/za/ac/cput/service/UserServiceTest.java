@@ -79,4 +79,8 @@ class UserServiceTest {
         assertNull(deletedUser);
         System.out.println("User deleted successfully.");
     }
+    @Test
+    void testCount(){
+        System.out.println("Numbers of User: "+userService.countUser());
+    }
 }

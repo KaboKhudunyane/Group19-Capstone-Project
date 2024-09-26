@@ -30,6 +30,9 @@ public class SupportTicketController {
     public List<SupportTicket> getAll() {
         return supportTicketService.getAll();
     }
-
+    @GetMapping("/count")
+    public long getSupportTicketCount() {
+        return supportTicketService.countSupportTickets();
+    }
 
 }
