@@ -43,4 +43,8 @@ public class UserService implements IService<User, Long> {
     public List<User> getAll() {
         return userRepository.findAll();
     }
+
+    public long countUser (){
+        return userRepository.countUser();
+    }
 }
