@@ -101,4 +101,8 @@ class SupportTicketServiceTest {
         assertTrue(supportTickets.size() >= 2);
         System.out.println("All SupportTickets: " + supportTickets);
     }
+    @Test
+    void testCount(){
+        System.out.println("Numbers of Support Tickets: "+supportTicketService.countSupportTickets());
+    }
 }

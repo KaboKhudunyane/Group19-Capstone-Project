@@ -42,6 +42,12 @@ public class AdminController {
     public List<Admin> getAll() {
         return adminService.getAll();
     }
+
+    @GetMapping("/count")
+    public long getAdminCount() {
+        return adminService.countAdmins();
+    }
+
     @PostMapping("/authenticate")
     public ResponseEntity<String> authenticate(@RequestBody Admin admin) {
         Admin authenticatedAdmin = adminService.authenticateAdmin(admin.getUsername(), admin.getPassword());

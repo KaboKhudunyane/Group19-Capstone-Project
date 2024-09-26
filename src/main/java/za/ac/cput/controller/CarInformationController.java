@@ -26,6 +26,10 @@ public class CarInformationController {
         return carInformationService.getAll();
     }
 
+    @GetMapping("/count")
+    public long getCarCount() {
+        return carInformationService.countCars();
+    }
 }
 
 

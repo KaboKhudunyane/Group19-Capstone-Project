@@ -53,4 +53,7 @@ public class AdminService implements IService<Admin,Long>{
        }
        return null;
    }
+    public long countAdmins() {
+        return adminRepository.countAdmins();
+    }
 }

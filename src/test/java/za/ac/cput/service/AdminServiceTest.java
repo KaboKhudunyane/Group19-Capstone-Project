@@ -1,5 +1,6 @@
 package za.ac.cput.service;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,7 @@ class AdminServiceTest {
     Admin a, b, c;
 
     @Test
+    @Order(1)
     void testCreate() {
         a = AdminFactory.buildAdmin(name, contact, "adminUsername7", "J1234565");
         Admin created = adminService.create(a);
@@ -29,6 +31,7 @@ class AdminServiceTest {
     }
 
     @Test
+    @Order(2)
     void testRead() {
         b = AdminFactory.buildAdmin(name, contact, "adminUsername", "J1234565");
         adminService.create(b);
@@ -36,8 +39,8 @@ class AdminServiceTest {
         assertEquals(b, read);
         System.out.println(b.toString() + " \n " + read.toString());
     }
-
     @Test
+    @Order(3)
     void testUpdate() {
         a = AdminFactory.buildAdmin(name, contact, "adminUsername2", "J1234565");
         adminService.create(a);
@@ -48,6 +51,7 @@ class AdminServiceTest {
     }
 
     @Test
+    @Order(4)
     void testDelete() {
         c = AdminFactory.buildAdmin(name, contact, "adminUsername90", "J1234565");
         adminService.create(c);
@@ -55,7 +59,9 @@ class AdminServiceTest {
         assertNull(adminService.read(c.getAdminId()));
     }
 
+
     @Test
+    @Order(5)
     void testAuthenticateAdmin() {
         a = AdminFactory.buildAdmin(name, contact, "admin1", "adminPassword");
         adminService.create(a);
@@ -67,11 +73,23 @@ class AdminServiceTest {
 
 
     @Test
+    @Order(6)
     void testAuthenticateAdminWithInvalidCredentials() {
         a = AdminFactory.buildAdmin(name, contact, "admin4", "adminPassword");
         adminService.create(a);
 
         Admin authenticatedAdmin = adminService.authenticateAdmin("admin5", "wrongPassword");
         assertNull(authenticatedAdmin);
+    }
+    @Test
+    @Order(7)
+    void getAll() {
+        System.out.println(adminService.getAll());
+    }
+
+    @Test
+    @Order(8)
+    void testCount() {
+        System.out.println("Number of records in the Amin table:" +adminService.countAdmins());
     }
 }
