@@ -6,10 +6,9 @@ import za.ac.cput.domain.Admin;
 import za.ac.cput.repository.AdminRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class AdminService implements IService<Admin,Long>{
+public class AdminService implements IService<Admin, Long> {
 
     private final AdminRepository adminRepository;
 
@@ -43,16 +42,17 @@ public class AdminService implements IService<Admin,Long>{
         return adminRepository.findAll();
     }
 
-   /* public Optional<Admin> findAdminByUsername(String username) {
-        return adminRepository.findByUsername(username);
-    }*/
-   public Admin authenticateAdmin(String username, String password) {
-       Admin admin = adminRepository.findAdminByUsername(username);
-       if (admin != null && admin.getPassword().equals(password)) {
-           return admin;
-       }
-       return null;
-   }
+    // Update the authenticateAdmin method to use the new repository method
+    public Admin authenticateAdmin(String username, String password) {
+        // Call the updated repository method that fetches by Account's username
+        Admin admin = adminRepository.findAdminByAccountUsername(username);
+        // Check if admin is not null and then check the password in Account
+        if (admin != null && admin.getAccount() != null && admin.getAccount().getPassword().equals(password)) {
+            return admin;
+        }
+        return null;
+    }
+
     public long countAdmins() {
         return adminRepository.countAdmins();
     }

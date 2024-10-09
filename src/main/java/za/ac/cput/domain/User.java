@@ -22,8 +22,9 @@ public class User {
     @Lob
     @Column(name = "Identity Document",length = 65535)
     private byte[] identityDocument;
-    protected User() {}
+    public User() {}
     private User(Builder builder) {
+        this.account = builder.account;
         this.name = builder.name;
         this.contact = builder.contact;
         this.address = builder.address;
@@ -58,6 +59,32 @@ public class User {
     public int hashCode() {
         return Objects.hash(userID, account, name, contact, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));
     }
+
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setLicense(byte[] license) {
+        this.license = license;
+    }
+
+    public void setIdentityDocument(byte[] identityDocument) {
+        this.identityDocument = identityDocument;
+    }
+
     public static class Builder {
         private Account account;
         private Name name;
@@ -65,8 +92,10 @@ public class User {
         private Address address;
         private byte[] license;
         private byte[] identityDocument;
-        public Builder setAccount(Account account){this.account = account;
-        return this;}
+        public Builder setAccount(Account account) {
+            this.account = account;
+            return this;
+        }
         public Builder setName(Name name) {
             this.name = name;
             return this;
@@ -88,6 +117,7 @@ public class User {
             return this;
         }
         public Builder copyUser(User user) {
+            this.account = user.account;
             this.name = user.name;
             this.contact = user.contact;
             this.address = user.address;

@@ -4,22 +4,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.multipart.MultipartFile;
 import za.ac.cput.domain.*;
 import za.ac.cput.service.UserService;
-
 import java.io.IOException;
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
-    @PostMapping("/create")
-    public User create(@RequestBody User user){
-        return userService.create(user);
+    @PostMapping(value = "/create", consumes = {"multipart/form-data"})
+    public ResponseEntity<User> create(
+            @RequestParam("account") String accountJson,
+            @RequestParam("name") String nameJson,
+            @RequestParam("contact") String contactJson,
+            @RequestParam("address") String addressJson,
+            @RequestParam("license") MultipartFile licenseFile,
+            @RequestParam("identityDocument") MultipartFile identityDocumentFile) {
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Account account = objectMapper.readValue(accountJson, Account.class);
+            Name name = objectMapper.readValue(nameJson, Name.class);
+            Contact contact = objectMapper.readValue(contactJson, Contact.class);
+            Address address = objectMapper.readValue(addressJson, Address.class);
+
+            byte[] licenseData = licenseFile.getBytes();
+            byte[] identityDocumentData = identityDocumentFile.getBytes();
+
+            User user = new User();
+            user.setAccount(account);
+            user.setName(name);
+            user.setContact(contact);
+            user.setAddress(address);
+            user.setLicense(licenseData);
+            user.setIdentityDocument(identityDocumentData);
+
+            User createdUser = userService.create(user);
+            return ResponseEntity.ok(createdUser);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
     @GetMapping("/read/{userID}")
     public User read(@PathVariable Long userID) {

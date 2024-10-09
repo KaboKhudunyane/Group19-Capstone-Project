@@ -5,8 +5,8 @@ import za.ac.cput.domain.SupportTicket;
 import za.ac.cput.service.SupportTicketService;
 import java.util.List;
 @RestController
-@RequestMapping("api/supportTicket")
-@CrossOrigin
+@RequestMapping("/supportTicket")
+@CrossOrigin(origins = "http://localhost:5173")
 public class SupportTicketController {
     @Autowired
     private SupportTicketService supportTicketService;
@@ -34,5 +34,4 @@ public class SupportTicketController {
     public long getSupportTicketCount() {
         return supportTicketService.countSupportTickets();
     }
-
 }
