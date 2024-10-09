@@ -5,7 +5,6 @@ import za.ac.cput.domain.User;
 import za.ac.cput.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class UserService implements IService<User, Long> {
     private final UserRepository userRepository;
@@ -22,12 +21,20 @@ public class UserService implements IService<User, Long> {
         return userRepository.findByUserID(userID);
     }
     public User authenticate(String username, String password) {
+        System.out.println("Attempting to authenticate user: " + username);
         Optional<User> optionalUser = userRepository.findByAccountUsername(username);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
+            // Log the retrieved password (only for debugging; remove in production)
+            System.out.println("Retrieved password for user: " + user.getAccount().getPassword());
             if (user.getAccount().getPassword().equals(password)) {
+                System.out.println("User authenticated successfully: " + username);
                 return user;
+            } else {
+                System.out.println("Invalid password for user: " + username);
             }
+        } else {
+            System.out.println("User not found: " + username);
         }
         return null;
     }
@@ -43,7 +50,6 @@ public class UserService implements IService<User, Long> {
     public List<User> getAll() {
         return userRepository.findAll();
     }
-
     public long countUser (){
         return userRepository.countUser();
     }
