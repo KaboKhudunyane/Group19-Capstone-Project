@@ -10,8 +10,8 @@ import za.ac.cput.domain.*;
 import za.ac.cput.service.UserService;
 import java.io.IOException;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/user")
 public class UserController {
     @Autowired
