@@ -19,8 +19,8 @@ public class CarInformation {
     private String description;
     private String features;
 
-    @OneToOne
-    private CarInsurance carInsurance;
+    @ManyToOne
+    private User user;
 
     private double rentalRate;
     private String availabilityStatus;
@@ -48,7 +48,7 @@ public class CarInformation {
         this.licensePlate = builder.licensePlate;
         this.description = builder.description;
         this.features = builder.features;
-        this.carInsurance = builder.carInsurance;
+        this.user = builder.user;
         this.rentalRate = builder.rentalRate;
         this.availabilityStatus = builder.availabilityStatus;
         this.picture1 = builder.picture1;
@@ -89,8 +89,8 @@ public class CarInformation {
         return features;
     }
 
-    public CarInsurance getCarInsurance() {
-        return carInsurance;
+    public User getUser() {
+        return user;
     }
 
     public double getRentalRate() {
@@ -130,12 +130,12 @@ public class CarInformation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarInformation that = (CarInformation) o;
-        return Double.compare(rentalRate, that.rentalRate) == 0 && Objects.equals(carInformationID, that.carInformationID) && Objects.equals(make, that.make) && Objects.equals(model, that.model) && Objects.equals(year, that.year) && Objects.equals(type, that.type) && Objects.equals(licensePlate, that.licensePlate) && Objects.equals(description, that.description) && Objects.equals(features, that.features) && Objects.equals(carInsurance, that.carInsurance) && Objects.equals(availabilityStatus, that.availabilityStatus) && Objects.deepEquals(picture1, that.picture1) && Objects.deepEquals(picture2, that.picture2) && Objects.deepEquals(picture3, that.picture3);
+        return Double.compare(rentalRate, that.rentalRate) == 0 && Objects.equals(carInformationID, that.carInformationID) && Objects.equals(make, that.make) && Objects.equals(model, that.model) && Objects.equals(year, that.year) && Objects.equals(type, that.type) && Objects.equals(licensePlate, that.licensePlate) && Objects.equals(description, that.description) && Objects.equals(features, that.features) && Objects.equals(user, that.user) && Objects.equals(availabilityStatus, that.availabilityStatus) && Objects.deepEquals(picture1, that.picture1) && Objects.deepEquals(picture2, that.picture2) && Objects.deepEquals(picture3, that.picture3);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carInformationID, make, model, year, type, licensePlate, description, features, carInsurance, rentalRate, availabilityStatus, Arrays.hashCode(picture1), Arrays.hashCode(picture2), Arrays.hashCode(picture3));
+        return Objects.hash(carInformationID, make, model, year, type, licensePlate, description, features, user, rentalRate, availabilityStatus, Arrays.hashCode(picture1), Arrays.hashCode(picture2), Arrays.hashCode(picture3));
     }
 
     @Override
@@ -149,7 +149,7 @@ public class CarInformation {
                 ", licensePlate='" + licensePlate + '\'' +
                 ", description='" + description + '\'' +
                 ", features='" + features + '\'' +
-                ", carInsurance=" + carInsurance +
+                ", user=" + user +
                 ", rentalRate=" + rentalRate +
                 ", availabilityStatus='" + availabilityStatus + '\'' +
                 ", picture1=" + Arrays.toString(picture1) +
@@ -167,7 +167,7 @@ public class CarInformation {
         private String licensePlate;
         private String description;
         private String features;
-        private CarInsurance carInsurance;
+        private User user;
         private double rentalRate;
         private String availabilityStatus;
         private byte[] picture1;
@@ -215,8 +215,8 @@ public class CarInformation {
             return this;
         }
 
-        public Builder setCarInsurance(CarInsurance carInsurance) {
-            this.carInsurance = carInsurance;
+        public Builder setUser(User user) {
+            this.user = user;
             return this;
         }
 
@@ -254,7 +254,7 @@ public class CarInformation {
             this.licensePlate = carInformation.licensePlate;
             this.description = carInformation.description;
             this.features = carInformation.features;
-            this.carInsurance = carInformation.carInsurance;
+            this.user = carInformation.user;
             this.rentalRate = carInformation.rentalRate;
             this.availabilityStatus = carInformation.availabilityStatus;
             this.picture1 = carInformation.picture1;
