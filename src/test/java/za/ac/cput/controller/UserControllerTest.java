@@ -52,7 +52,7 @@ class UserControllerTest {
     Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
     Contact contact = ContactFactory.createContact("216273293@mycput.ac.za", "0658595712");
     Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
-    User user = UserFactory.createUser(account, name, contact, address, licensePicture, userPicture);
+    User user = UserFactory.createUser(account, name, contact, address, licensePicture, userPicture, User.Role.USER);
 
     @Test
     void create() {
