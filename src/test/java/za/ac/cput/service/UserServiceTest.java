@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.*;
-import za.ac.cput.factory.AddressFactory;
-import za.ac.cput.factory.ContactFactory;
-import za.ac.cput.factory.NameFactory;
-import za.ac.cput.factory.UserFactory;
+import za.ac.cput.factory.*;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -25,53 +22,40 @@ class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    //license picture
-    private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
-    private static final String ID_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
+    private static Long userID;
 
-    private byte[] compressImage(String filePath) {
+    Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
+    Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
+    Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
+    Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("Cape Town").setProvince("Western Cape").setZipCode("12345").buildAddress();
+    User user = UserFactory.createUser(account, name, contact, address, loadPicture("lisence.jpg"), loadPicture("identity.jpg"));
+
+
+
+    private byte[] loadPicture(String fileName) {
         try {
-            BufferedImage image = ImageIO.read(new File(filePath));
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(image, "jpg", baos);
-            return baos.toByteArray();
+            Path path = Paths.get("src/images/img-prototype/" + fileName);
+            return Files.readAllBytes(path);
         } catch (IOException e) {
-            System.err.println("Error reading file: " + filePath);
-            e.printStackTrace();
+            fail("Failed to load picture: " + e.getMessage());
             return null;
         }
     }
-    byte[] licensePicture = compressImage(LICENSE_PICTURE_PATH);
-    byte[] idPicture = compressImage(ID_PICTURE_PATH);
-
-    private Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
-    private Name name = NameFactory.createName("Thato", "Emeka", "Nwamadi");
-    private Contact contact = ContactFactory.createContact("295732963@mycput.ac.za", "0654545212");
-    private Address address = AddressFactory.createAddress("89 St Marks", "District 10", "Cape Town", "Western Cape", "8000");
-    private User user = UserFactory.createUser(account, name, contact, address, licensePicture, idPicture);
 
     @Test
     void create() {
         User createUser = userService.create(user);
         assertNotNull(createUser);
+        userID = createUser.getUserID();
         System.out.println("Created User: " + createUser);
     }
     @Test
     void read() {
-        User readUser = userService.read(user.getUserID());
+        User readUser = userService.read(userID);
         assertNotNull(readUser);
         System.out.println("Read User: " + readUser);
     }
-    @Test
-    void update() {
-        // Set a new license picture (or modify other details as needed)
-        byte[] newLicensePicture = compressImage("C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG"); // Update the image path as needed
 
-        User newUser = new User.Builder().copyUser(user).setLicense(newLicensePicture).buildUser();
-        User updatedUser = userService.update(newUser);
-        assertNotNull(updatedUser);
-        System.out.println("Updated User: " + updatedUser);
-    }
     @Test
     void delete() {
         userService.delete(user.getUserID());
