@@ -11,7 +11,7 @@ import za.ac.cput.service.UserService;
 import java.io.IOException;
 import java.util.List;
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 @RequestMapping("/user")
 public class UserController {
     @Autowired

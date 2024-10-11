@@ -59,6 +59,10 @@ public class AdminController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<String> authenticate(@RequestBody Admin admin) {
+        // Check if admin's account is null or the username/password fields are null
+        if (admin.getAccount() == null || admin.getAccount().getUsername() == null || admin.getAccount().getPassword() == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username or password missing");
+        }
         Admin authenticatedAdmin = adminService.authenticateAdmin(admin.getAccount().getUsername(), admin.getAccount().getPassword());
         if (authenticatedAdmin != null) {
             return ResponseEntity.ok("Login successful");

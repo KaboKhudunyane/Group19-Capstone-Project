@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8758b9c8-22d5-4679-afc4-b057abaf4201" name="Changes" comment="new updates">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/AdminServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/AdminServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <list id="921ec68a-95d7-4d34-9b05-adb815c16745" name="Changes by diago" comment="" />
     <list id="1bde3307-32f7-46e0-a75c-3079fd0566d5" name="Changes by Kabo Khudunyane" comment="" />
@@ -60,78 +62,78 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.AddressFactoryTest.executor": "Run",
-    "JUnit.AddressServiceTest.executor": "Run",
-    "JUnit.AdminServiceTest.executor": "Run",
-    "JUnit.AdminServiceTest.testAuthenticateAdmin.executor": "Run",
-    "JUnit.AdminServiceTest.testCreate.executor": "Run",
-    "JUnit.BookingControllerTest.executor": "Run",
-    "JUnit.BookingFactoryTest.executor": "Run",
-    "JUnit.BookingServiceTest.create.executor": "Run",
-    "JUnit.BookingServiceTest.executor": "Run",
-    "JUnit.CarFactoryTest.executor": "Run",
-    "JUnit.CarInformationControllerTest.create.executor": "Run",
-    "JUnit.CarInformationControllerTest.executor": "Run",
-    "JUnit.CarInformationControllerTest.getAll.executor": "Run",
-    "JUnit.CarInformationFactoryTest.executor": "Run",
-    "JUnit.CarInformationFactoryTest.testBuildCarInformationWithFail.executor": "Run",
-    "JUnit.CarInformationFactoryTest.testBuildCarWithFail.executor": "Run",
-    "JUnit.CarInformationServiceTest.create.executor": "Run",
-    "JUnit.CarInformationServiceTest.executor": "Run",
-    "JUnit.CarInsuranceFactoryTest.executor": "Run",
-    "JUnit.CarInsuranceServiceTest.executor": "Run",
-    "JUnit.CarServiceTest.create.executor": "Run",
-    "JUnit.CarServiceTest.delete.executor": "Run",
-    "JUnit.CarServiceTest.executor": "Run",
-    "JUnit.CarServiceTest.read.executor": "Run",
-    "JUnit.CarServiceTest.update.executor": "Run",
-    "JUnit.ContactFactoryTest.executor": "Run",
-    "JUnit.NameFactoryTest.executor": "Run",
-    "JUnit.PaymentFactoryTest.executor": "Run",
-    "JUnit.PaymentServiceTest.create.executor": "Run",
-    "JUnit.PaymentServiceTest.delete.executor": "Run",
-    "JUnit.PaymentServiceTest.executor": "Run",
-    "JUnit.PaymentServiceTest.read.executor": "Run",
-    "JUnit.PaymentServiceTest.update.executor": "Run",
-    "JUnit.ReviewFactoryTest.executor": "Run",
-    "JUnit.ReviewServiceTest.createReview.executor": "Run",
-    "JUnit.ReviewServiceTest.executor": "Run",
-    "JUnit.SupportTicketServiceTest.create.executor": "Run",
-    "JUnit.SupportTicketServiceTest.delete.executor": "Run",
-    "JUnit.SupportTicketServiceTest.executor": "Run",
-    "JUnit.UserControllerTest.create.executor": "Run",
-    "JUnit.UserFactoryTest.executor": "Run",
-    "JUnit.UserServiceTest.create.executor": "Run",
-    "JUnit.UserServiceTest.executor": "Run",
-    "JUnit.UserServiceTest.read.executor": "Run",
-    "JUnit.UserServiceTest.update.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.Main.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Lehlogonolo Mahlangu/Documents/Intellij projects/MyProjectPart",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AddressFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AddressServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminServiceTest.testAuthenticateAdmin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminServiceTest.testCreate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationControllerTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationControllerTest.getAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationFactoryTest.testBuildCarInformationWithFail.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationFactoryTest.testBuildCarWithFail.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInformationServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInsuranceFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarInsuranceServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CarServiceTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContactFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NameFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PaymentServiceTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReviewFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReviewServiceTest.createReview.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReviewServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupportTicketServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupportTicketServiceTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupportTicketServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/bokam/OneDrive/Documents/GitHub/Group19-Capstone-Project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -147,7 +149,7 @@
       <recent name="za.ac.cput.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CarInformationServiceTest.create">
+  <component name="RunManager" selected="Spring Boot.Main">
     <configuration name="AdminServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
@@ -226,8 +228,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CarInformationServiceTest.create" />
         <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="JUnit.CarInformationServiceTest.create" />
         <item itemvalue="JUnit.AdminServiceTest" />
         <item itemvalue="JUnit.AdminServiceTest.testAuthenticateAdmin" />
         <item itemvalue="JUnit.AdminServiceTest.testCreate" />
@@ -237,8 +239,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
       </set>
     </attachedChunks>
   </component>
@@ -309,6 +310,9 @@
       <workItem from="1728460482931" duration="4194000" />
       <workItem from="1728465869371" duration="12166000" />
       <workItem from="1728498212110" duration="8211000" />
+      <workItem from="1728574864592" duration="85000" />
+      <workItem from="1728574978798" duration="7571000" />
+      <workItem from="1728637760737" duration="4993000" />
     </task>
     <task id="LOCAL-00001" summary="debug sess 23/07">
       <option name="closed" value="true" />
