@@ -16,11 +16,13 @@ public class User {
     private Contact contact;
     @Embedded
     private Address address;
+
     @Lob
     @Column(name = "License",length = 65535)
     private byte[] license;
+
     @Lob
-    @Column(name = "Identity Document",length = 65535)
+    @Column(name = "Identity Document", columnDefinition = "longBlob")
     private byte[] identityDocument;
     public User() {}
     private User(Builder builder) {
