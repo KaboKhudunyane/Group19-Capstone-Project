@@ -42,11 +42,9 @@ public class AdminService implements IService<Admin, Long> {
         return adminRepository.findAll();
     }
 
-    // Update the authenticateAdmin method to use the new repository method
     public Admin authenticateAdmin(String username, String password) {
-        // Call the updated repository method that fetches by Account's username
+        // Fetch admin by username, ensure admin and account exist, and verify password
         Admin admin = adminRepository.findAdminByAccountUsername(username);
-        // Check if admin is not null and then check the password in Account
         if (admin != null && admin.getAccount() != null && admin.getAccount().getPassword().equals(password)) {
             return admin;
         }
