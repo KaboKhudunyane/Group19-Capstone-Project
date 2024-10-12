@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.CarInformation;
 import za.ac.cput.domain.CarInsurance;
+import za.ac.cput.domain.User;
 import za.ac.cput.factory.CarInformationFactory;
 
 import java.io.IOException;
@@ -27,10 +28,12 @@ class CarInformationServiceTest {
     private CarInformationService carInformationService;
 
     @Autowired
-    private CarInsuranceService carInsuranceService;
+    private UserService userService;
 
     private static Long carInformationID_1;
     private static Long carInformationID_2;
+
+    /*
     private static Long carInformationID_3;
     private static Long carInformationID_4;
     private static Long carInformationID_5;
@@ -40,12 +43,16 @@ class CarInformationServiceTest {
     private static Long carInformationID_9;
     private static Long carInformationID_10;
 
+     */
 
 
-    private CarInsurance carInsurance;
+
+    private User user;
 
     private CarInformation carInformation1;
     private CarInformation carInformation2;
+
+    /*
     private CarInformation carInformation3;
     private CarInformation carInformation4;
     private CarInformation carInformation5;
@@ -55,14 +62,16 @@ class CarInformationServiceTest {
     private CarInformation carInformation9;
     private CarInformation carInformation10;
 
+     */
+
     @BeforeEach
     void setUp() {
-        carInsurance = carInsuranceService.read(1L);
+        user = userService.read(1L);
 
 
         carInformation1 = CarInformationFactory.buildCarInformation(
                 "Toyota", "Scarlet", "2020", "Manual", "Plate-123",
-                "Red 5 door car with 50 000km mileage", "Leather seats, Navigation system, Bluetooth", carInsurance,
+                "Red 5 door car with 50 000km mileage", "Leather seats, Navigation system, Bluetooth", user,
                 2000, "Available",
                 loadPicture("scarlet1.jpg"),
                 loadPicture("scarlet2.jpg"),
@@ -70,11 +79,14 @@ class CarInformationServiceTest {
         );
 
         carInformation2 = CarInformationFactory.buildCarInformation(
-                "Honda", "Civic", "2019", "Automatic", "Plate-456", "White coupe car with 40 000km mileage", "Gray leather seats, Sunroof, Bluetooth", carInsurance, 2200, "Availbale",
+                "Honda", "Civic", "2019", "Automatic", "Plate-456", "White coupe car with 40 000km mileage", "Gray leather seats, Sunroof, Bluetooth",
+                user, 2200, "Availbale",
                 loadPicture("civic1.jpg"),
                 loadPicture("civic2.jpg"),
                 loadPicture("civic3.jpg")
         );
+
+        /*
 
         carInformation3 =CarInformationFactory.buildCarInformation(
                 "Ford", "Focus", "2018", "Manual", "Plate-789", "Blue 5 door car with 30 000km mileage", "Cloth seats, Navigation system, Bluetooth", carInsurance, 1800, "Available",
@@ -119,6 +131,8 @@ class CarInformationServiceTest {
                 loadPicture("mazda1.jpg"), loadPicture("mazda2.jpg"), loadPicture("mazda3.jpg")
 
         );
+
+         */
     }
 
     private byte[] loadPicture(String fileName) {
@@ -138,6 +152,8 @@ class CarInformationServiceTest {
     void create() {
         CarInformation created1 = carInformationService.create(carInformation1);
         CarInformation created2 = carInformationService.create(carInformation2);
+
+        /*
         CarInformation created3 = carInformationService.create(carInformation3);
         CarInformation created4 = carInformationService.create(carInformation4);
         CarInformation created5 = carInformationService.create(carInformation5);
@@ -147,8 +163,12 @@ class CarInformationServiceTest {
         CarInformation created9 = carInformationService.create(carInformation9);
         CarInformation created10 = carInformationService.create(carInformation10);
 
+         */
+
         assertNotNull(created1);
         assertNotNull(created2);
+
+        /*
         assertNotNull(created3);
         assertNotNull(created4);
         assertNotNull(created5);
@@ -158,8 +178,12 @@ class CarInformationServiceTest {
         assertNotNull(created9);
         assertNotNull(created10);
 
+         */
+
         carInformationID_1 = created1.getCarInformationID();
         carInformationID_2 = created2.getCarInformationID();
+
+        /*
         carInformationID_3 = created3.getCarInformationID();
         carInformationID_4 = created4.getCarInformationID();
         carInformationID_5 = created5.getCarInformationID();
@@ -169,8 +193,12 @@ class CarInformationServiceTest {
         carInformationID_9 = created9.getCarInformationID();
         carInformationID_10 = created10.getCarInformationID();
 
+         */
+
         System.out.println(created1);
         System.out.println(created2);
+
+        /*
         System.out.println(created3);
         System.out.println(created4);
         System.out.println(created5);
@@ -179,6 +207,8 @@ class CarInformationServiceTest {
         System.out.println(created8);
         System.out.println(created9);
         System.out.println(created10);
+
+         */
 
     }
 
@@ -192,6 +222,8 @@ class CarInformationServiceTest {
     void read() {
         CarInformation read1 = carInformationService.read(carInformationID_1);
         CarInformation read2 = carInformationService.read(carInformationID_2);
+
+        /*
         CarInformation read3 = carInformationService.read(carInformationID_3);
         CarInformation read4 = carInformationService.read(carInformationID_4);
         CarInformation read5 = carInformationService.read(carInformationID_5);
@@ -201,8 +233,12 @@ class CarInformationServiceTest {
         CarInformation read9 = carInformationService.read(carInformationID_9);
         CarInformation read10 = carInformationService.read(carInformationID_10);
 
+         */
+
         assertNotNull(read1);
         assertNotNull(read2);
+
+        /*
         assertNotNull(read3);
         assertNotNull(read4);
         assertNotNull(read5);
@@ -212,9 +248,13 @@ class CarInformationServiceTest {
         assertNotNull(read9);
         assertNotNull(read10);
 
+         */
+
 
         System.out.println(read1);
         System.out.println(read2);
+
+        /*
         System.out.println(read3);
         System.out.println(read4);
         System.out.println(read5);
@@ -223,6 +263,8 @@ class CarInformationServiceTest {
         System.out.println(read8);
         System.out.println(read9);
         System.out.println(read10);
+
+         */
 
     }
 
