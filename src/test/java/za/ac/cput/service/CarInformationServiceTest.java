@@ -32,10 +32,10 @@ class CarInformationServiceTest {
 
     private static Long carInformationID_1;
     private static Long carInformationID_2;
-
-    /*
     private static Long carInformationID_3;
     private static Long carInformationID_4;
+
+    /*
     private static Long carInformationID_5;
     private static Long carInformationID_6;
     private static Long carInformationID_7;
@@ -48,13 +48,14 @@ class CarInformationServiceTest {
 
 
     private User user;
+    private User user1;
 
     private CarInformation carInformation1;
     private CarInformation carInformation2;
-
-    /*
     private CarInformation carInformation3;
     private CarInformation carInformation4;
+
+    /*
     private CarInformation carInformation5;
     private CarInformation carInformation6;
     private CarInformation carInformation7;
@@ -67,6 +68,7 @@ class CarInformationServiceTest {
     @BeforeEach
     void setUp() {
         user = userService.read(1L);
+        user1 = userService.read(2L);
 
 
         carInformation1 = CarInformationFactory.buildCarInformation(
@@ -86,19 +88,21 @@ class CarInformationServiceTest {
                 loadPicture("civic3.jpg")
         );
 
-        /*
+
 
         carInformation3 =CarInformationFactory.buildCarInformation(
-                "Ford", "Focus", "2018", "Manual", "Plate-789", "Blue 5 door car with 30 000km mileage", "Cloth seats, Navigation system, Bluetooth", carInsurance, 1800, "Available",
+                "Ford", "Focus", "2018", "Manual", "Plate-789", "Blue 5 door car with 30 000km mileage", "Cloth seats, Navigation system, Bluetooth", user1, 1800, "Available",
                 loadPicture("focus1.jpg"),
                 loadPicture("focus2.jpg"),
                 loadPicture("focus3.jpg")
         );
 
         carInformation4 = CarInformationFactory.buildCarInformation(
-                "BMW", "3 Series", "2021", "Automatic", "Plate-321", "White 4 door car with 10 000km mileage", "Leather seats, Sunroof, Bluetooth", carInsurance, 3500, "Available",
+                "BMW", "3 Series", "2021", "Automatic", "Plate-321", "White 4 door car with 10 000km mileage", "Leather seats, Sunroof, Bluetooth", user1, 3500, "Available",
                 loadPicture("bmw2.jpg"), loadPicture("bmw2.jpg"),loadPicture("bmw3.jpg")
         );
+
+        /*
 
         carInformation5 = CarInformationFactory.buildCarInformation(
                 "Audi", "A4", "2022", "Manual", "Plate-654", "White 4 door car with 5 000km mileage", "Leather seats, Navigation system, Bluetooth", carInsurance, 3700,"Available",
@@ -152,10 +156,10 @@ class CarInformationServiceTest {
     void create() {
         CarInformation created1 = carInformationService.create(carInformation1);
         CarInformation created2 = carInformationService.create(carInformation2);
-
-        /*
         CarInformation created3 = carInformationService.create(carInformation3);
         CarInformation created4 = carInformationService.create(carInformation4);
+
+        /*
         CarInformation created5 = carInformationService.create(carInformation5);
         CarInformation created6 = carInformationService.create(carInformation6);
         CarInformation created7 = carInformationService.create(carInformation7);
@@ -167,10 +171,10 @@ class CarInformationServiceTest {
 
         assertNotNull(created1);
         assertNotNull(created2);
-
-        /*
         assertNotNull(created3);
         assertNotNull(created4);
+
+        /*
         assertNotNull(created5);
         assertNotNull(created6);
         assertNotNull(created7);
@@ -182,10 +186,10 @@ class CarInformationServiceTest {
 
         carInformationID_1 = created1.getCarInformationID();
         carInformationID_2 = created2.getCarInformationID();
-
-        /*
         carInformationID_3 = created3.getCarInformationID();
         carInformationID_4 = created4.getCarInformationID();
+
+        /*
         carInformationID_5 = created5.getCarInformationID();
         carInformationID_6 = created6.getCarInformationID();
         carInformationID_7 = created7.getCarInformationID();
@@ -197,10 +201,10 @@ class CarInformationServiceTest {
 
         System.out.println(created1);
         System.out.println(created2);
-
-        /*
         System.out.println(created3);
         System.out.println(created4);
+
+        /*
         System.out.println(created5);
         System.out.println(created6);
         System.out.println(created7);
@@ -222,10 +226,10 @@ class CarInformationServiceTest {
     void read() {
         CarInformation read1 = carInformationService.read(carInformationID_1);
         CarInformation read2 = carInformationService.read(carInformationID_2);
-
-        /*
         CarInformation read3 = carInformationService.read(carInformationID_3);
         CarInformation read4 = carInformationService.read(carInformationID_4);
+
+        /*
         CarInformation read5 = carInformationService.read(carInformationID_5);
         CarInformation read6 = carInformationService.read(carInformationID_6);
         CarInformation read7 = carInformationService.read(carInformationID_7);
@@ -237,10 +241,10 @@ class CarInformationServiceTest {
 
         assertNotNull(read1);
         assertNotNull(read2);
-
-        /*
         assertNotNull(read3);
         assertNotNull(read4);
+
+        /*
         assertNotNull(read5);
         assertNotNull(read6);
         assertNotNull(read7);
@@ -253,10 +257,10 @@ class CarInformationServiceTest {
 
         System.out.println(read1);
         System.out.println(read2);
-
-        /*
         System.out.println(read3);
         System.out.println(read4);
+
+        /*
         System.out.println(read5);
         System.out.println(read6);
         System.out.println(read7);
@@ -274,7 +278,9 @@ class CarInformationServiceTest {
         System.out.println(carInformationService.getAll());
     }
 
+
     @Test
+    @Order(8)
     void testCount(){
         System.out.println("Numbers of Cars: "+carInformationService.countCars());
     }
