@@ -31,7 +31,7 @@ class SupportTicketServiceTest {
         Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
 
         // Creating a user without images
-        user = UserFactory.createUser(account, name, contact, address, null, null);
+        //user = UserFactory.createUser(account, name, contact, address, null, null);
         user = userService.create(user); // Save the user first
         assertNotNull(user, "User should be saved and not null");
 
