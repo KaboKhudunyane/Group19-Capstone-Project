@@ -1,0 +1,200 @@
+Index: src/main/java/za/ac/cput/domain/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package za.ac.cput.domain;\r\n\r\nimport jakarta.persistence.*;\r\nimport java.util.Arrays;\r\nimport java.util.Objects;\r\n\r\n@Entity\r\n@Table(name = \"User\")\r\npublic class User {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    private Long userID;\r\n\r\n    @Enumerated(EnumType.STRING)\r\n    private Role role;\r\n\r\n    @Embedded\r\n    private Account account;\r\n\r\n    @Embedded\r\n    private Name name;\r\n\r\n    @Embedded\r\n    private Contact contact;\r\n\r\n    @Embedded\r\n    private Address address;\r\n\r\n    @Lob\r\n    @Column(name = \"License\", length = 65535)\r\n    private byte[] license;\r\n\r\n    @Lob\r\n    @Column(name = \"Identity Document\", length = 65535)\r\n    private byte[] identityDocument;\r\n\r\n    // Enum for Role\r\n    public enum Role {\r\n        USER,\r\n        ADMIN\r\n    }\r\n\r\n    // Default constructor\r\n    public User() {}\r\n\r\n    // Private constructor for the Builder pattern\r\n    private User(Builder builder) {\r\n        this.account = builder.account;\r\n        this.name = builder.name;\r\n        this.contact = builder.contact;\r\n        this.address = builder.address;\r\n        this.license = builder.license;\r\n        this.identityDocument = builder.identityDocument;\r\n        this.role = builder.role;\r\n    }\r\n\r\n    // Getters\r\n    public Long getUserID() {\r\n        return userID;\r\n    }\r\n\r\n    public Role getRole() {\r\n        return role;\r\n    }\r\n\r\n    public Account getAccount() {\r\n        return account;\r\n    }\r\n\r\n    public Name getName() {\r\n        return name;\r\n    }\r\n\r\n    public Contact getContact() {\r\n        return contact;\r\n    }\r\n\r\n    public Address getAddress() {\r\n        return address;\r\n    }\r\n\r\n    public byte[] getLicense() {\r\n        return license;\r\n    }\r\n\r\n    public byte[] getIdentityDocument() {\r\n        return identityDocument;\r\n    }\r\n\r\n    // Setters\r\n    public void setRole(Role role) {\r\n        this.role = role;\r\n    }\r\n\r\n    public void setAccount(Account account) {\r\n        this.account = account;\r\n    }\r\n\r\n    public void setName(Name name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public void setContact(Contact contact) {\r\n        this.contact = contact;\r\n    }\r\n\r\n    public void setAddress(Address address) {\r\n        this.address = address;\r\n    }\r\n\r\n    public void setLicense(byte[] license) {\r\n        this.license = license;\r\n    }\r\n\r\n    public void setIdentityDocument(byte[] identityDocument) {\r\n        this.identityDocument = identityDocument;\r\n    }\r\n\r\n    // Equals, hashCode, and toString methods\r\n    @Override\r\n    public boolean equals(Object o) {\r\n        if (this == o) return true;\r\n        if (o == null || getClass() != o.getClass()) return false;\r\n        User user = (User) o;\r\n        return Objects.equals(userID, user.userID) &&\r\n                role == user.role &&\r\n                Objects.equals(account, user.account) &&\r\n                Objects.equals(name, user.name) &&\r\n                Objects.equals(contact, user.contact) &&\r\n                Objects.equals(address, user.address) &&\r\n                Arrays.equals(license, user.license) &&\r\n                Arrays.equals(identityDocument, user.identityDocument);\r\n    }\r\n\r\n    @Override\r\n    public int hashCode() {\r\n        int result = Objects.hash(userID, role, account, name, contact, address);\r\n        result = 31 * result + Arrays.hashCode(license);\r\n        result = 31 * result + Arrays.hashCode(identityDocument);\r\n        return result;\r\n    }\r\n\r\n    // Builder class for creating User objects\r\n    public static class Builder {\r\n        private Account account;\r\n        private Name name;\r\n        private Contact contact;\r\n        private Address address;\r\n        private byte[] license;\r\n        private byte[] identityDocument;\r\n        private Role role;\r\n\r\n        public Builder setAccount(Account account) {\r\n            this.account = account;\r\n            return this;\r\n        }\r\n\r\n        public Builder setName(Name name) {\r\n            this.name = name;\r\n            return this;\r\n        }\r\n\r\n        public Builder setContact(Contact contact) {\r\n            this.contact = contact;\r\n            return this;\r\n        }\r\n\r\n        public Builder setAddress(Address address) {\r\n            this.address = address;\r\n            return this;\r\n        }\r\n\r\n        public Builder setLicense(byte[] license) {\r\n            this.license = license;\r\n            return this;\r\n        }\r\n\r\n        public Builder setIdentityDocument(byte[] identityDocument) {\r\n            this.identityDocument = identityDocument;\r\n            return this;\r\n        }\r\n\r\n        public Builder setRole(Role role) {\r\n            this.role = role;\r\n            return this;\r\n        }\r\n\r\n        public Builder copyUser(User user) {\r\n            this.role = user.role;\r\n            this.account = user.account;\r\n            this.name = user.name;\r\n            this.contact = user.contact;\r\n            this.address = user.address;\r\n            this.license = user.license;\r\n            this.identityDocument = user.identityDocument;\r\n\r\n            return this;\r\n        }\r\n\r\n        public User buildUser() {\r\n            return new User(this);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/za/ac/cput/domain/User.java b/src/main/java/za/ac/cput/domain/User.java
+--- a/src/main/java/za/ac/cput/domain/User.java	(revision 3f0ea8ebc212c4e5a91d3d8fc483ac8f9d9315a5)
++++ b/src/main/java/za/ac/cput/domain/User.java	(date 1728748399166)
+@@ -5,13 +5,14 @@
+ import java.util.Objects;
+ 
+ @Entity
+-@Table(name = "User")
++@Table(name = "User") // Table mapping in the database
+ public class User {
++
+     @Id
+-    @GeneratedValue(strategy = GenerationType.IDENTITY)
++    @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatically generate IDs
+     private Long userID;
+ 
+-    @Enumerated(EnumType.STRING)
++    @Enumerated(EnumType.STRING) // Store the role as a string in the database
+     private Role role;
+ 
+     @Embedded
+@@ -27,14 +28,14 @@
+     private Address address;
+ 
+     @Lob
+-    @Column(name = "License", length = 65535)
++    @Column(name = "License", length = 65535) // Large Object for storing the license
+     private byte[] license;
+ 
+     @Lob
+-    @Column(name = "Identity Document", length = 65535)
++    @Column(name = "Identity Document", length = 65535) // Large Object for storing identity documents
+     private byte[] identityDocument;
+ 
+-    // Enum for Role
++    // Enum for Role, ensure it's defined clearly for easy reference and validation
+     public enum Role {
+         USER,
+         ADMIN
+@@ -43,7 +44,7 @@
+     // Default constructor
+     public User() {}
+ 
+-    // Private constructor for the Builder pattern
++    // Private constructor for the Builder pattern, ensuring controlled instantiation
+     private User(Builder builder) {
+         this.account = builder.account;
+         this.name = builder.name;
+@@ -51,72 +52,72 @@
+         this.address = builder.address;
+         this.license = builder.license;
+         this.identityDocument = builder.identityDocument;
+-        this.role = builder.role;
++        this.role = builder.role; // Ensure role is set during user creation
+     }
+ 
+     // Getters
+     public Long getUserID() {
+-        return userID;
++        return userID; // Expose userID safely
+     }
+ 
+     public Role getRole() {
+-        return role;
++        return role; // Return the user's role
+     }
+ 
+     public Account getAccount() {
+-        return account;
++        return account; // Get user account details
+     }
+ 
+     public Name getName() {
+-        return name;
++        return name; // Get user name details
+     }
+ 
+     public Contact getContact() {
+-        return contact;
++        return contact; // Get user contact details
+     }
+ 
+     public Address getAddress() {
+-        return address;
++        return address; // Get user address details
+     }
+ 
+     public byte[] getLicense() {
+-        return license;
++        return license; // Return the license byte array
+     }
+ 
+     public byte[] getIdentityDocument() {
+-        return identityDocument;
++        return identityDocument; // Return the identity document byte array
+     }
+ 
+-    // Setters
++    // Setter
+     public void setRole(Role role) {
+-        this.role = role;
++        this.role = role; // Set the user's role, consider if this should be restricted
+     }
+ 
+     public void setAccount(Account account) {
+-        this.account = account;
++        this.account = account; // Set account details
+     }
+ 
+     public void setName(Name name) {
+-        this.name = name;
++        this.name = name; // Set name details
+     }
+ 
+     public void setContact(Contact contact) {
+-        this.contact = contact;
++        this.contact = contact; // Set contact details
+     }
+ 
+     public void setAddress(Address address) {
+-        this.address = address;
++        this.address = address; // Set address details
+     }
+ 
+     public void setLicense(byte[] license) {
+-        this.license = license;
++        this.license = license; // Set the license byte array
+     }
+ 
+     public void setIdentityDocument(byte[] identityDocument) {
+-        this.identityDocument = identityDocument;
++        this.identityDocument = identityDocument; // Set identity document byte array
+     }
+ 
+-    // Equals, hashCode, and toString methods
++    // Equals, hashCode, and toString methods for object comparison and logging
+     @Override
+     public boolean equals(Object o) {
+         if (this == o) return true;
+@@ -140,7 +141,7 @@
+         return result;
+     }
+ 
+-    // Builder class for creating User objects
++    // Builder class for creating User objects with a fluent interface
+     public static class Builder {
+         private Account account;
+         private Name name;
+@@ -150,6 +151,7 @@
+         private byte[] identityDocument;
+         private Role role;
+ 
++        // Setters for the builder pattern
+         public Builder setAccount(Account account) {
+             this.account = account;
+             return this;
+@@ -185,6 +187,7 @@
+             return this;
+         }
+ 
++        // Copy constructor to clone existing user properties
+         public Builder copyUser(User user) {
+             this.role = user.role;
+             this.account = user.account;
+@@ -197,8 +200,9 @@
+             return this;
+         }
+ 
++        // Build method to create a User object
+         public User buildUser() {
+-            return new User(this);
++            return new User(this); // Create a new User instance
+         }
+     }
+ }
+Index: src/main/java/za/ac/cput/domain/Account.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package za.ac.cput.domain;\r\nimport jakarta.persistence.Column;\r\nimport jakarta.persistence.Embeddable;\r\nimport java.io.Serializable;\r\nimport java.util.Objects;\r\n@Embeddable\r\npublic class Account implements Serializable {\r\n    @Column(name = \"Username\")\r\n    private String username;\r\n    @Column(name = \"Password\")\r\n    private String password;\r\n    protected Account() {}\r\n    private Account(Builder builder) {\r\n        this.username = builder.username;\r\n        this.password = builder.password;\r\n    }\r\n    public String getUsername() {\r\n        return username;\r\n    }\r\n    public String getPassword() {\r\n        return password;\r\n    }\r\n    @Override\r\n    public int hashCode() {\r\n        return Objects.hash(username, password);\r\n    }\r\n    @Override\r\n    public String toString() {\r\n        return \"Contact{\" +\r\n                \"username='\" + username + '\\'' +\r\n                \", password='\" + password + '\\'' +\r\n                '}';\r\n    }\r\n    public static class Builder {\r\n        private String username;\r\n        private String password;\r\n        public Builder setUsername(String username) {\r\n            this.username = username;\r\n            return this;\r\n        }\r\n        public Builder setPassword(String password) {\r\n            this.password = password;\r\n            return this;\r\n        }\r\n        public Account.Builder copyAccount(Account account) {\r\n            this.username = account.username;\r\n            this.password = account.password;\r\n            return this;\r\n        }\r\n        public Account buildAccount() {\r\n            return new Account(this);\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/za/ac/cput/domain/Account.java b/src/main/java/za/ac/cput/domain/Account.java
+--- a/src/main/java/za/ac/cput/domain/Account.java	(revision 3f0ea8ebc212c4e5a91d3d8fc483ac8f9d9315a5)
++++ b/src/main/java/za/ac/cput/domain/Account.java	(date 1728747711633)
+@@ -20,6 +20,7 @@
+     public String getPassword() {
+         return password;
+     }
++    public void setPassword(){this.password = password;}
+     @Override
+     public int hashCode() {
+         return Objects.hash(username, password);
