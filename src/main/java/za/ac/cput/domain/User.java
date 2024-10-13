@@ -22,7 +22,9 @@ public class User {
     @Lob
     @Column(name = "Identity Document",length = 65535)
     private byte[] identityDocument;
+
     public User() {}
+
     private User(Builder builder) {
         this.account = builder.account;
         this.name = builder.name;
@@ -31,6 +33,7 @@ public class User {
         this.license = builder.license;
         this.identityDocument = builder.identityDocument;
     }
+
     public Long getUserID() {
         return userID;
     }
@@ -48,6 +51,7 @@ public class User {
     public byte[] getIdentityDocument() {
         return identityDocument;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,29 +64,17 @@ public class User {
         return Objects.hash(userID, account, name, contact, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));
     }
 
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public void setLicense(byte[] license) {
-        this.license = license;
-    }
-
-    public void setIdentityDocument(byte[] identityDocument) {
-        this.identityDocument = identityDocument;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", account=" + account +
+                ", name=" + name +
+                ", contact=" + contact +
+                ", address=" + address +
+                ", license=" + Arrays.toString(license) +
+                ", identityDocument=" + Arrays.toString(identityDocument) +
+                '}';
     }
 
     public static class Builder {

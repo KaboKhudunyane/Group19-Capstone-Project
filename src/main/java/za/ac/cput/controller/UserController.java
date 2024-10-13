@@ -16,52 +16,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-    @PostMapping(value = "/create", consumes = {"multipart/form-data"})
-    public ResponseEntity<User> create(
-            @RequestParam("account") String accountJson,
-            @RequestParam("name") String nameJson,
-            @RequestParam("contact") String contactJson,
-            @RequestParam("address") String addressJson,
-            @RequestParam("license") MultipartFile licenseFile,
-            @RequestParam("identityDocument") MultipartFile identityDocumentFile) {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            // Log received data for debugging
-            System.out.println("Received account JSON: " + accountJson);
-            System.out.println("Received name JSON: " + nameJson);
-            System.out.println("Received contact JSON: " + contactJson);
-            System.out.println("Received address JSON: " + addressJson);
-            System.out.println("Received license file: " + licenseFile.getOriginalFilename());
-            System.out.println("Received identity document file: " + identityDocumentFile.getOriginalFilename());
 
-            Account account = objectMapper.readValue(accountJson, Account.class);
-            Name name = objectMapper.readValue(nameJson, Name.class);
-            Contact contact = objectMapper.readValue(contactJson, Contact.class);
-            Address address = objectMapper.readValue(addressJson, Address.class);
-
-            byte[] licenseData = licenseFile.getBytes();
-            byte[] identityDocumentData = identityDocumentFile.getBytes();
-
-            User user = new User();
-            user.setAccount(account);
-            user.setName(name);
-            user.setContact(contact);
-            user.setAddress(address);
-            user.setLicense(licenseData);
-            user.setIdentityDocument(identityDocumentData);
-
-            // Log user before saving
-            System.out.println("Creating user: " + user);
-
-            User createdUser = userService.create(user);
-            return ResponseEntity.ok(createdUser);
-        } catch (IOException e) {
-            // Log the exception
-            System.err.println("Error processing the request: " + e.getMessage());
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
-    }
     @GetMapping("/read/{userID}")
     public User read(@PathVariable Long userID) {
         return userService.read(userID);
