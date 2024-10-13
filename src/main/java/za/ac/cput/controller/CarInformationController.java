@@ -26,6 +26,21 @@ public class CarInformationController {
         return carInformationService.getAll();
     }
 
+    @GetMapping("/findByCity/{city}")
+    public List<CarInformation> findCarsByCity(@PathVariable String city) {
+        return carInformationService.findCarsByCity(city);
+    }
+
+    @GetMapping("/findByCityAndSuburb")
+    public List<CarInformation> findCarsByCityAndSuburb(@RequestParam String city, @RequestParam String suburb) {
+        return carInformationService.findCarsByCityAndSuburb(city, suburb);
+    }
+
+    @GetMapping("/findByLocation")
+    public List<CarInformation> findCarsByLocation(@RequestParam String city, @RequestParam String province, @RequestParam String zipCode) {
+        return carInformationService.findCarsByLocation(city, province, zipCode);
+    }
+
     @GetMapping("/count")
     public long getCarCount() {
         return carInformationService.countCars();
