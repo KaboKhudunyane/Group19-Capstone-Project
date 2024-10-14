@@ -21,16 +21,17 @@ public class UserController {
 
     @PostMapping(value = "/create", consumes = {"multipart/form-data"})
     public ResponseEntity<User> create(
+            @RequestParam(value = "role", required = false) String role,  // Optional role
             @RequestParam("account") String accountJson,
             @RequestParam("name") String nameJson,
             @RequestParam("contact") String contactJson,
             @RequestParam("address") String addressJson,
-            @RequestParam("role") String role,  // New role parameter
             @RequestParam("license") MultipartFile licenseFile,
             @RequestParam("identityDocument") MultipartFile identityDocumentFile) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             // Log received data for debugging
+            System.out.println("Received role: " + role);  // Log role
             System.out.println("Received account JSON: " + accountJson);
             System.out.println("Received name JSON: " + nameJson);
             System.out.println("Received contact JSON: " + contactJson);
@@ -39,25 +40,24 @@ public class UserController {
             System.out.println("Received license file: " + licenseFile.getOriginalFilename());
             System.out.println("Received identity document file: " + identityDocumentFile.getOriginalFilename());
 
+            // Set the role based on the incoming request
+            User.Role userRole = User.Role.valueOf(role.toUpperCase()); // Ensure the role is in uppercase
             Account account = objectMapper.readValue(accountJson, Account.class);
             Name name = objectMapper.readValue(nameJson, Name.class);
             Contact contact = objectMapper.readValue(contactJson, Contact.class);
             Address address = objectMapper.readValue(addressJson, Address.class);
-
             byte[] licenseData = licenseFile.getBytes();
             byte[] identityDocumentData = identityDocumentFile.getBytes();
 
-            // Set the role based on the incoming request
-            User.Role userRole = User.Role.valueOf(role.toUpperCase()); // Ensure the role is in uppercase
 
             User user = new User.Builder()  // Use Builder pattern to create User
+                    .setRole(userRole)  // Set the role
                     .setAccount(account)
                     .setName(name)
                     .setContact(contact)
                     .setAddress(address)
                     .setLicense(licenseData)
                     .setIdentityDocument(identityDocumentData)
-                    .setRole(userRole)  // Set the role
                     .buildUser();
 
             // Log user before saving
