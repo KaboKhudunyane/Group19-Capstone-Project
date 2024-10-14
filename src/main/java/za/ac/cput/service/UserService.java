@@ -13,22 +13,33 @@ import za.ac.cput.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Service // Indicates that this class is a service component in the Spring context
+@Service // Marks this class as a service component for Spring's context
 public class UserService implements IService<User, Long>, UserDetailsService {
 
     private final UserRepository userRepository; // Repository to handle user data
-    private final PasswordEncoder passwordEncoder; // Password encoder for encrypting passwords
+    private PasswordEncoder passwordEncoder; // Password encoder for encrypting passwords
 
-    // Constructor for dependency injection of UserRepository and PasswordEncoder
+    // Constructor to inject UserRepository only (breaks the circular dependency)
     @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    // Setter for PasswordEncoder (delayed injection to break the cycle)
+    // This method allows Spring to inject PasswordEncoder later, avoiding a direct circular dependency in the constructor
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 
     // Create a new user
     @Override
     public User create(User user) {
+        // Ensure passwordEncoder is available
+        if (passwordEncoder == null) {
+            throw new IllegalStateException("PasswordEncoder is not configured");
+        }
+
         // Encrypt the password before saving the user
         String encryptedPassword = passwordEncoder.encode(user.getAccount().getPassword());
 
@@ -38,8 +49,13 @@ public class UserService implements IService<User, Long>, UserDetailsService {
                 .setPassword(encryptedPassword) // Set the encrypted password
                 .buildAccount(); // Build the new Account instance
 
+        // Assign default role if not provided
+        if (user.getRole() == null) {
+            user.setRole(User.Role.USER);  // Assign "USER" as the default role
+        }
         // Set the new Account object to the user
         user.setAccount(newAccount); // Assuming you have a setter for account in User
+
         // Save the user to the repository and return the saved user
         return userRepository.save(user);
     }
@@ -54,6 +70,11 @@ public class UserService implements IService<User, Long>, UserDetailsService {
 
     // Authenticate a user with username and password
     public User authenticate(String username, String password) {
+        // Ensure passwordEncoder is available
+        if (passwordEncoder == null) {
+            throw new IllegalStateException("PasswordEncoder is not configured");
+        }
+
         // Find user by username
         Optional<User> optionalUser = userRepository.findByAccountUsername(username);
         if (optionalUser.isPresent()) { // If the user is found
