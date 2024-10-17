@@ -4,10 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import za.ac.cput.domain.*;
 import za.ac.cput.service.UserService;
+import za.ac.cput.config.JwtUtil; // Adjusted import statement
 
 import java.io.IOException;
 import java.util.List;
@@ -16,13 +18,19 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private JwtUtil jwtUtil; // Use your existing JwtUtil class for token handling
+
+    // Create User (Registration)
     @PostMapping(value = "/create", consumes = {"multipart/form-data"})
     public ResponseEntity<User> create(
-            @RequestParam(value = "role", required = false) String role,  // Optional role
-            @RequestParam("account") String accountJson,
+            @RequestParam(value = "role", required = false) String role,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
             @RequestParam("name") String nameJson,
             @RequestParam("contact") String contactJson,
             @RequestParam("address") String addressJson,
@@ -30,29 +38,18 @@ public class UserController {
             @RequestParam("identityDocument") MultipartFile identityDocumentFile) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            // Log received data for debugging
-            System.out.println("Received role: " + role);  // Log role
-            System.out.println("Received account JSON: " + accountJson);
-            System.out.println("Received name JSON: " + nameJson);
-            System.out.println("Received contact JSON: " + contactJson);
-            System.out.println("Received address JSON: " + addressJson);
-            System.out.println("Received role: " + role);  // Log role
-            System.out.println("Received license file: " + licenseFile.getOriginalFilename());
-            System.out.println("Received identity document file: " + identityDocumentFile.getOriginalFilename());
 
-            // Set the role based on the incoming request
-            User.Role userRole = User.Role.valueOf(role.toUpperCase()); // Ensure the role is in uppercase
-            Account account = objectMapper.readValue(accountJson, Account.class);
+            User.Role userRole = (role != null) ? User.Role.valueOf(role.toUpperCase()) : User.Role.USER; // Default to USER if not provided
             Name name = objectMapper.readValue(nameJson, Name.class);
             Contact contact = objectMapper.readValue(contactJson, Contact.class);
             Address address = objectMapper.readValue(addressJson, Address.class);
             byte[] licenseData = licenseFile.getBytes();
             byte[] identityDocumentData = identityDocumentFile.getBytes();
 
-
-            User user = new User.Builder()  // Use Builder pattern to create User
-                    .setRole(userRole)  // Set the role
-                    .setAccount(account)
+            User user = new User.Builder()
+                    .setUsername(username)
+                    .setPassword(password)  // Ensure password is encrypted in UserService
+                    .setRole(userRole)
                     .setName(name)
                     .setContact(contact)
                     .setAddress(address)
@@ -60,33 +57,49 @@ public class UserController {
                     .setIdentityDocument(identityDocumentData)
                     .buildUser();
 
-            // Log user before saving
             System.out.println("Creating user: " + user);
 
             User createdUser = userService.create(user);
             return ResponseEntity.ok(createdUser);
         } catch (IOException | IllegalArgumentException e) {
-            // Log the exception
             System.err.println("Error processing the request: " + e.getMessage());
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
+    // Read User by ID
     @GetMapping("/read/{userID}")
-    public User read(@PathVariable Long userID) {
-        return userService.read(userID);
+    public ResponseEntity<User> read(@PathVariable Long userID) {
+        User user = userService.read(userID);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
+    // Login (handled by Spring Security, no longer needed in this form)
+    // If you want to keep a login endpoint to return the JWT token, use this instead:
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Account account) {
+    public ResponseEntity<String> login(@RequestBody User user) {
         try {
-            User authenticatedUser = userService.authenticate(account.getUsername(), account.getPassword());
+            // Use userService to authenticate and fetch the user details
+            User authenticatedUser = userService.authenticate(user.getUsername(), user.getPassword());
             if (authenticatedUser != null) {
-                System.out.println(authenticatedUser);
-                return ResponseEntity.ok("Login successful!");
+                // Create a UserDetails object from the authenticated user
+                UserDetails userDetails = org.springframework.security.core.userdetails.User
+                        .withUsername(authenticatedUser.getUsername())
+                        .password(authenticatedUser.getPassword())
+                        .roles(authenticatedUser.getRole().name()) // Assuming Role is an enum
+                        .build();
+
+                // Generate JWT Token
+                String token = jwtUtil.generateToken(userDetails);
+                System.out.println("Login successful for user: " + authenticatedUser);
+                return ResponseEntity.ok(token); // Return the JWT token
             } else {
-                System.out.println(authenticatedUser);
+                System.out.println("Login failed for username: " + user.getUsername());
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
             }
         } catch (Exception e) {
@@ -94,23 +107,36 @@ public class UserController {
         }
     }
 
+
+    // Update User
     @PutMapping("/update")
-    public User update(@RequestBody User user) {
-        return userService.update(user);
+    public ResponseEntity<User> update(@RequestBody User user) {
+        User updatedUser = userService.update(user);
+        if (updatedUser != null) {
+            return ResponseEntity.ok(updatedUser);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
+    // Delete User
     @DeleteMapping("/delete/{userID}")
-    public void delete(@PathVariable Long userID) {
+    public ResponseEntity<Void> delete(@PathVariable Long userID) {
         userService.delete(userID);
+        return ResponseEntity.noContent().build();
     }
 
+    // Get All Users (ROLE_ADMIN only)
     @GetMapping("/getAll")
-    public List<User> getAll() {
-        return userService.getAll();
+    public ResponseEntity<List<User>> getAll() {
+        List<User> users = userService.getAll();
+        return ResponseEntity.ok(users);
     }
 
+    // Get User Count (ROLE_ADMIN only)
     @GetMapping("/count")
-    public long getUserCount() {
-        return userService.countUser();
+    public ResponseEntity<Long> getUserCount() {
+        long userCount = userService.countUser();
+        return ResponseEntity.ok(userCount);
     }
 }
