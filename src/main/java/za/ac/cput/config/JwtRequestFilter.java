@@ -12,6 +12,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import za.ac.cput.service.UserService;
+import za.ac.cput.util.JwtUtil;
+
 import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {

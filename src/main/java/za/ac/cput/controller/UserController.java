@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import za.ac.cput.domain.*;
 import za.ac.cput.service.UserService;
-import za.ac.cput.config.JwtUtil; // Adjusted import statement
+import za.ac.cput.config.*; // Adjusted import statement
+import za.ac.cput.util.JwtUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,7 +40,7 @@ public class UserController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
-            User.Role userRole = (role != null) ? User.Role.valueOf(role.toUpperCase()) : User.Role.USER; // Default to USER if not provided
+            User.Role userRole = (role != null) ? User.Role.valueOf(role.toUpperCase()) : User.Role.ROLE_USER; // Default to USER if not provided
             Name name = objectMapper.readValue(nameJson, Name.class);
             Contact contact = objectMapper.readValue(contactJson, Contact.class);
             Address address = objectMapper.readValue(addressJson, Address.class);

@@ -47,7 +47,7 @@ class UserServiceTest {
         address = AddressFactory.createAddress("89 St Marks", "District 10", "Cape Town", "Western Cape", "8000");
         licensePicture = compressImage(LICENSE_PICTURE_PATH);
         idPicture = compressImage(ID_PICTURE_PATH);
-        user = UserFactory.createUser(User.Role.USER,"Username", "password", name, contact, address, licensePicture, idPicture);
+        user = UserFactory.createUser(User.Role.ROLE_USER,"Username", "password", name, contact, address, licensePicture, idPicture);
     }
     @Test
     void create() {

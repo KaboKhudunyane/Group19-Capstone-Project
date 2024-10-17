@@ -36,7 +36,7 @@ public class UserService implements IService<User, Long>, UserDetailsService {
         user.setPassword(encryptedPassword);
 
         if (user.getRole() == null) {
-            user.setRole(User.Role.USER);
+            user.setRole(User.Role.ROLE_USER);
         }
 
         return userRepository.save(user);
