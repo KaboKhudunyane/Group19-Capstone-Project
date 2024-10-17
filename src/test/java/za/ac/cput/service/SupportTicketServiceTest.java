@@ -1,5 +1,4 @@
 package za.ac.cput.service;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +18,16 @@ class SupportTicketServiceTest {
     private SupportTicketService supportTicketService;
     @Autowired
     private UserService userService;
-
     private User user;
     private SupportTicket supportTicket;
 
     @BeforeEach
     void setUp() {
-        Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
         Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
         Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
         Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
-
-        // Creating a user without images
-        //user = UserFactory.createUser(account, name, contact, address, null, null);
-        user = userService.create(user); // Save the user first
+        user = UserFactory.createUser(User.Role.ROLE_USER,"username","password", name, contact, address, null, null);
+        user = userService.create(user);
         assertNotNull(user, "User should be saved and not null");
 
         LocalDate dateCreated = LocalDate.of(2024, 4, 3);

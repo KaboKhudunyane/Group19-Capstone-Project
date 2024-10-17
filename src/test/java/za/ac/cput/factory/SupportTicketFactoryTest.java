@@ -14,8 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SupportTicketFactoryTest {
 
-    // Setup the necessary objects for testing
-    private Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
     private Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
     private Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
     private Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
@@ -37,7 +35,7 @@ public class SupportTicketFactoryTest {
     private byte[] licensePicture;
     private byte[] idPicture;
     // Creating a User instance for testing purposes
-    User user = UserFactory.createUser(account, name, contact, address, licensePicture, idPicture, User.Role.USER); // Set the role here
+    User user = UserFactory.createUser( User.Role.ROLE_USER,"username","password",name, contact, address, licensePicture, idPicture ); // Set the role here
 
     // Test case for successful creation of a SupportTicket
     @Test
