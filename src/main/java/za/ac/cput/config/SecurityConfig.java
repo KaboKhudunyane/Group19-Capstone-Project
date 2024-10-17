@@ -3,6 +3,7 @@ package za.ac.cput.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -21,6 +22,7 @@ public class SecurityConfig {
     private final UserService userService;
 
     @Autowired
+    @Lazy
     public SecurityConfig(UserService userService) {
         this.userService = userService;
     }

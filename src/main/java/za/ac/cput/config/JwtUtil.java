@@ -1,4 +1,4 @@
-package za.ac.cput.util;
+package za.ac.cput.config;
 
 import io.jsonwebtoken.*; // Importing JWT library classes
 import org.springframework.security.core.userdetails.UserDetails; // Importing UserDetails for user info

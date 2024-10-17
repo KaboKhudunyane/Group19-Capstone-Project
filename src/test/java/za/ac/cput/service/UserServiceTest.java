@@ -24,8 +24,8 @@ class UserServiceTest {
     private UserService userService;
 
     // Image paths
-    private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
-    private static final String ID_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG2.PNG";
+    private static final String LICENSE_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Documents\\GitHub\\Group19-Capstone-Project\\src\\Images\\img-prototype\\bmw1.jpg";
+    private static final String ID_PICTURE_PATH = "C:\\Users\\bokam\\OneDrive\\Documents\\GitHub\\Group19-Capstone-Project\\src\\Images\\img-prototype\\bmw1.jpg";
 
     private byte[] compressImage(String filePath) {
         try {
