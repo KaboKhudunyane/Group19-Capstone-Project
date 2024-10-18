@@ -14,6 +14,10 @@ public class Booking {
 
     @ManyToOne
     private CarInformation car;
+
+    @ManyToOne
+    private User user;
+
     private LocalDate startDate;
     private LocalTime pickUpTime;
     private LocalDate returnDate;
@@ -25,6 +29,7 @@ public class Booking {
     private Booking(Builder builder) {
         this.bookingID = builder.bookingID;
         this.car = builder.car;
+        this.user = builder.user;
         this.startDate = builder.startDate;
         this.returnDate = builder.returnDate;
         this.pickUpTime = builder.pickUpTime;
@@ -43,6 +48,10 @@ public class Booking {
 
     public CarInformation getCar() {
         return car;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public LocalDate getStartDate() {
@@ -71,12 +80,12 @@ public class Booking {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return Double.compare(totalPrice, booking.totalPrice) == 0 && Objects.equals(bookingID, booking.bookingID) && Objects.equals(createdDate, booking.createdDate) && Objects.equals(car, booking.car) && Objects.equals(startDate, booking.startDate) && Objects.equals(pickUpTime, booking.pickUpTime) && Objects.equals(returnDate, booking.returnDate) && Objects.equals(dropOffTime, booking.dropOffTime);
+        return Double.compare(getTotalPrice(), booking.getTotalPrice()) == 0 && Objects.equals(getBookingID(), booking.getBookingID()) && Objects.equals(getCreatedDate(), booking.getCreatedDate()) && Objects.equals(getCar(), booking.getCar()) && Objects.equals(getUser(), booking.getUser()) && Objects.equals(getStartDate(), booking.getStartDate()) && Objects.equals(getPickUpTime(), booking.getPickUpTime()) && Objects.equals(getReturnDate(), booking.getReturnDate()) && Objects.equals(getDropOffTime(), booking.getDropOffTime());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookingID, createdDate, car, startDate, pickUpTime, returnDate, dropOffTime, totalPrice);
+        return Objects.hash(getBookingID(), getCreatedDate(), getCar(), getUser(), getStartDate(), getPickUpTime(), getReturnDate(), getDropOffTime(), getTotalPrice());
     }
 
     @Override
@@ -85,6 +94,7 @@ public class Booking {
                 "bookingID='" + bookingID + '\'' +
                 ", createdDate=" + createdDate +
                 ", car=" + car +
+                ", user=" + user +
                 ", startDate=" + startDate +
                 ", pickUpTime=" + pickUpTime +
                 ", returnDate=" + returnDate +
@@ -96,6 +106,7 @@ public class Booking {
     public static class Builder {
         private String bookingID;
         private CarInformation car;
+        private User user;
         private LocalDate startDate;
         private LocalTime pickUpTime;
         private LocalDate returnDate;
@@ -110,6 +121,11 @@ public class Booking {
 
         public Builder setCar(CarInformation car) {
             this.car = car;
+            return this;
+        }
+
+        public Builder setUser(User user) {
+            this.user = user;
             return this;
         }
 
@@ -148,6 +164,7 @@ public class Booking {
         public Builder copy(Booking booking) {
             this.bookingID = booking.bookingID;
             this.car = booking.car;
+            this.user = booking.user;
             this.startDate = booking.startDate;
             this.returnDate = booking.returnDate;
             this.pickUpTime = booking.pickUpTime;

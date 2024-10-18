@@ -1,5 +1,11 @@
+
 package za.ac.cput.domain;
+
 import jakarta.persistence.*;
+import za.ac.cput.enums.UserRole;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
 @Table(name = "User")
@@ -7,50 +13,68 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userID;
-    @Enumerated(EnumType.STRING)
-    private Role role;
+
+    private String firstName;
+    private String lastName;
+
+    private String email;
+    private String cellNum;
+
     private String username;
     private String password;
-    @Embedded
-    private Name name;
-    @Embedded
-    private Contact contact;
+
+    private UserRole userRole;
+
     @Embedded
     private Address address;
+
     @Lob
-    @Column(name = "License", length = 65535)
+    @Column(name = "License", columnDefinition = "longBlob")
     private byte[] license;
+
     @Lob
-    @Column(name = "Identity Document", length = 65535)
+    @Column(name = "Identity Document", columnDefinition = "longBlob")
     private byte[] identityDocument;
-    // Enum for Role
-    public enum Role {
-        ROLE_USER,
-        ROLE_ADMIN
-    }
+
 
     // Default constructor
-    public User() {}
+    public User() {
+    }
 
     // Private constructor for the Builder pattern
     private User(Builder builder) {
+        this.userID = builder.userID;
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
         this.username = builder.username;
         this.password = builder.password;
-        this.name = builder.name;
-        this.contact = builder.contact;
+        this.userRole = builder.userRole;
+        this.cellNum = builder.cellNum;
+        this.email = builder.email;
         this.address = builder.address;
         this.license = builder.license;
         this.identityDocument = builder.identityDocument;
-        this.role = builder.role;
+
     }
 
-    // Getters
     public Long getUserID() {
         return userID;
     }
 
-    public Role getRole() {
-        return role;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCellNum() {
+        return cellNum;
     }
 
     public String getUsername() {
@@ -61,12 +85,9 @@ public class User {
         return password;
     }
 
-    public Name getName() {
-        return name;
-    }
 
-    public Contact getContact() {
-        return contact;
+    public UserRole getUserRole() {
+        return userRole;
     }
 
     public Address getAddress() {
@@ -81,75 +102,93 @@ public class User {
         return identityDocument;
     }
 
-    // Setters
-    public void setRole(Role role) {
-        this.role = role;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userID, user.userID) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(cellNum, user.cellNum) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && userRole == user.userRole && Objects.equals(address, user.address) && Objects.deepEquals(license, user.license) && Objects.deepEquals(identityDocument, user.identityDocument);
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public int hashCode() {
+        return Objects.hash(userID, firstName, lastName, email, cellNum, username, password, userRole, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", cellNum='" + cellNum + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userRole=" + userRole +
+                ", address=" + address +
+                ", license=" + Arrays.toString(license) +
+                ", identityDocument=" + Arrays.toString(identityDocument) +
+                '}';
     }
-
-    public void setName(Name name) {
-        this.name = name;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public void setLicense(byte[] license) {
-        this.license = license;
-    }
-
-    public void setIdentityDocument(byte[] identityDocument) {
-        this.identityDocument = identityDocument;
-    }
-
-    // Equals, hashCode, and toString methods
-    // ... (same as before)
 
     // Builder class for creating User objects
     public static class Builder {
+        private Long userID;
+        private String firstName;
+        private String lastName;
+        private String email;
+        private String cellNum;
         private String username;
         private String password;
-        private Name name;
-        private Contact contact;
         private Address address;
+        private UserRole userRole;
         private byte[] license;
         private byte[] identityDocument;
-        private Role role;
+
+        public Builder setUserID(Long userID) {
+            this.userID = userID;
+            return this;
+        }
+
+        public Builder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder setCellNum(String cellNum) {
+            this.cellNum = cellNum;
+            return this;
+        }
 
         public Builder setUsername(String username) {
             this.username = username;
             return this;
         }
 
+
         public Builder setPassword(String password) {
             this.password = password;
             return this;
         }
 
-        public Builder setName(Name name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder setContact(Contact contact) {
-            this.contact = contact;
-            return this;
-        }
-
         public Builder setAddress(Address address) {
             this.address = address;
+            return this;
+        }
+
+        public Builder setUserRole(UserRole userRole) {
+            this.userRole = userRole;
             return this;
         }
 
@@ -163,17 +202,15 @@ public class User {
             return this;
         }
 
-        public Builder setRole(Role role) {
-            this.role = role;
-            return this;
-        }
-
-        public Builder copyUser(User user) {
-            this.role = user.role;
+        public Builder copy(User user){
+            this.userID = user.userID;
+            this.firstName = user.firstName;
+            this.lastName = user.lastName;
             this.username = user.username;
             this.password = user.password;
-            this.name = user.name;
-            this.contact = user.contact;
+            this.userRole = user.userRole;
+            this.cellNum = user.cellNum;
+            this.email = user.email;
             this.address = user.address;
             this.license = user.license;
             this.identityDocument = user.identityDocument;
@@ -181,7 +218,8 @@ public class User {
             return this;
         }
 
-        public User buildUser() {
+
+        public User build() {
             return new User(this);
         }
     }

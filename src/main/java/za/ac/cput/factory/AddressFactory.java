@@ -25,6 +25,6 @@ public class AddressFactory {
                 .setCity(city)
                 .setProvince(province)
                 .setZipCode(zipCode)
-                .buildAddress();
+                .build();
     }
 }

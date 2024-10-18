@@ -1,68 +1,45 @@
 package za.ac.cput.service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.User;
 import za.ac.cput.repository.UserRepository;
 
 import java.util.List;
-import java.util.Optional;
+
 @Service
-public class UserService implements IService<User, Long>, UserDetailsService {
+public class UserService implements IService<User, Long> {
 
     private final UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-    }
-
-    @Autowired
-    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
+
     @Override
     public User create(User user) {
-        if (passwordEncoder == null) {
-            throw new IllegalStateException("PasswordEncoder is not configured");
-        }
-
-        String encryptedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encryptedPassword);
-
-        if (user.getRole() == null) {
-            user.setRole(User.Role.ROLE_USER);
-        }
-
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user = new User.Builder().copy(user).setPassword(encodedPassword).build();
         return userRepository.save(user);
     }
+
     @Override
     public User read(Long userID) {
-        Optional<User> userOptional = userRepository.findById(userID);
-        return userOptional.orElse(null);
-    }
-    public User authenticate(String username, String password) {
-        if (passwordEncoder == null) {
-            throw new IllegalStateException("PasswordEncoder is not configured");
-        }
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            if (passwordEncoder.matches(password, user.getPassword())) {
-                return user;
-            }
-        }
-        return null;
+        return userRepository.findById(userID).orElse(null);
     }
 
     @Override
     public User update(User user) {
+        // Encode the password before updating the user
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user = new User.Builder().copy(user).setPassword(encodedPassword).build();
         return userRepository.save(user);
     }
+
     @Override
     public void delete(Long userID) {
         userRepository.deleteById(userID);
@@ -73,23 +50,7 @@ public class UserService implements IService<User, Long>, UserDetailsService {
         return userRepository.findAll();
     }
 
-    public long countUser() {
-        return userRepository.count();
-    }
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-
-            return org.springframework.security.core.userdetails.User.builder()
-                    .username(user.getUsername())
-                    .password(user.getPassword())
-                    .roles(user.getRole().name())
-                    .build();
-        } else {
-            throw new UsernameNotFoundException("User not found");
-        }
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }
