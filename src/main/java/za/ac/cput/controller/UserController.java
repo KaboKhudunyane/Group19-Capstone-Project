@@ -1,97 +1,33 @@
 package za.ac.cput.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import za.ac.cput.domain.*;
+import za.ac.cput.domain.User;
+import za.ac.cput.domain.UserPrincipal;
 import za.ac.cput.service.UserService;
 
-import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "/create", consumes = {"multipart/form-data"})
-    public ResponseEntity<User> create(
-            @RequestParam(value = "role", required = false) String role,  // Optional role
-            @RequestParam("account") String accountJson,
-            @RequestParam("name") String nameJson,
-            @RequestParam("contact") String contactJson,
-            @RequestParam("address") String addressJson,
-            @RequestParam("license") MultipartFile licenseFile,
-            @RequestParam("identityDocument") MultipartFile identityDocumentFile) {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            // Log received data for debugging
-            System.out.println("Received role: " + role);  // Log role
-            System.out.println("Received account JSON: " + accountJson);
-            System.out.println("Received name JSON: " + nameJson);
-            System.out.println("Received contact JSON: " + contactJson);
-            System.out.println("Received address JSON: " + addressJson);
-            System.out.println("Received role: " + role);  // Log role
-            System.out.println("Received license file: " + licenseFile.getOriginalFilename());
-            System.out.println("Received identity document file: " + identityDocumentFile.getOriginalFilename());
-
-            // Set the role based on the incoming request
-            User.Role userRole = User.Role.valueOf(role.toUpperCase()); // Ensure the role is in uppercase
-            Account account = objectMapper.readValue(accountJson, Account.class);
-            Name name = objectMapper.readValue(nameJson, Name.class);
-            Contact contact = objectMapper.readValue(contactJson, Contact.class);
-            Address address = objectMapper.readValue(addressJson, Address.class);
-            byte[] licenseData = licenseFile.getBytes();
-            byte[] identityDocumentData = identityDocumentFile.getBytes();
-
-
-            User user = new User.Builder()  // Use Builder pattern to create User
-                    .setRole(userRole)  // Set the role
-                    .setAccount(account)
-                    .setName(name)
-                    .setContact(contact)
-                    .setAddress(address)
-                    .setLicense(licenseData)
-                    .setIdentityDocument(identityDocumentData)
-                    .buildUser();
-
-            // Log user before saving
-            System.out.println("Creating user: " + user);
-
-            User createdUser = userService.create(user);
-            return ResponseEntity.ok(createdUser);
-        } catch (IOException | IllegalArgumentException e) {
-            // Log the exception
-            System.err.println("Error processing the request: " + e.getMessage());
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
+    @PostMapping("/create")
+    public User create(@RequestBody User user) {
+        return userService.create(user);
     }
 
     @GetMapping("/read/{userID}")
     public User read(@PathVariable Long userID) {
         return userService.read(userID);
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Account account) {
-        try {
-            User authenticatedUser = userService.authenticate(account.getUsername(), account.getPassword());
-            if (authenticatedUser != null) {
-                System.out.println(authenticatedUser);
-                return ResponseEntity.ok("Login successful!");
-            } else {
-                System.out.println(authenticatedUser);
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred during login");
-        }
     }
 
     @PutMapping("/update")
@@ -109,8 +45,22 @@ public class UserController {
         return userService.getAll();
     }
 
-    @GetMapping("/count")
-    public long getUserCount() {
-        return userService.countUser();
+    @PostMapping("/login")
+    public ResponseEntity<Object> login() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            User user = userService.findByUsername(username); // Ensure your `UserService` has a method to find by username
+            if (user != null) {
+                return ResponseEntity.ok(user);  // Return user details
+            } else {
+                return ResponseEntity.status(404).body("User not found");
+            }
+        } else {
+            return ResponseEntity.status(401).body("Unauthorized: Invalid credentials");
+        }
     }
+
+
+
 }

@@ -3,7 +3,9 @@ package za.ac.cput.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.CarInformation;
+import za.ac.cput.domain.User;
 import za.ac.cput.service.CarInformationService;
+import za.ac.cput.service.UserService;
 
 import java.util.List;
 
@@ -16,8 +18,13 @@ public class CarInformationController {
     @Autowired
     private CarInformationService carInformationService;
 
+    @Autowired
+    UserService userService;
+
+
     @PostMapping("/create")
-    public CarInformation create(@RequestBody CarInformation carInformation){
+    public CarInformation create(@RequestBody  CarInformation carInformation){
+        userService.read(carInformation.getUser().getUserID());
         return carInformationService.create(carInformation);
     }
 

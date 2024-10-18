@@ -6,10 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.*;
-import za.ac.cput.factory.BookingFactory;
-import za.ac.cput.factory.CarInformationFactory;
-import za.ac.cput.factory.CarInsuranceFactory;
-import za.ac.cput.factory.UserFactory;
+import za.ac.cput.enums.UserRole;
+import za.ac.cput.factory.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,11 +28,15 @@ class BookingControllerTest {
 
     private final String BASE_URL = "http://localhost:8080/group19-capstone-project/api/booking";
 
-    Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
-    Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
-    Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
-    Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("Cape Town").setProvince("Western Cape").setZipCode("12345").buildAddress();
-    User user = UserFactory.createUser(account, name, contact, address, loadPicture("lisence.jpg"), loadPicture("identity.jpg"));
+    Address address = AddressFactory.createAddress("123 Main St", "Springfield",
+            "CityName", "Western Cape", "12345");
+
+    User user = UserFactory.createUser("John", "Doe", "johndoe", "password123", UserRole.USER,
+            "123456789", "john@example.com", address,loadPicture("lisence.jpg"), loadPicture("identity.jpg"));
+
+
+
+
     CarInformation carInformation = CarInformationFactory.buildCarInformation(
             "Toyota", "Scarlet", "2020", "Manual", "Plate-123",
             "Red 5 door car with 50 000km mileage", "Leather seats, Navigation system, Bluetooth", user,

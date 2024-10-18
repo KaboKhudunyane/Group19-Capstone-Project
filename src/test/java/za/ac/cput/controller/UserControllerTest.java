@@ -8,9 +8,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
 import za.ac.cput.domain.*;
+import za.ac.cput.enums.UserRole;
 import za.ac.cput.factory.AddressFactory;
-import za.ac.cput.factory.ContactFactory;
-import za.ac.cput.factory.NameFactory;
 import za.ac.cput.factory.UserFactory;
 
 import java.io.IOException;
@@ -32,27 +31,22 @@ class UserControllerTest {
         return "http://localhost:" + port + "/user";
     }
 
-    private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
-    private static final String USER_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG2.PNG";
+    Address address = AddressFactory.createAddress("123 Main St", "Springfield",
+            "CityName", "Western Cape", "12345");
 
-    private byte[] readFileAsBytes(String filePath) {
+    User user = UserFactory.createUser("John", "Doe", "johndoe", "password123", UserRole.USER,
+            "123456789", "john@example.com", address,loadPicture("lisence.jpg"), loadPicture("identity.jpg"));
+
+
+    private byte[] loadPicture(String fileName) {
         try {
-            Path path = Paths.get(filePath);
+            Path path = Paths.get("src/images/img-prototype/" + fileName);
             return Files.readAllBytes(path);
         } catch (IOException e) {
-            e.printStackTrace();
+            fail("Failed to load picture: " + e.getMessage());
             return null;
         }
     }
-
-    byte[] licensePicture = readFileAsBytes(USER_PICTURE_PATH);
-    byte[] userPicture = readFileAsBytes(USER_PICTURE_PATH);
-
-    Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
-    Name name = NameFactory.createName("Kabo", "Kb", "Khudunyane");
-    Contact contact = ContactFactory.createContact("216273293@mycput.ac.za", "0658595712");
-    Address address = AddressFactory.createAddress("123 Street", "Suburb", "City", "State", "12345");
-    User user = UserFactory.createUser(account, name, contact, address, licensePicture, userPicture, User.Role.USER);
 
     @Test
     void create() {
@@ -75,22 +69,6 @@ class UserControllerTest {
         System.out.println("Read user: " + response.getBody());
     }
 
-    @Test
-    void update() {
-        // Set a new license picture (or modify other details as needed)
-        byte[] newLicensePicture = readFileAsBytes("C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG"); // Update the image path as needed
-        // Modify user data for update
-        User updatedUser = new User.Builder()
-                .copyUser(user)
-                .setLicense(newLicensePicture)
-                .buildUser();
-        String url = getBaseUrl() + "/update";
-        restTemplate.put(url, updatedUser);
-        ResponseEntity<User> response = restTemplate.getForEntity(getBaseUrl() + "/read/" + user.getUserID(), User.class);
-        assertNotNull(response.getBody());
-        assertArrayEquals(newLicensePicture, response.getBody().getLicense());
-        System.out.println("Updated user: " + response.getBody());
-    }
 
     @Test
     void delete() {
@@ -114,13 +92,5 @@ class UserControllerTest {
         }
     }
 
-    @Test
-    void login() {
-        String url = getBaseUrl() + "/login";
-        ResponseEntity<String> response = restTemplate.postForEntity(url, account, String.class);
-        assertNotNull(response.getBody());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Login successful!", response.getBody());
-        System.out.println("Login test response: " + response.getBody());
-    }
+
 }

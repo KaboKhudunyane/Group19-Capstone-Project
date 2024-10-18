@@ -2,42 +2,56 @@ package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.*;
+import za.ac.cput.enums.UserRole;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SupportTicketFactoryTest {
 
-    // Setup the necessary objects for testing
-    private Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
-    private Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
-    private Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
-    private Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("CityName").setProvince("Western Cape").setZipCode("12345").buildAddress();
-    private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
-    private static final String ID_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG2.PNG";
+    Address address = AddressFactory.createAddress("123 Main St", "Springfield",
+            "CityName", "Western Cape", "12345");
 
-    private byte[] compressImage(String filePath) {
+    User user = UserFactory.createUser("John", "Doe", "johndoe", "password123", UserRole.USER,
+            "123456789", "john@example.com", address,loadPicture("lisence.jpg"), loadPicture("identity.jpg"));
+    CarInformation carInformation = CarInformationFactory.buildCarInformation(
+            "Toyota", "Scarlet", "2020", "Manual", "Plate-123",
+            "Red 5 door car with 50 000km mileage", "Leather seats, Navigation system, Bluetooth", user,
+            2000, "Available",
+            loadPicture("scarlet1.jpg"),
+            loadPicture("scarlet2.jpg"),
+            loadPicture("scarlet3.jpg")
+    );
+
+
+    private byte[] loadPicture(String fileName) {
         try {
-            BufferedImage image = ImageIO.read(new File(filePath));
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(image, "jpg", baos);
-            return baos.toByteArray();
+            Path path = Paths.get("src/images/img-prototype/" + fileName);
+            return Files.readAllBytes(path);
         } catch (IOException e) {
-            System.err.println("Error reading file: " + filePath);
-            e.printStackTrace();
+            fail("Failed to load picture: " + e.getMessage());
             return null;
         }
     }
-    private byte[] licensePicture;
-    private byte[] idPicture;
-    // Creating a User instance for testing purposes
-    User user = UserFactory.createUser(account, name, contact, address, licensePicture, idPicture, User.Role.USER); // Set the role here
+
+    Booking booking = BookingFactory.buildBooking(
+            carInformation,
+            LocalDate.of(2024, 6, 15),
+            LocalDate.of(2024, 6, 20),
+            LocalTime.of(10, 0),
+            LocalTime.of(10, 0),
+            12000
+    );
 
     // Test case for successful creation of a SupportTicket
     @Test

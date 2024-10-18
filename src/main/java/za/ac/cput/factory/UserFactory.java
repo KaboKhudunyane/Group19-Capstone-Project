@@ -1,23 +1,27 @@
+
 package za.ac.cput.factory;
 
-import za.ac.cput.domain.*;
-import za.ac.cput.util.Helper;
+import za.ac.cput.domain.Address;
+import za.ac.cput.domain.User;
+import za.ac.cput.enums.UserRole;
 
 public class UserFactory {
-    public static User createUser(Account account, Name name,
-                                  Contact contact, Address address,
-                                  byte[] license, byte[] identityDocument,
-                                  User.Role role) {
+    public static User createUser(String firstName, String lastName, String username, String password, UserRole userRole,
+                                  String cellNumber, String email, Address address,
+                                  byte[] license, byte[] identityDocument) {
 
-        // Return a new User object using the Builder pattern, including the role.
+
         return new User.Builder()
-                .setAccount(account)
-                .setName(name)
-                .setContact(contact)
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUsername(username)
+                .setPassword(password)
+                .setUserRole(userRole)
+                .setCellNum(cellNumber)
+                .setEmail(email)
                 .setAddress(address)
                 .setLicense(license)
                 .setIdentityDocument(identityDocument)
-                .setRole(role) // Set the role here
-                .buildUser();
+                .build();
     }
 }

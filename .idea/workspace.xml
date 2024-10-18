@@ -4,7 +4,97 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8758b9c8-22d5-4679-afc4-b057abaf4201" name="Changes" comment="new updates" />
+    <list default="true" id="8758b9c8-22d5-4679-afc4-b057abaf4201" name="Changes" comment="new updates">
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/UserPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/enums/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/UserDetailsServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_10_13_12_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_10_13_12_51__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_10_13_12_51__Changes_by_user_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_10_13_12_51__Changes_by_user_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/CarInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/CarInformationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Contact.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Name.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AccountFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AddressFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AddressFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AdminFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/ContactFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/NameFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/UserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/UserFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/AdminRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/AdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/BookingControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/BookingControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/CarInformationControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/CarInformationControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/PaymentControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/PaymentControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/ReviewControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/ReviewControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/AdminFactoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/BookingFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/BookingFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/CarInformationFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/CarInformationFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/ContactFactoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/NameFactoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/PaymentFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/PaymentFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/ReviewFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/ReviewFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/SupportTicketFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/SupportTicketFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/UserFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/UserFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/AdminServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/ReviewServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/ReviewServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/SupportTicketServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/SupportTicketServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/CarInformationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/CarInformationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Account$Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Address$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Address$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Address.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Admin$Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Booking$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Booking$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Booking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Contact$Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Contact.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Name$Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/Name.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/AccountFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/AddressFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/AddressFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/AdminFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/ContactFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/NameFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/UserFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/UserFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/AdminRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/service/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/util/JwtUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/BookingControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/BookingControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/CarInformationControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/CarInformationControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/PaymentControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/PaymentControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/ReviewControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/ReviewControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/UserControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/UserControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/AdminFactoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/BookingFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/BookingFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarInformationFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarInformationFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/ContactFactoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/NameFactoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/PaymentFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/PaymentFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/ReviewFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/ReviewFactoryTest.class" afterDir="false" />
+    </list>
     <list id="921ec68a-95d7-4d34-9b05-adb815c16745" name="Changes by diago" comment="" />
     <list id="1bde3307-32f7-46e0-a75c-3079fd0566d5" name="Changes by Kabo Khudunyane" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +107,7 @@
       <list>
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -142,7 +233,7 @@
       <recent name="za.ac.cput.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CarInformationServiceTest.create">
+  <component name="RunManager" selected="Spring Boot.Main">
     <configuration name="AdminServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
@@ -158,7 +249,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminServiceTest.testAuthenticateAdmin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CarInformationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
         <pattern>
@@ -167,25 +258,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.AdminServiceTest" />
-      <option name="METHOD_NAME" value="testAuthenticateAdmin" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminServiceTest.testCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CapstoneProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="za.ac.cput.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.AdminServiceTest" />
-      <option name="METHOD_NAME" value="testCreate" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.CarInformationServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -206,6 +280,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CapstoneProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.factory.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.factory" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.factory.UserFactoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="za.ac.cput.Main" />
@@ -221,11 +310,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CarInformationServiceTest.create" />
         <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="JUnit.CarInformationServiceTest" />
+        <item itemvalue="JUnit.UserFactoryTest" />
+        <item itemvalue="JUnit.CarInformationServiceTest.create" />
         <item itemvalue="JUnit.AdminServiceTest" />
-        <item itemvalue="JUnit.AdminServiceTest.testAuthenticateAdmin" />
-        <item itemvalue="JUnit.AdminServiceTest.testCreate" />
       </list>
     </recent_temporary>
   </component>

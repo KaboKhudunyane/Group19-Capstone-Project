@@ -1,7 +1,9 @@
 package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.*;
+import za.ac.cput.domain.Address;
+import za.ac.cput.domain.User;
+import za.ac.cput.enums.UserRole;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class UserFactoryTest {
-    // Licence picture path
+
+    // License picture path
     private static final String LICENSE_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG1.PNG";
 
     private byte[] readFileAsBytes(String filePath) {
@@ -31,16 +34,20 @@ public class UserFactoryTest {
     private static final String ID_PICTURE_PATH = "C:\\Users\\Kabo Khudunyane\\Pictures\\IMG2.PNG";
     byte[] idPicture = readFileAsBytes(ID_PICTURE_PATH);
 
-    // Building embeddables
-    Account account = new Account.Builder().setUsername("Username").setPassword("password").buildAccount();
-    Name name = new Name.Builder().setFirstName("John").setMiddleName("Fred").setLastName("Doe").buildName();
-    Contact contact = new Contact.Builder().setEmail("john@example.com").setMobileNumber("123456789").buildContact();
-    Address address = new Address.Builder().setStreetName("123 Main St").setSuburb("Springfield").setCity("Cape Town").setProvince("Western Cape").setZipCode("12345").buildAddress();
+    // Example address
+    Address address = new Address.Builder()
+            .setStreetName("123 Main St")
+            .setSuburb("Springfield")
+            .setCity("Cape Town")
+            .setProvince("Western Cape")
+            .setZipCode("12345")
+            .build();
 
     @Test
     public void testBuildUser() {
         // Create a user with the role of USER
-        User user = UserFactory.createUser(account, name, contact, address, licensePicture, idPicture, User.Role.USER);
+        User user = UserFactory.createUser("John", "Doe", "johndoe", "password123", UserRole.USER,
+                "123456789", "john@example.com", address, licensePicture, idPicture);
         assertNotNull(user);
         System.out.println(user);
     }
@@ -48,15 +55,17 @@ public class UserFactoryTest {
     @Test
     public void testBuildUserWithAdminRole() {
         // Create a user with the role of ADMIN
-        User adminUser = UserFactory.createUser(account, name, contact, address, licensePicture, idPicture, User.Role.ADMIN);
+        User adminUser = UserFactory.createUser("Jane", "Doe", "janedoe", "adminpassword", UserRole.ADMIN,
+                "987654321", "jane@example.com", address, licensePicture, idPicture);
         assertNotNull(adminUser);
         System.out.println(adminUser);
     }
 
     @Test
-    public void testBuildUserWithFail() {
-        // Test with null account to simulate failure
-        User user = UserFactory.createUser(null, name, contact, address, licensePicture, idPicture, User.Role.USER);
+    public void testBuildUserWithNullFields() {
+        // Test with null username to simulate failure
+        User user = UserFactory.createUser(null, "Doe", "johndoe", "password123", UserRole.USER,
+                "123456789", "john@example.com", address, licensePicture, idPicture);
         assertNull(user);
         System.out.println(user);
     }
