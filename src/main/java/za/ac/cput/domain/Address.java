@@ -1,60 +1,66 @@
 package za.ac.cput.domain;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Id;
 
-import java.io.Serializable;
+
+import jakarta.persistence.*;
+
 import java.util.Objects;
+
 @Embeddable
-public class Address implements Serializable {
-    @Column(name = "Street Name")
+public class Address {
+
     private String streetName;
-    @Column(name = "Suburb")
     private String suburb;
-    @Column(name = "City")
     private String city;
-    @Column(name = "Province")
     private String province;
-    @Column(name = "Zip Code")
     private String zipCode;
-    protected Address() {}
-    private Address(Builder builder) {
+
+    protected Address() {
+    }
+
+    private Address(Builder builder){
         this.streetName = builder.streetName;
         this.suburb = builder.suburb;
         this.city = builder.city;
         this.province = builder.province;
         this.zipCode = builder.zipCode;
+
     }
+
+
+
     public String getStreetName() {
         return streetName;
     }
+
     public String getSuburb() {
         return suburb;
     }
+
     public String getCity() {
         return city;
     }
+
     public String getProvince() {
         return province;
     }
+
     public String getZipCode() {
         return zipCode;
     }
+
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Address address = (Address) obj;
-        return Objects.equals(streetName, address.streetName) &&
-                Objects.equals(suburb, address.suburb) &&
-                Objects.equals(city, address.city) &&
-                Objects.equals(province, address.province) &&
-                Objects.equals(zipCode, address.zipCode);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(getStreetName(), address.getStreetName()) && Objects.equals(getSuburb(), address.getSuburb()) && Objects.equals(getCity(), address.getCity()) && Objects.equals(getProvince(), address.getProvince()) && Objects.equals(getZipCode(), address.getZipCode());
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(streetName, suburb, city, province, zipCode);
+        return Objects.hash(getStreetName(), getSuburb(), getCity(), getProvince(), getZipCode());
     }
+
     @Override
     public String toString() {
         return "Address{" +
@@ -65,20 +71,27 @@ public class Address implements Serializable {
                 ", zipCode='" + zipCode + '\'' +
                 '}';
     }
+
     public static class Builder {
         private String streetName;
         private String suburb;
         private String city;
         private String province;
         private String zipCode;
+
+
+
         public Builder setStreetName(String streetName) {
             this.streetName = streetName;
             return this;
         }
+
+
         public Builder setSuburb(String suburb) {
             this.suburb = suburb;
             return this;
         }
+
         public Builder setCity(String city) {
             this.city = city;
             return this;
@@ -94,7 +107,7 @@ public class Address implements Serializable {
             return this;
         }
 
-        public Builder copyAddress(Address address) {
+        public Builder copy(Address address){
             this.streetName = address.streetName;
             this.suburb = address.suburb;
             this.city = address.city;
@@ -103,8 +116,9 @@ public class Address implements Serializable {
             return this;
         }
 
-        public Address buildAddress() {
+        public Address build() {
             return new Address(this);
         }
+
     }
 }

@@ -27,6 +27,7 @@ class ReviewServiceTest {
     private static Long reviewID;
     private Booking booking;
     private Review review;
+
     @BeforeEach
     void setUp() {
         booking = bookingService.read(booking.getBookingID());
