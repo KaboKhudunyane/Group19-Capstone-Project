@@ -29,6 +29,9 @@ class UserServiceTest {
     @Autowired
     private UserService userService;
 
+    private static Long userID;
+
+
     Address address = AddressFactory.createAddress("123 Main St", "Springfield",
             "CityName", "Western Cape", "12345");
 
@@ -53,12 +56,13 @@ class UserServiceTest {
     void create() {
         User createdUser = userService.create(user);
         assertNotNull(createdUser);
+        userID = createdUser.getUserID();
         System.out.println("Created User: " + createdUser);
     }
 
     @Test
     void read() {
-        User readUser = userService.read(user.getUserID());
+        User readUser = userService.read(userID);
         assertNotNull(readUser);
         System.out.println("Read User: " + readUser);
     }
@@ -67,8 +71,8 @@ class UserServiceTest {
 
     @Test
     void delete() {
-        userService.delete(user.getUserID());
-        User deletedUser = userService.read(user.getUserID());
+        userService.delete(userID);
+        User deletedUser = userService.read(userID);
         assertNull(deletedUser);
         System.out.println("User deleted successfully.");
     }
