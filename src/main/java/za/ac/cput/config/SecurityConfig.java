@@ -22,22 +22,24 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsServiceImp userDetailsService;
 
-   @Bean
-        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-            return http
-                    .cors(Customizer.withDefaults())  // Enable CORS
-                    .csrf(csrf -> csrf.disable())  // Disable CSRF for stateless APIs
-                    .authorizeHttpRequests(request -> request
-                            .requestMatchers("/user/create", "/api/carInformation/**").permitAll()  // Only allow user creation to be public
-                            .anyRequest().authenticated()  // Secure all other endpoints including login
-                    )
-                    .httpBasic(Customizer.withDefaults())  // Enable Basic Authentication
-                    .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // Stateless session
-                    .userDetailsService(userDetailsService)  // Use custom UserDetailsService
-                    .build();
-        }
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .cors(Customizer.withDefaults())  // Enable CORS
+                .csrf(csrf -> csrf.disable())      // Disable CSRF for stateless APIs
+                .authorizeHttpRequests(request -> request
+                        .requestMatchers("/user/create", "api/admin/create", "/api/carInformation/getall").permitAll() // Public routes
+                        .requestMatchers("/admin/**").hasAuthority("ADMIN")  // Admin-only routes
+                        .requestMatchers("/user/**").hasAuthority("USER")    // User-only routes
+                        .anyRequest().authenticated()  // Secure other routes
+                )
+                .httpBasic(Customizer.withDefaults())  // Basic Authentication
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless session
+                .userDetailsService(userDetailsService)  // Custom UserDetailsService
+                .build();
+    }
 
-        @Bean
+    @Bean
         public PasswordEncoder passwordEncoder() {
             return new BCryptPasswordEncoder(); // Use BCryptPasswordEncoder
         }
