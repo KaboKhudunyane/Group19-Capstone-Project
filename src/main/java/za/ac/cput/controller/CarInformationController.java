@@ -24,6 +24,7 @@ public class CarInformationController {
 
     @PostMapping("/create")
     public CarInformation create(@RequestBody  CarInformation carInformation){
+
         userService.read(carInformation.getUser().getUserID());
         return carInformationService.create(carInformation);
     }

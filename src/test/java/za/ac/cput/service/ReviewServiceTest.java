@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Booking;
 import za.ac.cput.domain.Payment;
 import za.ac.cput.domain.Review;
+import za.ac.cput.domain.User;
 import za.ac.cput.factory.ReviewFactory;
 
 import java.time.LocalDate;
@@ -24,14 +25,19 @@ class ReviewServiceTest {
     @Autowired
     private BookingService bookingService;
 
+    @Autowired
+    private UserService userService;
+
     private static Long reviewID;
     private Booking booking;
     private Review review;
+    private User user;
 
     @BeforeEach
     void setUp() {
+        user = userService.read(1L);
         booking = bookingService.read(booking.getBookingID());
-        review = ReviewFactory.buildReview(booking, 5, "Excellent service!", LocalDate.of(2024, 6, 21));
+        review = ReviewFactory.buildReview(booking, user,5, "Excellent service!", LocalDate.of(2024, 6, 21));
 
     }
     @Test

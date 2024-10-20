@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Booking;
+import za.ac.cput.domain.User;
 import za.ac.cput.service.BookingService;
 import za.ac.cput.service.CarInformationService;
+import za.ac.cput.service.UserService;
 
 import java.util.List;
 
@@ -19,11 +21,13 @@ public class BookingController {
 
     private BookingService bookingService;
     private CarInformationService carInformationService;
+    private UserService userService;
 
     @Autowired
-    public BookingController(BookingService bookingService, CarInformationService carInformationService) {
+    public BookingController(BookingService bookingService, CarInformationService carInformationService, UserService userService) {
         this.carInformationService = carInformationService;
         this.bookingService = bookingService;
+        this.userService = userService;
     }
 
 
@@ -43,5 +47,10 @@ public class BookingController {
     @GetMapping("/getall")
     public List<Booking> getAll(){
         return bookingService.getAll();
+    }
+
+    @GetMapping("/user/{userID}")
+    public List<Booking> getBookingsByUserId(@PathVariable Long userID) {
+     return bookingService.getBookingsByUserId(userID);
     }
 }

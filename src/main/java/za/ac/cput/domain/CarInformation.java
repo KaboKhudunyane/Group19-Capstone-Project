@@ -245,6 +245,27 @@ public class CarInformation {
             return this;
         }
 
+        public Builder setPicture1Base64(String picture1Base64) {
+            if (picture1Base64 != null) {
+                this.picture1 = Base64.getDecoder().decode(picture1Base64);
+            }
+            return this;
+        }
+
+        public Builder setPicture2Base64(String picture2Base64) {
+            if (picture2Base64 != null) {
+                this.picture2 = Base64.getDecoder().decode(picture2Base64);
+            }
+            return this;
+        }
+
+        public Builder setPicture3Base64(String picture3Base64) {
+            if (picture3Base64 != null) {
+                this.picture3 = Base64.getDecoder().decode(picture3Base64);
+            }
+            return this;
+        }
+
         public Builder copy(CarInformation carInformation) {
             this.carInformationID = carInformation.carInformationID;
             this.make = carInformation.make;

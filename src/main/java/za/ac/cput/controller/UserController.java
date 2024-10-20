@@ -61,6 +61,9 @@ public class UserController {
         }
     }
 
-
+    @GetMapping("/count")
+    public long getUserCount() {
+        return userService.countUsers();
+    }
 
 }

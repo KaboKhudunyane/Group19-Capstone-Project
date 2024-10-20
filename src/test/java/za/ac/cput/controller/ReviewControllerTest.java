@@ -59,9 +59,9 @@ class ReviewControllerTest {
             LocalDate.of(2024, 6, 20),
             LocalTime.of(10, 0),
             LocalTime.of(10, 0),
-            12000
+            12000, user
     );
-        Review review = ReviewFactory.buildReview(booking, 4, "Good condition", LocalDate.of(2024, 5, 12));
+        Review review = ReviewFactory.buildReview(booking, user,4, "Good condition", LocalDate.of(2024, 5, 12));
     @Test
     void save() {
         String url = BASE_URL + "/save";

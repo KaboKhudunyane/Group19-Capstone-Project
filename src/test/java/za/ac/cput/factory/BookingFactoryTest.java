@@ -48,7 +48,7 @@ public class BookingFactoryTest {
             LocalDate.of(2024, 6, 20),
             LocalTime.of(10, 0),
             LocalTime.of(10, 0),
-            12000
+            12000, user
     );
 
     @Test

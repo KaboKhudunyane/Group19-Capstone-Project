@@ -7,8 +7,10 @@ import java.util.List;
 @Service
 public class ReviewService implements IService<Review, Long> {
     private final ReviewRepository repository;
+
     @Autowired
     public ReviewService(ReviewRepository repository) {
+
         this.repository = repository;
     }
     @Override
