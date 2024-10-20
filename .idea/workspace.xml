@@ -4,9 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8758b9c8-22d5-4679-afc4-b057abaf4201" name="Changes" comment="new updates" />
-    <list id="921ec68a-95d7-4d34-9b05-adb815c16745" name="Changes by diago" comment="" />
-    <list id="1bde3307-32f7-46e0-a75c-3079fd0566d5" name="Changes by Kabo Khudunyane" comment="" />
+    <list default="true" id="ebee5819-1893-427b-8e37-cc9653307db3" name="Changes" comment="new updates">
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/CarInsuranceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/CarInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/CarInformationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/SupportTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/SupportTicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/CarInsurance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/CarInsurance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/CarInsuranceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/CarInsuranceFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/CarInformationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/CarInformationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/CarInsuranceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/CarInsuranceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/CarInformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/CarInformationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/CarInsuranceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/CarInsuranceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/PaymentControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/PaymentControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/SupportTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/SupportTicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/CarInsuranceFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/CarInsuranceFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/PaymentFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/PaymentFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/SupportTicketFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/SupportTicketFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarInsuranceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/CarInsuranceServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/CarInformationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/CarInformationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/SupportTicketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/SupportTicketController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/CarInsurance$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/CarInsurance$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/CarInsurance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/CarInsurance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/UserPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/UserPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/CarInsuranceFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/factory/CarInsuranceFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/CarInformationRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/CarInformationRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/CarInsuranceRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/repository/CarInsuranceRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/service/CarInformationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/service/CarInformationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/service/CarInsuranceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/service/CarInsuranceService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/BookingControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/BookingControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/PaymentControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/PaymentControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/ReviewControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/ReviewControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/BookingFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/BookingFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarInsuranceFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarInsuranceFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/PaymentFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/PaymentFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/ReviewFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/ReviewFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/CarInsuranceServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/CarInsuranceServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/ReviewServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/ReviewServiceTest.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,164 +54,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="JUnit5 Test Class" />
-        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;KaboKhudunyane&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/KaboKhudunyane/Group19-Capstone-Project.git&quot;,
-    &quot;accountId&quot;: &quot;1dd1ea51-95af-44cf-9eed-5bd5f138fe8c&quot;
-  }
-}</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/3.2.0/spring-boot-3.2.0.jar!/org/springframework/boot/web/embedded/tomcat/TomcatWebServer.class" root0="SKIP_INSPECTION" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2jdpTxjDA5TdjZMhY6PhUz0lDXW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.AddressFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AddressServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AdminServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AdminServiceTest.testAuthenticateAdmin.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AdminServiceTest.testCreate.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BookingControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BookingFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BookingServiceTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BookingServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInformationControllerTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInformationControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInformationControllerTest.getAll.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInformationFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInformationFactoryTest.testBuildCarInformationWithFail.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInformationFactoryTest.testBuildCarWithFail.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInformationServiceTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInformationServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInsuranceFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarInsuranceServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarServiceTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarServiceTest.delete.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarServiceTest.read.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CarServiceTest.update.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ContactFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.NameFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PaymentFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PaymentServiceTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PaymentServiceTest.delete.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PaymentServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PaymentServiceTest.read.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PaymentServiceTest.update.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReviewFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReviewServiceTest.createReview.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReviewServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SupportTicketServiceTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SupportTicketServiceTest.delete.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SupportTicketServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserControllerTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.read.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.update.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lehlogonolo Mahlangu/Documents/Intellij projects/MyProjectPart&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.UserServiceTest.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "Spring Boot.Main.executor": "Run",
+    "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveInnerDialog.RECENTS_KEY">
-      <recent name="za.ac.cput.factory" />
-      <recent name="za.ac.cput.service" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="za.ac.cput.service" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="za.ac.cput.factory" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager" selected="Spring Boot.Main">
-    <configuration name="CarInformationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CapstoneProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="za.ac.cput.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.CarInformationServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CapstoneProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="za.ac.cput.factory.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="za.ac.cput.factory" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.factory.UserFactoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
@@ -184,22 +85,6 @@
       <option name="PACKAGE_NAME" value="za.ac.cput.service" />
       <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.UserServiceTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceTest.read" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CapstoneProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="za.ac.cput.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="za.ac.cput.service" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="read" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -221,269 +106,13 @@
       <list>
         <item itemvalue="Spring Boot.Main" />
         <item itemvalue="JUnit.UserServiceTest" />
-        <item itemvalue="JUnit.UserServiceTest.read" />
-        <item itemvalue="JUnit.CarInformationServiceTest" />
-        <item itemvalue="JUnit.UserFactoryTest" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="8758b9c8-22d5-4679-afc4-b057abaf4201" name="Changes" comment="" />
-      <created>1721726820370</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1721726820370</updated>
-      <workItem from="1721726822061" duration="6456000" />
-      <workItem from="1721806351515" duration="7565000" />
-      <workItem from="1721829119204" duration="26000" />
-      <workItem from="1721939200051" duration="917000" />
-      <workItem from="1721978178846" duration="734000" />
-      <workItem from="1721982400524" duration="9708000" />
-      <workItem from="1721995060893" duration="5002000" />
-      <workItem from="1722005761569" duration="7892000" />
-      <workItem from="1722070813444" duration="3423000" />
-      <workItem from="1722198900667" duration="50000" />
-      <workItem from="1722243033176" duration="9343000" />
-      <workItem from="1722258425188" duration="1240000" />
-      <workItem from="1722271805914" duration="5246000" />
-      <workItem from="1722277314090" duration="6426000" />
-      <workItem from="1722348473912" duration="7438000" />
-      <workItem from="1722369110706" duration="5068000" />
-      <workItem from="1722410028792" duration="2064000" />
-      <workItem from="1722412396422" duration="15312000" />
-      <workItem from="1722433882232" duration="3871000" />
-      <workItem from="1722892870702" duration="806000" />
-      <workItem from="1722925925946" duration="1208000" />
-      <workItem from="1722927892189" duration="1023000" />
-      <workItem from="1723283188898" duration="185000" />
-      <workItem from="1723370170454" duration="798000" />
-      <workItem from="1723396177015" duration="6793000" />
-      <workItem from="1723412930845" duration="595000" />
-      <workItem from="1723413940259" duration="3508000" />
-      <workItem from="1723454372536" duration="28000" />
-      <workItem from="1723458868617" duration="2446000" />
-      <workItem from="1723484335828" duration="4061000" />
-      <workItem from="1723547382875" duration="1829000" />
-      <workItem from="1723637218079" duration="1227000" />
-      <workItem from="1724057275269" duration="159000" />
-      <workItem from="1724058467553" duration="2856000" />
-      <workItem from="1724108511754" duration="1249000" />
-      <workItem from="1724159249137" duration="2606000" />
-      <workItem from="1724196972337" duration="1572000" />
-      <workItem from="1724240709768" duration="14686000" />
-      <workItem from="1724284169322" duration="4248000" />
-      <workItem from="1724536202227" duration="5956000" />
-      <workItem from="1724542623410" duration="3682000" />
-      <workItem from="1724624201565" duration="7922000" />
-      <workItem from="1724751495570" duration="6169000" />
-      <workItem from="1724795717901" duration="4177000" />
-      <workItem from="1724803619504" duration="1870000" />
-      <workItem from="1724842206980" duration="3668000" />
-      <workItem from="1724868537940" duration="19041000" />
-      <workItem from="1725014304244" duration="5857000" />
-      <workItem from="1725023792863" duration="174000" />
-      <workItem from="1725023993163" duration="14593000" />
-      <workItem from="1725111616482" duration="20701000" />
-      <workItem from="1725214680933" duration="10280000" />
-      <workItem from="1725232960576" duration="3930000" />
-      <workItem from="1728421786839" duration="7488000" />
-      <workItem from="1728457817649" duration="852000" />
-      <workItem from="1728459155876" duration="35000" />
-      <workItem from="1728460482931" duration="4194000" />
-      <workItem from="1728465869371" duration="12166000" />
-      <workItem from="1728498212110" duration="8211000" />
-      <workItem from="1728847550395" duration="274000" />
-      <workItem from="1729242387396" duration="2324000" />
-      <workItem from="1729247859158" duration="304000" />
-      <workItem from="1729254955148" duration="11115000" />
-      <workItem from="1729345218165" duration="27035000" />
-      <workItem from="1729416152416" duration="3494000" />
-    </task>
-    <task id="LOCAL-00001" summary="debug sess 23/07">
-      <option name="closed" value="true" />
-      <created>1721733348511</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1721733348511</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Kabo Latest Updates 31 July 2024&#10;&#10;User Service Test Working&#10;&#10;Struggling to connect to front end.&#10;Should test controllers">
-      <option name="closed" value="true" />
-      <created>1722413880530</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1722413880531</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Update">
-      <option name="closed" value="true" />
-      <created>1724282354497</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1724282354497</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Update">
-      <option name="closed" value="true" />
-      <created>1724283718878</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1724283718878</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Update">
-      <option name="closed" value="true" />
-      <created>1724288074464</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1724288074464</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Update">
-      <option name="closed" value="true" />
-      <created>1724288122126</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1724288122126</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Update">
-      <option name="closed" value="true" />
-      <created>1724547861755</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1724547861755</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Update">
-      <option name="closed" value="true" />
-      <created>1724548003404</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1724548003404</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Update">
-      <option name="closed" value="true" />
-      <created>1725023522193</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1725023522193</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Update">
-      <option name="closed" value="true" />
-      <created>1725228905365</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1725228905365</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Updates as of wednesday 09">
-      <option name="closed" value="true" />
-      <created>1728459044739</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1728459044739</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Updates as of wednesday 09 updated security config to try addredd suport ticket 401. updated user classes for login functionality">
-      <option name="closed" value="true" />
-      <created>1728464654760</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1728464654760</updated>
-    </task>
-    <task id="LOCAL-00013" summary="new updates">
-      <option name="closed" value="true" />
-      <created>1728847590032</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1728847590032</updated>
-    </task>
-    <task id="LOCAL-00014" summary="new updates">
-      <option name="closed" value="true" />
-      <created>1729241587659</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1729241587659</updated>
-    </task>
-    <task id="LOCAL-00015" summary="new updates">
-      <option name="closed" value="true" />
-      <created>1729244861256</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1729244861256</updated>
-    </task>
-    <task id="LOCAL-00016" summary="new updates">
-      <option name="closed" value="true" />
-      <created>1729345376992</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1729345376992</updated>
-    </task>
-    <task id="LOCAL-00017" summary="new updates">
-      <option name="closed" value="true" />
-      <created>1729389467452</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1729389467452</updated>
-    </task>
-    <task id="LOCAL-00018" summary="new updates">
-      <option name="closed" value="true" />
-      <created>1729390516073</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1729390516073</updated>
-    </task>
-    <task id="LOCAL-00019" summary="new updates">
-      <option name="closed" value="true" />
-      <created>1729431112635</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1729431112635</updated>
-    </task>
-    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="debug sess 23/07" />
-    <MESSAGE value="Kabo Latest Updates 31 July 2024&#10;&#10;User Service Test Working&#10;&#10;Struggling to connect to front end.&#10;Should test controllers" />
-    <MESSAGE value="Update" />
-    <MESSAGE value="Updates as of wednesday 09" />
-    <MESSAGE value="Updates as of wednesday 09 updated security config to try addredd suport ticket 401. updated user classes for login functionality" />
     <MESSAGE value="new updates" />
     <option name="LAST_COMMIT_MESSAGE" value="new updates" />
   </component>

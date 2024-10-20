@@ -6,7 +6,7 @@ import za.ac.cput.service.SupportTicketService;
 import java.util.List;
 @RestController
 @RequestMapping("/supportTicket")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin
 public class SupportTicketController {
     @Autowired
     private SupportTicketService supportTicketService;

@@ -1,11 +1,13 @@
 package za.ac.cput.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Booking;
 import za.ac.cput.domain.CarInformation;
 import za.ac.cput.domain.User;
 import za.ac.cput.service.CarInformationService;
+import za.ac.cput.service.CarInsuranceService;
 import za.ac.cput.service.UserService;
 
 import java.util.List;
@@ -58,6 +60,12 @@ public class CarInformationController {
     @GetMapping("/cars/{userID}")
     public List<CarInformation> getCarsByUserId(@PathVariable Long userID) {
         return carInformationService.getCarsByUser(userID);
+    }
+
+    @GetMapping("/check/{licensePlate}")
+    public ResponseEntity<Boolean> checkCarExists(@PathVariable String licensePlate) {
+        boolean exists = carInformationService.carExistsByLicensePlate(licensePlate);
+        return ResponseEntity.ok(exists);
     }
 }
 
