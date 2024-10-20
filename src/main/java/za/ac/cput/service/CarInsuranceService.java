@@ -2,6 +2,7 @@ package za.ac.cput.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.domain.CarInformation;
 import za.ac.cput.domain.CarInsurance;
 import za.ac.cput.repository.CarInsuranceRepository;
 
@@ -47,6 +48,11 @@ public class CarInsuranceService implements IService<CarInsurance, Long> {
 
             return carInsuranceRepository.findAll();
         }
+
+    public List<CarInsurance> getCarInsuranceByUser(Long userID ){
+        return carInsuranceRepository.findCarInsuranceByUserUserID(userID);
+    }
+
 
 
     }

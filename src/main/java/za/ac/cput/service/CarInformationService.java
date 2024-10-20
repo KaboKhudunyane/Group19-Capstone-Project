@@ -65,6 +65,10 @@ public class CarInformationService implements IService<CarInformation, Long> {
         return carInformationRepository.findCarsByUserUserID(userID);
     }
 
+    public boolean carExistsByLicensePlate(String licensePlate) {
+        return carInformationRepository.existsByLicensePlate(licensePlate);
+    }
+
 
     public long countCars() {
         return carInformationRepository.countCars();

@@ -26,6 +26,7 @@ public class SupportTicketController {
     public void delete(@PathVariable Long ticketID) {
         supportTicketService.delete(ticketID);
     }
+
     @GetMapping("/getAll")
     public List<SupportTicket> getAll() {
         return supportTicketService.getAll();

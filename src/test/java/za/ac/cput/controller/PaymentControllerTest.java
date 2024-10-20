@@ -56,7 +56,7 @@ class PaymentControllerTest {
             LocalDate.of(2024, 6, 20),
             LocalTime.of(10, 0),
             LocalTime.of(10, 0),
-            12000
+            12000,user
     );
 
     Payment payment = PaymentFactory.buildPayment(booking, "Capitec", "20-May-2024", 18000, "Declined");

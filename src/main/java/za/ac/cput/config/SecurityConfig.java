@@ -25,7 +25,8 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())  // Enable CORS
                 .csrf(csrf -> csrf.disable())      // Disable CSRF for stateless APIs
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/user/create", "api/admin/create", "/api/carInformation/getall", "/user/getAll").permitAll() // Public routes
+                        .requestMatchers("/user/create", "api/admin/create", "/api/carInformation/getall", "/user/getAll", "/supportTicket/getAll",
+                                            "/api/carInformation/count", "/supportTicket/count", "/user/count").permitAll() // Public routes
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")  // Admin-only routes
                         .requestMatchers("/user/**").hasAuthority("USER")    // User-only routes
                         .anyRequest().authenticated()  // Secure other routes
