@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 public interface CarInformationRepository extends JpaRepository<CarInformation, Long> {
 
+
+    List<CarInformation> findCarsByUserUserID(Long userID);
+
     @Query("SELECT COUNT(c) FROM CarInformation c")
     long countCars();
 
