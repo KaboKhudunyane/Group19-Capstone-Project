@@ -142,7 +142,7 @@
       <recent name="za.ac.cput.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceTest">
+  <component name="RunManager" selected="Spring Boot.Main">
     <configuration name="CarInformationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CapstoneProject" />
       <extension name="coverage">
@@ -219,9 +219,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Main" />
         <item itemvalue="JUnit.UserServiceTest" />
         <item itemvalue="JUnit.UserServiceTest.read" />
-        <item itemvalue="Spring Boot.Main" />
         <item itemvalue="JUnit.CarInformationServiceTest" />
         <item itemvalue="JUnit.UserFactoryTest" />
       </list>
@@ -304,6 +304,10 @@
       <workItem from="1728498212110" duration="8211000" />
       <workItem from="1728847550395" duration="274000" />
       <workItem from="1729242387396" duration="2324000" />
+      <workItem from="1729247859158" duration="304000" />
+      <workItem from="1729254955148" duration="11115000" />
+      <workItem from="1729345218165" duration="27035000" />
+      <workItem from="1729416152416" duration="3494000" />
     </task>
     <task id="LOCAL-00001" summary="debug sess 23/07">
       <option name="closed" value="true" />
@@ -425,7 +429,39 @@
       <option name="project" value="LOCAL" />
       <updated>1729244861256</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="new updates">
+      <option name="closed" value="true" />
+      <created>1729345376992</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729345376992</updated>
+    </task>
+    <task id="LOCAL-00017" summary="new updates">
+      <option name="closed" value="true" />
+      <created>1729389467452</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1729389467452</updated>
+    </task>
+    <task id="LOCAL-00018" summary="new updates">
+      <option name="closed" value="true" />
+      <created>1729390516073</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1729390516073</updated>
+    </task>
+    <task id="LOCAL-00019" summary="new updates">
+      <option name="closed" value="true" />
+      <created>1729431112635</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1729431112635</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

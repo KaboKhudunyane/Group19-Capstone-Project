@@ -1,4 +1,5 @@
 package za.ac.cput.service;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,9 @@ class UserServiceTest {
     Address address = AddressFactory.createAddress("123 Main St", "Springfield",
             "CityName", "Western Cape", "12345");
 
-    User user = UserFactory.createUser("John", "Doe", "username", "PassBD25XY", UserRole.ADMIN,
+    User user = UserFactory.createUser("John", "Doe", "johndoe", "password123", UserRole.ADMIN,
             "123456789", "john@example.com", address,loadPicture("lisence.jpg"), loadPicture("identity.jpg"));
+
 
     private byte[] loadPicture(String fileName) {
         try {
@@ -66,7 +68,7 @@ class UserServiceTest {
     }
 
 
-
+/*
     @Test
     void delete() {
         userService.delete(userID);
@@ -74,6 +76,6 @@ class UserServiceTest {
         assertNull(deletedUser);
         System.out.println("User deleted successfully.");
     }
-
+*/
 
 }

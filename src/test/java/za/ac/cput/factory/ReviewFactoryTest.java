@@ -46,14 +46,14 @@ class ReviewFactoryTest {
             LocalDate.of(2024, 6, 20),
             LocalTime.of(10, 0),
             LocalTime.of(10, 0),
-            12000
+            12000, user
     );
 
 
 
     @Test
     public void buildReview() {
-        Review review = ReviewFactory.buildReview(booking, 5, "Excellent service!", LocalDate.of(2024, 6, 21));
+        Review review = ReviewFactory.buildReview(booking, user,5, "Excellent service!", LocalDate.of(2024, 6, 21));
         assertNotNull(review);
         assertEquals(booking, review.getBooking());
         assertEquals(5, review.getRating());
@@ -63,16 +63,16 @@ class ReviewFactoryTest {
 
     @Test
     void testBuildReviewWithFail() {
-        Review reviewWithNullBooking = ReviewFactory.buildReview(null, 5, "Great service!", LocalDate.of(2024, 6, 21));
+        Review reviewWithNullBooking = ReviewFactory.buildReview(null, user,5, "Great service!", LocalDate.of(2024, 6, 21));
         assertNull(reviewWithNullBooking);
 
-        Review reviewWithZeroRating = ReviewFactory.buildReview(booking, 0, "Great service!", LocalDate.of(2024, 6, 21));
+        Review reviewWithZeroRating = ReviewFactory.buildReview(booking, user,0, "Great service!", LocalDate.of(2024, 6, 21));
         assertNull(reviewWithZeroRating);
 
-        Review reviewWithEmptyComment = ReviewFactory.buildReview(booking, 5, "", LocalDate.of(2024, 6, 21));
+        Review reviewWithEmptyComment = ReviewFactory.buildReview(booking, user,5, "", LocalDate.of(2024, 6, 21));
         assertNull(reviewWithEmptyComment);
 
-        Review reviewWithNullDate = ReviewFactory.buildReview(booking, 5, "Great service!", null);
+        Review reviewWithNullDate = ReviewFactory.buildReview(booking, user,5, "Great service!", null);
         assertNull(reviewWithNullDate);
     }
 }

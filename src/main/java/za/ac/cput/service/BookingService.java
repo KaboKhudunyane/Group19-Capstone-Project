@@ -3,6 +3,7 @@ package za.ac.cput.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Booking;
+import za.ac.cput.domain.User;
 import za.ac.cput.repository.BookingRepository;
 import za.ac.cput.repository.CarInformationRepository;
 
@@ -49,4 +50,10 @@ public class BookingService implements IService<Booking, String>{
     public List<Booking> getAll() {
         return bookingRepository.findAll();
     }
+
+    public List<Booking> getBookingsByUserId(Long userID ){
+        return bookingRepository.findByUserUserID(userID);
+    }
+
+
 }

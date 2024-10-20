@@ -45,6 +45,11 @@ public class UserService implements IService<User, Long> {
         userRepository.deleteById(userID);
     }
 
+    public long countUsers() {
+        return userRepository.countUser();
+    }
+
+
     @Override
     public List<User> getAll() {
         return userRepository.findAll();

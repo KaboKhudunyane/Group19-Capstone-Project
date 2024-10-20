@@ -55,13 +55,13 @@ class BookingControllerTest {
         }
     }
 
-    Booking booking = BookingFactory.buildBookingTesting(
+    Booking booking = BookingFactory.buildBooking(
             carInformation,
             LocalDate.of(2024, 6, 15),
             LocalDate.of(2024, 6, 20),
             LocalTime.of(10, 0),
             LocalTime.of(10, 0),
-            12000
+            12000, user
     );
 
     @Test

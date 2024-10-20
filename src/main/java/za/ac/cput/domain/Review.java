@@ -15,6 +15,10 @@ public class Review {
     @ManyToOne
     private Booking booking;
     private int rating;
+
+    @ManyToOne
+    private User user;
+
     private String comment;
     private LocalDate reviewDate;
 
@@ -22,6 +26,7 @@ public class Review {
 
     private Review(Builder builder) {
         this.booking = builder.booking;
+        this.user = builder.user;
         this.rating = builder.rating;
         this.comment = builder.comment;
         this.reviewDate = builder.reviewDate;
@@ -33,6 +38,10 @@ public class Review {
 
     public Booking getBooking() {
         return booking;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public int getRating() {
@@ -52,16 +61,12 @@ public class Review {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Review review = (Review) o;
-        return rating == review.rating &&
-                Objects.equals(reviewID, review.reviewID) &&
-                Objects.equals(booking, review.booking) &&
-                Objects.equals(comment, review.comment) &&
-                Objects.equals(reviewDate, review.reviewDate);
+        return getRating() == review.getRating() && Objects.equals(getReviewID(), review.getReviewID()) && Objects.equals(getBooking(), review.getBooking()) && Objects.equals(getUser(), review.getUser()) && Objects.equals(getComment(), review.getComment()) && Objects.equals(getReviewDate(), review.getReviewDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reviewID, booking, rating, comment, reviewDate);
+        return Objects.hash(getReviewID(), getBooking(), getRating(), getUser(), getComment(), getReviewDate());
     }
 
     @Override
@@ -70,6 +75,7 @@ public class Review {
                 "reviewID=" + reviewID +
                 ", booking=" + booking +
                 ", rating=" + rating +
+                ", user=" + user +
                 ", comment='" + comment + '\'' +
                 ", reviewDate=" + reviewDate +
                 '}';
@@ -77,12 +83,18 @@ public class Review {
 
     public static class Builder {
         private Booking booking;
+        private User user;
         private int rating;
         private String comment;
         private LocalDate reviewDate;
 
         public Builder setBooking(Booking booking) {
             this.booking = booking;
+            return this;
+        }
+
+        public Builder setUser(User user) {
+            this.user = user;
             return this;
         }
 
@@ -103,6 +115,7 @@ public class Review {
 
         public Builder copyReview(Review review) {
             this.booking = review.booking;
+            this.user = review.user;
             this.rating = review.rating;
             this.comment = review.comment;
             this.reviewDate = review.reviewDate;
