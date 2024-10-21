@@ -48,7 +48,6 @@ class CarInformationServiceTest {
 
 
     private User user;
-    private User user1;
 
     private CarInformation carInformation1;
     private CarInformation carInformation2;
@@ -68,7 +67,6 @@ class CarInformationServiceTest {
     @BeforeEach
     void setUp() {
         user = userService.read(1L);
-        user1 = userService.read(2L);
 
 
         carInformation1 = CarInformationFactory.buildCarInformation(
@@ -91,14 +89,14 @@ class CarInformationServiceTest {
 
 
         carInformation3 =CarInformationFactory.buildCarInformation(
-                "Ford", "Focus", "2018", "Manual", "Plate-789", "Blue 5 door car with 30 000km mileage", "Cloth seats, Navigation system, Bluetooth", user1, 1800, "Available",
+                "Ford", "Focus", "2018", "Manual", "Plate-789", "Blue 5 door car with 30 000km mileage", "Cloth seats, Navigation system, Bluetooth", user, 1800, "Available",
                 loadPicture("focus1.jpg"),
                 loadPicture("focus2.jpg"),
                 loadPicture("focus3.jpg")
         );
 
         carInformation4 = CarInformationFactory.buildCarInformation(
-                "BMW", "3 Series", "2021", "Automatic", "Plate-321", "White 4 door car with 10 000km mileage", "Leather seats, Sunroof, Bluetooth", user1, 3500, "Available",
+                "BMW", "3 Series", "2021", "Automatic", "Plate-321", "White 4 door car with 10 000km mileage", "Leather seats, Sunroof, Bluetooth", user, 3500, "Available",
                 loadPicture("bmw2.jpg"), loadPicture("bmw2.jpg"),loadPicture("bmw3.jpg")
         );
 
