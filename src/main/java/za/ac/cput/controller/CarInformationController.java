@@ -3,19 +3,18 @@ package za.ac.cput.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import za.ac.cput.domain.Booking;
+import org.springframework.web.multipart.MultipartFile;
 import za.ac.cput.domain.CarInformation;
 import za.ac.cput.domain.User;
 import za.ac.cput.service.CarInformationService;
-import za.ac.cput.service.CarInsuranceService;
 import za.ac.cput.service.UserService;
 
+import java.io.IOException;
 import java.util.List;
-
 
 @RestController
 @RequestMapping("/api/carInformation")
-@CrossOrigin
+@CrossOrigin("http://localhost:5173")
 public class CarInformationController {
 
     @Autowired
@@ -24,11 +23,41 @@ public class CarInformationController {
     @Autowired
     UserService userService;
 
-
     @PostMapping("/create")
-    public CarInformation create(@RequestBody  CarInformation carInformation){
+    public CarInformation create(@RequestParam("make") String make,
+                                 @RequestParam("model") String model,
+                                 @RequestParam("year") String year,
+                                 @RequestParam("type") String type,
+                                 @RequestParam("licensePlate") String licensePlate,
+                                 @RequestParam("description") String description,
+                                 @RequestParam("features") String features,
+                                 @RequestParam("rentalRate") double rentalRate,
+                                 @RequestParam("availabilityStatus") String availabilityStatus,
+                                 @RequestParam("userId") Long userId,
+                                 @RequestParam("picture1") MultipartFile picture1,
+                                 @RequestParam("picture2") MultipartFile picture2,
+                                 @RequestParam("picture3") MultipartFile picture3) throws IOException {
 
-        userService.read(carInformation.getUser().getUserID());
+        // Find the user
+        User user = userService.read(userId);
+
+        // Build CarInformation object
+        CarInformation carInformation = new CarInformation.Builder()
+                .setMake(make)
+                .setModel(model)
+                .setYear(year)
+                .setType(type)
+                .setLicensePlate(licensePlate)
+                .setDescription(description)
+                .setFeatures(features)
+                .setRentalRate(rentalRate)
+                .setAvailabilityStatus(availabilityStatus)
+                .setUser(user)
+                .setPicture1(picture1 != null ? picture1.getBytes() : null)
+                .setPicture2(picture2 != null ? picture2.getBytes() : null)
+                .setPicture3(picture3 != null ? picture3.getBytes() : null)
+                .buildCar();
+
         return carInformationService.create(carInformation);
     }
 
@@ -68,6 +97,3 @@ public class CarInformationController {
         return ResponseEntity.ok(exists);
     }
 }
-
-
-
