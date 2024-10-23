@@ -11,7 +11,14 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
 import za.ac.cput.service.UserDetailsServiceImp;
+
+import java.util.Arrays;
 
 @Configuration
 public class SecurityConfig {
@@ -22,11 +29,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .cors(Customizer.withDefaults())  // Enable CORS
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))  // Enable CORS
                 .csrf(csrf -> csrf.disable())      // Disable CSRF for stateless APIs
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/user/create", "api/admin/create", "/api/carInformation/getall", "/user/getAll", "/supportTicket/getAll",
-                                            "/api/carInformation/count", "/supportTicket/count", "/user/count").permitAll() // Public routes
+                                "/api/carInformation/count", "/supportTicket/count", "/user/count").permitAll() // Public routes
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")  // Admin-only routes
                         .requestMatchers("/user/**").hasAuthority("USER")    // User-only routes
                         .anyRequest().authenticated()  // Secure other routes
@@ -38,12 +45,25 @@ public class SecurityConfig {
     }
 
     @Bean
-        public PasswordEncoder passwordEncoder() {
-            return new BCryptPasswordEncoder(); // Use BCryptPasswordEncoder
-        }
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173")); // Allow frontend origin
+        configuration.addAllowedHeader("*");
+        configuration.addAllowedMethod("*");
 
-        @Bean
-        public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
-            return configuration.getAuthenticationManager();
-        }
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(); // Use BCryptPasswordEncoder
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
+    }
+}
