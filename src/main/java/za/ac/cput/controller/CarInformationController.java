@@ -1,15 +1,15 @@
 package za.ac.cput.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import za.ac.cput.domain.CarInformation;
 import za.ac.cput.domain.User;
+import za.ac.cput.factory.CarInformationFactory;
 import za.ac.cput.service.CarInformationService;
 import za.ac.cput.service.UserService;
-
-import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -23,43 +23,45 @@ public class CarInformationController {
     @Autowired
     UserService userService;
 
+
     @PostMapping("/create")
-    public CarInformation create(@RequestParam("make") String make,
-                                 @RequestParam("model") String model,
-                                 @RequestParam("year") String year,
-                                 @RequestParam("type") String type,
-                                 @RequestParam("licensePlate") String licensePlate,
-                                 @RequestParam("description") String description,
-                                 @RequestParam("features") String features,
-                                 @RequestParam("rentalRate") double rentalRate,
-                                 @RequestParam("availabilityStatus") String availabilityStatus,
-                                 @RequestParam("userId") Long userId,
-                                 @RequestParam("picture1") MultipartFile picture1,
-                                 @RequestParam("picture2") MultipartFile picture2,
-                                 @RequestParam("picture3") MultipartFile picture3) throws IOException {
+    public ResponseEntity<?> addCarInformation(@RequestBody CarInformation carInformation) {
+        try {
+            User user = userService.read(carInformation.getUser().getUserID());
+            // Validate user
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User not found.");
+            }
 
-        // Find the user
-        User user = userService.read(userId);
+            // Decode base64 pictures
+            byte[] picture1 = carInformation.getPicture1Base64() != null ? Base64.getDecoder().decode(carInformation.getPicture1Base64()) : null;
+            byte[] picture2 = carInformation.getPicture2Base64() != null ? Base64.getDecoder().decode(carInformation.getPicture2Base64()) : null;
+            byte[] picture3 = carInformation.getPicture3Base64() != null ? Base64.getDecoder().decode(carInformation.getPicture3Base64()) : null;
 
-        // Build CarInformation object
-        CarInformation carInformation = new CarInformation.Builder()
-                .setMake(make)
-                .setModel(model)
-                .setYear(year)
-                .setType(type)
-                .setLicensePlate(licensePlate)
-                .setDescription(description)
-                .setFeatures(features)
-                .setRentalRate(rentalRate)
-                .setAvailabilityStatus(availabilityStatus)
-                .setUser(user)
-                .setPicture1(picture1 != null ? picture1.getBytes() : null)
-                .setPicture2(picture2 != null ? picture2.getBytes() : null)
-                .setPicture3(picture3 != null ? picture3.getBytes() : null)
-                .buildCar();
+            // Build the CarInformation object
+            CarInformation createCarInformation = CarInformationFactory.buildCarInformation(
+                    carInformation.getMake(), carInformation.getModel(),
+                    carInformation.getYear(), carInformation.getType(),
+                    carInformation.getLicensePlate(), carInformation.getDescription(),
+                    carInformation.getFeatures(), user, carInformation.getRentalRate(),
+                    carInformation.getAvailabilityStatus(), picture1, picture2, picture3
+            );
 
-        return carInformationService.create(carInformation);
-    }
+            // Save the car information
+            CarInformation savedCarInformation = carInformationService.create(createCarInformation);
+
+            // Return the created CarInformation object, including the carInformationID
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedCarInformation);
+        } catch (Exception e) {
+            // Log the error and return an appropriate response
+            e.printStackTrace(); // Log the exception
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + e.getMessage());
+        }
+
+}
+
+
+
 
     @GetMapping("/getall")
     public List<CarInformation> getAll(){

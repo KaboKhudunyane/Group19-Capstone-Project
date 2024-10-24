@@ -113,6 +113,7 @@ public class CarInformation {
         return picture3;
     }
 
+
     public String getPicture1Base64() {
         return picture1 != null ? Base64.getEncoder().encodeToString(picture1) : null;
     }
@@ -244,6 +245,9 @@ public class CarInformation {
             this.picture3 = picture3;
             return this;
         }
+
+
+
 
         public Builder copy(CarInformation carInformation) {
             this.carInformationID = carInformation.carInformationID;

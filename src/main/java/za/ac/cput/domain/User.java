@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import za.ac.cput.enums.UserRole;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +23,7 @@ public class User {
 
     private String username;
     private String password;
+
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
@@ -102,17 +104,21 @@ public class User {
         return identityDocument;
     }
 
+    public String getIdentityDocumentBase64() {
+        return identityDocument != null ? Base64.getEncoder().encodeToString(identityDocument) : null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(userID, user.userID) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(cellNum, user.cellNum) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && userRole == user.userRole && Objects.equals(address, user.address) && Objects.deepEquals(license, user.license) && Objects.deepEquals(identityDocument, user.identityDocument);
+        return Objects.equals(getUserID(), user.getUserID()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getCellNum(), user.getCellNum()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && getUserRole() == user.getUserRole() && Objects.equals(getAddress(), user.getAddress()) && Objects.deepEquals(getLicense(), user.getLicense()) && Objects.deepEquals(getIdentityDocument(), user.getIdentityDocument());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userID, firstName, lastName, email, cellNum, username, password, userRole, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));
+        return Objects.hash(getUserID(), getFirstName(), getLastName(), getEmail(), getCellNum(), getUsername(), getPassword(), getUserRole(), getAddress(), Arrays.hashCode(getLicense()), Arrays.hashCode(getIdentityDocument()));
     }
 
     @Override

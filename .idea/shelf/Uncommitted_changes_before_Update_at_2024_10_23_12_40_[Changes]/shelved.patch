@@ -1,0 +1,256 @@
+Index: src/main/java/za/ac/cput/domain/CarInformation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package za.ac.cput.domain;\r\n\r\nimport jakarta.persistence.*;\r\n\r\nimport java.util.Arrays;\r\nimport java.util.Base64;\r\nimport java.util.Objects;\r\n\r\n@Entity\r\npublic class CarInformation {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    private Long carInformationID;\r\n    private String make;\r\n    private String model;\r\n    private String year;\r\n    private String type;\r\n    private String licensePlate;\r\n    private String description;\r\n    private String features;\r\n\r\n    @ManyToOne\r\n    private User user ;\r\n\r\n    private double rentalRate;\r\n    private String availabilityStatus;\r\n\r\n    @Lob\r\n    @Column(columnDefinition = \"longBlob\")\r\n    private byte[] picture1;\r\n\r\n    @Lob\r\n    @Column(columnDefinition = \"longBlob\")\r\n    private byte[] picture2;\r\n\r\n    @Lob\r\n    @Column(columnDefinition = \"longBlob\")\r\n    private byte[] picture3;\r\n\r\n    protected CarInformation() {}\r\n\r\n    private CarInformation(Builder builder) {\r\n        this.carInformationID = builder.carInformationID;\r\n        this.make = builder.make;\r\n        this.model = builder.model;\r\n        this.year = builder.year;\r\n        this.type = builder.type;\r\n        this.licensePlate = builder.licensePlate;\r\n        this.description = builder.description;\r\n        this.features = builder.features;\r\n        this.user = builder.user;\r\n        this.rentalRate = builder.rentalRate;\r\n        this.availabilityStatus = builder.availabilityStatus;\r\n        this.picture1 = builder.picture1;\r\n        this.picture2 = builder.picture2;\r\n        this.picture3 = builder.picture3;\r\n    }\r\n\r\n    // Getters\r\n    public Long getCarInformationID() {\r\n        return carInformationID;\r\n    }\r\n\r\n    public String getMake() {\r\n        return make;\r\n    }\r\n\r\n    public String getModel() {\r\n        return model;\r\n    }\r\n\r\n    public String getYear() {\r\n        return year;\r\n    }\r\n\r\n    public String getType() {\r\n        return type;\r\n    }\r\n\r\n    public String getLicensePlate() {\r\n        return licensePlate;\r\n    }\r\n\r\n    public String getDescription() {\r\n        return description;\r\n    }\r\n\r\n    public String getFeatures() {\r\n        return features;\r\n    }\r\n\r\n    public User getUser() {\r\n        return user;\r\n    }\r\n\r\n    public double getRentalRate() {\r\n        return rentalRate;\r\n    }\r\n\r\n    public String getAvailabilityStatus() {\r\n        return availabilityStatus;\r\n    }\r\n\r\n    public byte[] getPicture1() {\r\n        return picture1;\r\n    }\r\n\r\n    public byte[] getPicture2() {\r\n        return picture2;\r\n    }\r\n\r\n    public byte[] getPicture3() {\r\n        return picture3;\r\n    }\r\n\r\n    public String getPicture1Base64() {\r\n        return picture1 != null ? Base64.getEncoder().encodeToString(picture1) : null;\r\n    }\r\n\r\n    public String getPicture2Base64() {\r\n        return picture2 != null ? Base64.getEncoder().encodeToString(picture2) : null;\r\n    }\r\n\r\n    public String getPicture3Base64() {\r\n        return picture3 != null ? Base64.getEncoder().encodeToString(picture3) : null;\r\n    }\r\n\r\n    @Override\r\n    public boolean equals(Object o) {\r\n        if (this == o) return true;\r\n        if (o == null || getClass() != o.getClass()) return false;\r\n        CarInformation that = (CarInformation) o;\r\n        return Double.compare(rentalRate, that.rentalRate) == 0 && Objects.equals(carInformationID, that.carInformationID) && Objects.equals(make, that.make) && Objects.equals(model, that.model) && Objects.equals(year, that.year) && Objects.equals(type, that.type) && Objects.equals(licensePlate, that.licensePlate) && Objects.equals(description, that.description) && Objects.equals(features, that.features) && Objects.equals(user, that.user) && Objects.equals(availabilityStatus, that.availabilityStatus) && Objects.deepEquals(picture1, that.picture1) && Objects.deepEquals(picture2, that.picture2) && Objects.deepEquals(picture3, that.picture3);\r\n    }\r\n\r\n    @Override\r\n    public int hashCode() {\r\n        return Objects.hash(carInformationID, make, model, year, type, licensePlate, description, features, user, rentalRate, availabilityStatus, Arrays.hashCode(picture1), Arrays.hashCode(picture2), Arrays.hashCode(picture3));\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"CarInformation{\" +\r\n                \"carInformationID=\" + carInformationID +\r\n                \", make='\" + make + '\\'' +\r\n                \", model='\" + model + '\\'' +\r\n                \", year='\" + year + '\\'' +\r\n                \", type='\" + type + '\\'' +\r\n                \", licensePlate='\" + licensePlate + '\\'' +\r\n                \", description='\" + description + '\\'' +\r\n                \", features='\" + features + '\\'' +\r\n                \", user=\" + user +\r\n                \", rentalRate=\" + rentalRate +\r\n                \", availabilityStatus='\" + availabilityStatus + '\\'' +\r\n                \", picture1=\" + Arrays.toString(picture1) +\r\n                \", picture2=\" + Arrays.toString(picture2) +\r\n                \", picture3=\" + Arrays.toString(picture3) +\r\n                '}';\r\n    }\r\n\r\n    public static class Builder {\r\n        private Long carInformationID;\r\n        private String make;\r\n        private String model;\r\n        private String year;\r\n        private String type;\r\n        private String licensePlate;\r\n        private String description;\r\n        private String features;\r\n        private User user;\r\n        private double rentalRate;\r\n        private String availabilityStatus;\r\n        private byte[] picture1;\r\n        private byte[] picture2;\r\n        private byte[] picture3;\r\n\r\n        // Builder methods...\r\n        public Builder setCarInformationID(Long carInformationID) {\r\n            this.carInformationID = carInformationID;\r\n            return this;\r\n        }\r\n\r\n        public Builder setMake(String make) {\r\n            this.make = make;\r\n            return this;\r\n        }\r\n\r\n        public Builder setModel(String model) {\r\n            this.model = model;\r\n            return this;\r\n        }\r\n\r\n        public Builder setYear(String year) {\r\n            this.year = year;\r\n            return this;\r\n        }\r\n\r\n        public Builder setType(String type) {\r\n            this.type = type;\r\n            return this;\r\n        }\r\n\r\n        public Builder setLicensePlate(String licensePlate) {\r\n            this.licensePlate = licensePlate;\r\n            return this;\r\n        }\r\n\r\n        public Builder setDescription(String description) {\r\n            this.description = description;\r\n            return this;\r\n        }\r\n\r\n        public Builder setFeatures(String features) {\r\n            this.features = features;\r\n            return this;\r\n        }\r\n\r\n        public Builder setUser(User user) {\r\n            this.user = user;\r\n            return this;\r\n        }\r\n\r\n        public Builder setRentalRate(double rentalRate) {\r\n            this.rentalRate = rentalRate;\r\n            return this;\r\n        }\r\n\r\n        public Builder setAvailabilityStatus(String availabilityStatus) {\r\n            this.availabilityStatus = availabilityStatus;\r\n            return this;\r\n        }\r\n\r\n        public Builder setPicture1(byte[] picture1) {\r\n            this.picture1 = picture1;\r\n            return this;\r\n        }\r\n\r\n        public Builder setPicture2(byte[] picture2) {\r\n            this.picture2 = picture2;\r\n            return this;\r\n        }\r\n\r\n        public Builder setPicture3(byte[] picture3) {\r\n            this.picture3 = picture3;\r\n            return this;\r\n        }\r\n\r\n        public Builder copy(CarInformation carInformation) {\r\n            this.carInformationID = carInformation.carInformationID;\r\n            this.make = carInformation.make;\r\n            this.model = carInformation.model;\r\n            this.year = carInformation.year;\r\n            this.type = carInformation.type;\r\n            this.licensePlate = carInformation.licensePlate;\r\n            this.description = carInformation.description;\r\n            this.features = carInformation.features;\r\n            this.user = carInformation.user;\r\n            this.rentalRate = carInformation.rentalRate;\r\n            this.availabilityStatus = carInformation.availabilityStatus;\r\n            this.picture1 = carInformation.picture1;\r\n            this.picture2 = carInformation.picture2;\r\n            this.picture3 = carInformation.picture3;\r\n            return this;\r\n        }\r\n\r\n        public CarInformation buildCar() {\r\n            return new CarInformation(this);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/za/ac/cput/domain/CarInformation.java b/src/main/java/za/ac/cput/domain/CarInformation.java
+--- a/src/main/java/za/ac/cput/domain/CarInformation.java	(revision 458f8a2df7fcce23eec565f7eabfb2ad3956e9bb)
++++ b/src/main/java/za/ac/cput/domain/CarInformation.java	(date 1729643847884)
+@@ -113,6 +113,7 @@
+         return picture3;
+     }
+ 
++
+     public String getPicture1Base64() {
+         return picture1 != null ? Base64.getEncoder().encodeToString(picture1) : null;
+     }
+@@ -245,6 +246,8 @@
+             return this;
+         }
+ 
++
++
+         public Builder copy(CarInformation carInformation) {
+             this.carInformationID = carInformation.carInformationID;
+             this.make = carInformation.make;
+Index: src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring.jpa.hibernate.ddl-auto=update\r\nspring.datasource.url=jdbc:mysql://localhost:3306/CarShareApp?createDatabaseIfNotExist=true\r\nspring.datasource.username=root\r\nspring.datasource.password= password\r\nspring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver\r\nspring.jpa.show-sql: true\r\nserver.servlet.context-path=/group19-capstone-project\r\nspring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect\r\nspring.security.user.name=user\r\nspring.security.user.password= password\r\nspring.servlet.multipart.max-file-size=5MB\r\nspring.servlet.multipart.max-request-size=5MB\r\nlogging.level.org.springframework.web=DEBUG\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/src/main/resources/application.properties b/src/main/resources/application.properties
+--- a/src/main/resources/application.properties	(revision 458f8a2df7fcce23eec565f7eabfb2ad3956e9bb)
++++ b/src/main/resources/application.properties	(date 1729524285446)
+@@ -1,7 +1,7 @@
+ spring.jpa.hibernate.ddl-auto=update
+ spring.datasource.url=jdbc:mysql://localhost:3306/CarShareApp?createDatabaseIfNotExist=true
+ spring.datasource.username=root
+-spring.datasource.password= password
++spring.datasource.password= Lehlogonolo20
+ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+ spring.jpa.show-sql: true
+ server.servlet.context-path=/group19-capstone-project
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ebee5819-1893-427b-8e37-cc9653307db3\" name=\"Changes\" comment=\"new updates\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"JUnit.CarInformationServiceTest.executor\": \"Run\",\r\n    \"JUnit.UserServiceTest.executor\": \"Run\",\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"Spring Boot.Main.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"JUnit.CarInformationServiceTest\">\r\n    <configuration name=\"CarInformationServiceTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"CapstoneProject\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"za.ac.cput.service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"za.ac.cput.service\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"za.ac.cput.service.CarInformationServiceTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UserServiceTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"CapstoneProject\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"za.ac.cput.service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"za.ac.cput.service\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"za.ac.cput.service.UserServiceTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"CapstoneProject\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"za.ac.cput.Main\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"za.ac.cput.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.CarInformationServiceTest\" />\r\n        <item itemvalue=\"JUnit.UserServiceTest\" />\r\n        <item itemvalue=\"Spring Boot.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"new updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1729449322197</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1729449322197</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"new updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1729449420993</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1729449420993</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"new updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1729459699074</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1729459699074</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"new updates\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"new updates\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 458f8a2df7fcce23eec565f7eabfb2ad3956e9bb)
++++ b/.idea/workspace.xml	(date 1729683572506)
+@@ -4,7 +4,29 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ebee5819-1893-427b-8e37-cc9653307db3" name="Changes" comment="new updates" />
++    <list default="true" id="ebee5819-1893-427b-8e37-cc9653307db3" name="Changes" comment="new updates">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/CarInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/CarInformation.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/CarInformationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/controller/CarInformationController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/CarInformation$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/CarInformation$Builder.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/CarInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/CarInformation.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User$Builder.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/za/ac/cput/domain/User.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/BookingControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/BookingControllerTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/CarInformationControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/CarInformationControllerTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/PaymentControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/PaymentControllerTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/ReviewControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/controller/ReviewControllerTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/BookingFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/BookingFactoryTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarInformationFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarInformationFactoryTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarInsuranceFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/CarInsuranceFactoryTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/PaymentFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/PaymentFactoryTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/ReviewFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/ReviewFactoryTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/factory/SupportTicketFactoryTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/CarInformationServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/za/ac/cput/service/CarInformationServiceTest.class" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -17,23 +39,40 @@
+       </list>
+     </option>
+   </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 3
++}</component>
++  <component name="ProjectId" id="2nisTSTnnKq5AmvpwPqlD6SdFH8" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "JUnit.CarInformationServiceTest.executor": "Run",
+-    "JUnit.UserServiceTest.executor": "Run",
+-    "RequestMappingsPanelOrder0": "0",
+-    "RequestMappingsPanelOrder1": "1",
+-    "RequestMappingsPanelWidth0": "75",
+-    "RequestMappingsPanelWidth1": "75",
+-    "Spring Boot.Main.executor": "Run",
+-    "git-widget-placeholder": "main",
+-    "node.js.selected.package.tslint": "(autodetect)"
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;JUnit.CarInformationServiceTest.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
++    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
++    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
++    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
++    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
+-  <component name="RunManager" selected="JUnit.CarInformationServiceTest">
++}</component>
++  <component name="RunManager" selected="Spring Boot.Main">
+     <configuration name="CarInformationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="CapstoneProject" />
+       <extension name="coverage">
+@@ -79,12 +118,21 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Spring Boot.Main" />
+         <item itemvalue="JUnit.CarInformationServiceTest" />
+         <item itemvalue="JUnit.UserServiceTest" />
+-        <item itemvalue="Spring Boot.Main" />
+       </list>
+     </recent_temporary>
+   </component>
++  <component name="SharedIndexes">
++    <attachedChunks>
++      <set>
++        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
++        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
++      </set>
++    </attachedChunks>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task id="LOCAL-00001" summary="new updates">
+       <option name="closed" value="true" />
+@@ -110,8 +158,30 @@
+       <option name="project" value="LOCAL" />
+       <updated>1729459699074</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="new updates">
++      <option name="closed" value="true" />
++      <created>1729466573868</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1729466573868</updated>
++    </task>
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="ebee5819-1893-427b-8e37-cc9653307db3" name="Changes" comment="new updates" />
++      <created>1729467239107</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1729467239107</updated>
++      <workItem from="1729467240700" duration="5417000" />
++      <workItem from="1729523646566" duration="3992000" />
++      <workItem from="1729610204972" duration="8889000" />
++      <workItem from="1729682732538" duration="603000" />
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
++  </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="new updates" />
+Index: src/main/java/za/ac/cput/domain/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\npackage za.ac.cput.domain;\r\n\r\nimport jakarta.persistence.*;\r\nimport za.ac.cput.enums.UserRole;\r\n\r\nimport java.util.Arrays;\r\nimport java.util.Objects;\r\n\r\n@Entity\r\n@Table(name = \"User\")\r\npublic class User {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    private Long userID;\r\n\r\n    private String firstName;\r\n    private String lastName;\r\n\r\n    private String email;\r\n    private String cellNum;\r\n\r\n    private String username;\r\n    private String password;\r\n\r\n    private UserRole userRole;\r\n\r\n    @Embedded\r\n    private Address address;\r\n\r\n    @Lob\r\n    @Column(name = \"License\", columnDefinition = \"longBlob\")\r\n    private byte[] license;\r\n\r\n    @Lob\r\n    @Column(name = \"Identity Document\", columnDefinition = \"longBlob\")\r\n    private byte[] identityDocument;\r\n\r\n\r\n    // Default constructor\r\n    public User() {\r\n    }\r\n\r\n    // Private constructor for the Builder pattern\r\n    private User(Builder builder) {\r\n        this.userID = builder.userID;\r\n        this.firstName = builder.firstName;\r\n        this.lastName = builder.lastName;\r\n        this.username = builder.username;\r\n        this.password = builder.password;\r\n        this.userRole = builder.userRole;\r\n        this.cellNum = builder.cellNum;\r\n        this.email = builder.email;\r\n        this.address = builder.address;\r\n        this.license = builder.license;\r\n        this.identityDocument = builder.identityDocument;\r\n\r\n    }\r\n\r\n    public Long getUserID() {\r\n        return userID;\r\n    }\r\n\r\n    public String getFirstName() {\r\n        return firstName;\r\n    }\r\n\r\n    public String getLastName() {\r\n        return lastName;\r\n    }\r\n\r\n    public String getEmail() {\r\n        return email;\r\n    }\r\n\r\n    public String getCellNum() {\r\n        return cellNum;\r\n    }\r\n\r\n    public String getUsername() {\r\n        return username;\r\n    }\r\n\r\n    public String getPassword() {\r\n        return password;\r\n    }\r\n\r\n\r\n    public UserRole getUserRole() {\r\n        return userRole;\r\n    }\r\n\r\n    public Address getAddress() {\r\n        return address;\r\n    }\r\n\r\n    public byte[] getLicense() {\r\n        return license;\r\n    }\r\n\r\n    public byte[] getIdentityDocument() {\r\n        return identityDocument;\r\n    }\r\n\r\n    @Override\r\n    public boolean equals(Object o) {\r\n        if (this == o) return true;\r\n        if (o == null || getClass() != o.getClass()) return false;\r\n        User user = (User) o;\r\n        return Objects.equals(userID, user.userID) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(cellNum, user.cellNum) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && userRole == user.userRole && Objects.equals(address, user.address) && Objects.deepEquals(license, user.license) && Objects.deepEquals(identityDocument, user.identityDocument);\r\n    }\r\n\r\n    @Override\r\n    public int hashCode() {\r\n        return Objects.hash(userID, firstName, lastName, email, cellNum, username, password, userRole, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"User{\" +\r\n                \"userID=\" + userID +\r\n                \", firstName='\" + firstName + '\\'' +\r\n                \", lastName='\" + lastName + '\\'' +\r\n                \", email='\" + email + '\\'' +\r\n                \", cellNum='\" + cellNum + '\\'' +\r\n                \", username='\" + username + '\\'' +\r\n                \", password='\" + password + '\\'' +\r\n                \", userRole=\" + userRole +\r\n                \", address=\" + address +\r\n                \", license=\" + Arrays.toString(license) +\r\n                \", identityDocument=\" + Arrays.toString(identityDocument) +\r\n                '}';\r\n    }\r\n\r\n    // Builder class for creating User objects\r\n    public static class Builder {\r\n        private Long userID;\r\n        private String firstName;\r\n        private String lastName;\r\n        private String email;\r\n        private String cellNum;\r\n        private String username;\r\n        private String password;\r\n        private Address address;\r\n        private UserRole userRole;\r\n        private byte[] license;\r\n        private byte[] identityDocument;\r\n\r\n        public Builder setUserID(Long userID) {\r\n            this.userID = userID;\r\n            return this;\r\n        }\r\n\r\n        public Builder setFirstName(String firstName) {\r\n            this.firstName = firstName;\r\n            return this;\r\n        }\r\n\r\n        public Builder setLastName(String lastName) {\r\n            this.lastName = lastName;\r\n            return this;\r\n        }\r\n\r\n        public Builder setEmail(String email) {\r\n            this.email = email;\r\n            return this;\r\n        }\r\n\r\n        public Builder setCellNum(String cellNum) {\r\n            this.cellNum = cellNum;\r\n            return this;\r\n        }\r\n\r\n        public Builder setUsername(String username) {\r\n            this.username = username;\r\n            return this;\r\n        }\r\n\r\n\r\n        public Builder setPassword(String password) {\r\n            this.password = password;\r\n            return this;\r\n        }\r\n\r\n        public Builder setAddress(Address address) {\r\n            this.address = address;\r\n            return this;\r\n        }\r\n\r\n        public Builder setUserRole(UserRole userRole) {\r\n            this.userRole = userRole;\r\n            return this;\r\n        }\r\n\r\n        public Builder setLicense(byte[] license) {\r\n            this.license = license;\r\n            return this;\r\n        }\r\n\r\n        public Builder setIdentityDocument(byte[] identityDocument) {\r\n            this.identityDocument = identityDocument;\r\n            return this;\r\n        }\r\n\r\n        public Builder copy(User user){\r\n            this.userID = user.userID;\r\n            this.firstName = user.firstName;\r\n            this.lastName = user.lastName;\r\n            this.username = user.username;\r\n            this.password = user.password;\r\n            this.userRole = user.userRole;\r\n            this.cellNum = user.cellNum;\r\n            this.email = user.email;\r\n            this.address = user.address;\r\n            this.license = user.license;\r\n            this.identityDocument = user.identityDocument;\r\n\r\n            return this;\r\n        }\r\n\r\n\r\n        public User build() {\r\n            return new User(this);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/za/ac/cput/domain/User.java b/src/main/java/za/ac/cput/domain/User.java
+--- a/src/main/java/za/ac/cput/domain/User.java	(revision 458f8a2df7fcce23eec565f7eabfb2ad3956e9bb)
++++ b/src/main/java/za/ac/cput/domain/User.java	(date 1729527205227)
+@@ -5,6 +5,7 @@
+ import za.ac.cput.enums.UserRole;
+ 
+ import java.util.Arrays;
++import java.util.Base64;
+ import java.util.Objects;
+ 
+ @Entity
+@@ -102,17 +103,21 @@
+         return identityDocument;
+     }
+ 
++    public String getIdentityDocumentBase64() {
++        return identityDocument != null ? Base64.getEncoder().encodeToString(identityDocument) : null;
++    }
++
+     @Override
+     public boolean equals(Object o) {
+         if (this == o) return true;
+         if (o == null || getClass() != o.getClass()) return false;
+         User user = (User) o;
+-        return Objects.equals(userID, user.userID) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(cellNum, user.cellNum) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && userRole == user.userRole && Objects.equals(address, user.address) && Objects.deepEquals(license, user.license) && Objects.deepEquals(identityDocument, user.identityDocument);
++        return Objects.equals(getUserID(), user.getUserID()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getCellNum(), user.getCellNum()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && getUserRole() == user.getUserRole() && Objects.equals(getAddress(), user.getAddress()) && Objects.deepEquals(getLicense(), user.getLicense()) && Objects.deepEquals(getIdentityDocument(), user.getIdentityDocument());
+     }
+ 
+     @Override
+     public int hashCode() {
+-        return Objects.hash(userID, firstName, lastName, email, cellNum, username, password, userRole, address, Arrays.hashCode(license), Arrays.hashCode(identityDocument));
++        return Objects.hash(getUserID(), getFirstName(), getLastName(), getEmail(), getCellNum(), getUsername(), getPassword(), getUserRole(), getAddress(), Arrays.hashCode(getLicense()), Arrays.hashCode(getIdentityDocument()));
+     }
+ 
+     @Override
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n    <parent>\r\n        <groupId>org.springframework.boot</groupId>\r\n        <artifactId>spring-boot-starter-parent</artifactId>\r\n        <version>3.2.0</version>\r\n        <relativePath/> <!-- lookup parent from repository -->\r\n    </parent>\r\n    <groupId>za.ac.cput</groupId>\r\n    <artifactId>CapstoneProject</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n\r\n    <properties>\r\n        <maven.compiler.source>21</maven.compiler.source>\r\n        <maven.compiler.target>21</maven.compiler.target>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n    </properties>\r\n\r\n    <dependencies>\r\n        <!-- Spring Data JPA for database interaction -->\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-data-jpa</artifactId>\r\n        </dependency>\r\n\r\n        <!-- Spring Web Starter for building web APIs -->\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-web</artifactId>\r\n        </dependency>\r\n\r\n        <!-- MySQL Driver for connecting to MySQL database -->\r\n        <dependency>\r\n            <groupId>mysql</groupId>\r\n            <artifactId>mysql-connector-java</artifactId>\r\n            <version>8.0.33</version>\r\n        </dependency>\r\n\r\n        <!-- Spring Security for securing APIs -->\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-security</artifactId>\r\n        </dependency>\r\n\r\n        <!-- JWT dependencies for handling token-based authentication -->\r\n        <dependency>\r\n            <groupId>io.jsonwebtoken</groupId>\r\n            <artifactId>jjwt-api</artifactId>\r\n            <version>0.11.5</version> <!-- Or the latest stable version -->\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>io.jsonwebtoken</groupId>\r\n            <artifactId>jjwt-impl</artifactId>\r\n            <version>0.11.5</version> <!-- Ensure both api and impl versions match -->\r\n            <scope>runtime</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>io.jsonwebtoken</groupId>\r\n            <artifactId>jjwt-jackson</artifactId> <!-- For using Jackson with JJWT -->\r\n            <version>0.11.5</version>\r\n            <scope>runtime</scope>\r\n        </dependency>\r\n\r\n\r\n\r\n        <!-- Mockito for writing unit tests -->\r\n        <dependency>\r\n            <groupId>org.mockito</groupId>\r\n            <artifactId>mockito-core</artifactId>\r\n            <version>4.0.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.mockito</groupId>\r\n            <artifactId>mockito-inline</artifactId>\r\n            <version>4.0.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n\r\n        <!-- ByteBuddy for mocking purposes in tests -->\r\n        <dependency>\r\n            <groupId>net.bytebuddy</groupId>\r\n            <artifactId>byte-buddy</artifactId>\r\n            <version>1.12.10</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>net.bytebuddy</groupId>\r\n            <artifactId>byte-buddy-agent</artifactId>\r\n            <version>1.12.10</version>\r\n        </dependency>\r\n\r\n        <!-- Spring Boot Starter Test for unit and integration testing -->\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-test</artifactId>\r\n            <scope>test</scope>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 458f8a2df7fcce23eec565f7eabfb2ad3956e9bb)
++++ b/pom.xml	(date 1729468117511)
+@@ -9,6 +9,7 @@
+         <version>3.2.0</version>
+         <relativePath/> <!-- lookup parent from repository -->
+     </parent>
++
+     <groupId>za.ac.cput</groupId>
+     <artifactId>CapstoneProject</artifactId>
+     <version>1.0-SNAPSHOT</version>
