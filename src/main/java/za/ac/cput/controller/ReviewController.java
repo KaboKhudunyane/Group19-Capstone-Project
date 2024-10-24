@@ -1,6 +1,7 @@
 package za.ac.cput.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import za.ac.cput.domain.CarInformation;
 import za.ac.cput.domain.Review;
 import za.ac.cput.service.BookingService;
 import za.ac.cput.service.ReviewService;
@@ -43,5 +44,10 @@ public class ReviewController {
    @GetMapping("/getAllReviews")
     public List<Review> getAllReviews(){
         return reviewService.getAll();
+    }
+
+    @GetMapping("/reviews/{userID}")
+    public List<Review> getCarsByUserID(@PathVariable Long userID) {
+        return reviewService.getReviews(userID);
     }
 }

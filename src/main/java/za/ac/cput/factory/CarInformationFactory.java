@@ -1,7 +1,6 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.CarInformation;
-import za.ac.cput.domain.CarInsurance;
 import za.ac.cput.domain.User;
 
 public class CarInformationFactory {
